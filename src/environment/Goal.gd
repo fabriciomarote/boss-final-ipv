@@ -1,21 +1,22 @@
 extends Area2D
 
-onready var finish_animation: AnimationPlayer = $FinishAnimation
+onready var portal: AnimatedSprite = $Portal
+
+var won: bool = false
+
 
 func _ready() -> void:
+	portal.play("idle")
 	connect("body_entered", self, "_on_body_entered")
 
 
 func _on_body_entered(body: Node) -> void:
-	print("You win!")
-	disconnect("body_entered", self, "_on_body_entered")
-	_play_animation("finish")
+	if !won:
+		print("You win!")
+		won = true
+		portal.play("open")
 
 
-func _play_animation(animation: String) -> void:
-	if finish_animation.has_animation(animation):
-		finish_animation.play(animation)
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	#_play_animation("loopportal")
-	return
+func _on_Portal_animation_finished() -> void:
+	if portal.animation == "open":
+		portal.play("idle_open")

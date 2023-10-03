@@ -31,7 +31,7 @@ func initialize(container: Node, spawn_position: Vector2, direction: Vector2) ->
 	## y volviendo únicos a la escena sus sub-recursos, para que no se mezclen con los otros
 	## hermanos, ya que las animaciones califican como "Resources" y son únicos, y,
 	## por lo tanto, compartidos.
-	## projectile_animations.play("fire_start")
+	projectile_animations.play("fire_start")
 	projectile_animations.queue("fire_loop")
 
 
