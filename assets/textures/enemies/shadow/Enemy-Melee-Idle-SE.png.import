@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex"
+path="res://.import/Enemy-Melee-Idle-SE.png-e9cc39582566b545b525bf938fff13cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/sprout/Attack/Sprout_attack.png"
-dest_files=[ "res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex" ]
+source_file="res://assets/textures/enemies/shadow/Enemy-Melee-Idle-SE.png"
+dest_files=[ "res://.import/Enemy-Melee-Idle-SE.png-e9cc39582566b545b525bf938fff13cd.stex" ]
 
 [params]
 

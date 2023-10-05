@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex"
+path="res://.import/proyectile_turret (2).png-033e20d7dbc720b34f115fc4b1ff141d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/sprout/Attack/Sprout_attack.png"
-dest_files=[ "res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex" ]
+source_file="res://assets/textures/enemies/shadow/proyectile_turret (2).png"
+dest_files=[ "res://.import/proyectile_turret (2).png-033e20d7dbc720b34f115fc4b1ff141d.stex" ]
 
 [params]
 

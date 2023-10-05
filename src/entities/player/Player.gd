@@ -20,6 +20,7 @@ onready var weapon: Node = $"%Weapon"
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
+onready var fx_anim: AnimationPlayer = $WeaponContainer/Weapon/FXAnim
 
 ## Estas variables de exportación podríamos abstraerlas a cada
 ## estado correspondiente de la state machine, pero como queremos
@@ -32,6 +33,7 @@ export (float) var FRICTION_WEIGHT: float = 0.1
 export (int) var gravity: int = 10
 
 var projectile_container: Node
+var fire_tween: SceneTreeTween
 
 var velocity: Vector2 = Vector2.ZERO
 var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
@@ -71,7 +73,18 @@ func _handle_weapon_actions() -> void:
 			projectile_container = get_parent()
 		if weapon.projectile_container == null:
 			weapon.projectile_container = projectile_container
-		weapon.fire()
+		emit_signal("finished", "attack1")
+		fire()
+		
+
+func fire() -> void:
+	if !fx_anim.is_playing():
+		## Mato al tween antes de disparar para que no me cambie la rotación
+		if fire_tween != null:
+			fire_tween.kill()
+		
+		## No disparo de inmediato, sino que delego a una animación de disparo
+		fx_anim.play("fire")
 
 
 ## Se extrae el comportamiento del manejo del movimiento horizontal
@@ -127,6 +140,12 @@ func notify_hit(amount: int = 1) -> void:
 func _handle_hit(amount: int = 1) -> void:
 	dead = true
 	emit_signal("hp_changed", 0, 1)
+
+func _handle_attackSword():
+	_play_animation("attackSword")
+
+func _handle_attackArrow():
+	_play_animation("attackArrow")	
 
 
 # El llamado a remove final
