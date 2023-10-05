@@ -68,6 +68,7 @@ func _process_input() -> void:
 ## una función para ser llamada apropiadamente desde la state machine
 func _handle_weapon_actions() -> void:
 	weapon.process_input()
+	#
 	if Input.is_action_just_pressed("fire_weapon"):
 		if projectile_container == null:
 			projectile_container = get_parent()
@@ -85,6 +86,26 @@ func fire() -> void:
 		
 		## No disparo de inmediato, sino que delego a una animación de disparo
 		fx_anim.play("fire")
+
+func _fire() -> void:
+	## Y por último animo el retorno a la posición de inicio del arma
+	fire_tween = create_tween()
+	
+	## Cálculo del demonio, podría haber sido mucho más sencillo utilizando
+	## vectores y sacando los ángulos circulares.
+	## Lo que hace es toma el ángulo relativo más cercano, ya que después de cierto
+	## punto, en vez de rotar correctamente hacia arriba, da toda la vuelta.
+#	var final_angle: float = deg2rad(-90.0 + 360.0 * float(rotation > deg2rad(90)))
+	
+	## Me enculé y lo hice de esta manera. Parece chino también, pero básicamente
+	## toma un vector con rotación 0 (los radianes SIEMPRE toman como rotación 0
+	## mirar a la izquierda, osea, (1, 0)) y le aplica la rotación actual, le pide el ángulo
+	## hacia la dirección que queremos que vaya, y luego se lo suma a la rotación actual.
+	var final_angle: float = rotation + Vector2.LEFT.rotated(rotation).angle_to(Vector2.DOWN)
+	
+	## Y acá se anima programáticamente utilizando el ángulo actual del arma hacia
+	## el ángulo final al que debe rotar.
+	fire_tween.tween_property(self, "rotation", final_angle, 0.5).set_delay(0.5)
 
 
 ## Se extrae el comportamiento del manejo del movimiento horizontal
