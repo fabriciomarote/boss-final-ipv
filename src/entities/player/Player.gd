@@ -53,38 +53,13 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	weapon.projectile_container = projectile_container
 
 
-## El único elemento que queda abstraer de esta función
-## es el manejo del salto. Esta parte del código no va a
-## seguir formando parte del código del player, y, en su lugar
-## lo migraremos al código del estado Jump correspondiente
-func _process_input() -> void:
-	# Jump Action
-	var jump = Input.is_action_just_pressed("jump")
-	if jump && is_on_floor():
-		velocity.y -= jump_speed
-
-
 ## Se extrae el comportamiento de manejo del disparo del arma a
 ## una función para ser llamada apropiadamente desde la state machine
 func _handle_weapon_actions() -> void:
-	weapon.process_input()
-	if Input.is_action_just_pressed("fire_weapon"):
-		if projectile_container == null:
-			projectile_container = get_parent()
-		if weapon.projectile_container == null:
-			weapon.projectile_container = projectile_container
+	if Input.is_action_just_pressed("attackSword"):
+		emit_signal("finished", "attack2")
+	if Input.is_action_just_pressed("attackArrow"):
 		emit_signal("finished", "attack1")
-		fire()
-		
-
-func fire() -> void:
-	if !fx_anim.is_playing():
-		## Mato al tween antes de disparar para que no me cambie la rotación
-		if fire_tween != null:
-			fire_tween.kill()
-		
-		## No disparo de inmediato, sino que delego a una animación de disparo
-		fx_anim.play("fire")
 
 
 ## Se extrae el comportamiento del manejo del movimiento horizontal
@@ -125,13 +100,6 @@ func is_on_floor() -> bool:
 	return is_colliding
 
 
-## Esta función ya no llama directamente a remove, sino que deriva
-## el handleo a la state machine emitiendo una señal. Esto es para
-## los casos de estados en los cuales no se manejan hits
-func notify_hit(amount: int = 1) -> void:
-	emit_signal("hit", amount)
-
-
 ## Y acá se maneja el hit final. Como aun no tenemos una "cantidad" de HP,
 ## sino una flag, el hit nos mata instantaneamente y tiramos una notificación.
 ## Esta signal tranquilamente podría llamarse "dead", pero como esa la utilizamos
@@ -140,12 +108,6 @@ func notify_hit(amount: int = 1) -> void:
 func _handle_hit(amount: int = 1) -> void:
 	dead = true
 	emit_signal("hp_changed", 0, 1)
-
-func _handle_attackSword():
-	_play_animation("attackSword")
-
-func _handle_attackArrow():
-	_play_animation("attackArrow")	
 
 
 # El llamado a remove final

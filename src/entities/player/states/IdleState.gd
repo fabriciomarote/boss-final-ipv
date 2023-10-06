@@ -39,6 +39,7 @@ func update(delta: float) -> void:
 				character._play_animation("fall")
 			else:
 				character._play_animation("jump")
+		
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:
