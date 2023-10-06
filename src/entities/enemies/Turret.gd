@@ -10,7 +10,7 @@ onready var body_anim: AnimatedSprite = $Body
 export (float) var pathfinding_step_threshold:float = 5.0
 
 export (Vector2) var wander_radius: Vector2 = Vector2(10.0, 10.0)
-export (float) var speed:float  = 10.0
+export (float) var speed:float  = 30.0
 export (float) var max_speed:float = 100.0
 export (PackedScene) var projectile_scene: PackedScene
 

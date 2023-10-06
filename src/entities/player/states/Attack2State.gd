@@ -9,11 +9,7 @@ func exit() -> void:
 	pass
 
 func handle_input(event:InputEvent) -> void:
-	if event.is_action_pressed("attackArrow"):
-		do_attack()
-
-func do_attack() -> void: 
-	character._play_animation("attackArrow")
+	character._handle_attackArrow()
 
 func update(delta: float) -> void:
 	pass

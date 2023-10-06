@@ -70,7 +70,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "attackSword"
-length = 4.0
+length = 1.4
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/Body:frame")
 tracks/0/interp = 1
@@ -78,10 +79,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119 ]
+"values": [ 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -270,7 +271,7 @@ script = ExtResource( 1 )
 script = ExtResource( 12 )
 character_path = NodePath("..")
 START_STATE = NodePath("Idle")
-STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("Attack1"), NodePath("Attack2") ]
+STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("AttackSword"), NodePath("AttackArrow") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
@@ -288,13 +289,13 @@ state_id = "jump"
 script = ExtResource( 15 )
 state_id = "dead"
 
-[node name="Attack1" type="Node" parent="StateMachine"]
+[node name="AttackSword" type="Node" parent="StateMachine"]
 script = ExtResource( 17 )
-state_id = "attack1"
+state_id = "attackSword"
 
-[node name="Attack2" type="Node" parent="StateMachine"]
+[node name="AttackArrow" type="Node" parent="StateMachine"]
 script = ExtResource( 18 )
-state_id = "attack2"
+state_id = "attackArrow"
 
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

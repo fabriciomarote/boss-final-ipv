@@ -7,6 +7,10 @@ func enter() -> void:
 
 
 func handle_input(event:InputEvent) -> void:
+	if event.is_action_pressed("attackSword"):
+		emit_signal("finished", "attackSword")
+	if event.is_action_pressed("attackArrow"):
+		emit_signal("finished","attackArrow")
 	if event.is_action_pressed("jump") && character.is_on_floor():
 		emit_signal("finished", "jump")
 

@@ -3,7 +3,6 @@ class_name EnemyShadow
 
 signal hit(amount)
 
-onready var fire_position: Node2D = $FirePosition
 onready var raycast: RayCast2D = $RayCast2D
 onready var body_anim: AnimatedSprite = $Body
 
@@ -12,13 +11,11 @@ export (float) var pathfinding_step_threshold:float = 5.0
 export (Vector2) var wander_radius: Vector2 = Vector2(10.0, 10.0)
 export (float) var speed:float  = 10.0
 export (float) var max_speed:float = 100.0
-export (PackedScene) var projectile_scene: PackedScene
 
 export (NodePath) var pathfinding_path: NodePath
 onready var pathfinding: PathfindAstar = get_node_or_null(pathfinding_path)
 
 var target: Node2D
-var projectile_container: Node
 
 var velocity: Vector2 = Vector2.ZERO
 
@@ -27,26 +24,14 @@ var velocity: Vector2 = Vector2.ZERO
 var dead: bool = false
 
 
-func initialize(container, turret_pos, projectile_container) -> void:
+func initialize(container, turret_pos) -> void:
 	container.add_child(self)
 	global_position = turret_pos
-	self.projectile_container = projectile_container
-	
 
-func _fire() -> void:
-	if target != null:
-		var proj_instance: Node = projectile_scene.instance()
-		if projectile_container == null:
-			projectile_container = get_parent()
-		proj_instance.initialize(
-			projectile_container,
-			fire_position.global_position,
-			fire_position.global_position.direction_to(target.global_position)
-		)
-	
 
 func _look_at_target() -> void:
 	body_anim.flip_h = raycast.cast_to.x < 0
+
 
 func _can_see_target() -> bool:
 	if target == null:
@@ -65,7 +50,6 @@ func _apply_movement() -> void:
 ## dependiendo de si el enemigo esta o no alerta
 func notify_hit(amount:int = 1) -> void:
 	emit_signal("hit", amount)
-	print("I'm turret and imma die")
 
 
 func _remove() -> void:
