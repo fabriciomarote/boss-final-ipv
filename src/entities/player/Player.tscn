@@ -71,7 +71,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=12]
 resource_name = "attackSword"
 length = 1.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/Body:frame")
 tracks/0/interp = 1
@@ -327,7 +326,6 @@ cast_to = Vector2( 0, 1 )
 [node name="BodyPivot" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite" parent="BodyPivot"]
-modulate = Color( 0.666667, 0.666667, 0.666667, 1 )
 position = Vector2( 1, -28 )
 scale = Vector2( 1.03264, 0.913622 )
 texture = ExtResource( 2 )

@@ -25,7 +25,7 @@ _global_script_classes=[ {
 "path": "res://src/entities/AbstractStateMachine.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "EnemyShadow",
+"class": "EnemySprout",
 "language": "GDScript",
 "path": "res://src/entities/enemies/Sprout.gd"
 }, {
@@ -48,7 +48,7 @@ _global_script_class_icons={
 "AbstractEnemyState": "",
 "AbstractState": "",
 "AbstractStateMachine": "",
-"EnemyShadow": "",
+"EnemySprout": "",
 "EnemyTurret": "",
 "PathfindAstar": "",
 "Player": ""

@@ -13,13 +13,11 @@ func exit() -> void:
 func handle_input(event:InputEvent) -> void:
 	if event.is_action_pressed("attackArrow"):
 		emit_signal("finished", "attackArrow")
-	if event.is_action_pressed("idle"):
-		emit_signal("finished","idle")
 	if event.is_action_pressed("jump") && character.is_on_floor():
 		emit_signal("finished", "jump")
-	if event.is_action_pressed("attackSword") && hit < 1:
-		hit += 1
-		do_hit()
+	##if event.is_action_pressed("attackSword") && hit < 1:
+		##hit += 1
+		##do_hit()
 
 func do_hit() -> void: 
 	character._play_animation("attackSword")

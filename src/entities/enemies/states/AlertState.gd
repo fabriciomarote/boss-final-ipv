@@ -3,10 +3,12 @@ extends AbstractEnemyState
 func enter() -> void:
 	character.velocity = Vector2.ZERO
 	fire()
-	
+
+
 func fire() -> void:
 	character._fire()
 	character._play_animation("attack")
+
 
 func update(delta:float) -> void:
 	character._look_at_target()
@@ -24,6 +26,7 @@ func _on_animation_finished(anim_name: String) ->  void:
 					fire()
 				else:
 					emit_signal("finished", "idle")
+
 
 func _handle_body_exited(node: Node) -> void:
 	._handle_body_exited(node)

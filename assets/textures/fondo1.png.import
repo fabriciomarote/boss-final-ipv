@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/charged6.png-a7b574487644641b0bf40d47eedcf798.stex"
+path="res://.import/fondo1.png-faea1b46a4f0a7bc996083db1fe2d40f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/fx/charged/charged6.png"
-dest_files=[ "res://.import/charged6.png-a7b574487644641b0bf40d47eedcf798.stex" ]
+source_file="res://assets/textures/fondo1.png"
+dest_files=[ "res://.import/fondo1.png-faea1b46a4f0a7bc996083db1fe2d40f.stex" ]
 
 [params]
 

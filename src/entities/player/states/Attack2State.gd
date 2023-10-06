@@ -2,14 +2,12 @@ extends AbstractState
 
 # Al entrar se activa primero la animación "attackArrow"
 func enter() -> void:
-	pass
+	character._handle_weapon_actions()
 
 func handle_input(event:InputEvent) -> void:
 	character._play_animation("attackArrow")
 	if event.is_action_pressed("attackSword"):
 		emit_signal("finished", "attackSword")
-	if event.is_action_pressed("idle"):
-		emit_signal("finished","idle")
 	if event.is_action_pressed("jump") && character.is_on_floor():
 		emit_signal("finished", "jump")
 

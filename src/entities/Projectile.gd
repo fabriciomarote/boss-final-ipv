@@ -8,7 +8,7 @@ onready var lifetime_timer: Timer = $LifetimeTimer
 onready var hitbox: Area2D = $Hitbox
 onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
 
-export (float) var VELOCITY: float = 800.0
+export (float) var VELOCITY: float = 100.0
 
 var direction: Vector2
 
@@ -31,8 +31,6 @@ func initialize(container: Node, spawn_position: Vector2, direction: Vector2) ->
 	## y volviendo únicos a la escena sus sub-recursos, para que no se mezclen con los otros
 	## hermanos, ya que las animaciones califican como "Resources" y son únicos, y,
 	## por lo tanto, compartidos.
-	projectile_animations.play("fire_start")
-	projectile_animations.queue("fire_loop")
 
 
 func _physics_process(delta: float) -> void:

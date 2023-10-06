@@ -27,7 +27,7 @@ onready var fx_anim: AnimationPlayer = $WeaponContainer/Weapon/FXAnim
 ## poder modificar estos valores desde afuera de la escena del Player,
 ## los exponemos desde el script de Player.
 export (float) var ACCELERATION: float = 60.0
-export (float) var H_SPEED_LIMIT: float = 600.0
+export (float) var H_SPEED_LIMIT: float = 500.0
 export (int) var jump_speed: int = 300
 export (float) var FRICTION_WEIGHT: float = 0.1
 export (int) var gravity: int = 10
@@ -56,10 +56,18 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 ## Se extrae el comportamiento de manejo del disparo del arma a
 ## una función para ser llamada apropiadamente desde la state machine
 func _handle_weapon_actions() -> void:
-	if Input.is_action_just_pressed("attackSword"):
-		emit_signal("finished", "attack2")
-	if Input.is_action_just_pressed("attackArrow"):
-		emit_signal("finished", "attack1")
+	weapon.process_input()
+	if Input.is_action_just_pressed("fire_weapon"):
+		emit_signal("finished", "attackArrow")
+		if projectile_container == null:
+			projectile_container = get_parent()
+		if weapon.projectile_container == null:
+			weapon.projectile_container = projectile_container
+		weapon.fire()
+	##if Input.is_action_just_pressed("attackSword"):
+	##	emit_signal("finished", "attackSword)
+	##if Input.is_action_just_pressed("attackArrow"):
+	##	emit_signal("finished", "attackArrow)
 
 
 ## Se extrae el comportamiento del manejo del movimiento horizontal
@@ -98,6 +106,12 @@ func is_on_floor() -> bool:
 		raycast.force_raycast_update()
 		is_colliding = is_colliding || raycast.is_colliding()
 	return is_colliding
+
+## Esta función ya no llama directamente a remove, sino que deriva
+## el handleo a la state machine emitiendo una señal. Esto es para
+## los casos de estados en los cuales no se manejan hits
+func notify_hit(amount: int = 1) -> void:
+	emit_signal("hit", amount)
 
 
 ## Y acá se maneja el hit final. Como aun no tenemos una "cantidad" de HP,
