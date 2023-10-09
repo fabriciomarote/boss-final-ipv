@@ -10,6 +10,8 @@ signal hit(amount)
 signal healed(amount)
 signal hp_changed(current_hp, max_hp)
 signal dead()
+signal grounded_change(is_grounded)
+signal sliding_change(is_sliding)
 
 const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION: Vector2 = Vector2.DOWN
@@ -21,12 +23,13 @@ onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var fx_anim: AnimationPlayer = $WeaponContainer/Weapon/FXAnim
+onready var object_check = $BodyPivot/Body/ObjectCheck
 
 ## Estas variables de exportación podríamos abstraerlas a cada
 ## estado correspondiente de la state machine, pero como queremos
 ## poder modificar estos valores desde afuera de la escena del Player,
 ## los exponemos desde el script de Player.
-export (float) var ACCELERATION: float = 60.0
+export (float) var ACCELERATION: float = 20.0
 export (float) var H_SPEED_LIMIT: float = 500.0
 export (int) var jump_speed: int = 300
 export (float) var FRICTION_WEIGHT: float = 0.1
@@ -39,6 +42,8 @@ var velocity: Vector2 = Vector2.ZERO
 var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
+var hit_Direction : int = 0
+var arrowAmount: int = 0
 
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
@@ -58,16 +63,11 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 func _handle_weapon_actions() -> void:
 	weapon.process_input()
 	if Input.is_action_just_pressed("fire_weapon"):
-		emit_signal("finished", "attackArrow")
 		if projectile_container == null:
 			projectile_container = get_parent()
 		if weapon.projectile_container == null:
 			weapon.projectile_container = projectile_container
 		weapon.fire()
-	##if Input.is_action_just_pressed("attackSword"):
-	##	emit_signal("finished", "attackSword)
-	##if Input.is_action_just_pressed("attackArrow"):
-	##	emit_signal("finished", "attackArrow)
 
 
 ## Se extrae el comportamiento del manejo del movimiento horizontal
@@ -83,6 +83,18 @@ func _handle_move_input() -> void:
 ## a una función para ser llamada apropiadamente desde la state machine
 func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
+
+
+func is_near_wall():
+	return object_check.is_colliding()
+
+func is_sliding():
+	if  !is_near_wall() && floor_raycasts[0].is_colliding() && !floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
+		return 1
+	if !is_near_wall() && !floor_raycasts[0].is_colliding() && floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
+		return -1
+	else:
+		return 0 
 
 
 ## Se extrae el comportamiento de la aplicación de gravedad y movimiento
@@ -130,8 +142,28 @@ func _remove() -> void:
 	collision_layer = 0
 
 
+func handle_arrow() -> void:
+	arrowAmount += 1
+
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
 	if body_animations.has_animation(animation):
 		body_animations.play(animation)
+
+
+func _on_Hitbox_body_entered(body):
+	if body.global_position > self.global_position:
+		hit_Direction = 1
+	else:
+		hit_Direction = -1
+	notify_hit(1)
+
+
+
+func _on_Hitbox_area_entered(area):
+	if area.global_position > self.global_position:
+		hit_Direction = 1
+	else:
+		hit_Direction = -1
+	notify_hit(1)

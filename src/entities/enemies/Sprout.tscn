@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/textures/enemies/Sprout/Move/Sprout_move.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/enemies/Sprout/Death/Sprout-death.png" type="Texture" id=7]
 [ext_resource path="res://assets/textures/enemies/Sprout/Idle/Sprout_idle.png" type="Texture" id=8]
-[ext_resource path="res://src/entities/enemies/TurretStateMachine.gd" type="Script" id=13]
+[ext_resource path="res://src/entities/enemies/EnemyStateMachine.gd" type="Script" id=13]
 [ext_resource path="res://src/entities/enemies/states/IdleState.gd" type="Script" id=14]
 [ext_resource path="res://src/entities/enemies/states/WalkState.gd" type="Script" id=15]
 [ext_resource path="res://src/entities/enemies/states/DieState.gd" type="Script" id=16]
@@ -148,7 +148,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.5, 17 )
+extents = Vector2( 20, 19.5 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 162.373
@@ -156,9 +156,10 @@ radius = 162.373
 [node name="Sprout" type="KinematicBody2D"]
 light_mask = 3
 collision_layer = 4
-collision_mask = 5
+collision_mask = 16
 collision/safe_margin = 3.539
 script = ExtResource( 2 )
+speed = 100.0
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 13 )
@@ -196,12 +197,12 @@ position = Vector2( 0, -18.0339 )
 position = Vector2( 0, -19 )
 scale = Vector2( 0.802409, 0.631673 )
 frames = SubResource( 7 )
-animation = "idle"
-frame = 1
+animation = "attack"
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, -18 )
+position = Vector2( 3, -20.5 )
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -210,7 +211,6 @@ cast_to = Vector2( 0, 0 )
 collision_mask = 3
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 position = Vector2( 4, -12 )
 collision_layer = 0
 collision_mask = 2

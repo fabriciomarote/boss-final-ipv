@@ -4,13 +4,14 @@ extends AbstractState
 # Al entrar se activa primero la animación "walk"
 func enter() -> void:
 	character._play_animation("walk")
+	character.emit_signal("grounded_change",true)
 
 
 func handle_input(event:InputEvent) -> void:
-	if event.is_action_pressed("attackSword"):
-		emit_signal("finished", "attackSword")
-	if event.is_action_pressed("attackArrow"):
-		emit_signal("finished","attackArrow")
+	if event.is_action_pressed("fire_weapon") && character.is_on_floor():
+		emit_signal("finished", "arrow")
+	if event.is_action_pressed("sword"):
+		emit_signal("finished", "sword")
 	if event.is_action_pressed("jump") && character.is_on_floor():
 		emit_signal("finished", "jump")
 

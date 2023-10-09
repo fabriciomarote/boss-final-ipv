@@ -17,6 +17,7 @@ func process_input() -> void:
 		rotation = (get_global_mouse_position() - global_position).angle()
 
 
+
 func fire() -> void:
 	if !fx_anim.is_playing():
 		## Mato al tween antes de disparar para que no me cambie la rotación
@@ -30,6 +31,7 @@ func fire() -> void:
 ## La animación de disparo llama a esta función que va a ser la que instancie
 ## el proyectil
 func _fire() -> void:
+	var direction: Vector2 = global_position.direction_to(weapon_tip.global_position)
 	projectile_scene.instance().initialize(projectile_container, weapon_tip.global_position, global_position.direction_to(weapon_tip.global_position))
 	
 	## Y por último animo el retorno a la posición de inicio del arma

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/113.png-4d4d8efedb0c2e3bc360f6cfd51d00d5.stex"
+path="res://.import/destello.png-82bbdcc9fd24725c25ce6864b13ee778.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/113.png"
-dest_files=[ "res://.import/113.png-4d4d8efedb0c2e3bc360f6cfd51d00d5.stex" ]
+source_file="res://assets/textures/enemies/shadow/destello.png"
+dest_files=[ "res://.import/destello.png-82bbdcc9fd24725c25ce6864b13ee778.stex" ]
 
 [params]
 

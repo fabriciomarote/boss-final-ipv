@@ -105,27 +105,25 @@ tracks/4/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 1.0
+radius = 2.0
 
 [node name="PlayerProjectile" instance=ExtResource( 1 )]
-VELOCITY = 300.0
+light_mask = 5
+VELOCITY = 800.0
 
 [node name="LifetimeTimer" parent="." index="0"]
-wait_time = 10.552
+wait_time = 5.226
 
 [node name="ProjectileAnimations" parent="." index="1"]
 anims/RESET = SubResource( 2 )
 anims/hit = SubResource( 5 )
-
-[node name="Hitbox" parent="." index="2"]
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
 modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
-position = Vector2( -17, 0 )
+position = Vector2( -3, -1.63913e-07 )
 rotation = 0.785398
-scale = Vector2( 0.545885, 0.558939 )
+scale = Vector2( 1.06376, 1.1086 )
 texture = ExtResource( 14 )

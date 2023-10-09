@@ -1,17 +1,19 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/player/staff.png" type="Texture" id=3]
+[ext_resource path="res://src/entities/player/states/SlideState.gd" type="Script" id=3]
 [ext_resource path="res://src/entities/player/Cannon.gd" type="Script" id=4]
 [ext_resource path="res://src/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/entities/player/states/Fire.gd" type="Script" id=6]
+[ext_resource path="res://src/entities/player/states/CatchState.gd" type="Script" id=7]
 [ext_resource path="res://src/entities/player/PlayerStateMachine.gd" type="Script" id=12]
 [ext_resource path="res://src/entities/player/states/WalkState.gd" type="Script" id=13]
 [ext_resource path="res://src/entities/player/states/IdleState.gd" type="Script" id=14]
 [ext_resource path="res://src/entities/player/states/DeadState.gd" type="Script" id=15]
 [ext_resource path="res://src/entities/player/states/JumpState.gd" type="Script" id=16]
-[ext_resource path="res://src/entities/player/states/Attack1State.gd" type="Script" id=17]
-[ext_resource path="res://src/entities/player/states/Attack2State.gd" type="Script" id=18]
+[ext_resource path="res://src/entities/player/states/SwordState.gd" type="Script" id=17]
+[ext_resource path="res://src/entities/player/states/ArrowState.gd" type="Script" id=18]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -53,7 +55,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=11]
-resource_name = "attackArrow"
+resource_name = "arrow"
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/Body:frame")
@@ -66,22 +68,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 25, 26, 27, 28, 29, 30, 31, 32, 33 ]
-}
-
-[sub_resource type="Animation" id=12]
-resource_name = "attackSword"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("BodyPivot/Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -143,7 +129,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle"
-length = 0.9
+length = 0.75
 loop = true
 step = 0.15
 tracks/0/type = "value"
@@ -165,10 +151,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 0, 0, 0 ]
+"values": [ 51, 50, 51, 50, 51 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -197,6 +183,38 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 34, 35, 36, 37, 38, 39 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "slide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 52, 53, 54, 55 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "sword"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -261,16 +279,22 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 12, 5.25 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 7, 14.5 )
+
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 3
+light_mask = 3
+collision_layer = 3
 script = ExtResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 12 )
 character_path = NodePath("..")
 START_STATE = NodePath("Idle")
-STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("AttackSword"), NodePath("AttackArrow") ]
+STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("Sword"), NodePath("Arrow") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
@@ -288,40 +312,54 @@ state_id = "jump"
 script = ExtResource( 15 )
 state_id = "dead"
 
-[node name="AttackSword" type="Node" parent="StateMachine"]
+[node name="Sword" type="Node" parent="StateMachine"]
 script = ExtResource( 17 )
-state_id = "attackSword"
+state_id = "sword"
 
-[node name="AttackArrow" type="Node" parent="StateMachine"]
+[node name="Arrow" type="Node" parent="StateMachine"]
 script = ExtResource( 18 )
-state_id = "attackArrow"
+state_id = "arrow"
+
+[node name="Fire" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Slide" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+
+[node name="Catch" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
 
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
-anims/attackArrow = SubResource( 11 )
-anims/attackSword = SubResource( 12 )
+anims/arrow = SubResource( 11 )
 anims/death = SubResource( 8 )
 anims/fall = SubResource( 7 )
 anims/idle = SubResource( 4 )
 anims/jump = SubResource( 5 )
+anims/slide = SubResource( 14 )
+anims/sword = SubResource( 12 )
 anims/walk = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -15 )
 shape = SubResource( 1 )
 
 [node name="FloorRaycasts" type="Node2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="FloorRaycasts"]
-cast_to = Vector2( 0, 1 )
+scale = Vector2( 0.2, 0.2 )
+cast_to = Vector2( 0, 25 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2( -3, 0 )
-cast_to = Vector2( 0, 1 )
+scale = Vector2( 0.2, 0.2 )
+cast_to = Vector2( -10, 15 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2( 3, 0 )
-cast_to = Vector2( 0, 1 )
+scale = Vector2( 0.2, 0.2 )
+cast_to = Vector2( 10, 15 )
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
@@ -332,6 +370,12 @@ texture = ExtResource( 2 )
 flip_h = true
 hframes = 12
 vframes = 11
+
+[node name="ObjectCheck" type="RayCast2D" parent="BodyPivot/Body"]
+position = Vector2( -0.951958, 14.2633 )
+rotation = 4.71239
+scale = Vector2( 0.5, 0.5 )
+cast_to = Vector2( 0.0684128, 15.4614 )
 
 [node name="WeaponPivot" type="Node2D" parent="BodyPivot"]
 position = Vector2( -4, -5 )
@@ -346,24 +390,40 @@ position = Vector2( -4, -5 )
 
 [node name="Weapon" type="Node2D" parent="WeaponContainer"]
 unique_name_in_owner = true
-visible = false
 position = Vector2( 4, -9 )
 rotation = -1.5708
 script = ExtResource( 4 )
 projectile_scene = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="WeaponContainer/Weapon"]
-position = Vector2( 1, 3.8147e-06 )
-rotation = 1.5708
-texture = ExtResource( 3 )
-
 [node name="WeaponTip" type="Position2D" parent="WeaponContainer/Weapon"]
-position = Vector2( 29, 0.000106812 )
+position = Vector2( 1.99994, 18 )
 
 [node name="FXAnim" type="AnimationPlayer" parent="WeaponContainer/Weapon"]
 anims/fire = SubResource( 13 )
 
 [node name="FX" type="Sprite" parent="WeaponContainer/Weapon"]
 
+[node name="MeleeContainer" type="Node2D" parent="."]
+
+[node name="Melee" type="Area2D" parent="MeleeContainer"]
+visible = false
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeContainer/Melee"]
+position = Vector2( 5, -11 )
+shape = SubResource( 15 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -14.5 )
+shape = SubResource( 16 )
+
 [connection signal="healed" from="." to="StateMachine" method="notify_healed"]
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
+[connection signal="animation_finished" from="BodyAnimations" to="StateMachine" method="_on_animation_finished"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

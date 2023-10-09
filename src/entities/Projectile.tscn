@@ -38,5 +38,6 @@ anims/hit = SubResource( 2 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 5
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
