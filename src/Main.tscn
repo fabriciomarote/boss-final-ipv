@@ -565,7 +565,7 @@ z_as_relative = false
 position = Vector2( 207, 488 )
 
 [node name="Platform5" parent="Environment/Ground" instance=ExtResource( 8 )]
-position = Vector2( 258, 488 )
+position = Vector2( 257, 488 )
 
 [node name="Entities" type="Node2D" parent="Environment"]
 z_as_relative = false
@@ -614,10 +614,10 @@ extents = Vector2( 300, 100 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="Sprout" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 110, 482 )
+position = Vector2( -240, 483 )
 
 [node name="Shadow" parent="Environment/Entities/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 355, 428 )
+position = Vector2( 1049, 415 )
 
 [node name="Objects" type="Node2D" parent="Environment"]
 visible = false
@@ -679,8 +679,14 @@ margin_bottom = 121.0
 custom_colors/font_color = Color( 1, 0.894118, 0.894118, 1 )
 text = "Start"
 
-[node name="Key" parent="." instance=ExtResource( 17 )]
-position = Vector2( -474, 321 )
+[node name="Arrow" parent="." instance=ExtResource( 17 )]
+position = Vector2( -394, 477 )
+
+[node name="Arrow2" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1342, 590 )
+
+[node name="Arrow3" parent="." instance=ExtResource( 17 )]
+position = Vector2( -61, 432 )
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_start_pressed"]
 

@@ -144,6 +144,7 @@ func _remove() -> void:
 
 func handle_arrow() -> void:
 	arrowAmount += 1
+	print(arrowAmount)
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
