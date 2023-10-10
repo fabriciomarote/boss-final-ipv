@@ -151,7 +151,7 @@ animations = [ {
 extents = Vector2( 20, 19.5 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 162.373
+radius = 111.018
 
 [node name="Sprout" type="KinematicBody2D"]
 light_mask = 3
@@ -198,7 +198,7 @@ position = Vector2( 0, -19 )
 scale = Vector2( 0.802409, 0.631673 )
 frames = SubResource( 7 )
 animation = "attack"
-frame = 5
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -218,12 +218,12 @@ script = ExtResource( 4 )
 
 [node name="green_circle" type="Sprite" parent="DetectionArea"]
 modulate = Color( 1, 1, 1, 0.301961 )
-position = Vector2( 1.00001, 2 )
-scale = Vector2( 0.56, 0.595 )
+position = Vector2( -2, -6.00001 )
+scale = Vector2( 0.368333, 0.329167 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2( 0, 2 )
+position = Vector2( -4, -4 )
 shape = SubResource( 2 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]

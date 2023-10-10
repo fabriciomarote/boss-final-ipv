@@ -13,7 +13,7 @@ region = Rect2( 303.914, 127.202, 61.0674, 16.8773 )
 extents = Vector2( 30, 7 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 30, 7 )
+extents = Vector2( 28.5, 8 )
 
 [node name="Platform" type="StaticBody2D"]
 collision_layer = 3
@@ -35,4 +35,5 @@ collision_layer = 5
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.5, -1 )
 shape = SubResource( 4 )
