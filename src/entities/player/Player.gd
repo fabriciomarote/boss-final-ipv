@@ -18,6 +18,8 @@ const SNAP_DIRECTION: Vector2 = Vector2.DOWN
 const SNAP_LENGTH: float = 32.0
 const SLOPE_THRESHOLD: float = deg2rad(46)
 
+const attackModes = preload("res://src/entities/AttackModes.gd")
+
 onready var weapon: Node = $"%Weapon"
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
@@ -29,7 +31,7 @@ onready var object_check = $BodyPivot/Body/ObjectCheck
 ## estado correspondiente de la state machine, pero como queremos
 ## poder modificar estos valores desde afuera de la escena del Player,
 ## los exponemos desde el script de Player.
-export (float) var ACCELERATION: float = 20.0
+export (float) var ACCELERATION: float = 60.0
 export (float) var H_SPEED_LIMIT: float = 500.0
 export (int) var jump_speed: int = 300
 export (float) var FRICTION_WEIGHT: float = 0.1
@@ -38,12 +40,18 @@ export (int) var gravity: int = 10
 var projectile_container: Node
 var fire_tween: SceneTreeTween
 
+var BowAttack: String
+var AxeAttack: String
+var attackHandler
+var attackHandlers
+var currentAttackMode
 var velocity: Vector2 = Vector2.ZERO
 var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
 var arrowAmount: int = 0
+var lifeAmount: int = 3
 
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
@@ -54,8 +62,15 @@ func _ready() -> void:
 
 
 func initialize(projectile_container: Node = get_parent()) -> void:
+	attackHandlers = {
+		attackModes.AXE: "AxeAttack",
+		attackModes.BOW: "BowAttack"
+	}
+	
 	self.projectile_container = projectile_container
 	weapon.projectile_container = projectile_container
+	attackHandler = attackHandlers.get(attackModes.AXE)
+	currentAttackMode = attackModes.AXE
 
 
 ## Se extrae el comportamiento de manejo del disparo del arma a
@@ -68,7 +83,8 @@ func _handle_weapon_actions() -> void:
 		if weapon.projectile_container == null:
 			weapon.projectile_container = projectile_container
 		weapon.fire()
-
+		arrowAmount -= 1
+	
 
 ## Se extrae el comportamiento del manejo del movimiento horizontal
 ## a una función para ser llamada apropiadamente desde la state machine
@@ -95,6 +111,17 @@ func is_sliding():
 		return -1
 	else:
 		return 0 
+
+
+func _change_attack_mode():
+	if Input.is_action_just_pressed("change_attack"):
+		if (currentAttackMode == attackModes.BOW):
+			attackHandler = attackHandlers.get(attackModes.AXE)
+			currentAttackMode = attackModes.AXE
+		else:
+			attackHandler = attackHandlers.get(attackModes.BOW)
+			currentAttackMode = attackModes.BOW
+	print(attackHandlers)
 
 
 ## Se extrae el comportamiento de la aplicación de gravedad y movimiento
@@ -145,6 +172,13 @@ func _remove() -> void:
 func handle_arrow() -> void:
 	arrowAmount += 1
 	print(arrowAmount)
+
+
+func handle_Life() -> void:
+	lifeAmount += 1
+
+func handle_velocity() -> void:
+	lifeAmount += 1
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Terrain-and-Props-OLD.png-cb326ab08ba07d839ab254dbddfa624e.stex"
+path="res://.import/6.png-1a60aa005ce2734adcd609e3ee89af75.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/tileset/Terrain-and-Props-OLD.png"
-dest_files=[ "res://.import/Terrain-and-Props-OLD.png-cb326ab08ba07d839ab254dbddfa624e.stex" ]
+source_file="res://assets/textures/items/6.png"
+dest_files=[ "res://.import/6.png-1a60aa005ce2734adcd609e3ee89af75.stex" ]
 
 [params]
 

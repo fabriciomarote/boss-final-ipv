@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Terrain_and_Props.png-c41e2961f89cd1c37716a867773ce13d.stex"
+path="res://.import/bow.png-8a6aafa2202f8eab021273befaf59b99.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/tileset/Terrain_and_Props.png"
-dest_files=[ "res://.import/Terrain_and_Props.png-c41e2961f89cd1c37716a867773ce13d.stex" ]
+source_file="res://assets/textures/items/bow.png"
+dest_files=[ "res://.import/bow.png-8a6aafa2202f8eab021273befaf59b99.stex" ]
 
 [params]
 

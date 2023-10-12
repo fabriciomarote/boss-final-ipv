@@ -6,8 +6,8 @@ func enter() -> void:
 
 
 func fire() -> void:
-	character._fire()
 	character._play_animation("attack")
+	character._fire()
 
 
 func update(delta:float) -> void:
