@@ -1,25 +1,36 @@
 extends AbstractState
 
+const attackModes = preload("res://src/entities/AttackModes.gd")
 
 # Al entrar se activa primero la animación "idle"
 func enter() -> void:
 	character._play_animation("idle")
+	character.emit_signal("grounded_change",true)
 
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("attackSword"):
-		emit_signal("finished", "attack1")
-	if event.is_action_pressed("attackArrow"):
-		emit_signal("finished","attack2")
-		character._handle_attackArrow()
+	#if event.is_action_pressed("fire_weapon") && character.is_on_floor():
+	#	emit_signal("finished", "arrow")
+	#if event.is_action_pressed("sword"):
+	#	emit_signal("finished", "sword")
+	if event.is_action_pressed("attack"):
+		if character.attackHandler == "BowAttack":
+			emit_signal("finished", "sword")
+		else:
+			if character.arrowAmount > 0:
+				emit_signal("finished", "arrow")
+			else:
+				emit_signal("finished", "whitoutArrow")
 	if event.is_action_pressed("jump") && character.is_on_floor():
 		emit_signal("finished", "jump")
+	if event.is_action_pressed("change_attack"):
+		character._change_attack_mode()
 
 
 # En esta función vamos a manejar las acciones apropiadas para este estado
 func update(delta: float) -> void:
 	# Vamos a querer que se pueda disparar
-	character._handle_weapon_actions()
+	#character._handle_weapon_actions()
 	
 	# Vamos a permitir detectar inputs de movimiento
 	character._handle_move_input()
@@ -40,6 +51,7 @@ func update(delta: float) -> void:
 				character._play_animation("fall")
 			else:
 				character._play_animation("jump")
+		
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:

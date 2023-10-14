@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/textures/tileset/basic life bars a icons .png" type="Texture" id=1]
+[ext_resource path="res://src/environment/Life.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 0.0
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1.2861, 2.76698, 13.2142, 11.7891 )
+
+[node name="Life" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2( 0, -1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2.98023e-08, 0 )
+scale = Vector2( 0.757046, 0.799467 )
+texture = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

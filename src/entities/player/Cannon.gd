@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var weapon_tip: Node2D = $WeaponTip
-onready var fx_anim: AnimationPlayer = $FXAnim
 
 export (PackedScene) var projectile_scene: PackedScene
 
@@ -9,28 +8,17 @@ var projectile_container: Node
 var fire_tween: SceneTreeTween
 
 
-## Acá solo me mantengo apuntando si tengo habilitada esa función.
-## Esto es como corrección de apuntado para compensar por el delay
-## aplicado por la animación de disparo.
-func process_input() -> void:
-	if fx_anim.is_playing():
-		rotation = (get_global_mouse_position() - global_position).angle()
-
-
-func fire() -> void:
-	if !fx_anim.is_playing():
-		## Mato al tween antes de disparar para que no me cambie la rotación
-		if fire_tween != null:
-			fire_tween.kill()
-		
-		## No disparo de inmediato, sino que delego a una animación de disparo
-		fx_anim.play("fire")
-
 
 ## La animación de disparo llama a esta función que va a ser la que instancie
 ## el proyectil
 func _fire() -> void:
-	projectile_scene.instance().initialize(projectile_container, weapon_tip.global_position, global_position.direction_to(weapon_tip.global_position))
+	var direction: Vector2 = global_position.direction_to(weapon_tip.global_position)
+	
+	projectile_scene.instance().initialize(
+		projectile_container,
+		weapon_tip.global_position,
+		direction
+	)
 	
 	## Y por último animo el retorno a la posición de inicio del arma
 	fire_tween = create_tween()
@@ -50,3 +38,4 @@ func _fire() -> void:
 	## Y acá se anima programáticamente utilizando el ángulo actual del arma hacia
 	## el ángulo final al que debe rotar.
 	fire_tween.tween_property(self, "rotation", final_angle, 0.5).set_delay(0.5)
+	

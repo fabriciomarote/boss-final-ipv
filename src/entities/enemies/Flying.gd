@@ -1,18 +1,17 @@
 extends KinematicBody2D
-class_name EnemyTurret
+class_name EnemyFlying
 
 signal hit(amount)
 
-onready var fire_position: Node2D = $FirePosition
 onready var raycast: RayCast2D = $RayCast2D
-onready var body_anim: AnimatedSprite = $Body
+#onready var body_anim: AnimatedSprite = $Body
+onready var animation_player: AnimationPlayer = $BodyAnimation
 
 export (float) var pathfinding_step_threshold:float = 5.0
 
 export (Vector2) var wander_radius: Vector2 = Vector2(10.0, 10.0)
 export (float) var speed:float  = 30.0
 export (float) var max_speed:float = 100.0
-export (PackedScene) var projectile_scene: PackedScene
 
 export (NodePath) var pathfinding_path: NodePath
 onready var pathfinding: PathfindAstar = get_node_or_null(pathfinding_path)
@@ -34,19 +33,11 @@ func initialize(container, turret_pos, projectile_container) -> void:
 	
 
 func _fire() -> void:
-	if target != null:
-		var proj_instance: Node = projectile_scene.instance()
-		if projectile_container == null:
-			projectile_container = get_parent()
-		proj_instance.initialize(
-			projectile_container,
-			fire_position.global_position,
-			fire_position.global_position.direction_to(target.global_position)
-		)
+	pass
 	
 
 func _look_at_target() -> void:
-	body_anim.flip_h = raycast.cast_to.x < 0
+	animationd_player.flip_h = raycast.cast_to.x < 0
 
 func _can_see_target() -> bool:
 	if target == null:
@@ -74,8 +65,8 @@ func _remove() -> void:
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
-	if body_anim.frames.has_animation(animation):
-		body_anim.play(animation)
+	if animation_player.has_animation(animation):
+		animation_player.play(animation)
 
 func get_current_animation() -> String:
-	return body_anim.animation
+	return animation_player.current_animation

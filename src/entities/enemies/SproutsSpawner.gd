@@ -5,7 +5,7 @@
 tool
 extends Node2D
 
-export (PackedScene) var turret_scene: PackedScene
+export (PackedScene) var sprout_scene: PackedScene
 export (int) var amount: int
 export (Vector2) var extents: Vector2 setget _set_extents ## Definicion de setter para variable
 
@@ -27,10 +27,10 @@ func _ready() -> void:
 ## de nunca llamarla en contexto del editor, solo en runtime.
 func _initialize() -> void:
 	for i in amount:
-		var turret_instance: EnemyTurret = turret_scene.instance()
-		var turret_pos: Vector2 = Vector2(rand_range(global_position.x, global_position.x + extents.x), rand_range(global_position.y, global_position.y + extents.y))
-		turret_instance.initialize(self, turret_pos, self)
-		turret_instance.pathfinding = pathfinding
+		var sprout_instance: EnemySprout = sprout_scene.instance()
+		var sprout_pos: Vector2 = Vector2(rand_range(global_position.x, global_position.x + extents.x), rand_range(global_position.y, global_position.y + extents.y))
+		sprout_instance.initialize(self, sprout_pos, self)
+		sprout_instance.pathfinding = pathfinding
 
 
 ## Al definir el setter, se pueden asignar las variables en contexto de
