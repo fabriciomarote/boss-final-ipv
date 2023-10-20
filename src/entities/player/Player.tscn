@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
 [ext_resource path="res://src/entities/player/states/SlideState.gd" type="Script" id=3]
 [ext_resource path="res://src/entities/player/Cannon.gd" type="Script" id=4]
-[ext_resource path="res://src/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/entities/Projectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/entities/player/states/CatchState.gd" type="Script" id=7]
 [ext_resource path="res://src/entities/player/states/WhitoutArrowState.gd" type="Script" id=8]
 [ext_resource path="res://src/entities/player/PlayerStateMachine.gd" type="Script" id=12]
@@ -262,10 +262,6 @@ tracks/0/keys = {
 "values": [ 32, 33 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 14.0
-height = 2.0
-
 [sub_resource type="Animation" id=13]
 resource_name = "fire"
 tracks/0/type = "value"
@@ -295,6 +291,10 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.0
+height = 2.0
+
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 12, 5.25 )
 
@@ -305,6 +305,7 @@ extents = Vector2( 7, 14.5 )
 light_mask = 3
 collision_layer = 3
 script = ExtResource( 1 )
+projectile_scene = ExtResource( 5 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 12 )
@@ -358,6 +359,13 @@ anims/slide = SubResource( 14 )
 anims/walk = SubResource( 6 )
 anims/whitoutArrow = SubResource( 17 )
 
+[node name="FXAnim" type="AnimationPlayer" parent="."]
+anims/fire = SubResource( 13 )
+
+[node name="WeaponTip" type="Position2D" parent="."]
+position = Vector2( 22, -13 )
+rotation = -0.0217488
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -15 )
@@ -407,21 +415,13 @@ update_rotation = false
 update_scale = false
 
 [node name="WeaponContainer" type="Node2D" parent="."]
-position = Vector2( 8, -19 )
+position = Vector2( -4, -4 )
 
 [node name="Weapon" type="Node2D" parent="WeaponContainer"]
 unique_name_in_owner = true
-position = Vector2( 0, 1.90735e-06 )
+position = Vector2( 11, -9 )
 rotation = -1.5708
 script = ExtResource( 4 )
-projectile_scene = ExtResource( 5 )
-
-[node name="WeaponTip" type="Position2D" parent="WeaponContainer/Weapon"]
-position = Vector2( 0.999964, 10 )
-rotation = -6.31224
-
-[node name="FXAnim" type="AnimationPlayer" parent="WeaponContainer/Weapon"]
-anims/fire = SubResource( 13 )
 
 [node name="FX" type="Sprite" parent="WeaponContainer/Weapon"]
 

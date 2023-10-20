@@ -21,7 +21,6 @@ func do_jump() -> void:
 	character._play_animation("jump")
 
 func update(delta: float) -> void:
-	#character._handle_weapon_actions()
 	character._handle_move_input()
 	if character.move_direction == 0:
 		character._handle_deacceleration()

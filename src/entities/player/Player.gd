@@ -19,13 +19,12 @@ const SNAP_LENGTH: float = 32.0
 const SLOPE_THRESHOLD: float = deg2rad(46)
 
 const attackModes = preload("res://src/entities/AttackModes.gd")
-
-onready var weapon: Node = $"%Weapon"
+onready var weapon_tip: Node2D = $WeaponTip
+onready var fx_anim: AnimationPlayer = $FXAnim
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
-
 ## Estas variables de exportación podríamos abstraerlas a cada
 ## estado correspondiente de la state machine, pero como queremos
 ## poder modificar estos valores desde afuera de la escena del Player,
@@ -35,9 +34,10 @@ export (float) var H_SPEED_LIMIT: float = 500.0
 export (int) var jump_speed: int = 300
 export (float) var FRICTION_WEIGHT: float = 0.1
 export (int) var gravity: int = 10
+export (PackedScene) var projectile_scene: PackedScene 
+
 
 var projectile_container: Node
-
 var BowAttack: String
 var AxeAttack: String
 var attackHandler
@@ -50,10 +50,9 @@ var move_direction: int = 0
 var hit_Direction : int = 0
 var arrowAmount: int = 0
 var lifeAmount: int = 3
-
+var fire_tween: SceneTreeTween
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
-
 func _ready() -> void:
 	initialize()
 
@@ -64,20 +63,49 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	}
 	
 	self.projectile_container = projectile_container
-	weapon.projectile_container = projectile_container
+	#weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(attackModes.AXE)
 	currentAttackMode = attackModes.AXE
 
-## Se extrae el comportamiento de manejo del disparo del arma a
-## una función para ser llamada apropiadamente desde la state machine
-func _handle_weapon_actions() -> void:
-	#weapon.process_input()
-	if Input.is_action_just_pressed("attack"):
-		if projectile_container == null:
-			projectile_container = get_parent()
-		#if weapon.projectile_container == null:
-			#weapon.projectile_container = projectile_container
+
+func fire() -> void:
+	if !fx_anim.is_playing(): #and contiene flecha:
+		## Mato al tween antes de disparar para que no me cambie la rotación
+		if fire_tween != null:
+			fire_tween.kill()
+		
+		## No disparo de inmediato, sino que delego a una animación de disparo
+		fx_anim.play("fire")
 		subtract_arrow_quantity()
+
+## La animación de disparo llama a esta función que va a ser la que instancie
+## el proyectil
+func _fire() -> void:
+	var direction: Vector2 = weapon_tip.global_position
+	projectile_scene.instance().initialize(
+		self.projectile_container,
+		weapon_tip.global_position,
+		direction
+	)
+	
+	## Y por último animo el retorno a la posición de inicio del arma
+	fire_tween = create_tween()
+	
+	## Cálculo del demonio, podría haber sido mucho más sencillo utilizando
+	## vectores y sacando los ángulos circulares.
+	## Lo que hace es toma el ángulo relativo más cercano, ya que después de cierto
+	## punto, en vez de rotar correctamente hacia arriba, da toda la vuelta.
+#	var final_angle: float = deg2rad(-90.0 + 360.0 * float(rotation > deg2rad(90)))
+	
+	## Me enculé y lo hice de esta manera. Parece chino también, pero básicamente
+	## toma un vector con rotación 0 (los radianes SIEMPRE toman como rotación 0
+	## mirar a la izquierda, osea, (1, 0)) y le aplica la rotación actual, le pide el ángulo
+	## hacia la dirección que queremos que vaya, y luego se lo suma a la rotación actual.
+	var final_angle: float = rotation + Vector2.LEFT.rotated(rotation).angle_to(Vector2.DOWN)
+	
+	## Y acá se anima programáticamente utilizando el ángulo actual del arma hacia
+	## el ángulo final al que debe rotar.
+	fire_tween.tween_property(self, "rotation", final_angle, 0.5).set_delay(0.5)
 
 func subtract_arrow_quantity() -> void:
 	if arrowAmount == 0:

@@ -1,41 +1,11 @@
 extends Node2D
 
-onready var weapon_tip: Node2D = $WeaponTip
 
-export (PackedScene) var projectile_scene: PackedScene
+
+
 
 var projectile_container: Node
 var fire_tween: SceneTreeTween
 
 
 
-## La animación de disparo llama a esta función que va a ser la que instancie
-## el proyectil
-func _fire() -> void:
-	var direction: Vector2 = global_position.direction_to(weapon_tip.global_position)
-	
-	projectile_scene.instance().initialize(
-		projectile_container,
-		weapon_tip.global_position,
-		direction
-	)
-	
-	## Y por último animo el retorno a la posición de inicio del arma
-	fire_tween = create_tween()
-	
-	## Cálculo del demonio, podría haber sido mucho más sencillo utilizando
-	## vectores y sacando los ángulos circulares.
-	## Lo que hace es toma el ángulo relativo más cercano, ya que después de cierto
-	## punto, en vez de rotar correctamente hacia arriba, da toda la vuelta.
-#	var final_angle: float = deg2rad(-90.0 + 360.0 * float(rotation > deg2rad(90)))
-	
-	## Me enculé y lo hice de esta manera. Parece chino también, pero básicamente
-	## toma un vector con rotación 0 (los radianes SIEMPRE toman como rotación 0
-	## mirar a la izquierda, osea, (1, 0)) y le aplica la rotación actual, le pide el ángulo
-	## hacia la dirección que queremos que vaya, y luego se lo suma a la rotación actual.
-	var final_angle: float = rotation + Vector2.LEFT.rotated(rotation).angle_to(Vector2.DOWN)
-	
-	## Y acá se anima programáticamente utilizando el ángulo actual del arma hacia
-	## el ángulo final al que debe rotar.
-	fire_tween.tween_property(self, "rotation", final_angle, 0.5).set_delay(0.5)
-	

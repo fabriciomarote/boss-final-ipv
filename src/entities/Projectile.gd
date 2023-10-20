@@ -17,7 +17,6 @@ func initialize(container: Node, spawn_position: Vector2, direction: Vector2) ->
 	container.add_child(self)
 	self.direction = direction
 	global_position = spawn_position
-	rotation = direction.angle()
 	lifetime_timer.connect("timeout", self, "_on_lifetime_timer_timeout")
 	lifetime_timer.start()
 	
@@ -34,7 +33,7 @@ func initialize(container: Node, spawn_position: Vector2, direction: Vector2) ->
 
 
 func _physics_process(delta: float) -> void:
-	position += direction * VELOCITY * delta
+	position.x += VELOCITY * delta
 
 
 func _on_lifetime_timer_timeout() -> void:
