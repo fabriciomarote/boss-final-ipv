@@ -263,6 +263,10 @@ tracks/0/keys = {
 "values": [ 32, 33 ]
 }
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.0
+height = 2.0
+
 [sub_resource type="Animation" id=13]
 resource_name = "fire"
 tracks/0/type = "value"
@@ -341,6 +345,9 @@ state_id = "arrow"
 [node name="WhitoutArrow" type="Node" parent="StateMachine"]
 script = ExtResource( 8 )
 state_id = "whitoutArrow"
+
+[node name="Fire" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
 
 [node name="Slide" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
@@ -434,6 +441,9 @@ script = ExtResource( 4 )
 [node name="MeleeContainer" type="Node2D" parent="."]
 visible = false
 
+[node name="WeaponTip" type="Position2D" parent="WeaponContainer/Weapon"]
+position = Vector2( 1.99994, 18 )
+
 [node name="Melee" type="Area2D" parent="MeleeContainer"]
 collision_layer = 8
 collision_mask = 4
@@ -450,6 +460,25 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 visible = false
 position = Vector2( 0, -14 )
+shape = SubResource( 16 )
+
+[node name="MeleeContainer" type="Node2D" parent="."]
+
+[node name="Melee" type="Area2D" parent="MeleeContainer"]
+visible = false
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeContainer/Melee"]
+position = Vector2( 5, -11 )
+shape = SubResource( 15 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -14.5 )
 shape = SubResource( 16 )
 
 [connection signal="healed" from="." to="StateMachine" method="notify_healed"]

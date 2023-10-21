@@ -19,12 +19,14 @@ const SNAP_LENGTH: float = 32.0
 const SLOPE_THRESHOLD: float = deg2rad(46)
 
 const attackModes = preload("res://src/entities/AttackModes.gd")
+
 onready var weapon_tip: Node2D = $"%WeaponTip"
 onready var fx_anim: AnimationPlayer = $FXAnim
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
+
 ## Estas variables de exportación podríamos abstraerlas a cada
 ## estado correspondiente de la state machine, pero como queremos
 ## poder modificar estos valores desde afuera de la escena del Player,
@@ -36,8 +38,8 @@ export (float) var FRICTION_WEIGHT: float = 0.1
 export (int) var gravity: int = 10
 export (PackedScene) var projectile_scene: PackedScene 
 
-
 var projectile_container: Node
+
 var BowAttack: String
 var AxeAttack: String
 var attackHandler
@@ -51,6 +53,7 @@ var hit_Direction : int = 0
 var arrowAmount: int = 0
 var lifeAmount: int = 3
 var fire_tween: SceneTreeTween
+
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
 func _ready() -> void:
@@ -66,7 +69,6 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	#weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(attackModes.AXE)
 	currentAttackMode = attackModes.AXE
-
 
 func fire() -> void:
 	#borrar fx_anim
@@ -112,6 +114,28 @@ func _handle_move_input() -> void:
 ## a una función para ser llamada apropiadamente desde la state machine
 func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
+
+func is_near_wall():
+	return object_check.is_colliding()
+
+func is_sliding():
+	if  !is_near_wall() && floor_raycasts[0].is_colliding() && !floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
+		return 1
+	if !is_near_wall() && !floor_raycasts[0].is_colliding() && floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
+		return -1
+	else:
+		return 0 
+
+func _change_attack_mode():
+	if Input.is_action_just_pressed("change_attack"):
+		if (currentAttackMode == attackModes.BOW):
+			attackHandler = attackHandlers.get(attackModes.AXE)
+			currentAttackMode = attackModes.AXE
+		else:
+			attackHandler = attackHandlers.get(attackModes.BOW)
+			currentAttackMode = attackModes.BOW
+	print(attackHandlers)
+
 
 func is_near_wall():
 	return object_check.is_colliding()
