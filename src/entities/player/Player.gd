@@ -20,11 +20,11 @@ const SLOPE_THRESHOLD: float = deg2rad(46)
 
 const attackModes = preload("res://src/entities/AttackModes.gd")
 
-onready var weapon: Node = $"%Weapon"
+onready var weapon_tip: Node2D = $"%WeaponTip"
+onready var fx_anim: AnimationPlayer = $FXAnim
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
-onready var fx_anim: AnimationPlayer = $WeaponContainer/Weapon/FXAnim
 onready var object_check = $BodyPivot/Body/ObjectCheck
 
 ## Estas variables de exportación podríamos abstraerlas a cada
@@ -36,9 +36,9 @@ export (float) var H_SPEED_LIMIT: float = 500.0
 export (int) var jump_speed: int = 300
 export (float) var FRICTION_WEIGHT: float = 0.1
 export (int) var gravity: int = 10
+export (PackedScene) var projectile_scene: PackedScene 
 
 var projectile_container: Node
-var fire_tween: SceneTreeTween
 
 var BowAttack: String
 var AxeAttack: String
@@ -52,14 +52,12 @@ var move_direction: int = 0
 var hit_Direction : int = 0
 var arrowAmount: int = 0
 var lifeAmount: int = 3
+var fire_tween: SceneTreeTween
 
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
-
-
 func _ready() -> void:
 	initialize()
-
 
 func initialize(projectile_container: Node = get_parent()) -> void:
 	attackHandlers = {
@@ -68,23 +66,41 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	}
 	
 	self.projectile_container = projectile_container
-	weapon.projectile_container = projectile_container
+	#weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(attackModes.AXE)
 	currentAttackMode = attackModes.AXE
 
+func fire() -> void:
+	#borrar fx_anim
+	if !fx_anim.is_playing(): #and contiene flecha:
+		## Mato al tween antes de disparar para que no me cambie la rotación
+		if fire_tween != null:
+			fire_tween.kill()
+		
+		## No disparo de inmediato, sino que delego a una animación de disparo
+		fx_anim.play("fire")
+		subtract_arrow_quantity()
 
-## Se extrae el comportamiento de manejo del disparo del arma a
-## una función para ser llamada apropiadamente desde la state machine
-func _handle_weapon_actions() -> void:
-	weapon.process_input()
-	if Input.is_action_just_pressed("fire_weapon"):
-		if projectile_container == null:
-			projectile_container = get_parent()
-		if weapon.projectile_container == null:
-			weapon.projectile_container = projectile_container
-		weapon.fire()
-		arrowAmount -= 1
+## La animación de disparo llama a esta función que va a ser la que instancie
+## el proyectil
+func _fire() -> void:
+	var direction: Vector2 = weapon_tip.global_position
+	var proj = projectile_scene.instance()
+	proj.initialize(
+		self.projectile_container,
+		weapon_tip.global_position,
+		direction
+	)
 	
+
+
+func subtract_arrow_quantity() -> void:
+	if arrowAmount == 0:
+		arrowAmount = 0
+		print("no se descuenta")
+	else:
+		arrowAmount -= 1
+		print("se descuenta")
 
 ## Se extrae el comportamiento del manejo del movimiento horizontal
 ## a una función para ser llamada apropiadamente desde la state machine
@@ -94,11 +110,31 @@ func _handle_move_input() -> void:
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
 		body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
 
-
 ## Se extrae el comportamiento del manejo de la aplicación de fricción
 ## a una función para ser llamada apropiadamente desde la state machine
 func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
+
+func is_near_wall():
+	return object_check.is_colliding()
+
+func is_sliding():
+	if  !is_near_wall() && floor_raycasts[0].is_colliding() && !floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
+		return 1
+	if !is_near_wall() && !floor_raycasts[0].is_colliding() && floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
+		return -1
+	else:
+		return 0 
+
+func _change_attack_mode():
+	if Input.is_action_just_pressed("change_attack"):
+		if (currentAttackMode == attackModes.BOW):
+			attackHandler = attackHandlers.get(attackModes.AXE)
+			currentAttackMode = attackModes.AXE
+		else:
+			attackHandler = attackHandlers.get(attackModes.BOW)
+			currentAttackMode = attackModes.BOW
+	print(attackHandlers)
 
 
 func is_near_wall():
@@ -151,7 +187,7 @@ func is_on_floor() -> bool:
 ## los casos de estados en los cuales no se manejan hits
 func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
-
+	subtract_arrow_quantity()
 
 ## Y acá se maneja el hit final. Como aun no tenemos una "cantidad" de HP,
 ## sino una flag, el hit nos mata instantaneamente y tiramos una notificación.

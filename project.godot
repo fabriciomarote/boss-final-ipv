@@ -80,7 +80,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Proyecto Godot - Clase 6"
+config/name="Boss-final"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 

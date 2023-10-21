@@ -3,6 +3,7 @@ extends AbstractState
 # Al entrar se activa primero la animación "arrow"
 func enter() -> void:
 	character._play_animation("arrow")
+	character.fire()
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:
@@ -13,6 +14,4 @@ func handle_event(event: String, value = null) -> void:
 				emit_signal("finished", "dead")
 
 func _on_animation_finished(anim_name:String) -> void:
-	if (anim_name == "arrow"):
-		character._handle_weapon_actions()
-	emit_signal("finished", "idle")	
+	emit_signal("finished", "idle")

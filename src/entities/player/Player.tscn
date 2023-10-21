@@ -5,7 +5,7 @@
 [ext_resource path="res://src/entities/player/states/SlideState.gd" type="Script" id=3]
 [ext_resource path="res://src/entities/player/Cannon.gd" type="Script" id=4]
 [ext_resource path="res://src/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/entities/player/states/Fire.gd" type="Script" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://src/entities/player/states/CatchState.gd" type="Script" id=7]
 [ext_resource path="res://src/entities/player/states/WhitoutArrowState.gd" type="Script" id=8]
 [ext_resource path="res://src/entities/player/PlayerStateMachine.gd" type="Script" id=12]
@@ -296,6 +296,10 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.0
+height = 2.0
+
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 12, 5.25 )
 
@@ -306,6 +310,7 @@ extents = Vector2( 7, 14.5 )
 light_mask = 3
 collision_layer = 3
 script = ExtResource( 1 )
+projectile_scene = ExtResource( 5 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 12 )
@@ -362,6 +367,9 @@ anims/slide = SubResource( 14 )
 anims/walk = SubResource( 6 )
 anims/whitoutArrow = SubResource( 17 )
 
+[node name="FXAnim" type="AnimationPlayer" parent="."]
+anims/fire = SubResource( 13 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -15 )
@@ -401,29 +409,58 @@ cast_to = Vector2( 0.0684128, 15.4614 )
 
 [node name="WeaponPivot" type="Node2D" parent="BodyPivot"]
 position = Vector2( -4, -5 )
+rotation = -1.29932
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="BodyPivot/WeaponPivot"]
+position = Vector2( -0.963374, 0.268157 )
+rotation = 0.146083
 remote_path = NodePath("../../../WeaponContainer")
 update_rotation = false
 update_scale = false
 
+[node name="WeaponTip" type="Position2D" parent="BodyPivot"]
+unique_name_in_owner = true
+position = Vector2( 22, -13 )
+rotation = -0.0217488
+
+[node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
+
 [node name="WeaponContainer" type="Node2D" parent="."]
-position = Vector2( -4, -5 )
+position = Vector2( -4, -4 )
 
 [node name="Weapon" type="Node2D" parent="WeaponContainer"]
 unique_name_in_owner = true
-position = Vector2( 4, -9 )
+position = Vector2( 11, -9 )
 rotation = -1.5708
 script = ExtResource( 4 )
-projectile_scene = ExtResource( 5 )
+
+[node name="FX" type="Sprite" parent="WeaponContainer/Weapon"]
+
+[node name="MeleeContainer" type="Node2D" parent="."]
+visible = false
 
 [node name="WeaponTip" type="Position2D" parent="WeaponContainer/Weapon"]
 position = Vector2( 1.99994, 18 )
 
-[node name="FXAnim" type="AnimationPlayer" parent="WeaponContainer/Weapon"]
-anims/fire = SubResource( 13 )
+[node name="Melee" type="Area2D" parent="MeleeContainer"]
+collision_layer = 8
+collision_mask = 4
 
-[node name="FX" type="Sprite" parent="WeaponContainer/Weapon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeContainer/Melee"]
+position = Vector2( 3, -15 )
+shape = SubResource( 15 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( 7, -13 )
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2( 0, -14 )
+shape = SubResource( 16 )
 
 [node name="MeleeContainer" type="Node2D" parent="."]
 

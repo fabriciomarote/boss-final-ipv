@@ -26,7 +26,7 @@ func handle_input(event:InputEvent) -> void:
 # En esta función vamos a manejar las acciones apropiadas para este estado
 func update(delta: float) -> void:
 	# Vamos a querer que se pueda disparar
-	character._handle_weapon_actions()
+	#character._handle_weapon_actions()
 	
 	# Vamos a manejar los inputs de movimiento
 	character._handle_move_input()
