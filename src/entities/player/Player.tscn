@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
 [ext_resource path="res://src/entities/player/states/SlideState.gd" type="Script" id=3]
 [ext_resource path="res://src/entities/player/Cannon.gd" type="Script" id=4]
-[ext_resource path="res://src/entities/Projectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://src/entities/player/states/CatchState.gd" type="Script" id=7]
 [ext_resource path="res://src/entities/player/states/WhitoutArrowState.gd" type="Script" id=8]
 [ext_resource path="res://src/entities/player/PlayerStateMachine.gd" type="Script" id=12]
@@ -362,10 +363,6 @@ anims/whitoutArrow = SubResource( 17 )
 [node name="FXAnim" type="AnimationPlayer" parent="."]
 anims/fire = SubResource( 13 )
 
-[node name="WeaponTip" type="Position2D" parent="."]
-position = Vector2( 22, -13 )
-rotation = -0.0217488
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -15 )
@@ -413,6 +410,15 @@ rotation = 0.146083
 remote_path = NodePath("../../../WeaponContainer")
 update_rotation = false
 update_scale = false
+
+[node name="WeaponTip" type="Position2D" parent="BodyPivot"]
+unique_name_in_owner = true
+position = Vector2( 22, -13 )
+rotation = -0.0217488
+
+[node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
 
 [node name="WeaponContainer" type="Node2D" parent="."]
 position = Vector2( -4, -4 )

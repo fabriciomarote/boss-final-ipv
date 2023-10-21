@@ -19,7 +19,7 @@ const SNAP_LENGTH: float = 32.0
 const SLOPE_THRESHOLD: float = deg2rad(46)
 
 const attackModes = preload("res://src/entities/AttackModes.gd")
-onready var weapon_tip: Node2D = $WeaponTip
+onready var weapon_tip: Node2D = $"%WeaponTip"
 onready var fx_anim: AnimationPlayer = $FXAnim
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
@@ -69,6 +69,7 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 
 
 func fire() -> void:
+	#borrar fx_anim
 	if !fx_anim.is_playing(): #and contiene flecha:
 		## Mato al tween antes de disparar para que no me cambie la rotación
 		if fire_tween != null:
@@ -82,30 +83,14 @@ func fire() -> void:
 ## el proyectil
 func _fire() -> void:
 	var direction: Vector2 = weapon_tip.global_position
-	projectile_scene.instance().initialize(
+	var proj = projectile_scene.instance()
+	proj.initialize(
 		self.projectile_container,
 		weapon_tip.global_position,
 		direction
 	)
 	
-	## Y por último animo el retorno a la posición de inicio del arma
-	fire_tween = create_tween()
-	
-	## Cálculo del demonio, podría haber sido mucho más sencillo utilizando
-	## vectores y sacando los ángulos circulares.
-	## Lo que hace es toma el ángulo relativo más cercano, ya que después de cierto
-	## punto, en vez de rotar correctamente hacia arriba, da toda la vuelta.
-#	var final_angle: float = deg2rad(-90.0 + 360.0 * float(rotation > deg2rad(90)))
-	
-	## Me enculé y lo hice de esta manera. Parece chino también, pero básicamente
-	## toma un vector con rotación 0 (los radianes SIEMPRE toman como rotación 0
-	## mirar a la izquierda, osea, (1, 0)) y le aplica la rotación actual, le pide el ángulo
-	## hacia la dirección que queremos que vaya, y luego se lo suma a la rotación actual.
-	var final_angle: float = rotation + Vector2.LEFT.rotated(rotation).angle_to(Vector2.DOWN)
-	
-	## Y acá se anima programáticamente utilizando el ángulo actual del arma hacia
-	## el ángulo final al que debe rotar.
-	fire_tween.tween_property(self, "rotation", final_angle, 0.5).set_delay(0.5)
+
 
 func subtract_arrow_quantity() -> void:
 	if arrowAmount == 0:
