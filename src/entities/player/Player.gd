@@ -137,29 +137,6 @@ func _change_attack_mode():
 	print(attackHandlers)
 
 
-func is_near_wall():
-	return object_check.is_colliding()
-
-func is_sliding():
-	if  !is_near_wall() && floor_raycasts[0].is_colliding() && !floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
-		return 1
-	if !is_near_wall() && !floor_raycasts[0].is_colliding() && floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
-		return -1
-	else:
-		return 0 
-
-
-func _change_attack_mode():
-	if Input.is_action_just_pressed("change_attack"):
-		if (currentAttackMode == attackModes.BOW):
-			attackHandler = attackHandlers.get(attackModes.AXE)
-			currentAttackMode = attackModes.AXE
-		else:
-			attackHandler = attackHandlers.get(attackModes.BOW)
-			currentAttackMode = attackModes.BOW
-	print(attackHandlers)
-
-
 ## Se extrae el comportamiento de la aplicación de gravedad y movimiento
 ## a una función para ser llamada apropiadamente desde la state machine
 func _apply_movement() -> void:
