@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
@@ -263,10 +263,6 @@ tracks/0/keys = {
 "values": [ 32, 33 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 14.0
-height = 2.0
-
 [sub_resource type="Animation" id=13]
 resource_name = "fire"
 tracks/0/type = "value"
@@ -299,9 +295,6 @@ tracks/1/keys = {
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.0
 height = 2.0
-
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 12, 5.25 )
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 7, 14.5 )
@@ -379,17 +372,17 @@ shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="FloorRaycasts"]
 scale = Vector2( 0.2, 0.2 )
-cast_to = Vector2( 0, 25 )
+cast_to = Vector2( 0, 40 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2( -3, 0 )
 scale = Vector2( 0.2, 0.2 )
-cast_to = Vector2( -10, 15 )
+cast_to = Vector2( -25, 30 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2( 3, 0 )
 scale = Vector2( 0.2, 0.2 )
-cast_to = Vector2( 10, 15 )
+cast_to = Vector2( 25, 25 )
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
@@ -438,51 +431,19 @@ script = ExtResource( 4 )
 
 [node name="FX" type="Sprite" parent="WeaponContainer/Weapon"]
 
-[node name="MeleeContainer" type="Node2D" parent="."]
-visible = false
-
 [node name="WeaponTip" type="Position2D" parent="WeaponContainer/Weapon"]
 position = Vector2( 1.99994, 18 )
 
-[node name="Melee" type="Area2D" parent="MeleeContainer"]
-collision_layer = 8
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeContainer/Melee"]
-position = Vector2( 3, -15 )
-shape = SubResource( 15 )
-
-[node name="Hitbox" type="Area2D" parent="."]
-position = Vector2( 7, -13 )
+[node name="Hitbox2" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
-position = Vector2( 0, -14 )
-shape = SubResource( 16 )
-
-[node name="MeleeContainer" type="Node2D" parent="."]
-
-[node name="Melee" type="Area2D" parent="MeleeContainer"]
-visible = false
-collision_layer = 8
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeContainer/Melee"]
-position = Vector2( 5, -11 )
-shape = SubResource( 15 )
-
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 0, -14.5 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
+position = Vector2( 0, -15 )
 shape = SubResource( 16 )
 
 [connection signal="healed" from="." to="StateMachine" method="notify_healed"]
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="animation_finished" from="BodyAnimations" to="StateMachine" method="_on_animation_finished"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="area_entered" from="Hitbox2" to="." method="_on_Hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox2" to="." method="_on_Hitbox_body_entered"]

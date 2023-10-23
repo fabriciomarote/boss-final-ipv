@@ -8,8 +8,10 @@ class_name Player
 ## por ejemplo, con el entorno del nivel.
 signal hit(amount)
 signal healed(amount)
+
 signal hp_changed(current_hp, max_hp)
 signal dead()
+
 signal grounded_change(is_grounded)
 signal sliding_change(is_sliding)
 
@@ -33,8 +35,8 @@ onready var object_check = $BodyPivot/Body/ObjectCheck
 ## los exponemos desde el script de Player.
 export (float) var ACCELERATION: float = 60.0
 export (float) var H_SPEED_LIMIT: float = 500.0
-export (int) var jump_speed: int = 300
-export (float) var FRICTION_WEIGHT: float = 0.1
+export (int) var jump_speed: int = 400
+export (float) var FRICTION_WEIGHT: float = 6.25
 export (int) var gravity: int = 10
 export (PackedScene) var projectile_scene: PackedScene 
 
@@ -51,7 +53,9 @@ var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
 var arrowAmount: int = 0
-var lifeAmount: int = 3
+export (int) var max_hp: int = 3
+var hp: int = max_hp
+
 var fire_tween: SceneTreeTween
 
 ## Flag de ayuda para saber identificar el estado de actividad
@@ -166,6 +170,11 @@ func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
 	subtract_arrow_quantity()
 
+func sum_hp(amount: int) -> void:
+	hp = clamp(hp + amount, 0, max_hp)
+	emit_signal("hp_changed", hp, max_hp)
+	print("hp_changed %s %s" % [hp, max_hp])
+
 ## Y acá se maneja el hit final. Como aun no tenemos una "cantidad" de HP,
 ## sino una flag, el hit nos mata instantaneamente y tiramos una notificación.
 ## Esta signal tranquilamente podría llamarse "dead", pero como esa la utilizamos
@@ -188,16 +197,27 @@ func handle_arrow() -> void:
 
 
 func handle_Life() -> void:
-	lifeAmount += 1
+	pass
+	#lifeAmount += 1
 
 func handle_velocity() -> void:
-	lifeAmount += 1
+	pass
+	#lifeAmount += 1
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
 	if body_animations.has_animation(animation):
 		body_animations.play(animation)
+
+
+## Señal genérica que avisa del cumplimiento de la condición
+## de victoria a todos los interesados.
+signal level_won()
+
+func notify_level_won() -> void:
+	emit_signal("level_won")
+
 
 
 func _on_Hitbox_body_entered(body):

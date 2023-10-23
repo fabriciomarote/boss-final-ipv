@@ -286,4 +286,5 @@ animation = "idle"
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
+[connection signal="body_entered" from="." to="." method="_on_Goal_body_entered"]
 [connection signal="animation_finished" from="Portal" to="." method="_on_Portal_animation_finished"]

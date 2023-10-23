@@ -20,3 +20,8 @@ func _on_body_entered(body: Node) -> void:
 func _on_Portal_animation_finished() -> void:
 	if portal.animation == "open":
 		portal.play("idle_open")
+
+
+func _on_Goal_body_entered(body):
+	if body is Player:
+		body.notify_level_won()
