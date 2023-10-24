@@ -15,7 +15,7 @@ func handle_input(event:InputEvent) -> void:
 			if character.arrowAmount > 0:
 				emit_signal("finished", "arrow")
 			else:
-				emit_signal("finished", "whitoutArrow")
+				character._play_animation("whitoutArrow")
 	#if event.is_action_pressed("fire_weapon") && character.is_on_floor():
 	#	emit_signal("finished", "arrow")
 	#if event.is_action_pressed("sword"):

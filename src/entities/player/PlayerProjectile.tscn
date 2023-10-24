@@ -115,6 +115,7 @@ VELOCITY = 500.0
 
 [node name="LifetimeTimer" parent="." index="0"]
 wait_time = 5.226
+one_shot = true
 
 [node name="ProjectileAnimations" parent="." index="1"]
 anims/RESET = SubResource( 2 )

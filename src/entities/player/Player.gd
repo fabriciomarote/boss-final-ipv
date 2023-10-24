@@ -35,7 +35,7 @@ onready var object_check = $BodyPivot/Body/ObjectCheck
 ## los exponemos desde el script de Player.
 export (float) var ACCELERATION: float = 60.0
 export (float) var H_SPEED_LIMIT: float = 500.0
-export (int) var jump_speed: int = 400
+export (int) var jump_speed: int = 350
 export (float) var FRICTION_WEIGHT: float = 6.25
 export (int) var gravity: int = 10
 export (PackedScene) var projectile_scene: PackedScene 
@@ -70,7 +70,6 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	}
 	
 	self.projectile_container = projectile_container
-	#weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(attackModes.AXE)
 	currentAttackMode = attackModes.AXE
 
@@ -168,21 +167,25 @@ func is_on_floor() -> bool:
 ## los casos de estados en los cuales no se manejan hits
 func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
-	subtract_arrow_quantity()
+	_handle_hit(1)
 
 func sum_hp(amount: int) -> void:
-	hp = clamp(hp + amount, 0, max_hp)
+	hp = clamp(hp + 1, 0, max_hp)
 	emit_signal("hp_changed", hp, max_hp)
-	print("hp_changed %s %s" % [hp, max_hp])
+	#print("hp_changed %s %s" % [hp, max_hp])
+	print(hp)
 
 ## Y acá se maneja el hit final. Como aun no tenemos una "cantidad" de HP,
 ## sino una flag, el hit nos mata instantaneamente y tiramos una notificación.
 ## Esta signal tranquilamente podría llamarse "dead", pero como esa la utilizamos
 ## para otras cosas, y como sabemos que incorporaremos una barra de salud después
 ## es apropiado manejarlo de esta manera.
-func _handle_hit(amount: int = 1) -> void:
-	dead = true
+func _handle_hit(amount: int) -> void:
+	print(hp)
+	hp -= 1 #
 	emit_signal("hp_changed", 0, 1)
+	if hp == 0:
+		dead = true
 
 
 # El llamado a remove final
@@ -209,15 +212,6 @@ func handle_velocity() -> void:
 func _play_animation(animation: String) -> void:
 	if body_animations.has_animation(animation):
 		body_animations.play(animation)
-
-
-## Señal genérica que avisa del cumplimiento de la condición
-## de victoria a todos los interesados.
-signal level_won()
-
-func notify_level_won() -> void:
-	emit_signal("level_won")
-
 
 
 func _on_Hitbox_body_entered(body):

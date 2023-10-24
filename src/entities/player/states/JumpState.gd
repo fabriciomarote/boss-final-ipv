@@ -6,7 +6,8 @@ var jumps = 0
 
 func enter() -> void:
 	character.snap_vector = Vector2.ZERO
-	do_jump()
+	character.velocity.y = -character.jump_speed
+	character._play_animation("jump")
 	
 func exit() -> void:
 	jumps = 0
@@ -14,11 +15,9 @@ func exit() -> void:
 func handle_input(event:InputEvent) -> void:
 	if event.is_action_pressed("jump") && jumps < jumps_limit:
 		jumps += 1
-		do_jump()
-
-func do_jump() -> void: 
-	character.velocity.y -= character.jump_speed
+		character.velocity.y = -character.jump_speed
 	character._play_animation("jump")
+
 
 func update(delta: float) -> void:
 	character._handle_move_input()
@@ -30,6 +29,8 @@ func update(delta: float) -> void:
 			emit_signal("finished", "idle")
 		else: 
 			emit_signal("finished", "walk")
+	else:
+			character._play_animation("jump")
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:

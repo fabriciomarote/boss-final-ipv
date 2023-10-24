@@ -1,13 +1,11 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
 [ext_resource path="res://src/entities/player/states/SlideState.gd" type="Script" id=3]
-[ext_resource path="res://src/entities/player/Cannon.gd" type="Script" id=4]
 [ext_resource path="res://src/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://src/entities/player/states/CatchState.gd" type="Script" id=7]
-[ext_resource path="res://src/entities/player/states/WhitoutArrowState.gd" type="Script" id=8]
 [ext_resource path="res://src/entities/player/PlayerStateMachine.gd" type="Script" id=12]
 [ext_resource path="res://src/entities/player/states/WalkState.gd" type="Script" id=13]
 [ext_resource path="res://src/entities/player/states/IdleState.gd" type="Script" id=14]
@@ -31,24 +29,12 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("WeaponContainer:visible")
+tracks/1/path = NodePath("BodyPivot/WeaponPivot:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyPivot/WeaponPivot:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -91,24 +77,12 @@ tracks/0/keys = {
 resource_name = "death"
 length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("WeaponContainer:visible")
+tracks/0/path = NodePath("BodyPivot/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyPivot/Body:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -309,7 +283,7 @@ projectile_scene = ExtResource( 5 )
 script = ExtResource( 12 )
 character_path = NodePath("..")
 START_STATE = NodePath("Idle")
-STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("Sword"), NodePath("Arrow"), NodePath("WhitoutArrow") ]
+STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("Sword"), NodePath("Arrow") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
@@ -334,13 +308,6 @@ state_id = "sword"
 [node name="Arrow" type="Node" parent="StateMachine"]
 script = ExtResource( 18 )
 state_id = "arrow"
-
-[node name="WhitoutArrow" type="Node" parent="StateMachine"]
-script = ExtResource( 8 )
-state_id = "whitoutArrow"
-
-[node name="Fire" type="Node" parent="StateMachine"]
-script = ExtResource( 6 )
 
 [node name="Slide" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
@@ -407,7 +374,6 @@ rotation = -1.29932
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="BodyPivot/WeaponPivot"]
 position = Vector2( -0.963374, 0.268157 )
 rotation = 0.146083
-remote_path = NodePath("../../../WeaponContainer")
 update_rotation = false
 update_scale = false
 
@@ -417,26 +383,13 @@ position = Vector2( 22, -13 )
 rotation = -0.0217488
 
 [node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
+visible = false
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
-[node name="WeaponContainer" type="Node2D" parent="."]
-position = Vector2( -4, -4 )
-
-[node name="Weapon" type="Node2D" parent="WeaponContainer"]
-unique_name_in_owner = true
-position = Vector2( 11, -9 )
-rotation = -1.5708
-script = ExtResource( 4 )
-
-[node name="FX" type="Sprite" parent="WeaponContainer/Weapon"]
-
-[node name="WeaponTip" type="Position2D" parent="WeaponContainer/Weapon"]
-position = Vector2( 1.99994, 18 )
-
 [node name="Hitbox2" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 4
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
 position = Vector2( 0, -15 )

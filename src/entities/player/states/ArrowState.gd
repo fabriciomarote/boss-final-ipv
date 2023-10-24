@@ -5,6 +5,11 @@ func enter() -> void:
 	character._play_animation("arrow")
 	character.fire()
 
+
+func attack() -> void:
+	pass
+
+
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:
 	match event:
