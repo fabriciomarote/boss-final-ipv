@@ -23,7 +23,6 @@ const SLOPE_THRESHOLD: float = deg2rad(46)
 const attackModes = preload("res://src/entities/AttackModes.gd")
 
 onready var weapon_tip: Node2D = $"%WeaponTip"
-onready var fx_anim: AnimationPlayer = $FXAnim
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
@@ -74,14 +73,10 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	currentAttackMode = attackModes.AXE
 
 func fire() -> void:
-	#borrar fx_anim
-	if !fx_anim.is_playing(): #and contiene flecha:
+	if !body_animations.is_playing(): #and contiene flecha:
 		## Mato al tween antes de disparar para que no me cambie la rotación
 		if fire_tween != null:
 			fire_tween.kill()
-		
-		## No disparo de inmediato, sino que delego a una animación de disparo
-		fx_anim.play("fire")
 		subtract_arrow_quantity()
 
 ## La animación de disparo llama a esta función que va a ser la que instancie
@@ -95,7 +90,6 @@ func _fire() -> void:
 		direction
 	)
 	
-
 
 func subtract_arrow_quantity() -> void:
 	if arrowAmount == 0:

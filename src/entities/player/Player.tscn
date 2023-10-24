@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
@@ -55,6 +55,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 25, 26, 27, 28, 29, 30, 31, 32, 33 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_fire"
+} ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -237,35 +251,6 @@ tracks/0/keys = {
 "values": [ 32, 33 ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "fire"
-tracks/0/type = "value"
-tracks/0/path = NodePath("FX:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ null, null, null, null, null, null ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "_fire"
-} ]
-}
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.0
 height = 2.0
@@ -327,9 +312,6 @@ anims/slide = SubResource( 14 )
 anims/walk = SubResource( 6 )
 anims/whitoutArrow = SubResource( 17 )
 
-[node name="FXAnim" type="AnimationPlayer" parent="."]
-anims/fire = SubResource( 13 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -15 )
@@ -379,7 +361,7 @@ update_scale = false
 
 [node name="WeaponTip" type="Position2D" parent="BodyPivot"]
 unique_name_in_owner = true
-position = Vector2( 22, -13 )
+position = Vector2( 20, -16 )
 rotation = -0.0217488
 
 [node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
