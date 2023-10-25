@@ -15,7 +15,7 @@ export (Texture) var mouse_cursor: Texture
 
 
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(mouse_cursor, Input.CURSOR_ARROW, mouse_cursor.get_size() / 2)
+	#Input.set_custom_mouse_cursor(mouse_cursor, Input.CURSOR_ARROW, mouse_cursor.get_size() / 2)
 	call_deferred("_setup_level", level)
 
 

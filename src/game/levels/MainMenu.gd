@@ -2,16 +2,14 @@ extends Node
 
 export (PackedScene) var level_manager_scene: PackedScene
 
-
-func _ready():
-	pass # Replace with function body.
+export (Texture) var mouse_cursor: Texture
 
 
+func _ready() -> void:
+	Input.set_custom_mouse_cursor(mouse_cursor)
 
 func _on_StartButton_pressed():
-	pass
-	#get_tree().change_scene_to(level_manager_scene)
-	get_tree().change_scene("res://src/game/levels/Level01.tscn")
+	get_tree().change_scene_to(level_manager_scene)
 
 
 func _on_ExitButton_pressed():

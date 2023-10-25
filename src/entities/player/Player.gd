@@ -82,10 +82,7 @@ func fire() -> void:
 ## La animación de disparo llama a esta función que va a ser la que instancie
 ## el proyectil
 func _fire() -> void:
-	print(global_position)
-	print(weapon_tip.global_position)
-	print(global_position.direction_to(weapon_tip.global_position))
-	var direction: Vector2 = Vector2(global_position.direction_to(weapon_tip.global_position).x, 0)
+	var direction: Vector2 = Vector2(round(global_position.direction_to(weapon_tip.global_position).x), 0)
 	var proj = projectile_scene.instance()
 	proj.initialize(
 		self.projectile_container,
