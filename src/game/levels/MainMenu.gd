@@ -10,7 +10,7 @@ func _ready():
 
 func _on_StartButton_pressed():
 	pass
-	get_tree().change_scene_to(level_manager_scene)
+	#get_tree().change_scene_to(level_manager_scene)
 	get_tree().change_scene("res://src/game/levels/Level01.tscn")
 
 

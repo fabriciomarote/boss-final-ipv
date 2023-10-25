@@ -318,20 +318,21 @@ position = Vector2( 0, -15 )
 shape = SubResource( 1 )
 
 [node name="FloorRaycasts" type="Node2D" parent="."]
+visible = false
 
 [node name="RayCast2D" type="RayCast2D" parent="FloorRaycasts"]
 scale = Vector2( 0.2, 0.2 )
-cast_to = Vector2( 0, 40 )
+cast_to = Vector2( 0, 15 )
 
 [node name="RayCast2D2" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2( -3, 0 )
 scale = Vector2( 0.2, 0.2 )
-cast_to = Vector2( -25, 30 )
+cast_to = Vector2( -10, 15 )
 
 [node name="RayCast2D3" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2( 3, 0 )
 scale = Vector2( 0.2, 0.2 )
-cast_to = Vector2( 25, 25 )
+cast_to = Vector2( 10, 15 )
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
@@ -344,7 +345,7 @@ hframes = 12
 vframes = 11
 
 [node name="ObjectCheck" type="RayCast2D" parent="BodyPivot/Body"]
-position = Vector2( -0.951958, 14.2633 )
+position = Vector2( -0.970535, 14.233 )
 rotation = 4.71239
 scale = Vector2( 0.5, 0.5 )
 cast_to = Vector2( 0.0684128, 15.4614 )
@@ -361,7 +362,7 @@ update_scale = false
 
 [node name="WeaponTip" type="Position2D" parent="BodyPivot"]
 unique_name_in_owner = true
-position = Vector2( 20, -16 )
+position = Vector2( 19, -16 )
 rotation = -0.0217488
 
 [node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
@@ -374,6 +375,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
+visible = false
 position = Vector2( 0, -15 )
 shape = SubResource( 16 )
 

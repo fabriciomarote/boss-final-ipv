@@ -128,5 +128,5 @@ shape = SubResource( 1 )
 modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
 position = Vector2( -17, 0 )
 rotation = 0.785398
-scale = Vector2( 1.06376, 1.1086 )
+scale = Vector2( 0.893966, 0.943727 )
 texture = ExtResource( 14 )

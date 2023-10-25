@@ -1,4 +1,5 @@
 extends Node
+class_name Game_State
 
 ## Objeto singleton que maneja estados generales del nivel,
 ## almacena información entre niveles y ayuda a interconectar

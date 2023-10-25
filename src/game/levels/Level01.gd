@@ -1,6 +1,12 @@
 extends Node
 class_name GameLevel
 
+# Regresa al menu principal
+signal return_requested()
+# Reinicia el nivel
+signal restart_requested()
+
+
 func _ready() -> void:
 	randomize()
 

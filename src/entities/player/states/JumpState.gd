@@ -6,17 +6,19 @@ var jumps = 0
 
 func enter() -> void:
 	character.snap_vector = Vector2.ZERO
-	character.velocity.y = -character.jump_speed
+	character.velocity.y -= character.jump_speed
 	character._play_animation("jump")
-	
+
+
 func exit() -> void:
 	jumps = 0
-	
+
+
 func handle_input(event:InputEvent) -> void:
 	if event.is_action_pressed("jump") && jumps < jumps_limit:
 		jumps += 1
 		character.velocity.y = -character.jump_speed
-	character._play_animation("jump")
+		character._play_animation("jump")
 
 
 func update(delta: float) -> void:

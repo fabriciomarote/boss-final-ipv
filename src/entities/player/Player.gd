@@ -34,7 +34,7 @@ onready var object_check = $BodyPivot/Body/ObjectCheck
 ## los exponemos desde el script de Player.
 export (float) var ACCELERATION: float = 60.0
 export (float) var H_SPEED_LIMIT: float = 500.0
-export (int) var jump_speed: int = 350
+export (int) var jump_speed: int = 300
 export (float) var FRICTION_WEIGHT: float = 6.25
 export (int) var gravity: int = 10
 export (PackedScene) var projectile_scene: PackedScene 
@@ -71,24 +71,28 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	self.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(attackModes.AXE)
 	currentAttackMode = attackModes.AXE
+	#GameState.set_current_player(self)
 
 func fire() -> void:
 	if !body_animations.is_playing(): #and contiene flecha:
 		## Mato al tween antes de disparar para que no me cambie la rotación
 		if fire_tween != null:
 			fire_tween.kill()
-		subtract_arrow_quantity()
 
 ## La animación de disparo llama a esta función que va a ser la que instancie
 ## el proyectil
 func _fire() -> void:
-	var direction: Vector2 = weapon_tip.global_position
+	print(global_position)
+	print(weapon_tip.global_position)
+	print(global_position.direction_to(weapon_tip.global_position))
+	var direction: Vector2 = Vector2(global_position.direction_to(weapon_tip.global_position).x, 0)
 	var proj = projectile_scene.instance()
 	proj.initialize(
 		self.projectile_container,
 		weapon_tip.global_position,
 		direction
 	)
+	subtract_arrow_quantity()
 	
 
 func subtract_arrow_quantity() -> void:
@@ -131,7 +135,6 @@ func _change_attack_mode():
 		else:
 			attackHandler = attackHandlers.get(attackModes.BOW)
 			currentAttackMode = attackModes.BOW
-	print(attackHandlers)
 
 
 ## Se extrae el comportamiento de la aplicación de gravedad y movimiento
@@ -214,7 +217,6 @@ func _on_Hitbox_body_entered(body):
 	else:
 		hit_Direction = -1
 	notify_hit(1)
-
 
 
 func _on_Hitbox_area_entered(area):
