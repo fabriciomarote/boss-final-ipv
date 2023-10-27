@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0627451, 0.00392157, 0.00392157, 0.541176 )
+bg_color = Color( 0.345098, 0.0431373, 0.0431373, 0.968627 )
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -18,37 +18,52 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="DynamicFont" id=2]
-size = 14
+size = 12
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 12
+size = 10
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.196078, 0.00392157, 0.00392157, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=5]
-size = 12
+size = 10
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.196078, 0.00392157, 0.00392157, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=7]
-size = 12
+size = 10
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.196078, 0.00392157, 0.00392157, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -76,8 +91,10 @@ custom_styles/panel = SubResource( 1 )
 
 [node name="Label" type="Label" parent="Panel"]
 anchor_right = 1.0
-margin_top = 5.0
-margin_bottom = 21.0
+margin_left = 19.0
+margin_top = 8.0
+margin_right = -11.0
+margin_bottom = 24.0
 custom_fonts/font = SubResource( 2 )
 text = "Paused"
 align = 1
@@ -89,6 +106,7 @@ margin_left = 23.0
 margin_top = 26.0
 margin_right = -17.0
 margin_bottom = -13.0
+alignment = 1
 
 [node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
 pause_mode = 2
@@ -96,6 +114,7 @@ margin_right = 88.0
 margin_bottom = 15.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+toggle_mode = true
 text = "Resume"
 icon_align = 1
 
@@ -105,7 +124,7 @@ margin_right = 88.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-text = "Options"
+text = "Settings"
 icon_align = 1
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]

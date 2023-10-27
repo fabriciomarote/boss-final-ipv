@@ -51,9 +51,9 @@ var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
-var arrowAmount: int = 0
-export (int) var max_hp: int = 3
-var hp: int = max_hp
+var arrowAmount: int = 10
+export (int) var max_hp: int = 5
+var hp: int = 3 #max_hp
 
 var fire_tween: SceneTreeTween
 
@@ -163,10 +163,14 @@ func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
 	_handle_hit(1)
 
+func notify_dead() -> void:
+	_handle_hit(5)
+
+
 func sum_hp(amount: int) -> void:
 	hp = clamp(hp + 1, 0, max_hp)
 	emit_signal("hp_changed", hp, max_hp)
-	#print("hp_changed %s %s" % [hp, max_hp])
+	print("hp_changed %s %s" % [hp, max_hp])
 	print(hp)
 
 ## Y acá se maneja el hit final. Como aun no tenemos una "cantidad" de HP,

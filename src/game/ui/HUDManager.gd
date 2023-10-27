@@ -4,12 +4,9 @@ extends Control
 ## el juego. Maneja tanto lo que es barras de salud como información
 ## general.
 
-onready var hp_progress_1: TextureProgress = $"%HpProgress1"
-onready var hp_progress_2: TextureProgress = $"%HpProgress2"
-onready var mana_progress: TextureProgress = $"%ManaProgress"
-onready var stamina_progress: TextureProgress = $"%StaminaProgress"
+onready var hp_progress: TextureProgress = $"%HpProgress"
 
-onready var fading_elements: Array = [hp_progress_1, mana_progress, stamina_progress]
+onready var fading_elements: Array = [hp_progress]
 
 export (float) var fade_duration: float = 5.0
 export (float) var fade_delay: float = 2.0
@@ -31,10 +28,8 @@ func _on_current_player_changed(player: Player) -> void:
 
 # Callback de cambio de HP.
 func _on_hp_changed(hp: int, hp_max: int) -> void:
-	#hp_progress_1.max_value = hp_max
-	hp_progress_2.max_value = hp_max
-	#hp_progress_1.value = hp
-	hp_progress_2.value = hp
+	hp_progress.max_value = hp_max
+	hp_progress.value = hp
 	_animate_fade()
 
 

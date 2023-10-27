@@ -1,41 +1,74 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/game/ui/options/ActionInput.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=2]
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.180392, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.180392, 0, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="DynamicFont" id=1]
+size = 14
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 12
 font_data = ExtResource( 2 )
 
 [node name="ActionInput" type="PanelContainer"]
-margin_right = 236.0
-margin_bottom = 42.0
+margin_right = 94.0
+margin_bottom = 23.0
+custom_styles/panel = SubResource( 3 )
 script = ExtResource( 1 )
+action_input = "A"
+action_name = "hola"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 229.0
-margin_bottom = 40.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 93.0
+margin_bottom = 22.0
 
 [node name="Panel" type="PanelContainer" parent="HBoxContainer"]
-margin_right = 14.0
-margin_bottom = 33.0
+margin_right = 20.0
+margin_bottom = 21.0
+custom_styles/panel = SubResource( 4 )
 
 [node name="Input" type="Label" parent="HBoxContainer/Panel"]
 unique_name_in_owner = true
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 7.0
-margin_bottom = 26.0
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 19.0
+margin_bottom = 19.0
 custom_fonts/font = SubResource( 1 )
+text = "A"
+align = 1
 
 [node name="Action" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 18.0
-margin_top = 7.0
-margin_right = 18.0
-margin_bottom = 26.0
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 39.0
+margin_bottom = 18.0
 custom_fonts/font = SubResource( 2 )
+text = "hola"

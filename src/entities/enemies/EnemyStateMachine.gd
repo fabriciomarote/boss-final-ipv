@@ -14,3 +14,11 @@ func _on_Body_animation_finished():
 func notify_hit(amount) -> void:
 	if current_state != $Die:
 		_change_state("die")
+
+
+func _on_Sprout_hp_changed(hp, max_hp):
+	current_state.handle_event("hp_changed", [hp, max_hp])
+
+
+func _on_Shadow_hp_changed(hp, max_hp):
+	current_state.handle_event("hp_changed", [hp, max_hp])

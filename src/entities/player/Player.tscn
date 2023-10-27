@@ -372,7 +372,7 @@ texture = ExtResource( 6 )
 
 [node name="Hitbox2" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
 visible = false
@@ -381,6 +381,7 @@ shape = SubResource( 16 )
 
 [connection signal="healed" from="." to="StateMachine" method="notify_healed"]
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
+[connection signal="hp_changed" from="." to="StateMachine" method="_on_Player_hp_changed"]
 [connection signal="animation_finished" from="BodyAnimations" to="StateMachine" method="_on_animation_finished"]
 [connection signal="area_entered" from="Hitbox2" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox2" to="." method="_on_Hitbox_body_entered"]
