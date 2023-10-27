@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/fonts/Blackcraft.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/BleedingPixels.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/game/ui/options/ActionInput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/ui/options/OptionsMenu.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.313726, 0, 0, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.0736166, 0.0597038, 0.108398, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="DynamicFont" id=6]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.113725, 0.00392157, 0.00392157, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.482353, 0.482353, 0.482353, 0.6 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0705882, 0, 0.00392157, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.537255, 0.52549, 0.52549, 0.6 )
+shadow_size = 2
+shadow_offset = Vector2( 0, 1 )
+
+[node name="OptionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.945098, 0.905882, 1, 0.223529 )
+
+[node name="MainPanel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 10.0
+margin_right = -20.0
+margin_bottom = -10.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="MainPanel"]
+anchor_right = 1.0
+margin_top = 6.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 6 )
+text = "Options menu"
+align = 1
+valign = 1
+
+[node name="ReturnButton" type="Button" parent="MainPanel"]
+margin_left = 189.0
+margin_top = 116.0
+margin_right = 239.0
+margin_bottom = 133.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/normal = SubResource( 8 )
+text = "Return"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 21.0
+margin_right = -6.0
+margin_bottom = -31.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/ScrollContainer"]
+margin_right = 97.0
+margin_bottom = 171.0
+
+[node name="ActionInput" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 97.0
+margin_bottom = 21.0
+action_name = "Move Left"
+
+[node name="ActionInput2" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 25.0
+margin_right = 97.0
+margin_bottom = 46.0
+action_input = "D"
+action_name = "Move Right"
+
+[node name="ActionInput3" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 50.0
+margin_right = 97.0
+margin_bottom = 71.0
+action_input = "W"
+action_name = "Move Up"
+
+[node name="ActionInput4" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 75.0
+margin_right = 97.0
+margin_bottom = 96.0
+action_input = "S"
+action_name = "Move Down"
+
+[node name="ActionInput5" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 100.0
+margin_right = 97.0
+margin_bottom = 121.0
+action_input = "Space"
+action_name = "Jump"
+
+[node name="ActionInput6" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 125.0
+margin_right = 97.0
+margin_bottom = 146.0
+action_input = "Q"
+action_name = "Change Weapon"
+
+[node name="ActionInput7" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 150.0
+margin_right = 97.0
+margin_bottom = 171.0
+action_input = "E"
+action_name = "Attack"
+
+[connection signal="pressed" from="MainPanel/ReturnButton" to="." method="hide"]

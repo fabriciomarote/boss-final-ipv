@@ -1,11 +1,13 @@
 extends KinematicBody2D
-class_name EnemyTurret
+class_name EnemyShadow
 
 signal hit(amount)
+signal hp_changed(hp, max_hp)
 
 onready var fire_position: Node2D = $FirePosition
 onready var raycast: RayCast2D = $RayCast2D
 onready var body_anim: AnimatedSprite = $Body
+onready var hp_progress: ProgressBar = $HpProgress
 
 export (float) var pathfinding_step_threshold:float = 5.0
 
@@ -22,9 +24,16 @@ var projectile_container: Node
 
 var velocity: Vector2 = Vector2.ZERO
 
-
+export (int) var max_hp: int = 5
+var hp: int = max_hp
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
+
+
+func _ready() -> void:
+	hp_progress.max_value = max_hp
+	hp_progress.value = hp
+	#hp_progress.modulate = Color.transparent
 
 
 func initialize(container, turret_pos, projectile_container) -> void:
@@ -65,6 +74,21 @@ func _apply_movement() -> void:
 ## dependiendo de si el enemigo esta o no alerta
 func notify_hit(amount:int = 1) -> void:
 	emit_signal("hit", amount)
+
+
+var hp_tween: SceneTreeTween
+
+func _sum_hp(amount: int) -> void:
+	hp = clamp(hp + amount, 0, max_hp)
+	hp_progress.max_value = max_hp
+	hp_progress.value = hp
+	emit_signal("hp_changed", hp, max_hp)
+	
+	if hp_tween:
+		hp_tween.kill()
+	hp_tween = create_tween()
+	hp_progress.modulate = Color.white
+	hp_tween.tween_property(hp_progress, "modulate", Color.transparent, 5.0)
 
 
 func _remove() -> void:

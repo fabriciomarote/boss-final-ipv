@@ -6,9 +6,7 @@ func enter() -> void:
 	character.collision_layer = 0
 	character.collision_mask = 0
 	
-	if character.target != null:
-		character._play_animation("die_alert")
-	else:
+	if character.target == null:
 		character._play_animation("death")
 	
 func _on_animation_finished(anim_name: String) ->  void:

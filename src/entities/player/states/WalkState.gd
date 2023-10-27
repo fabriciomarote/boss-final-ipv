@@ -12,14 +12,7 @@ func handle_input(event:InputEvent) -> void:
 		if character.attackHandler == "BowAttack":
 			emit_signal("finished", "sword")
 		else:
-			if character.arrowAmount > 0:
-				emit_signal("finished", "arrow")
-			else:
-				emit_signal("finished", "whitoutArrow")
-	#if event.is_action_pressed("fire_weapon") && character.is_on_floor():
-	#	emit_signal("finished", "arrow")
-	#if event.is_action_pressed("sword"):
-	#	emit_signal("finished", "sword")
+			emit_signal("finished", "arrow")
 	if event.is_action_pressed("jump") && character.is_on_floor():
 		emit_signal("finished", "jump")
 

@@ -8,8 +8,10 @@ class_name Player
 ## por ejemplo, con el entorno del nivel.
 signal hit(amount)
 signal healed(amount)
+
 signal hp_changed(current_hp, max_hp)
 signal dead()
+
 signal grounded_change(is_grounded)
 signal sliding_change(is_sliding)
 
@@ -21,7 +23,6 @@ const SLOPE_THRESHOLD: float = deg2rad(46)
 const attackModes = preload("res://src/entities/AttackModes.gd")
 
 onready var weapon_tip: Node2D = $"%WeaponTip"
-onready var fx_anim: AnimationPlayer = $FXAnim
 onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
@@ -34,7 +35,7 @@ onready var object_check = $BodyPivot/Body/ObjectCheck
 export (float) var ACCELERATION: float = 60.0
 export (float) var H_SPEED_LIMIT: float = 500.0
 export (int) var jump_speed: int = 300
-export (float) var FRICTION_WEIGHT: float = 0.1
+export (float) var FRICTION_WEIGHT: float = 6.25
 export (int) var gravity: int = 10
 export (PackedScene) var projectile_scene: PackedScene 
 
@@ -50,8 +51,10 @@ var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
-var arrowAmount: int = 0
-var lifeAmount: int = 3
+var arrowAmount: int = 10
+export (int) var max_hp: int = 5
+var hp: int = 3 #max_hp
+
 var fire_tween: SceneTreeTween
 
 ## Flag de ayuda para saber identificar el estado de actividad
@@ -66,33 +69,28 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	}
 	
 	self.projectile_container = projectile_container
-	#weapon.projectile_container = projectile_container
 	attackHandler = attackHandlers.get(attackModes.AXE)
 	currentAttackMode = attackModes.AXE
+	#GameState.set_current_player(self)
 
 func fire() -> void:
-	#borrar fx_anim
-	if !fx_anim.is_playing(): #and contiene flecha:
+	if !body_animations.is_playing(): #and contiene flecha:
 		## Mato al tween antes de disparar para que no me cambie la rotación
 		if fire_tween != null:
 			fire_tween.kill()
-		
-		## No disparo de inmediato, sino que delego a una animación de disparo
-		fx_anim.play("fire")
-		subtract_arrow_quantity()
 
 ## La animación de disparo llama a esta función que va a ser la que instancie
 ## el proyectil
 func _fire() -> void:
-	var direction: Vector2 = weapon_tip.global_position
+	var direction: Vector2 = Vector2(round(global_position.direction_to(weapon_tip.global_position).x), 0)
 	var proj = projectile_scene.instance()
 	proj.initialize(
 		self.projectile_container,
 		weapon_tip.global_position,
 		direction
 	)
+	subtract_arrow_quantity()
 	
-
 
 func subtract_arrow_quantity() -> void:
 	if arrowAmount == 0:
@@ -134,7 +132,6 @@ func _change_attack_mode():
 		else:
 			attackHandler = attackHandlers.get(attackModes.BOW)
 			currentAttackMode = attackModes.BOW
-	print(attackHandlers)
 
 
 ## Se extrae el comportamiento de la aplicación de gravedad y movimiento
@@ -164,16 +161,29 @@ func is_on_floor() -> bool:
 ## los casos de estados en los cuales no se manejan hits
 func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
-	subtract_arrow_quantity()
+	_handle_hit(1)
+
+func notify_dead() -> void:
+	_handle_hit(5)
+
+
+func sum_hp(amount: int) -> void:
+	hp = clamp(hp + 1, 0, max_hp)
+	emit_signal("hp_changed", hp, max_hp)
+	print("hp_changed %s %s" % [hp, max_hp])
+	print(hp)
 
 ## Y acá se maneja el hit final. Como aun no tenemos una "cantidad" de HP,
 ## sino una flag, el hit nos mata instantaneamente y tiramos una notificación.
 ## Esta signal tranquilamente podría llamarse "dead", pero como esa la utilizamos
 ## para otras cosas, y como sabemos que incorporaremos una barra de salud después
 ## es apropiado manejarlo de esta manera.
-func _handle_hit(amount: int = 1) -> void:
-	dead = true
+func _handle_hit(amount: int) -> void:
+	print(hp)
+	hp -= 1 #
 	emit_signal("hp_changed", 0, 1)
+	if hp == 0:
+		dead = true
 
 
 # El llamado a remove final
@@ -188,10 +198,12 @@ func handle_arrow() -> void:
 
 
 func handle_Life() -> void:
-	lifeAmount += 1
+	pass
+	#lifeAmount += 1
 
 func handle_velocity() -> void:
-	lifeAmount += 1
+	pass
+	#lifeAmount += 1
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
@@ -206,7 +218,6 @@ func _on_Hitbox_body_entered(body):
 	else:
 		hit_Direction = -1
 	notify_hit(1)
-
 
 
 func _on_Hitbox_area_entered(area):

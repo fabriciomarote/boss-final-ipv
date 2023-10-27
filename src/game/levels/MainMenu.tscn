@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/game/levels/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Blackcraft.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/BleedingPixels.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/textures/fondo1.png" type="Texture" id=4]
+[ext_resource path="res://src/game/ui/options/OptionsMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/game/levels/LevelManager.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.113725, 0.00392157, 0.00392157, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.482353, 0.482353, 0.482353, 0.6 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.796078, 0.0392157, 0.0941176, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 7
+shadow_color = Color( 0.537255, 0.52549, 0.52549, 0.6 )
+shadow_size = 2
+shadow_offset = Vector2( 0, 1 )
+anti_aliasing_size = 1.269
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 1 )
+level_manager_scene = ExtResource( 6 )
+
+[node name="MouseCamera" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/Container"]
+position = Vector2( 144.143, 80.6398 )
+scale = Vector2( 0.285435, 0.279588 )
+texture = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.113725, 0.00392157, 0.00392157, 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Container"]
+margin_left = 145.0
+margin_top = 75.0
+margin_right = 273.0
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 1 )
+text = "Little Ninja"
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Container"]
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 50.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/normal = SubResource( 8 )
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Container"]
+margin_left = 20.0
+margin_top = 36.0
+margin_right = 50.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/normal = SubResource( 8 )
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Container"]
+margin_left = 20.0
+margin_top = 56.0
+margin_right = 50.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/normal = SubResource( 8 )
+text = "Exit"
+
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/Container/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/OptionsButton" to="CanvasLayer/OptionsMenu" method="show"]
+[connection signal="pressed" from="CanvasLayer/Container/ExitButton" to="." method="_on_ExitButton_pressed"]
