@@ -3,7 +3,6 @@ extends AbstractState
 const attackModes = preload("res://src/game/entities/AttackModes.gd")
 
 
-# Al entrar se activa primero la animación "idle"
 func enter() -> void:
 	print(character)
 	character._play_animation("idle")

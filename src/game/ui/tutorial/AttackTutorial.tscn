@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Dark/E_Key_Dark.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Dark/Q_Key_Dark.png" type="Texture" id=3]
+[ext_resource path="res://src/game/ui/tutorial/AttackTutorial.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=4]
+resource_name = "enabled"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TutorialElements:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 11
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 11
+font_data = ExtResource( 1 )
+
+[node name="AttackTutorial" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="EnablingAnimation" type="AnimationPlayer" parent="."]
+anims/enabled = SubResource( 4 )
+
+[node name="PlayerCloseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCloseArea"]
+position = Vector2( 0, -11 )
+shape = SubResource( 1 )
+
+[node name="TutorialElements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="AttackAction1" type="VBoxContainer" parent="TutorialElements"]
+margin_left = -85.0
+margin_top = -62.0
+margin_right = -9.0
+margin_bottom = -22.0
+alignment = 1
+
+[node name="ActionName" type="Label" parent="TutorialElements/AttackAction1"]
+margin_top = 4.0
+margin_right = 76.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 2 )
+text = "Change Weapon"
+
+[node name="ActionLabel" type="Label" parent="TutorialElements/AttackAction1"]
+margin_top = 22.0
+margin_right = 76.0
+margin_bottom = 36.0
+
+[node name="ActionTexture" type="TextureRect" parent="TutorialElements/AttackAction1/ActionLabel"]
+margin_left = 41.0
+margin_top = -5.0
+margin_right = 65.0
+margin_bottom = 18.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="AttackAction2" type="VBoxContainer" parent="TutorialElements"]
+margin_left = 28.0
+margin_top = -62.0
+margin_right = 62.0
+margin_bottom = -22.0
+alignment = 1
+
+[node name="ActionName" type="Label" parent="TutorialElements/AttackAction2"]
+margin_top = 4.0
+margin_right = 34.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 3 )
+text = "Attack"
+
+[node name="ActionLabel" type="Label" parent="TutorialElements/AttackAction2"]
+margin_top = 22.0
+margin_right = 34.0
+margin_bottom = 36.0
+
+[node name="ActionTexture" type="TextureRect" parent="TutorialElements/AttackAction2/ActionLabel"]
+margin_left = 3.0
+margin_top = -4.0
+margin_right = 28.0
+margin_bottom = 19.0
+texture = ExtResource( 2 )
+expand = true
+
+[connection signal="body_entered" from="PlayerCloseArea" to="." method="_on_PlayerCloseArea_body_entered"]

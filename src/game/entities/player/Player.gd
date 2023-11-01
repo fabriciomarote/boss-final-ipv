@@ -9,6 +9,7 @@ class_name Player
 signal hit(amount)
 signal healed(amount)
 signal hp_changed(current_hp, max_hp)
+signal stamina_changed(current_stamina, max_stamina)
 signal arrow_changed(amount)
 signal weapon_changed(weapon)
 signal dead()
@@ -29,9 +30,9 @@ onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
 
-export (float) var ACCELERATION: float = 60.0
-export (float) var H_SPEED_LIMIT: float = 500.0
-export (int) var jump_speed: int = 300
+export (float) var ACCELERATION: float = 10.0
+export (float) var H_SPEED_LIMIT: float = 100.0
+export (int) var jump_speed: int = 250
 export (float) var FRICTION_WEIGHT: float = 6.25
 export (int) var gravity: int = 10
 export (PackedScene) var projectile_scene: PackedScene 
@@ -49,8 +50,15 @@ var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
 var arrowAmount: int = 5
+
 export (int) var max_hp: int = 5
 var hp: int = max_hp
+
+export (float) var max_stamina: float = 10.0
+var stamina: float = max_stamina
+
+export (float) var stamina_recovery_time: float = 5.0
+export (float) var stamina_recovery_delay: float = 0.5
 
 var fire_tween: SceneTreeTween
 
@@ -171,6 +179,35 @@ func sum_hp(amount: int) -> void:
 	emit_signal("hp_changed", hp, max_hp)
 
 
+var stamina_regen_tween: SceneTreeTween
+
+func sum_stamina(amount: float) -> void:
+	_update_passive_prop(
+		clamp(stamina + amount, 0.0, max_stamina),
+		max_stamina,
+		"stamina",
+		"stamina_changed"
+	)
+	if stamina < max_stamina:
+		if stamina_regen_tween:
+			stamina_regen_tween.kill()
+		stamina_regen_tween = create_tween()
+		var duration: float = (max_stamina - stamina) * stamina_recovery_time / max_stamina
+		stamina_regen_tween.tween_method(
+			self,
+			"_update_passive_prop",
+			stamina,
+			max_stamina,
+			duration,
+			[max_stamina, "stamina", "stamina_changed"]
+		).set_delay(stamina_recovery_delay)
+
+
+func _update_passive_prop(amount, max_amount, property: String, updated_signal) -> void:
+	set(property, amount)
+	emit_signal(updated_signal, amount, max_amount)
+
+
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
 	dead = true if hp == 0 else false
@@ -184,18 +221,13 @@ func _remove() -> void:
 
 
 func handle_arrow() -> void:
-	arrowAmount += 1
+	arrowAmount += 2
 	emit_signal("arrow_changed", arrowAmount)
 
 
-func handle_Life() -> void:
-	pass
-	#lifeAmount += 1
-
 func handle_velocity() -> void:
-	print("corre")
-	ACCELERATION = 400
-   #lifeAmount += 1
+	self.ACCELERATION = 100
+	self.H_SPEED_LIMIT = 500
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
@@ -221,4 +253,4 @@ func _on_Hitbox_area_entered(area):
 
 
 func _on_CutArea_body_entered(body):
-	body.notify_hit()
+	body.notify_hit(3)

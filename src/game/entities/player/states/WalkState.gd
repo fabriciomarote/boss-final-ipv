@@ -15,6 +15,8 @@ func handle_input(event:InputEvent) -> void:
 			emit_signal("finished", "arrow")
 	if event.is_action_pressed("jump") && character.is_on_floor():
 		emit_signal("finished", "jump")
+	if event.is_action_pressed("change_attack"):
+		character._change_attack_mode()
 	if event.is_action_pressed("run"):
 		character.handle_velocity()
 

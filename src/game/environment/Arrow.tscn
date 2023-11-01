@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/textures/player/105.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/items/arrows.png" type="Texture" id=1]
 [ext_resource path="res://src/game/environment/Arrow.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
+radius = 4.0
 height = 0.0
 
 [node name="Arrow" type="Node2D"]
@@ -14,13 +14,11 @@ script = ExtResource( 2 )
 collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1, -2 )
-scale = Vector2( 0.742188, 0.484375 )
+scale = Vector2( 0.886667, 0.8125 )
 texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/game/ui/HUDManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui/GUISprite.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/items/axe.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/items/bow.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/ui/Newstuff.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 61.5831, 60.6741, 55.3242, 21.8223 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
@@ -19,6 +21,23 @@ region = Rect2( 64.0433, 15.5735, 16.064, 16.7066 )
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 127.898, 15.7545, 16.4496, 16.1925 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 80.2449, 15.9627, 15.5886, 16.0383 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 116.915, 31.9912, 20.1764, 20.1764 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 4
+outline_color = Color( 0.960784, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 6 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -37,36 +56,66 @@ margin_left = 3.0
 margin_top = 1.0
 margin_right = 52.0
 margin_bottom = 21.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 11 )
+
+[node name="Panel" type="Sprite" parent="StatsContainer/Panel"]
+modulate = Color( 0.533333, 0.533333, 0.533333, 0.427451 )
+position = Vector2( 33, 15 )
+scale = Vector2( 1.23636, 1.21887 )
+texture = SubResource( 12 )
 
 [node name="HpProgress" type="TextureProgress" parent="StatsContainer/Panel"]
 unique_name_in_owner = true
-margin_left = 3.0
-margin_top = 2.0
-margin_right = 19.0
-margin_bottom = 18.0
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 21.0
+margin_bottom = 22.0
 max_value = 5.0
 value = 5.0
 texture_under = SubResource( 6 )
 texture_progress = SubResource( 5 )
 fill_mode = 3
 
+[node name="StaminaProgress" type="TextureProgress" parent="StatsContainer/Panel"]
+unique_name_in_owner = true
+margin_left = 24.0
+margin_top = 6.0
+margin_right = 40.0
+margin_bottom = 22.0
+max_value = 10.0
+value = 10.0
+texture_under = SubResource( 9 )
+texture_over = SubResource( 9 )
+texture_progress = SubResource( 10 )
+fill_mode = 3
+tint_progress = Color( 0, 1, 0.976471, 1 )
+
+[node name="Weapon" type="Sprite" parent="StatsContainer/Panel"]
+modulate = Color( 0.65098, 0.65098, 0.65098, 1 )
+position = Vector2( 52, 14 )
+scale = Vector2( 0.8, 0.8 )
+texture = SubResource( 13 )
+
 [node name="Counter" type="Label" parent="StatsContainer/Panel"]
-margin_left = 37.0
-margin_top = 4.0
-margin_right = 94.0
-margin_bottom = 20.0
-text = "0"
+modulate = Color( 0.529412, 0.501961, 0.501961, 1 )
+margin_left = 59.0
+margin_top = 18.0
+margin_right = 62.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 14 )
+text = "3"
 
 [node name="Bow" type="Sprite" parent="StatsContainer/Panel"]
-position = Vector2( 28, 10 )
-scale = Vector2( 0.160645, 0.124023 )
+modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
+position = Vector2( 52, 14 )
+scale = Vector2( 0.0723954, 0.0732422 )
 texture = ExtResource( 4 )
 flip_h = true
 
 [node name="Axe" type="Sprite" parent="StatsContainer/Panel"]
 visible = false
-position = Vector2( 28, 10 )
-scale = Vector2( 0.135742, 0.113281 )
+modulate = Color( 0.890196, 0.890196, 0.890196, 1 )
+position = Vector2( 52, 14 )
+scale = Vector2( 0.0661526, 0.0652542 )
 texture = ExtResource( 3 )
 flip_h = true

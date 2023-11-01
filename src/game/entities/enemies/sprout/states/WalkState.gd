@@ -14,7 +14,8 @@ func enter() -> void:
 
 func exited() -> void:
 	path = []
-	
+
+
 func update(delta:float) -> void:
 	
 	if character.target && abs(character.target.global_position.x - character.global_position.x) <= attack_distance_threshold:

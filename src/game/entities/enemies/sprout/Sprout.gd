@@ -33,7 +33,7 @@ var dead: bool = false
 func _ready() -> void:
 	hp_progress.max_value = max_hp
 	hp_progress.value = hp
-	#hp_progress.modulate = Color.transparent
+	hp_progress.modulate = Color.transparent
 
 
 func initialize(container, turret_pos, projectile_container) -> void:
@@ -72,14 +72,14 @@ func apply_movement() -> void:
 func notify_hit(amount:int = 1) -> void:
 	print(hp)
 	print("disparo recibido")
-	_handle_hit(amount)
+	#_handle_hit(amount)
 	emit_signal("hit", amount)
 
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
 	if hp == 0:
 		dead = true 
-		_remove() 
+		#_remove() 
 	else:
 		 false
 	emit_signal("hp_changed", hp, max_hp)
