@@ -1,25 +1,24 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=42 format=2]
 
-[ext_resource path="res://src/environment/DefaultBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/environment/DefaultBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_background_obj.png" type="Texture" id=2]
-[ext_resource path="res://src/entities/enemies/Sprout.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/entities/enemies/ShadowsSpawner.gd" type="Script" id=4]
+[ext_resource path="res://src/game/entities/enemies/sprout/Sprout.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/entities/enemies/shadow/ShadowsSpawner.gd" type="Script" id=4]
 [ext_resource path="res://src/game/levels/Level01.gd" type="Script" id=5]
 [ext_resource path="res://src/game/ui/DefeatMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/game/ui/HUD.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/environment/Platform.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/entities/enemies/Shadow.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/entities/AstarTilemap.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/environment/Goal.tscn" type="PackedScene" id=11]
-[ext_resource path="res://src/entities/player/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/game/environment/Platform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/game/entities/enemies/shadow/Shadow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/game/entities/AstarTilemap.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/game/environment/Goal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/game/entities/player/Player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_Mainlev_build.png" type="Texture" id=13]
-[ext_resource path="res://src/entities/player/Camera.gd" type="Script" id=14]
+[ext_resource path="res://src/game/entities/player/Camera.gd" type="Script" id=14]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_Main_bckgrdlev_build.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/BleedingPixels.ttf" type="DynamicFontData" id=16]
-[ext_resource path="res://src/environment/Arrow.tscn" type="PackedScene" id=17]
-[ext_resource path="res://src/entities/enemies/SproutsSpawner.gd" type="Script" id=18]
-[ext_resource path="res://src/environment/Life.tscn" type="PackedScene" id=19]
-[ext_resource path="res://src/environment/Mushroom.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/game/environment/Arrow.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/game/environment/Life.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/game/environment/Mushroom.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/game/ui/PauseMenu.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/game/ui/VictoryMenu.tscn" type="PackedScene" id=24]
 
@@ -736,6 +735,12 @@ zoom_speed = 5.0
 
 [node name="Enemies" type="Node2D" parent="Environment/Entities"]
 
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies"]
+position = Vector2( 215, 193 )
+
+[node name="Sprout" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
+position = Vector2( 291, 481 )
+
 [node name="AstarTilemap" parent="Environment/Entities/Enemies" instance=ExtResource( 10 )]
 position = Vector2( -86, -4 )
 cell_size = Vector2( 16, 16 )
@@ -757,22 +762,6 @@ amount = 3
 extents = Vector2( 200, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
-[node name="SproutsSpawner" type="Position2D" parent="Environment/Entities/Enemies"]
-position = Vector2( 558, 472 )
-script = ExtResource( 18 )
-sprout_scene = ExtResource( 3 )
-amount = 2
-extents = Vector2( 150, 10 )
-pathfinding_path = NodePath("../AstarTilemap")
-
-[node name="SproutsSpawner2" type="Position2D" parent="Environment/Entities/Enemies"]
-position = Vector2( -397, 617 )
-script = ExtResource( 18 )
-sprout_scene = ExtResource( 3 )
-amount = 1
-extents = Vector2( 200, 10 )
-pathfinding_path = NodePath("../AstarTilemap")
-
 [node name="Mushroom" parent="." instance=ExtResource( 20 )]
 position = Vector2( 325, 477 )
 
@@ -784,3 +773,9 @@ position = Vector2( -120, 619 )
 
 [node name="Goal" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2500, 598 )
+
+[connection signal="return_selected" from="UILayer/PauseMenu" to="." method="_on_return_requested"]
+[connection signal="next_selected" from="UILayer/VictoryMenu" to="." method="_on_level_won"]
+[connection signal="return_selected" from="UILayer/VictoryMenu" to="." method="_on_return_requested"]
+[connection signal="retry_selected" from="UILayer/DefeatMenu" to="." method="_on_restart_requested"]
+[connection signal="return_selected" from="UILayer/DefeatMenu" to="." method="_on_return_requested"]

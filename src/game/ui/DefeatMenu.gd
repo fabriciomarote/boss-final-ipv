@@ -6,10 +6,9 @@ extends Control
 signal retry_selected()
 signal return_selected()
 
-
 func _ready() -> void:
 	hide()
-	#GameState.connect("current_player_changed", self, "_on_current_player_changed")
+	GameState.connect("current_player_changed", self, "_on_current_player_changed")
 
 
 func _on_current_player_changed(player: Player) -> void:

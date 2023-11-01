@@ -1,7 +1,6 @@
 extends Control
 
 onready var options_menu: Control = $OptionsMenu
-
 signal return_selected()
 
 func _ready():

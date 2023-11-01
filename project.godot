@@ -12,37 +12,37 @@ _global_script_classes=[ {
 "base": "AbstractState",
 "class": "AbstractEnemyState",
 "language": "GDScript",
-"path": "res://src/entities/enemies/states/AbstractEnemyState.gd"
+"path": "res://src/game/entities/enemies/AbstractEnemyState.gd"
 }, {
 "base": "Node",
 "class": "AbstractState",
 "language": "GDScript",
-"path": "res://src/entities/AbstractState.gd"
+"path": "res://src/game/entities/AbstractState.gd"
 }, {
 "base": "Node",
 "class": "AbstractStateMachine",
 "language": "GDScript",
-"path": "res://src/entities/AbstractStateMachine.gd"
+"path": "res://src/game/entities/AbstractStateMachine.gd"
 }, {
 "base": "Node2D",
 "class": "Arrow",
 "language": "GDScript",
-"path": "res://src/environment/Arrow.gd"
+"path": "res://src/game/environment/Arrow.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "EnemyFlying",
 "language": "GDScript",
-"path": "res://src/entities/enemies/Flying.gd"
+"path": "res://src/game/entities/enemies/flying/Flying.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "EnemyShadow",
 "language": "GDScript",
-"path": "res://src/entities/enemies/Shadow.gd"
+"path": "res://src/game/entities/enemies/shadow/Shadow.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "EnemySprout",
 "language": "GDScript",
-"path": "res://src/entities/enemies/Sprout.gd"
+"path": "res://src/game/entities/enemies/sprout/Sprout.gd"
 }, {
 "base": "Node",
 "class": "GameLevel",
@@ -57,22 +57,27 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Life",
 "language": "GDScript",
-"path": "res://src/environment/Life.gd"
+"path": "res://src/game/environment/Life.gd"
 }, {
 "base": "Node2D",
 "class": "Mushroom",
 "language": "GDScript",
-"path": "res://src/environment/Mushroom.gd"
+"path": "res://src/game/environment/Mushroom.gd"
 }, {
 "base": "TileMap",
 "class": "PathfindAstar",
 "language": "GDScript",
-"path": "res://src/entities/AstarTilemap.gd"
+"path": "res://src/game/entities/AstarTilemap.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://src/entities/player/Player.gd"
+"path": "res://src/game/entities/player/Player.gd"
+}, {
+"base": "AbstractStateMachine",
+"class": "SproutStateMachine",
+"language": "GDScript",
+"path": "res://src/game/entities/enemies/SproutStateMachine.gd"
 } ]
 _global_script_class_icons={
 "AbstractEnemyState": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "Life": "",
 "Mushroom": "",
 "PathfindAstar": "",
-"Player": ""
+"Player": "",
+"SproutStateMachine": ""
 }
 
 [application]
@@ -95,6 +101,10 @@ _global_script_class_icons={
 config/name="Boss-final"
 run/main_scene="res://src/game/levels/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameState="*res://src/game/singletons/GameState.gd"
 
 [display]
 
@@ -164,7 +174,7 @@ pause_menu={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":80,"unicode":0,"echo":false,"script":null)
  ]
 }
-double_jump={
+run={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":86,"unicode":0,"echo":false,"script":null)
  ]

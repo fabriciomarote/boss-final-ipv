@@ -3,12 +3,13 @@ extends Control
 ## Menú de victoria genérico. Solo se presenta si se levanta la signal
 ## de "level_won" en GameState.
 
+signal next_selected()
 signal return_selected()
 
 
 func _ready() -> void:
 	hide()
-	#GameState.connect("level_won", self, "_on_level_won")
+	GameState.connect("level_won", self, "_on_level_won")
 
 
 func _on_level_won() -> void:

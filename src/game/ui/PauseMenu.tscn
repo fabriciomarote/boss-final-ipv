@@ -140,3 +140,4 @@ visible = false
 
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/OptionsButton" to="OptionsMenu" method="show"]
+[connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
