@@ -15,15 +15,15 @@ export (float) var ACCELERATION: float = 10.0
 export (float) var H_SPEED_LIMIT: float = 30.0
 
 
-export (float) var pathfinding_step_threshold:float = 5.0
 export (float) var FRICTION_WEIGHT: float = 6.25
 export (Vector2) var wander_radius: Vector2 = Vector2(10.0, 10.0)
 export (float) var speed:float  = 30.0
 export (float) var max_speed:float = 100.0
 export (int) var gravity: int = 10
-export (int) var max_hp: int = 3
 
+export (int) var max_hp: int = 3
 var hp: int = max_hp
+
 var target: Node2D
 var projectile_container: Node
 var velocity: Vector2 = Vector2.ZERO
@@ -72,14 +72,14 @@ func apply_movement() -> void:
 func notify_hit(amount:int = 1) -> void:
 	print(hp)
 	print("disparo recibido")
-	#_handle_hit(amount)
+	_handle_hit(amount)
 	emit_signal("hit", amount)
 
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
 	if hp == 0:
 		dead = true 
-		#_remove() 
+		_remove() 
 	else:
 		 false
 	emit_signal("hp_changed", hp, max_hp)

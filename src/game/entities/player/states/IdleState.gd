@@ -4,7 +4,6 @@ const attackModes = preload("res://src/game/entities/AttackModes.gd")
 
 
 func enter() -> void:
-	print(character)
 	character._play_animation("idle")
 	character.emit_signal("grounded_change",true)
 

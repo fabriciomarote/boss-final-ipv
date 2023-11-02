@@ -46,37 +46,37 @@ shape = SubResource( 1 )
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="AttackAction1" type="VBoxContainer" parent="TutorialElements"]
-margin_left = -85.0
-margin_top = -62.0
-margin_right = -9.0
-margin_bottom = -22.0
+margin_left = -61.0
+margin_top = -82.0
+margin_right = -24.0
+margin_bottom = -33.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="TutorialElements/AttackAction1"]
-margin_top = 4.0
-margin_right = 76.0
-margin_bottom = 18.0
+margin_right = 37.0
+margin_bottom = 31.0
 custom_fonts/font = SubResource( 2 )
-text = "Change Weapon"
+text = "Change
+Weapon"
 
 [node name="ActionLabel" type="Label" parent="TutorialElements/AttackAction1"]
-margin_top = 22.0
-margin_right = 76.0
-margin_bottom = 36.0
+margin_top = 35.0
+margin_right = 37.0
+margin_bottom = 49.0
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialElements/AttackAction1/ActionLabel"]
-margin_left = 41.0
-margin_top = -5.0
-margin_right = 65.0
-margin_bottom = 18.0
+margin_left = 6.0
+margin_top = -3.0
+margin_right = 30.0
+margin_bottom = 20.0
 texture = ExtResource( 3 )
 expand = true
 
 [node name="AttackAction2" type="VBoxContainer" parent="TutorialElements"]
-margin_left = 28.0
-margin_top = -62.0
-margin_right = 62.0
-margin_bottom = -22.0
+margin_left = 13.0
+margin_top = -77.0
+margin_right = 47.0
+margin_bottom = -37.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="TutorialElements/AttackAction2"]
@@ -92,10 +92,10 @@ margin_right = 34.0
 margin_bottom = 36.0
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialElements/AttackAction2/ActionLabel"]
-margin_left = 3.0
-margin_top = -4.0
-margin_right = 28.0
-margin_bottom = 19.0
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 27.0
 texture = ExtResource( 2 )
 expand = true
 

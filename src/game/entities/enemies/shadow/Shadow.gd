@@ -80,7 +80,11 @@ func notify_hit(amount:int) -> void:
 
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
-	dead = true if hp == 0 else false
+	if hp == 0:
+		dead = true 
+		_remove() 
+	else:
+		 false
 	emit_signal("hp_changed", hp, max_hp)
 
 func _remove() -> void:

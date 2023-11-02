@@ -28,7 +28,7 @@ func _ready() -> void:
 func _initialize() -> void:
 	for i in amount:
 		var turret_instance: EnemyShadow = turret_scene.instance()
-		var turret_pos: Vector2 = Vector2(rand_range(global_position.x, global_position.x + extents.x), rand_range(global_position.y, global_position.y + extents.y))
+		var turret_pos: Vector2 = Vector2(rand_range(global_position.x, global_position.x + extents.x), rand_range(global_position.y, global_position.y))
 		turret_instance.initialize(self, turret_pos, self)
 		turret_instance.pathfinding = pathfinding
 

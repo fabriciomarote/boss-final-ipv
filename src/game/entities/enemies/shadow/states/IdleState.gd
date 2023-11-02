@@ -22,7 +22,7 @@ func update(delta:float) -> void:
 
 
 func _on_IdleTimer_timeout():
-	emit_signal("finished", "walk")
+	emit_signal("finished", "fly")
 
 
 func _handle_body_entered(body: Node) -> void:

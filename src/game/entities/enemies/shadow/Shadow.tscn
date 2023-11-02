@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://src/game/entities/enemies/DetectionArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/green_circle.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://src/game/entities/enemies/ShadowStateMachine.gd" type="Script" id=8]
 [ext_resource path="res://src/game/entities/enemies/shadow/states/DieState.gd" type="Script" id=9]
 [ext_resource path="res://src/game/entities/enemies/shadow/states/IdleState.gd" type="Script" id=10]
-[ext_resource path="res://src/game/entities/enemies/shadow/states/WalkState.gd" type="Script" id=11]
+[ext_resource path="res://src/game/entities/enemies/shadow/states/FlyState.gd" type="Script" id=11]
 [ext_resource path="res://src/game/entities/enemies/shadow/Shadow.gd" type="Script" id=12]
 [ext_resource path="res://src/game/entities/enemies/shadow/ShadowProjectile.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/game/entities/enemies/shadow/states/AlertState.gd" type="Script" id=14]
@@ -268,66 +268,6 @@ flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 5888, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=56]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=57]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 256, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=58]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 512, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=59]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 768, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=60]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 1024, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=61]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 1280, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=62]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 1536, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=63]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 1792, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=64]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 2048, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=65]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 2304, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=66]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 2560, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=67]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 2816, 0, 256, 256 )
-
 [sub_resource type="AtlasTexture" id=68]
 flags = 4
 atlas = ExtResource( 5 )
@@ -388,6 +328,66 @@ flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 2816, 0, 256, 256 )
 
+[sub_resource type="AtlasTexture" id=56]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=59]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 768, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1280, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=62]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1536, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=63]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1792, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=64]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 2048, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=65]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 2304, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=66]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 2560, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=67]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 2816, 0, 256, 256 )
+
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
@@ -400,15 +400,15 @@ animations = [ {
 "name": "death",
 "speed": 10.0
 }, {
+"frames": [ SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ) ],
+"loop": true,
+"name": "fly",
+"speed": 10.0
+}, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ) ],
-"loop": true,
-"name": "walk",
-"speed": 10.0
 } ]
 
 [sub_resource type="StyleBoxFlat" id=82]
@@ -425,7 +425,19 @@ bg_color = Color( 0, 0, 0, 1 )
 extents = Vector2( 7, 18.5 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 162.373
+radius = 104.58
+
+[sub_resource type="Animation" id=84]
+resource_name = "alert"
+
+[sub_resource type="Animation" id=85]
+resource_name = "death"
+
+[sub_resource type="Animation" id=86]
+resource_name = "fly"
+
+[sub_resource type="Animation" id=87]
+resource_name = "idle"
 
 [node name="Shadow" type="KinematicBody2D"]
 modulate = Color( 1, 0, 0, 1 )
@@ -433,13 +445,14 @@ collision_layer = 4
 collision_mask = 16
 collision/safe_margin = 3.539
 script = ExtResource( 12 )
+wander_radius = Vector2( 1, 1 )
 projectile_scene = ExtResource( 13 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 8 )
 character_path = NodePath("..")
 START_STATE = NodePath("Idle")
-STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Alert"), NodePath("Die") ]
+STATES_LIST = [ NodePath("Idle"), NodePath("Fly"), NodePath("Alert"), NodePath("Die") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
@@ -449,9 +462,9 @@ state_id = "idle"
 wait_time = 3.0
 one_shot = true
 
-[node name="Walk" type="Node" parent="StateMachine"]
+[node name="Fly" type="Node" parent="StateMachine"]
 script = ExtResource( 11 )
-state_id = "walk"
+state_id = "fly"
 wander_radius = Vector2( 50, 50 )
 speed = 5.0
 max_speed = 100.0
@@ -480,7 +493,7 @@ position = Vector2( 0, -13 )
 scale = Vector2( 0.355469, 0.297526 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
+frame = 4
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -520,6 +533,12 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2( 0, 2 )
 shape = SubResource( 2 )
+
+[node name="BodyAnimation" type="AnimationPlayer" parent="."]
+anims/alert = SubResource( 84 )
+anims/death = SubResource( 85 )
+anims/fly = SubResource( 86 )
+anims/idle = SubResource( 87 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="hp_changed" from="." to="StateMachine" method="_on_Shadow_hp_changed"]

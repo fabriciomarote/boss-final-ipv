@@ -44,10 +44,10 @@ shape = SubResource( 2 )
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TutorialElements"]
-margin_left = -57.0
-margin_top = -69.0
-margin_right = -17.0
-margin_bottom = -29.0
+margin_left = -42.0
+margin_top = -68.0
+margin_right = -2.0
+margin_bottom = -28.0
 
 [node name="ActionName" type="Label" parent="TutorialElements/VBoxContainer"]
 margin_right = 40.0
@@ -64,17 +64,16 @@ align = 1
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialElements/VBoxContainer/ActionLabel"]
 margin_left = 10.0
-margin_top = -9.0
+margin_top = -8.0
 margin_right = 29.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 texture = ExtResource( 1 )
 expand = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="TutorialElements"]
-margin_left = 5.0
-margin_top = -70.0
-margin_right = 67.0
-margin_bottom = -30.0
+margin_top = -69.0
+margin_right = 62.0
+margin_bottom = -29.0
 
 [node name="ActionName" type="Label" parent="TutorialElements/VBoxContainer2"]
 margin_right = 62.0
@@ -90,27 +89,27 @@ margin_bottom = 32.0
 align = 1
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialElements/VBoxContainer2/ActionLabel"]
-margin_left = -4.0
-margin_top = -8.0
-margin_right = 15.0
-margin_bottom = 15.0
+margin_left = 5.0
+margin_top = -7.0
+margin_right = 24.0
+margin_bottom = 16.0
 texture = ExtResource( 1 )
 expand = true
 
 [node name="Label" type="Label" parent="TutorialElements/VBoxContainer2/ActionLabel"]
-margin_left = 16.0
-margin_top = -6.0
-margin_right = 29.0
-margin_bottom = 13.0
+margin_left = 23.0
+margin_top = -5.0
+margin_right = 36.0
+margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
 text = "+"
 align = 1
 
 [node name="ActionTexture2" type="TextureRect" parent="TutorialElements/VBoxContainer2/ActionLabel"]
-margin_left = 30.0
-margin_top = -8.0
-margin_right = 49.0
-margin_bottom = 15.0
+margin_left = 36.0
+margin_top = -7.0
+margin_right = 55.0
+margin_bottom = 16.0
 texture = ExtResource( 1 )
 expand = true
 

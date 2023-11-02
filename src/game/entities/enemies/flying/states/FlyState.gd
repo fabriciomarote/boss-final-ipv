@@ -9,16 +9,14 @@ var path: Array = []
 
 
 func enter() -> void:
-	character._play_animation("walk")
+	print(character)
+	character._play_animation("fly")
 
 
 func exited() -> void:
 	path = []
 	
 func update(delta:float) -> void:
-	
-	if character.target && abs(character.target.global_position.x - character.global_position.x) <= attack_distance_threshold:
-		emit_signal("finished", "alert")
 	
 	if character.navigation_agent != null:
 		var direction:Vector2 = character.global_position.direction_to(

@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/entities/enemies/sprout/Sprout.gd"
 }, {
+"base": "AbstractStateMachine",
+"class": "FlyStateMachine",
+"language": "GDScript",
+"path": "res://src/game/entities/enemies/FlyStateMachine.gd"
+}, {
 "base": "Node",
 "class": "GameLevel",
 "language": "GDScript",
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "EnemyFlying": "",
 "EnemyShadow": "",
 "EnemySprout": "",
+"FlyStateMachine": "",
 "GameLevel": "",
 "Game_State": "",
 "Life": "",
@@ -110,6 +116,7 @@ GameState="*res://src/game/singletons/GameState.gd"
 
 window/size/width=288
 window/size/height=162
+window/size/fullscreen=true
 window/size/test_width=930
 window/size/test_height=520
 mouse_cursor/custom_image="res://assets/textures/items/6.png"

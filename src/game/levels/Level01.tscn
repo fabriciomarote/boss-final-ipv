@@ -25,7 +25,7 @@
 [ext_resource path="res://src/game/ui/VictoryMenu.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=70]
-points = PoolVector2Array( 16, 32, 0, 32, 0, 16, 16, 0 )
+points = PoolVector2Array( 16, 32, 0, 32, 0, 16, 16, 4 )
 
 [sub_resource type="ConvexPolygonShape2D" id=71]
 points = PoolVector2Array( 0, 48, 0, 32, 32, 16, 32, 16, 64, 32, 64, 48 )
@@ -757,23 +757,23 @@ zoom_speed = 5.0
 [node name="Enemies" type="Node2D" parent="Environment/Entities"]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies"]
-position = Vector2( 1373, 194 )
+position = Vector2( 1371, 214 )
 navpoly = SubResource( 92 )
 
 [node name="Sprout" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 1405, 484 )
+position = Vector2( 1406, 483 )
 
 [node name="AstarTilemap" parent="Environment/Entities/Enemies" instance=ExtResource( 10 )]
 position = Vector2( -86, -4 )
 cell_size = Vector2( 16, 16 )
-tile_data = PoolIntArray( 1572974, 1073741824, 0, 1572975, 1073741824, 0, 1572976, 1073741824, 0, 1572977, 1073741824, 0, 1572978, 1073741824, 0, 1572979, 1073741824, 0, 1572980, 1073741824, 0, 1572981, 1073741824, 0, 1572982, 1073741824, 0, 1572983, 1073741824, 0, 1638510, 1073741824, 0, 1638511, 1073741824, 0, 1638512, 1073741824, 0, 1638513, 1073741824, 0, 1638514, 1073741824, 0, 1638515, 1073741824, 0, 1638516, 1073741824, 0, 1638517, 1073741824, 0, 1638518, 1073741824, 0, 1638519, 1073741824, 0, 2490501, 0, 0, 2490502, 0, 0, 2490503, 0, 0, 2490504, 0, 0, 2490505, 0, 0, 2490506, 0, 0, 2490507, 0, 0, 2490508, 0, 0, 2490509, 0, 0, 2490510, 0, 0, 2490511, 0, 0, 2490512, 0, 0, 2490513, 0, 0, 2556037, 0, 0, 2556038, 0, 0, 2556039, 0, 0, 2556040, 0, 0, 2556041, 0, 0, 2556042, 0, 0, 2556043, 0, 0, 2556044, 0, 0, 2556045, 0, 0, 2556046, 0, 0, 2556047, 0, 0, 2556048, 0, 0, 2556049, 0, 0 )
+tile_data = PoolIntArray( 1638509, 0, 0, 1638510, 0, 0, 1638511, 0, 0, 1638512, 0, 0, 1638513, 1073741824, 0, 1638514, 1073741824, 0, 1638515, 0, 0, 1638516, 0, 0, 1638517, 0, 0, 1638518, 0, 0, 1704045, 0, 0, 1704046, 0, 0, 1704047, 0, 0, 1704048, 0, 0, 1704049, 0, 0, 1704050, 0, 0, 1704051, 0, 0, 1704052, 0, 0, 1704053, 0, 0, 1704054, 0, 0, 1769581, 0, 0, 1769582, 0, 0, 1769583, 0, 0, 1769584, 0, 0, 1769585, 0, 0, 1769586, 0, 0, 1769587, 0, 0, 1769588, 0, 0, 1769589, 0, 0, 1769590, 0, 0, 1835117, 0, 0, 1835118, 0, 0, 1835119, 0, 0, 1835120, 0, 0, 1835121, 0, 0, 1835122, 0, 0, 1835123, 0, 0, 1835124, 0, 0, 1835125, 0, 0, 1835126, 0, 0, 1900653, 0, 0, 1900654, 0, 0, 1900655, 0, 0, 1900656, 0, 0, 1900657, 0, 0, 1900658, 0, 0, 1900659, 0, 0, 1900660, 0, 0, 1900661, 0, 0, 1900662, 0, 0, 1966189, 0, 0, 1966190, 0, 0, 1966191, 0, 0, 1966192, 0, 0, 1966193, 0, 0, 1966194, 0, 0, 1966195, 0, 0, 1966196, 0, 0, 1966197, 0, 0, 1966198, 0, 0, 2031725, 0, 0, 2031726, 0, 0, 2031727, 0, 0, 2031728, 0, 0, 2031729, 0, 0, 2031730, 0, 0, 2031731, 0, 0, 2031732, 0, 0, 2031733, 0, 0, 2031734, 0, 0, 2490501, 0, 0, 2490502, 0, 0, 2490503, 0, 0, 2490504, 0, 0, 2490505, 0, 0, 2490506, 0, 0, 2490507, 0, 0, 2490508, 0, 0, 2490509, 0, 0, 2490510, 0, 0, 2490511, 0, 0, 2490512, 0, 0, 2490513, 0, 0, 2556037, 0, 0, 2556038, 0, 0, 2556039, 0, 0, 2556040, 0, 0, 2556041, 0, 0, 2556042, 0, 0, 2556043, 0, 0, 2556044, 0, 0, 2556045, 0, 0, 2556046, 0, 0, 2556047, 0, 0, 2556048, 0, 0, 2556049, 0, 0 )
 
 [node name="ShadowsSpawner" type="Position2D" parent="Environment/Entities/Enemies"]
-position = Vector2( 1678, 376 )
+position = Vector2( 1665, 404 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
-amount = 2
-extents = Vector2( 150, 45 )
+amount = 3
+extents = Vector2( 150, 100 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner2" type="Position2D" parent="Environment/Entities/Enemies"]
@@ -808,6 +808,7 @@ position = Vector2( 895, 483 )
 position = Vector2( 52, 482 )
 
 [node name="Shadow" parent="." instance=ExtResource( 9 )]
+visible = false
 position = Vector2( 1715, 406 )
 
 [connection signal="restart_selected" from="UILayer/PauseMenu" to="." method="_on_restart_requested"]

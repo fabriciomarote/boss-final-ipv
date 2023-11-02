@@ -259,7 +259,7 @@ position = Vector2( 0, -19 )
 scale = Vector2( 0.802409, 0.631673 )
 frames = SubResource( 7 )
 animation = "alert"
-frame = 2
+frame = 1
 playing = true
 
 [node name="DetectionArea" type="Area2D" parent="Pivot"]

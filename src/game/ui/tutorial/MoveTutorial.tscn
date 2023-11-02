@@ -48,10 +48,9 @@ shape = SubResource( 2 )
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="MoveAction1" type="VBoxContainer" parent="TutorialsElements"]
-margin_left = -80.0
-margin_top = -93.0
-margin_right = -7.0
-margin_bottom = -47.0
+margin_left = -73.0
+margin_top = -77.0
+margin_bottom = -31.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="TutorialsElements/MoveAction1"]
@@ -121,10 +120,9 @@ texture = ExtResource( 9 )
 expand = true
 
 [node name="MoveAction3" type="VBoxContainer" parent="TutorialsElements"]
-margin_left = 32.0
-margin_top = -94.0
-margin_right = 105.0
-margin_bottom = -48.0
+margin_top = -77.0
+margin_right = 73.0
+margin_bottom = -31.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="TutorialsElements/MoveAction3"]

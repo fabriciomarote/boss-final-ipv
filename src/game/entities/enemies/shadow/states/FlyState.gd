@@ -22,7 +22,7 @@ func enter() -> void:
 			emit_signal("finished", "idle")
 		else:
 			if character.target == null:
-				character._play_animation("walk")	
+				character._play_animation("fly")	
 	else:
 		emit_signal("finished", "idle")
 
@@ -65,4 +65,4 @@ func _handle_body_exited(body: Node) -> void:
 func _on_amimation_finished(anim_name: String) -> void:
 	match anim_name:
 		"alert":
-			character._play_animation("walk")
+			character._play_animation("fly")
