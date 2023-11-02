@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/HelpMe.woff2" type="DynamicFontData" id=2]
 [ext_resource path="res://src/game/ui/VictoryMenu.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0470588, 0, 0, 0.662745 )
+bg_color = Color( 0.262745, 0, 0, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -18,7 +18,12 @@ corner_radius_bottom_left = 10
 corner_detail = 2
 
 [sub_resource type="DynamicFont" id=3]
+size = 9
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 5.0
@@ -37,7 +42,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=4]
-size = 14
+size = 10
 font_data = ExtResource( 1 )
 
 [node name="VictoryMenu" type="Control"]
@@ -63,9 +68,9 @@ custom_styles/panel = SubResource( 1 )
 [node name="Label" type="Label" parent="Panel"]
 anchor_right = 1.0
 margin_left = 10.0
-margin_top = 17.0
+margin_top = 5.0
 margin_right = -10.0
-margin_bottom = 38.0
+margin_bottom = 26.0
 custom_fonts/font = SubResource( 3 )
 text = "Level Won!"
 align = 1
@@ -75,31 +80,33 @@ valign = 1
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 15.0
-margin_right = -15.0
-margin_bottom = 20.0
+margin_left = 17.0
+margin_top = -13.0
+margin_right = -13.0
+margin_bottom = 34.0
 
-[node name="NextButton" type="Button" parent="Panel/VBoxContainer"]
-visible = false
+[node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
 margin_right = 118.0
-margin_bottom = 20.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Next Level"
+text = "Restart"
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 23.0
 margin_right = 118.0
-margin_bottom = 23.0
+margin_bottom = 42.0
 custom_fonts/font = SubResource( 4 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Return"
+text = "Back to Menu"
 
-[connection signal="pressed" from="Panel/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/RestartButton" to="." method="_on_restart_requested"]
 [connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

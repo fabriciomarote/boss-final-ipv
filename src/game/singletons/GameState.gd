@@ -1,15 +1,6 @@
 extends Node
 class_name Game_State
 
-## Objeto singleton que maneja estados generales del nivel,
-## almacena información entre niveles y ayuda a interconectar
-## estados entre nodos y escenas distantes.
-
-## Este patrón tranquilamente podría reemplazarse por alternativas,
-## como propagación de señales entre padres, o inyección de
-## dependencias, pero pueden crear mucho código repetido o
-## generar mucho acople.
-
 
 ## Señal y variable de ayuda que permite notificar la existencia
 ## del jugador actual a cualquiera interesado
@@ -28,3 +19,9 @@ signal level_won()
 
 func notify_level_won() -> void:
 	emit_signal("level_won")
+
+
+signal input_map_changed()
+
+func notify_input_map_changed() -> void:
+	emit_signal("input_map_changed")
