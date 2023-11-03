@@ -16,6 +16,7 @@ func exit() -> void:
 
 
 func update(delta:float) -> void:
+	character._handle_deacceleration(delta)
 	character._apply_movement()
 	if character._can_see_target():
 		emit_signal("finished", "alert")

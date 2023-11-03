@@ -24,7 +24,7 @@ func update(delta:float) -> void:
 	# Primero detenemos el character para que no se mueva más
 	character._handle_deacceleration(delta)
 	# Aplicamos el movimiento en el personaje
-	character.apply_movement()
+	character._apply_movement()
 	
 	# Y si notamos que puede "ver" al objetivo, entramos en Alert
 	if character._can_see_target():

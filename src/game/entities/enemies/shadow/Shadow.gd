@@ -19,6 +19,8 @@ export (PackedScene) var projectile_scene: PackedScene
 export (NodePath) var pathfinding_path: NodePath
 onready var pathfinding: PathfindAstar = get_node_or_null(pathfinding_path)
 
+export (float) var FRICTION_WEIGHT: float = 6.25
+
 var target: Node2D
 var projectile_container: Node
 
@@ -26,6 +28,7 @@ var velocity: Vector2 = Vector2.ZERO
 
 export (int) var max_hp: int = 5
 var hp: int = max_hp
+
 ## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
 
@@ -52,7 +55,7 @@ func _fire() -> void:
 			fire_position.global_position,
 			fire_position.global_position.direction_to(target.global_position)
 		)
-	
+
 
 func _look_at_target() -> void:
 	body_anim.flip_h = raycast.cast_to.x < 0
@@ -69,13 +72,32 @@ func _apply_movement() -> void:
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 
+func _handle_deacceleration(delta: float) -> void:
+	velocity = velocity.linear_interpolate(Vector2.ZERO, FRICTION_WEIGHT * delta)
+
+
 ## Esta función ya no llama directamente a remove, sino que inhabilita las
 ## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
 ## dependiendo de si el enemigo esta o no alerta
-func notify_hit(amount:int) -> void:
-	print("recibe disparo")
+func notify_hit(amount: int = 1) -> void:
+	#print("recibe disparo")
 	emit_signal("hit", amount)
-	_handle_hit(amount)
+	#_handle_hit(amount)
+
+
+var hp_tween: SceneTreeTween
+
+func _sum_hp(amount: int) -> void:
+	hp = clamp(hp + amount, 0, max_hp)
+	hp_progress.max_value = max_hp
+	hp_progress.value = hp
+	emit_signal("hp_changed", hp, max_hp)
+	
+	if hp_tween:
+		hp_tween.kill()
+	hp_tween = create_tween()
+	hp_progress.modulate = Color.white
+	hp_tween.tween_property(hp_progress, "modulate", Color.transparent, 5.0)
 
 
 func _handle_hit(amount: int) -> void:

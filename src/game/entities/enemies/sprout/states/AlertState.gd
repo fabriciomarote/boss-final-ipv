@@ -16,7 +16,7 @@ func update(delta) -> void:
 	# Primero detenemos el character para que no se mueva más
 	character._handle_deacceleration(delta)
 	# Aplicamos el movimiento en el personaje
-	character.apply_movement()
+	#character._apply_movement()
 
 
 # Abstraemos el proceso de "disparar"

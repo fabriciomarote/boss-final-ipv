@@ -19,8 +19,9 @@ func _on_Sprout_hit(amount) -> void:
 
 
 func notify_hit(amount):
-	print(current_state)
-	current_state.handle_event("hit", amount)
+	#current_state.handle_event("hit", amount)
+	if current_state != $Die:
+		_change_state("die")
 
 
 func _on_Sprout_hp_changed(current_hp, max_hp):

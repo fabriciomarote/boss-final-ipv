@@ -9,10 +9,13 @@ func _on_DetectionArea_body_exited(body):
 
 
 func _on_Body_animation_finished():
-	_on_animation_finished(character.get_current_animation()) # Replace with function body.
+	_on_animation_finished(character.get_current_animation())
+
 
 func notify_hit(amount) -> void:
-	current_state.handle_event("hit", amount)
+	#current_state.handle_event("hit", amount)
+	if current_state != $Die:
+		_change_state("die")
 
 
 func _on_Shadow_hp_changed(hp, max_hp):

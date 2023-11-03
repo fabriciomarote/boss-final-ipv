@@ -65,14 +65,11 @@ func _handle_deacceleration(delta: float) -> void:
 	velocity = velocity.linear_interpolate(Vector2.ZERO, FRICTION_WEIGHT * delta)
 
 
-func apply_movement() -> void:
+func _apply_movement() -> void:
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 
 func notify_hit(amount:int = 1) -> void:
-	print(hp)
-	print("disparo recibido")
-	_handle_hit(amount)
 	emit_signal("hit", amount)
 
 func _handle_hit(amount: int) -> void:

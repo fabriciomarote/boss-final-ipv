@@ -1,7 +1,7 @@
 extends AbstractEnemyState
 
 func enter() -> void:
-	character.velocity = Vector2.ZERO
+	#character.velocity = Vector2.ZERO
 	fire()
 
 
@@ -12,6 +12,8 @@ func fire() -> void:
 
 func update(delta:float) -> void:
 	character._look_at_target()
+	character._handle_deacceleration(delta)
+	character._apply_movement()
 
 
 func _on_animation_finished(anim_name: String) ->  void:

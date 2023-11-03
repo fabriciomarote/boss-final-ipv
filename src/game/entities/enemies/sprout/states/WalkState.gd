@@ -28,4 +28,4 @@ func update(delta:float) -> void:
 		var desired_velocity = direction * character.H_SPEED_LIMIT
 		var steering = (desired_velocity - character.velocity) * delta * character.ACCELERATION
 		character.velocity += steering 
-	character.apply_movement()
+	character._apply_movement()

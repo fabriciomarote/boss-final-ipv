@@ -31,7 +31,7 @@ onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
 
 export (float) var ACCELERATION: float = 10.0
-export (float) var H_SPEED_LIMIT: float = 100.0
+export (float) var H_SPEED_LIMIT: float = 10.0
 export (int) var jump_speed: int = 250
 export (float) var FRICTION_WEIGHT: float = 6.25
 export (int) var gravity: int = 10
@@ -227,7 +227,7 @@ func handle_arrow() -> void:
 
 func handle_velocity() -> void:
 	self.ACCELERATION = 100
-	self.H_SPEED_LIMIT = 500
+	self.H_SPEED_LIMIT = 100
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
