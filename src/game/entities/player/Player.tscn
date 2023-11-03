@@ -1,11 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
 [ext_resource path="res://src/game/entities/player/states/SlideState.gd" type="Script" id=3]
+[ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://src/game/entities/player/states/CatchState.gd" type="Script" id=7]
 [ext_resource path="res://src/game/entities/player/PlayerStateMachine.gd" type="Script" id=12]
 [ext_resource path="res://src/game/entities/player/states/WalkState.gd" type="Script" id=13]
 [ext_resource path="res://src/game/entities/player/states/IdleState.gd" type="Script" id=14]
@@ -121,6 +121,22 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 121, 122 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -336,13 +352,14 @@ state_id = "arrow"
 [node name="Slide" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
 
-[node name="Catch" type="Node" parent="StateMachine"]
-script = ExtResource( 7 )
+[node name="Damage" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
 
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/arrow = SubResource( 11 )
 anims/axe = SubResource( 12 )
+anims/damage = SubResource( 19 )
 anims/death = SubResource( 8 )
 anims/fall = SubResource( 7 )
 anims/idle = SubResource( 4 )

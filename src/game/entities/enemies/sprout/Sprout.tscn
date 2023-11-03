@@ -246,7 +246,7 @@ custom_styles/fg = SubResource( 107 )
 custom_styles/bg = SubResource( 108 )
 max_value = 3.0
 step = 1.0
-value = 1.0
+value = 3.0
 percent_visible = false
 
 [node name="RayCast2D" type="RayCast2D" parent="Pivot"]
@@ -259,7 +259,6 @@ position = Vector2( 0, -19 )
 scale = Vector2( 0.802409, 0.631673 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="DetectionArea" type="Area2D" parent="Pivot"]
