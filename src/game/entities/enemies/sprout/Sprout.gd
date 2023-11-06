@@ -14,7 +14,6 @@ onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 export (float) var ACCELERATION: float = 10.0
 export (float) var H_SPEED_LIMIT: float = 30.0
 
-
 export (float) var FRICTION_WEIGHT: float = 6.25
 export (Vector2) var wander_radius: Vector2 = Vector2(10.0, 10.0)
 export (float) var speed:float  = 30.0
@@ -40,15 +39,15 @@ func initialize(container, turret_pos, projectile_container) -> void:
 	container.add_child(self)
 	global_position = turret_pos
 	self.projectile_container = projectile_container
-	
+
 
 func _fire() -> void:
 	pass
-	
+
 
 func _look_at_target() -> void:
 	if target != null:
-		pivot.scale.x = -1 if target.global_position.x > global_position.x else 1
+		pivot.scale.x = 1 if target.global_position.x > global_position.x else -1
 	else:
 		pivot.scale.x = -1 if velocity.x > 0 else 1
 
@@ -69,17 +68,25 @@ func _apply_movement() -> void:
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 
-func notify_hit(amount:int = 1) -> void:
+func notify_hit(amount:int) -> void:
 	emit_signal("hit", amount)
+
+
+var hp_tween: SceneTreeTween
 
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
-	if hp == 0:
-		dead = true 
-		_remove() 
-	else:
-		 false
+	hp_progress.max_value = max_hp
+	hp_progress.value = hp
+	dead = true if hp == 0 else false
 	emit_signal("hp_changed", hp, max_hp)
+	
+	if hp_tween:
+		hp_tween.kill()
+	hp_tween = create_tween()
+	hp_progress.modulate = Color.white
+	hp_tween.tween_property(hp_progress, "modulate", Color.transparent, 5.0)
+
 
 func _remove() -> void:
 	dead = true

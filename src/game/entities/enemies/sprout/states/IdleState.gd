@@ -63,3 +63,13 @@ func _on_animation_finished(anim_name: String) -> void:
 
 func _on_Timer_timeout():
 	emit_signal("finished", "walk")
+
+
+func handle_event(event: String, value = null) -> void:
+	match event:
+		"hit":
+			character._handle_hit(value)
+			emit_signal("finished", "damage")
+		"hp_changed":
+			if value[0] == 0:
+				emit_signal("finished", "die")

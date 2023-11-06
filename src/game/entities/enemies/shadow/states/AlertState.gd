@@ -35,3 +35,13 @@ func _handle_body_exited(node: Node) -> void:
 	if character.target == null:
 		if character.get_current_animation() != "attack":
 			emit_signal("finished", "idle")
+
+
+func handle_event(event: String, value = null) -> void:
+	match event:
+		"hit":
+			character._handle_hit(value)
+			emit_signal("finished", "damage")
+		"hp_changed":
+			if value[0] == 0:
+				emit_signal("finished", "die")

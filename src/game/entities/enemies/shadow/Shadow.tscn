@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://src/game/entities/enemies/DetectionArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/green_circle.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://src/game/entities/enemies/shadow/Shadow.gd" type="Script" id=12]
 [ext_resource path="res://src/game/entities/enemies/shadow/ShadowProjectile.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/game/entities/enemies/shadow/states/AlertState.gd" type="Script" id=14]
+[ext_resource path="res://assets/textures/enemies/shadow/Enemy-Melee-Damage-S.png" type="Texture" id=15]
+[ext_resource path="res://src/game/entities/enemies/shadow/states/DamageState.gd" type="Script" id=16]
 
 [sub_resource type="CanvasItemMaterial" id=81]
 blend_mode = 1
@@ -147,6 +149,16 @@ region = Rect2( 5632, 0, 256, 256 )
 flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 5888, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=89]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=88]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=32]
 flags = 4
@@ -395,6 +407,11 @@ animations = [ {
 "name": "attack",
 "speed": 40.0
 }, {
+"frames": [ SubResource( 89 ), SubResource( 88 ) ],
+"loop": true,
+"name": "damage",
+"speed": 5.05
+}, {
 "frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
 "name": "death",
@@ -452,7 +469,7 @@ projectile_scene = ExtResource( 13 )
 script = ExtResource( 8 )
 character_path = NodePath("..")
 START_STATE = NodePath("Idle")
-STATES_LIST = [ NodePath("Idle"), NodePath("Fly"), NodePath("Alert"), NodePath("Die") ]
+STATES_LIST = [ NodePath("Idle"), NodePath("Fly"), NodePath("Alert"), NodePath("Die"), NodePath("Damage") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
@@ -477,30 +494,35 @@ state_id = "alert"
 script = ExtResource( 9 )
 state_id = "die"
 
+[node name="Damage" type="Node" parent="StateMachine"]
+script = ExtResource( 16 )
+state_id = "damage"
+
 [node name="FirePosition" type="Position2D" parent="."]
 position = Vector2( 0, -18.0339 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 modulate = Color( 0.294118, 0.00784314, 0.00784314, 1 )
 material = SubResource( 81 )
-position = Vector2( -2, -17 )
+position = Vector2( 0, -19 )
 scale = Vector2( 0.11, 0.11 )
+amount = 20
 process_material = SubResource( 80 )
 texture = ExtResource( 4 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -13 )
-scale = Vector2( 0.355469, 0.297526 )
+position = Vector2( 2, -16 )
+scale = Vector2( 0.416016, 0.359701 )
 frames = SubResource( 7 )
-animation = "idle"
-frame = 11
+animation = "damage"
+frame = 1
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
-margin_left = -10.0
-margin_top = 7.0
-margin_right = 10.0
-margin_bottom = 10.0
+margin_left = -8.0
+margin_top = 14.0
+margin_right = 12.0
+margin_bottom = 17.0
 custom_styles/fg = SubResource( 82 )
 custom_styles/bg = SubResource( 83 )
 max_value = 5.0
@@ -509,6 +531,7 @@ value = 3.0
 percent_visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -14 )
 shape = SubResource( 1 )
 
@@ -518,6 +541,7 @@ cast_to = Vector2( 0, 0 )
 collision_mask = 3
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( 4, -12 )
 collision_layer = 0
 collision_mask = 2
@@ -530,7 +554,7 @@ scale = Vector2( 0.561667, 0.595 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2( 0, 2 )
+position = Vector2( -3, 1 )
 shape = SubResource( 2 )
 
 [node name="BodyAnimation" type="AnimationPlayer" parent="."]

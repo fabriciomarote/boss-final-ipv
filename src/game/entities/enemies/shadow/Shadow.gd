@@ -8,6 +8,7 @@ onready var fire_position: Node2D = $FirePosition
 onready var raycast: RayCast2D = $RayCast2D
 onready var body_anim: AnimatedSprite = $Body
 onready var hp_progress: ProgressBar = $HpProgress
+onready var particles_2d: Particles2D = $Particles2D
 
 export (float) var pathfinding_step_threshold:float = 5.0
 
@@ -36,7 +37,7 @@ var dead: bool = false
 func _ready() -> void:
 	hp_progress.max_value = max_hp
 	hp_progress.value = hp
-	#hp_progress.modulate = Color.transparent
+	hp_progress.modulate = Color.transparent
 
 
 func initialize(container, turret_pos, projectile_container) -> void:
@@ -79,18 +80,17 @@ func _handle_deacceleration(delta: float) -> void:
 ## Esta función ya no llama directamente a remove, sino que inhabilita las
 ## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
 ## dependiendo de si el enemigo esta o no alerta
-func notify_hit(amount: int = 1) -> void:
-	#print("recibe disparo")
+func notify_hit(amount: int) -> void:
 	emit_signal("hit", amount)
-	#_handle_hit(amount)
 
 
 var hp_tween: SceneTreeTween
 
-func _sum_hp(amount: int) -> void:
-	hp = clamp(hp + amount, 0, max_hp)
+func _handle_hit(amount: int) -> void:
+	hp = max(0, hp - amount)
 	hp_progress.max_value = max_hp
 	hp_progress.value = hp
+	dead = true if hp == 0 else false
 	emit_signal("hp_changed", hp, max_hp)
 	
 	if hp_tween:
@@ -100,16 +100,8 @@ func _sum_hp(amount: int) -> void:
 	hp_tween.tween_property(hp_progress, "modulate", Color.transparent, 5.0)
 
 
-func _handle_hit(amount: int) -> void:
-	hp = max(0, hp - amount)
-	if hp == 0:
-		dead = true 
-		_remove() 
-	else:
-		 false
-	emit_signal("hp_changed", hp, max_hp)
-
 func _remove() -> void:
+	particles_2d.queue_free()
 	get_parent().remove_child(self)
 	queue_free()
 

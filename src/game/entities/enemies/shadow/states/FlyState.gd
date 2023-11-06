@@ -66,3 +66,13 @@ func _on_amimation_finished(anim_name: String) -> void:
 	match anim_name:
 		"alert":
 			character._play_animation("fly")
+
+
+func handle_event(event: String, value = null) -> void:
+	match event:
+		"hit":
+			character._handle_hit(value)
+			emit_signal("finished", "damage")
+		"hp_changed":
+			if value[0] == 0:
+				emit_signal("finished", "die")

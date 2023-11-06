@@ -13,9 +13,7 @@ func _on_Body_animation_finished():
 
 
 func notify_hit(amount) -> void:
-	#current_state.handle_event("hit", amount)
-	if current_state != $Die:
-		_change_state("die")
+	current_state.handle_event("hit", amount)
 
 
 func _on_Shadow_hp_changed(hp, max_hp):

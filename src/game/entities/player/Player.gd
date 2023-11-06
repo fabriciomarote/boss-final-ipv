@@ -9,10 +9,12 @@ class_name Player
 signal hit(amount)
 signal healed(amount)
 signal hp_changed(current_hp, max_hp)
+
 signal stamina_changed(current_stamina, max_stamina)
 signal arrow_changed(amount)
 signal weapon_changed(weapon)
 signal dead()
+signal damage()
 
 signal grounded_change(is_grounded)
 signal sliding_change(is_sliding)
@@ -29,6 +31,7 @@ onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
+onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
 
 export (float) var ACCELERATION: float = 20.0
 export (float) var H_SPEED_LIMIT: float = 70.0
@@ -50,6 +53,7 @@ var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
 var arrowAmount: int = 5
+var is_attacked = false
 
 export (int) var max_hp: int = 5
 var hp: int = max_hp
@@ -67,6 +71,7 @@ var dead: bool = false
 func _ready() -> void:
 	initialize()
 
+
 func initialize(projectile_container: Node = get_parent()) -> void:
 	attackHandlers = {
 		attackModes.AXE: "AxeAttack",
@@ -79,11 +84,13 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	emit_signal("weapon_changed", currentAttackMode)
 	GameState.set_current_player(self)
 
+
 func fire() -> void:
 	if !body_animations.is_playing(): #and contiene flecha:
 		## Mato al tween antes de disparar para que no me cambie la rotación
 		if fire_tween != null:
 			fire_tween.kill()
+
 
 ## La animación de disparo llama a esta función que va a ser la que instancie
 ## el proyectil
@@ -97,6 +104,7 @@ func _fire() -> void:
 	)
 	subtract_arrow_quantity()
 
+
 func subtract_arrow_quantity() -> void:
 	if arrowAmount == 0:
 		arrowAmount = 0
@@ -104,21 +112,41 @@ func subtract_arrow_quantity() -> void:
 		arrowAmount -= 1
 	emit_signal("arrow_changed", arrowAmount)
 
-## Se extrae el comportamiento del manejo del movimiento horizontal
-## a una función para ser llamada apropiadamente desde la state machine
+
 func _handle_move_input() -> void:
 	move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if move_direction != 0:
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
 		body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
 
-## Se extrae el comportamiento del manejo de la aplicación de fricción
-## a una función para ser llamada apropiadamente desde la state machine
+
 func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
+
+func move_is_attackingAxe() -> void:
+	print(body_pivot.scale.x)
+	if move_direction > 0 || (move_direction == 0 && body_pivot.scale.x > 0):
+		move_direction = 5
+	if move_direction < 0 || (move_direction == 0 && body_pivot.scale.x < 0):
+		move_direction -5
+	velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+	body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
+
+
+func move_is_attackingBow() -> void:
+	print(body_pivot.scale.x)
+	if !is_on_floor() || (move_direction == 0 && body_pivot.scale.x > 0):
+		move_direction = -5
+	if !is_on_floor() || (move_direction == 0 && body_pivot.scale.x < 0):
+		move_direction = -10
+	velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+	body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
+
+
 func is_near_wall():
 	return object_check.is_colliding()
+
 
 func is_sliding():
 	if  !is_near_wall() && floor_raycasts[0].is_colliding() && !floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
@@ -127,6 +155,7 @@ func is_sliding():
 		return -1
 	else:
 		return 0 
+
 
 func _change_attack_mode():
 	if Input.is_action_just_pressed("change_attack"):
@@ -142,8 +171,8 @@ func _change_attack_mode():
 
 ## Se extrae el comportamiento de la aplicación de gravedad y movimiento
 ## a una función para ser llamada apropiadamente desde la state machine
-func _apply_movement() -> void:
-	velocity.y += gravity
+func _apply_movement(with_gravity: bool = true) -> void:
+	velocity.y += gravity * float(with_gravity)
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, stop_on_slope, 4, SLOPE_THRESHOLD)
 	if is_on_floor() && snap_vector == Vector2.ZERO:
 		snap_vector = SNAP_DIRECTION * SNAP_LENGTH
@@ -167,6 +196,10 @@ func is_on_floor() -> bool:
 ## los casos de estados en los cuales no se manejan hits
 func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
+
+
+func notify_heal(amount: int = 1) -> void:
+	emit_signal("healed", amount)
 
 
 func notify_dead() -> void:
@@ -214,7 +247,6 @@ func _handle_hit(amount: int) -> void:
 	emit_signal("hp_changed", hp, max_hp)
 
 
-# El llamado a remove final
 func _remove() -> void:
 	set_physics_process(false)
 	collision_layer = 0
@@ -229,8 +261,7 @@ func handle_velocity() -> void:
 	self.ACCELERATION = 100
 	self.H_SPEED_LIMIT = 450
 
-## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
-## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
+
 func _play_animation(animation: String) -> void:
 	if body_animations.has_animation(animation):
 		body_animations.play(animation)

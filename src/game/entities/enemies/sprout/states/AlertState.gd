@@ -5,8 +5,7 @@ extends AbstractEnemyState
 
 
 func enter() -> void:
-	# Luego triggereamos un disparo y reproducimos la animación
-	fire()
+	character._play_animation("attack")
 
 
 func update(delta) -> void:
@@ -16,12 +15,12 @@ func update(delta) -> void:
 	# Primero detenemos el character para que no se mueva más
 	character._handle_deacceleration(delta)
 	# Aplicamos el movimiento en el personaje
-	#character._apply_movement()
+	character._apply_movement()
 
 
 # Abstraemos el proceso de "disparar"
 func fire() -> void:
-	character._fire()
+	#character._fire()
 	character._play_animation("attack")
 
 
@@ -57,3 +56,13 @@ func _handle_body_exited(body) -> void:
 	if character.target == null:
 		if character.get_current_animation() != "attack":
 			emit_signal("finished", "idle")
+
+
+func handle_event(event: String, value = null) -> void:
+	match event:
+		"hit":
+			character._handle_hit(value)
+			emit_signal("finished", "damage")
+		"hp_changed":
+			if value[0] == 0:
+				emit_signal("finished", "die")
