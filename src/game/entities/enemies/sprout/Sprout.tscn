@@ -1,315 +1,321 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
-[ext_resource path="res://src/game/entities/enemies/sprout/states/DamageState.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/enemies/Sprout/Move/Sprout_move.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/enemies/Sprout/Death/Sprout-death.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/enemies/Sprout/Damage/Sprout-damage.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/enemies/Sprout/Attack/Sprout_attack.png" type="Texture" id=5]
-[ext_resource path="res://assets/textures/enemies/Sprout/Idle/Sprout_idle.png" type="Texture" id=6]
-[ext_resource path="res://src/game/entities/enemies/SproutStateMachine.gd" type="Script" id=7]
-[ext_resource path="res://src/game/entities/enemies/sprout/states/IdleState.gd" type="Script" id=8]
-[ext_resource path="res://src/game/entities/enemies/sprout/states/AlertState.gd" type="Script" id=9]
-[ext_resource path="res://src/game/entities/enemies/sprout/Sprout.gd" type="Script" id=10]
+[ext_resource path="res://src/game/entities/enemies/sprout/SproutProjectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/enemies/sprout/Move/Sprout_move.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/enemies/sprout/Damage/Sprout-damage.png" type="Texture" id=3]
+[ext_resource path="res://src/game/entities/enemies/sprout/Sprout.gd" type="Script" id=4]
+[ext_resource path="res://src/game/entities/enemies/PodStateMachine.gd" type="Script" id=5]
+[ext_resource path="res://src/game/entities/enemies/sprout/states/DieState.gd" type="Script" id=6]
+[ext_resource path="res://src/game/entities/enemies/sprout/states/AlertState.gd" type="Script" id=7]
+[ext_resource path="res://src/game/entities/enemies/sprout/states/AttackState.gd" type="Script" id=8]
+[ext_resource path="res://src/game/entities/enemies/sprout/states/DamageState.gd" type="Script" id=9]
+[ext_resource path="res://src/game/entities/enemies/sprout/states/IdleState.gd" type="Script" id=10]
 [ext_resource path="res://src/game/entities/enemies/sprout/states/WalkState.gd" type="Script" id=11]
-[ext_resource path="res://src/game/entities/enemies/sprout/states/DieState.gd" type="Script" id=12]
+[ext_resource path="res://assets/textures/enemies/sprout/Attack/Sprout_attack.png" type="Texture" id=12]
+[ext_resource path="res://assets/textures/enemies/sprout/Death/Sprout-death.png" type="Texture" id=13]
+[ext_resource path="res://assets/textures/enemies/sprout/Idle/Sprout_idle.png" type="Texture" id=14]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 35 )
+[sub_resource type="RectangleShape2D" id=81]
+extents = Vector2( 31.4288, 67 )
 
-[sub_resource type="StyleBoxFlat" id=107]
-bg_color = Color( 0.47451, 0.290196, 0, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_bottom = 1
-border_color = Color( 0.227451, 0.105882, 0.00392157, 1 )
+[sub_resource type="StyleBoxFlat" id=104]
+bg_color = Color( 0.338867, 0.153037, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=108]
+[sub_resource type="StyleBoxFlat" id=103]
 bg_color = Color( 0, 0, 0, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.227451, 0.105882, 0.00392157, 1 )
-
-[sub_resource type="AtlasTexture" id=104]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 96, 96 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [sub_resource type="AtlasTexture" id=105]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 96, 96, 96 )
+region = Rect2( 0, 0, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=106]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 192, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=84]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=85]
-flags = 4
-atlas = ExtResource( 5 )
 region = Rect2( 0, 96, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=86]
+[sub_resource type="AtlasTexture" id=107]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 192, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=87]
+[sub_resource type="AtlasTexture" id=108]
 flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 288, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=88]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 384, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=89]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 480, 96, 96 )
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=109]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 96, 96 )
+atlas = ExtResource( 12 )
+region = Rect2( 0, 96, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=110]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 96, 96, 96 )
+atlas = ExtResource( 12 )
+region = Rect2( 0, 192, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=111]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 192, 96, 96 )
+atlas = ExtResource( 12 )
+region = Rect2( 0, 288, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=112]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 288, 96, 96 )
+atlas = ExtResource( 12 )
+region = Rect2( 0, 384, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=113]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 384, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=90]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=91]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 96, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=92]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 192, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=93]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 288, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=94]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 384, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=95]
-flags = 4
-atlas = ExtResource( 3 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 480, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=96]
+[sub_resource type="AtlasTexture" id=132]
 flags = 4
 atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=133]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=134]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 192, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=135]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 288, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=136]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 384, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=114]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=115]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=116]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 192, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=117]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 288, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=118]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 384, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=119]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 480, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=120]
+flags = 4
+atlas = ExtResource( 13 )
 region = Rect2( 0, 576, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=97]
+[sub_resource type="AtlasTexture" id=121]
 flags = 4
-atlas = ExtResource( 3 )
+atlas = ExtResource( 13 )
 region = Rect2( 0, 672, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=80]
-atlas = ExtResource( 6 )
+[sub_resource type="AtlasTexture" id=122]
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=81]
-atlas = ExtResource( 6 )
+[sub_resource type="AtlasTexture" id=123]
+atlas = ExtResource( 14 )
 region = Rect2( 0, 96, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=82]
-atlas = ExtResource( 6 )
+[sub_resource type="AtlasTexture" id=124]
+atlas = ExtResource( 14 )
 region = Rect2( 0, 192, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=83]
-atlas = ExtResource( 6 )
+[sub_resource type="AtlasTexture" id=125]
+atlas = ExtResource( 14 )
 region = Rect2( 0, 288, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=98]
+[sub_resource type="AtlasTexture" id=126]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=99]
+[sub_resource type="AtlasTexture" id=127]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 96, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=100]
+[sub_resource type="AtlasTexture" id=128]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 192, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=101]
+[sub_resource type="AtlasTexture" id=129]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 288, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=102]
+[sub_resource type="AtlasTexture" id=130]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 384, 96, 96 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=80]
 animations = [ {
-"frames": [ SubResource( 104 ), SubResource( 105 ), SubResource( 106 ) ],
-"loop": true,
+"frames": [ SubResource( 105 ), SubResource( 106 ), SubResource( 107 ) ],
+"loop": false,
 "name": "alert",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
-"loop": true,
+"frames": [ SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ) ],
+"loop": false,
 "name": "attack",
-"speed": 10.0
+"speed": 20.0
 }, {
-"frames": [ SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ) ],
-"loop": true,
+"frames": [ SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ) ],
+"loop": false,
 "name": "damage",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
-"loop": true,
-"name": "death",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
+"frames": [ SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ) ],
+"loop": false,
+"name": "die",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ) ],
 "loop": true,
 "name": "idle",
-"speed": 10.0
+"speed": 5.0
 }, {
-"frames": [ SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ) ],
+"frames": [ SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ) ],
 "loop": true,
 "name": "walk",
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=103]
-extents = Vector2( 162.5, 43.375 )
+[sub_resource type="RectangleShape2D" id=131]
+extents = Vector2( 331, 69 )
 
 [node name="Sprout" type="KinematicBody2D"]
-light_mask = 3
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 19
-collision/safe_margin = 3.539
-script = ExtResource( 10 )
-speed = 100.0
+script = ExtResource( 4 )
+projectile_scene = ExtResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 5 )
 character_path = NodePath("..")
-START_STATE = NodePath("Idle")
-STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Alert"), NodePath("Die"), NodePath("Damage") ]
+START_STATE = NodePath("Walk")
+STATES_LIST = [ NodePath("Idle"), NodePath("Die"), NodePath("Walk"), NodePath("Alert"), NodePath("Attack"), NodePath("Damage") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 state_id = "idle"
+
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+state_id = "die"
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource( 11 )
 state_id = "walk"
 
 [node name="Alert" type="Node" parent="StateMachine"]
-script = ExtResource( 9 )
+script = ExtResource( 7 )
 state_id = "alert"
 
 [node name="Timer" type="Timer" parent="StateMachine/Alert"]
 wait_time = 2.0
 one_shot = true
 
-[node name="Die" type="Node" parent="StateMachine"]
-script = ExtResource( 12 )
-state_id = "die"
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+state_id = "attack"
 
 [node name="Damage" type="Node" parent="StateMachine"]
-script = ExtResource( 1 )
+script = ExtResource( 9 )
 state_id = "damage"
-
-[node name="FirePosition" type="Position2D" parent="."]
-position = Vector2( 0, -18.0339 )
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 3 )
-shape = SubResource( 1 )
+position = Vector2( -8.5712, 5 )
+shape = SubResource( 81 )
 
 [node name="Pivot" type="Node2D" parent="."]
+position = Vector2( 0, -1 )
 
 [node name="HUD" type="Node2D" parent="Pivot"]
+position = Vector2( 0, -5.36442e-07 )
 
 [node name="Control" type="Control" parent="Pivot/HUD"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -16.0
+margin_top = -40.0
+margin_right = 16.0
+margin_bottom = -35.0
 
 [node name="HpProgress" type="ProgressBar" parent="Pivot/HUD/Control"]
-margin_left = -16.0
-margin_top = -51.0
-margin_right = 17.0
-margin_bottom = -48.0
-custom_styles/fg = SubResource( 107 )
-custom_styles/bg = SubResource( 108 )
-max_value = 3.0
+margin_left = -4.0
+margin_top = -53.0
+margin_right = 28.0
+margin_bottom = -50.0
+custom_styles/fg = SubResource( 104 )
+custom_styles/bg = SubResource( 103 )
+max_value = 10.0
 step = 1.0
-value = 3.0
+value = 5.0
+rounded = true
 percent_visible = false
 
+[node name="FirePosition" type="Position2D" parent="Pivot"]
+position = Vector2( -74, 55 )
+
 [node name="RayCast2D" type="RayCast2D" parent="Pivot"]
+position = Vector2( 0, 1 )
 cast_to = Vector2( -120, 0 )
 collision_mask = 3
 
 [node name="Body" type="AnimatedSprite" parent="Pivot"]
-position = Vector2( 0, -3.8147e-06 )
-scale = Vector2( 1.52478, 1.30208 )
-frames = SubResource( 7 )
+position = Vector2( 0, 1 )
+scale = Vector2( 3.22917, 2.54167 )
+frames = SubResource( 80 )
 animation = "damage"
-frame = 2
+frame = 4
 playing = true
+flip_h = true
 
 [node name="DetectionArea" type="Area2D" parent="Pivot"]
-visible = false
-position = Vector2( 4, -12 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DetectionArea"]
-position = Vector2( -4, 12 )
-shape = SubResource( 103 )
+position = Vector2( -1, 2 )
+shape = SubResource( 131 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="hp_changed" from="." to="StateMachine" method="_on_Sprout_hp_changed"]
-[connection signal="timeout" from="StateMachine/Alert/Timer" to="StateMachine/Idle" method="_on_Timer_timeout"]
+[connection signal="timeout" from="StateMachine/Alert/Timer" to="StateMachine/Alert" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Pivot/Body" to="StateMachine" method="_on_Body_animation_finished"]
 [connection signal="body_entered" from="Pivot/DetectionArea" to="StateMachine" method="_on_DetectionArea_body_entered"]
 [connection signal="body_exited" from="Pivot/DetectionArea" to="StateMachine" method="_on_DetectionArea_body_exited"]

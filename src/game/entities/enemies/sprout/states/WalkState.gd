@@ -3,7 +3,7 @@ extends AbstractEnemyState
 export (float) var speed:float
 export (float) var max_speed:float
 
-var attack_distance_threshold:int = 100
+var attack_distance_threshold:int = 150
 
 var path: Array = []
 
@@ -14,8 +14,7 @@ func enter() -> void:
 
 func exited() -> void:
 	path = []
-
-
+	
 func update(delta:float) -> void:
 	
 	if character.target && abs(character.target.global_position.x - character.global_position.x) <= attack_distance_threshold:
@@ -32,6 +31,7 @@ func update(delta:float) -> void:
 
 
 func handle_event(event: String, value = null) -> void:
+	.handle_event(event,value)
 	match event:
 		"hit":
 			character._handle_hit(value)

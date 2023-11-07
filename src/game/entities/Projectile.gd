@@ -8,7 +8,7 @@ onready var lifetime_timer: Timer = $LifetimeTimer
 onready var hitbox: Area2D = $Hitbox
 onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
 
-export (float) var VELOCITY: float = 200.0
+export (float) var VELOCITY: float = 50.0
 
 var direction: Vector2
 
@@ -39,7 +39,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_lifetime_timer_timeout() -> void:
 	remove()
-
 
 func remove() -> void:
 	hitbox.collision_mask = 0
