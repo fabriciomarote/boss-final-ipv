@@ -1,34 +1,40 @@
-## Este estado hereda de un State intermedio llamado AbstractEnemyState
-## que extiende la interfaz de State con comportamientos específicos
-## (se puede abrir el script con Ctrl+click)
 extends AbstractEnemyState
 
+onready var timer:Timer = $Timer
+var attack_distance_threshold:int = 100
 
 func enter() -> void:
-	character._play_animation("attack")
+	character.velocity = Vector2.ZERO
+	character._play_animation("alert")
+	attack()
+	timer.connect("timeout", self, "_on_timer_timeout")
+	timer.start()
 
 
 func update(delta) -> void:
-	# Solo nos encargamos de mirar al "target" (o el último punto que se lo vio)
 	character._look_at_target()
-	
-	# Primero detenemos el character para que no se mueva más
-	character._handle_deacceleration(delta)
-	# Aplicamos el movimiento en el personaje
-	character._apply_movement()
 
 
-# Abstraemos el proceso de "disparar"
-func fire() -> void:
+func exit() -> void:
+	timer.stop()
+
+
+func attack() -> void:
 	#character._fire()
 	character._play_animation("attack")
+
+
+func should_attack() -> bool:
+	var abs_position_diff: int
+	if character.target != null:
+		abs_position_diff = abs(character.target.global_position.x - character.global_position.x)
+	return abs_position_diff <= attack_distance_threshold
 
 
 ## Usamos la duración de las animaciones como "trigger" para iniciar otras
 ## acciones. Quizás no sea lo óptimo, pero genera una sensación de "progresión".
 ## Se podría meter un Timer para manejarlo de otra manera también
 func _on_animation_finished(anim_name: String) -> void:
-	# Si el objetivo salio del rango de disparo, regresamos a Idle
 	if character.target == null:
 		emit_signal("finished", "idle")
 	else:
@@ -41,24 +47,21 @@ func _on_animation_finished(anim_name: String) -> void:
 			## podemos seguir disparando o regresamos a Idle
 			"alert":
 				if character._can_see_target():
-					fire()
+					attack()
 				else:
 					emit_signal("finished", "idle")
 
 
-func _handle_body_exited(body) -> void:
-	._handle_body_exited(body)
-	
-	## Este paso es interesante y hace sinergia con el callback de _on_animation_finished
-	## si no hay personaje, y no esta en animación de "cooldown", regresa a Idle
-	## sino, no hace nada y deja que corra la animación su curso hasta que termine
-	## de esa manera genera una sensación de flujo más "natural"
-	if character.target == null:
-		if character.get_current_animation() != "attack":
-			emit_signal("finished", "idle")
+func _on_timer_timeout() -> void:
+	if !should_attack():
+		timer.stop()
+		emit_signal("finished", "walk")
+	else:
+		attack()
 
 
 func handle_event(event: String, value = null) -> void:
+	.handle_event(event,value)
 	match event:
 		"hit":
 			character._handle_hit(value)
@@ -66,3 +69,4 @@ func handle_event(event: String, value = null) -> void:
 		"hp_changed":
 			if value[0] == 0:
 				emit_signal("finished", "die")
+

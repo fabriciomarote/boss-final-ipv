@@ -99,7 +99,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
@@ -214,7 +214,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle"
-length = 0.75
+length = 0.2
 loop = true
 step = 0.15
 tracks/0/type = "value"
@@ -236,10 +236,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 51, 50, 51, 50, 51 ]
+"values": [ 51 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -351,7 +351,7 @@ projectile_scene = ExtResource( 5 )
 script = ExtResource( 12 )
 character_path = NodePath("..")
 START_STATE = NodePath("Idle")
-STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("Sword"), NodePath("Arrow") ]
+STATES_LIST = [ NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("Sword"), NodePath("Arrow"), NodePath("Damage") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
@@ -382,6 +382,7 @@ script = ExtResource( 3 )
 
 [node name="Damage" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
+state_id = "damage"
 
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/game/ui/HUDManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui/GUISprite.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/items/axe.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/items/bow.png" type="Texture" id=4]
 [ext_resource path="res://assets/textures/ui/Newstuff.png" type="Texture" id=5]
-[ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/textures/items/infinity.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -33,11 +33,6 @@ region = Rect2( 80.2449, 15.9627, 15.5886, 16.0383 )
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
 region = Rect2( 116.915, 31.9912, 20.1764, 20.1764 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 4
-outline_color = Color( 0.960784, 0.960784, 0.960784, 1 )
-font_data = ExtResource( 6 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -96,14 +91,10 @@ position = Vector2( 52, 14 )
 scale = Vector2( 0.8, 0.8 )
 texture = SubResource( 13 )
 
-[node name="Counter" type="Label" parent="StatsContainer/Panel"]
-modulate = Color( 0.529412, 0.501961, 0.501961, 1 )
-margin_left = 59.0
-margin_top = 18.0
-margin_right = 62.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 14 )
-text = "3"
+[node name="Counter" type="Sprite" parent="StatsContainer/Panel"]
+position = Vector2( 59, 21 )
+scale = Vector2( 0.00416667, 0.00551122 )
+texture = ExtResource( 6 )
 
 [node name="Bow" type="Sprite" parent="StatsContainer/Panel"]
 modulate = Color( 0.909804, 0.909804, 0.909804, 1 )

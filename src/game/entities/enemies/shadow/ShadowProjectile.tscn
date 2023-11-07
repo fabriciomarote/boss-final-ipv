@@ -135,9 +135,10 @@ tracks/3/keys = {
 radius = 2.23607
 
 [node name="TurretProjectile" instance=ExtResource( 3 )]
+VELOCITY = 250.0
 
 [node name="LifetimeTimer" parent="." index="0"]
-wait_time = 2.423
+wait_time = 3.0
 
 [node name="ProjectileAnimations" parent="." index="1"]
 anims/RESET = SubResource( 8 )
@@ -154,9 +155,9 @@ shape = SubResource( 1 )
 [node name="Body" type="Node2D" parent="." index="3"]
 
 [node name="Sprite" type="Sprite" parent="Body" index="0"]
-modulate = Color( 0.215686, 0, 0, 1 )
+modulate = Color( 0.478431, 0, 0, 1 )
 position = Vector2( -1, -5 )
-scale = Vector2( 0.0817656, 0.0895474 )
+scale = Vector2( 0.113336, 0.14894 )
 texture = ExtResource( 2 )
 
 [node name="Fx" type="Sprite" parent="." index="4"]

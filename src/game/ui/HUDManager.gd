@@ -8,9 +8,9 @@ const attackModes = preload("res://src/game/entities/AttackModes.gd")
 
 onready var stamina_progress: TextureProgress = $"%StaminaProgress"
 onready var hp_progress: TextureProgress = $"%HpProgress"
-onready var counter: Label = $StatsContainer/Panel/Counter
 onready var bow: Sprite = $StatsContainer/Panel/Bow
 onready var axe: Sprite = $StatsContainer/Panel/Axe
+onready var counter: Sprite = $StatsContainer/Panel/Counter
 
 onready var fading_elements: Array = [hp_progress, stamina_progress]
 
@@ -32,8 +32,6 @@ func _on_current_player_changed(player: Player) -> void:
 	_on_hp_changed(player.hp, player.max_hp)
 	player.connect("stamina_changed", self, "_on_stamina_changed")
 	_on_stamina_changed(player.stamina, player.max_stamina)
-	player.connect("arrow_changed", self, "_on_quantity_arrow_changed")
-	_on_quantity_arrow_changed(player.arrowAmount)
 	player.connect("weapon_changed", self, "_on_weapon_changed")
 	_on_weapon_changed(player.currentAttackMode)
 
@@ -48,10 +46,6 @@ func _on_stamina_changed(stamina: float, max_stamina: float) -> void:
 	stamina_progress.max_value = max_stamina
 	stamina_progress.value = stamina
 	_animate_fade()
-
-
-func _on_quantity_arrow_changed(arrows: int) -> void:
-	counter.text = str(arrows)
 
 
 func _on_weapon_changed(weaponPlayer: int) -> void:

@@ -21,7 +21,9 @@ func enter() -> void:
 		if path.empty() || path.size() == 1:
 			emit_signal("finished", "idle")
 		else:
-			if character.target == null:
+			if character.target != null:
+				character._play_animation("fly_alert")	
+			else:
 				character._play_animation("fly")	
 	else:
 		emit_signal("finished", "idle")
@@ -60,15 +62,18 @@ func _handle_body_entered(body: Node) -> void:
 	
 func _handle_body_exited(body: Node) -> void:
 	._handle_body_exited(body)
-	character._play_animation("alert")
+	character._play_animation("go_normal")
 	
 func _on_amimation_finished(anim_name: String) -> void:
 	match anim_name:
 		"alert":
+			character._play_animation("fly_alert")
+		"go_normal":
 			character._play_animation("fly")
 
 
 func handle_event(event: String, value = null) -> void:
+	.handle_event(event,value)
 	match event:
 		"hit":
 			character._handle_hit(value)

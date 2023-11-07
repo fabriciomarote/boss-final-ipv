@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://src/game/environment/DefaultBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_background_obj.png" type="Texture" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://src/game/entities/player/Camera.gd" type="Script" id=14]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_Main_bckgrdlev_build.png" type="Texture" id=15]
 [ext_resource path="res://src/game/ui/tutorial/JumpTutorial.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/game/environment/Arrow.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/game/ui/tutorial/AttackTutorial.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/game/environment/Life.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/game/environment/Mushroom.tscn" type="PackedScene" id=20]
@@ -1180,9 +1179,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 117/z_index = 0
 
 [sub_resource type="NavigationPolygon" id=94]
-vertices = PoolVector2Array( -151, 20, -150, -10, 119, -11, 118, 20 )
+vertices = PoolVector2Array( -321, 19, -322, -52, 243, -49, 248, 20 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 118, 20, 119, -11, -150, -10, -151, 20 ) ]
+outlines = [ PoolVector2Array( 248, 20, 243, -49, -322, -52, -321, 19 ) ]
 
 [sub_resource type="NavigationPolygon" id=92]
 vertices = PoolVector2Array( 403, 267, 403, 296, -252, 298, -254, 267 )
@@ -1289,7 +1288,7 @@ zoom_speed = 5.0
 [node name="Enemies" type="Node2D" parent="Environment/Entities"]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies"]
-position = Vector2( 1419, 492 )
+position = Vector2( 1332, 465 )
 navpoly = SubResource( 94 )
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies"]
@@ -1297,28 +1296,7 @@ position = Vector2( 2240, 357 )
 navpoly = SubResource( 92 )
 
 [node name="Sprout" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 1406, 483 )
-
-[node name="Sprout2" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 3673, 784 )
-
-[node name="Sprout5" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 4017, 781 )
-
-[node name="Sprout6" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 5278, 430 )
-
-[node name="Sprout7" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 5334, 845 )
-
-[node name="Sprout8" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 4631, 749 )
-
-[node name="Sprout3" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 2134, 638 )
-
-[node name="Sprout4" parent="Environment/Entities/Enemies" instance=ExtResource( 3 )]
-position = Vector2( 2484, 639 )
+position = Vector2( 1385, 446 )
 
 [node name="AstarTilemap" parent="Environment/Entities/Enemies" instance=ExtResource( 10 )]
 position = Vector2( -86, -4 )
@@ -1402,27 +1380,6 @@ position = Vector2( 5124, 626 )
 
 [node name="Life6" parent="." instance=ExtResource( 19 )]
 position = Vector2( 6168, 723 )
-
-[node name="Arrow" parent="." instance=ExtResource( 17 )]
-position = Vector2( 317, 478 )
-
-[node name="Arrow2" parent="." instance=ExtResource( 17 )]
-position = Vector2( 4144, 776 )
-
-[node name="Arrow3" parent="." instance=ExtResource( 17 )]
-position = Vector2( 4001, 555 )
-
-[node name="Arrow4" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1553, 756 )
-
-[node name="Arrow5" parent="." instance=ExtResource( 17 )]
-position = Vector2( 5553, 417 )
-
-[node name="Arrow6" parent="." instance=ExtResource( 17 )]
-position = Vector2( 4468, 625 )
-
-[node name="Arrow7" parent="." instance=ExtResource( 17 )]
-position = Vector2( 5172, 118 )
 
 [node name="Goal" parent="." instance=ExtResource( 11 )]
 modulate = Color( 0.32549, 0.32549, 0.32549, 1 )

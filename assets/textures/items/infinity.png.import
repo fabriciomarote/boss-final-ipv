@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flying-head.png-b0e5fecef598669744d5d13bad71e218.stex"
+path="res://.import/infinity.png-c0e218b4ed577e5f42d91c8ba954a538.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/flying-head.png"
-dest_files=[ "res://.import/flying-head.png-b0e5fecef598669744d5d13bad71e218.stex" ]
+source_file="res://assets/textures/items/infinity.png"
+dest_files=[ "res://.import/infinity.png-c0e218b4ed577e5f42d91c8ba954a538.stex" ]
 
 [params]
 

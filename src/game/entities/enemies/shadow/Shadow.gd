@@ -49,6 +49,7 @@ func initialize(container, turret_pos, projectile_container) -> void:
 func _fire() -> void:
 	if target != null:
 		var proj_instance: Node = projectile_scene.instance()
+		
 		if projectile_container == null:
 			projectile_container = get_parent()
 		proj_instance.initialize(
@@ -60,6 +61,7 @@ func _fire() -> void:
 
 func _look_at_target() -> void:
 	body_anim.flip_h = raycast.cast_to.x < 0
+
 
 func _can_see_target() -> bool:
 	if target == null:
@@ -73,13 +75,6 @@ func _apply_movement() -> void:
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 
-func _handle_deacceleration(delta: float) -> void:
-	velocity = velocity.linear_interpolate(Vector2.ZERO, FRICTION_WEIGHT * delta)
-
-
-## Esta función ya no llama directamente a remove, sino que inhabilita las
-## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
-## dependiendo de si el enemigo esta o no alerta
 func notify_hit(amount: int) -> void:
 	emit_signal("hit", amount)
 

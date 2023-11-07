@@ -11,7 +11,6 @@ signal healed(amount)
 signal hp_changed(current_hp, max_hp)
 
 signal stamina_changed(current_stamina, max_stamina)
-signal arrow_changed(amount)
 signal weapon_changed(weapon)
 signal dead()
 signal damage()
@@ -52,7 +51,6 @@ var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
-var arrowAmount: int = 5
 var is_attacked = false
 
 export (int) var max_hp: int = 5
@@ -102,15 +100,6 @@ func _fire() -> void:
 		weapon_tip.global_position,
 		direction
 	)
-	subtract_arrow_quantity()
-
-
-func subtract_arrow_quantity() -> void:
-	if arrowAmount == 0:
-		arrowAmount = 0
-	else:
-		arrowAmount -= 1
-	emit_signal("arrow_changed", arrowAmount)
 
 
 func _handle_move_input() -> void:
@@ -250,11 +239,6 @@ func _handle_hit(amount: int) -> void:
 func _remove() -> void:
 	set_physics_process(false)
 	collision_layer = 0
-
-
-func handle_arrow() -> void:
-	arrowAmount += 2
-	emit_signal("arrow_changed", arrowAmount)
 
 
 func handle_velocity() -> void:
