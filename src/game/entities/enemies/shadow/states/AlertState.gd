@@ -31,8 +31,8 @@ func _on_animation_finished(anim_name: String) ->  void:
 func _handle_body_exited(node: Node) -> void:
 	._handle_body_exited(node)
 	if character.target == null:
-		if character.get_current_animation() != "attack":
-			emit_signal("finished", "idle")
+		if character.get_current_animation() == "alert":
+			emit_signal("finished", "fly")
 
 
 func handle_event(event: String, value = null) -> void:

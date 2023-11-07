@@ -196,8 +196,12 @@ func notify_dead() -> void:
 	emit_signal("hp_changed", hp, max_hp)
 
 
-func sum_hp(amount: int) -> void:
-	hp = clamp(hp + 1, 0, max_hp)
+func sum_hp() -> void:
+	print(hp)
+	print("hp actual")
+	hp += 1
+	print(hp)
+	print("hp actualizada")
 	emit_signal("hp_changed", hp, max_hp)
 
 

@@ -30,7 +30,6 @@ var velocity: Vector2 = Vector2.ZERO
 export (int) var max_hp: int = 5
 var hp: int = max_hp
 
-## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
 
 

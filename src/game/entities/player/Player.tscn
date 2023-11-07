@@ -332,8 +332,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 14.0
-height = 2.0
+radius = 7.0
+height = 14.0
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 11.5, 16 )
@@ -398,7 +398,6 @@ anims/walk = SubResource( 6 )
 anims/whitoutArrow = SubResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, -15 )
 shape = SubResource( 1 )
 

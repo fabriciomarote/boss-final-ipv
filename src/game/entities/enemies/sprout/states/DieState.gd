@@ -1,9 +1,11 @@
 extends AbstractEnemyState
 
 func enter() -> void:
-	character.hud.hide()
 	character._play_animation("die")
+	character.dead = true
+	character.collision_layer = 0
+	character.collision_mask = 0
 	
 func _on_animation_finished(anim_name: String) ->  void:
-	print("removing pod")
 	character._remove()
+

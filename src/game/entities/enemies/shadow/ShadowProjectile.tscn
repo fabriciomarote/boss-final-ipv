@@ -155,15 +155,14 @@ shape = SubResource( 1 )
 [node name="Body" type="Node2D" parent="." index="3"]
 
 [node name="Sprite" type="Sprite" parent="Body" index="0"]
-modulate = Color( 0.478431, 0, 0, 1 )
+modulate = Color( 0.729412, 0, 0, 1 )
 position = Vector2( -1, -5 )
 scale = Vector2( 0.113336, 0.14894 )
 texture = ExtResource( 2 )
 
 [node name="Fx" type="Sprite" parent="." index="4"]
 visible = false
-modulate = Color( 0.352941, 0.0156863, 0.0156863, 1 )
-self_modulate = Color( 1, 0.968627, 0.619608, 1 )
+modulate = Color( 0.631373, 0.0156863, 0.0156863, 1 )
 position = Vector2( -2, -5 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
