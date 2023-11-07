@@ -44,10 +44,10 @@ shape = SubResource( 2 )
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="MoveAction1" type="VBoxContainer" parent="TutorialsElements"]
-margin_left = -28.0
-margin_top = -84.0
-margin_right = 45.0
-margin_bottom = -38.0
+margin_left = -23.0
+margin_top = -91.0
+margin_right = 50.0
+margin_bottom = -45.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="TutorialsElements/MoveAction1"]
@@ -63,53 +63,55 @@ margin_right = 73.0
 margin_bottom = 36.0
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialsElements/MoveAction1/ActionLabel"]
-margin_left = 30.0
-margin_top = -16.0
-margin_right = 47.0
-margin_bottom = 1.0
+modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
+margin_left = 35.0
+margin_top = -14.0
+margin_right = 48.0
+margin_bottom = -1.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="ActionTexture2" type="TextureRect" parent="TutorialsElements/MoveAction1/ActionLabel"]
-margin_left = 44.0
-margin_top = -16.0
-margin_right = 61.0
-margin_bottom = 1.0
+modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
+margin_left = 47.0
+margin_top = -14.0
+margin_right = 60.0
+margin_bottom = -1.0
 texture = ExtResource( 8 )
 expand = true
 
 [node name="MoveAction2" type="VBoxContainer" parent="TutorialsElements"]
-margin_left = -28.0
-margin_top = -69.0
-margin_right = 45.0
-margin_bottom = -23.0
-alignment = 1
+margin_left = -22.0
+margin_top = -59.0
+margin_right = 51.0
+margin_bottom = -13.0
 
 [node name="ActionName" type="Label" parent="TutorialsElements/MoveAction2"]
-margin_top = 10.0
 margin_right = 73.0
-margin_bottom = 18.0
+margin_bottom = 8.0
 custom_fonts/font = SubResource( 3 )
 text = "Move Right"
 
 [node name="ActionLabel" type="Label" parent="TutorialsElements/MoveAction2"]
-margin_top = 22.0
+margin_top = 12.0
 margin_right = 73.0
-margin_bottom = 36.0
+margin_bottom = 26.0
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialsElements/MoveAction2/ActionLabel"]
-margin_left = 30.0
-margin_top = -16.0
+modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
+margin_left = 34.0
+margin_top = -14.0
 margin_right = 47.0
-margin_bottom = 1.0
+margin_bottom = -1.0
 texture = ExtResource( 4 )
 expand = true
 
 [node name="ActionTexture2" type="TextureRect" parent="TutorialsElements/MoveAction2/ActionLabel"]
-margin_left = 44.0
-margin_top = -16.0
-margin_right = 61.0
-margin_bottom = 1.0
+modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
+margin_left = 46.0
+margin_top = -14.0
+margin_right = 59.0
+margin_bottom = -1.0
 texture = ExtResource( 7 )
 expand = true
 
