@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bow-release-bow-and-arrow-4-101936.mp3-3cd3cf97c47a4c4d93a938890fd43668.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/bow-release-bow-and-arrow-4-101936.mp3"
+dest_files=[ "res://.import/bow-release-bow-and-arrow-4-101936.mp3-3cd3cf97c47a4c4d93a938890fd43668.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

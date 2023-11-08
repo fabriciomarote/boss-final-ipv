@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Wood Block2.wav-673b1a55ba6e579c5befeda5d1cb54dd.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ui/Wood Block2.wav"
+dest_files=[ "res://.import/Wood Block2.wav-673b1a55ba6e579c5befeda5d1cb54dd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -11,6 +11,7 @@ onready var navigation_agent = $NavigationAgent2D
 onready var hp_progress:ProgressBar = $Pivot/HUD/Control/HpProgress
 onready var hud:Node2D = $Pivot/HUD
 onready var pivot:Node2D = $Pivot
+onready var sprout_sfx: AudioStreamPlayer = $SproutSfx
 
 export (float) var speed:float  = 10.0
 export (float) var max_speed:float = 100.0
@@ -19,6 +20,7 @@ export (float) var ACCELERATION: float = 10.0
 export (float) var H_SPEED_LIMIT: float = 30.0
 export (int) var max_hp: int = 3
 var hp: int = max_hp
+export (AudioStream) var death_sfx
 
 export (PackedScene) var projectile_scene: PackedScene
 
@@ -108,5 +110,11 @@ func _play_animation(animation: String) -> void:
 	if body_anim.frames.has_animation(animation):
 		body_anim.play(animation)
 
+
 func get_current_animation() -> String:
 	return body_anim.animation
+
+
+func _death_audio():
+	sprout_sfx.stream = death_sfx
+	sprout_sfx.play() 

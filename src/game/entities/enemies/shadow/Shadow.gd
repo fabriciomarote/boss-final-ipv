@@ -9,12 +9,15 @@ onready var raycast: RayCast2D = $RayCast2D
 onready var body_anim: AnimatedSprite = $Body
 onready var hp_progress: ProgressBar = $HpProgress
 onready var particles_2d: Particles2D = $Particles2D
+onready var shadow_sfx: AudioStreamPlayer = $ShadowSfx
 
 export (float) var pathfinding_step_threshold:float = 5.0
 
 export (Vector2) var wander_radius: Vector2 = Vector2(10.0, 10.0)
 export (float) var speed:float  = 30.0
 export (float) var max_speed:float = 100.0
+export (AudioStream) var death_sfx
+
 export (PackedScene) var projectile_scene: PackedScene
 
 export (NodePath) var pathfinding_path: NodePath
@@ -99,11 +102,16 @@ func _remove() -> void:
 	get_parent().remove_child(self)
 	queue_free()
 
-## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
-## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
+
 func _play_animation(animation: String) -> void:
 	if body_anim.frames.has_animation(animation):
 		body_anim.play(animation)
 
+
 func get_current_animation() -> String:
 	return body_anim.animation
+
+
+func _death_audio():
+	shadow_sfx.stream = death_sfx
+	shadow_sfx.play() 

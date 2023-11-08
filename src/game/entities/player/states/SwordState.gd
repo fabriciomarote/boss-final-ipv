@@ -6,8 +6,6 @@ var hit = 0
 func enter() -> void:
 	character._play_animation("axe")
 
-func attack() -> void:
-	pass
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:

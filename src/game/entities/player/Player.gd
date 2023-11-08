@@ -31,12 +31,18 @@ onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
 onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
+onready var player_sfx: AudioStreamPlayer = $PlayerSfx
 
 export (float) var ACCELERATION: float = 20.0
 export (float) var H_SPEED_LIMIT: float = 70.0
-export (int) var jump_speed: int = 290
+export (int) var jump_speed: int = 500
 export (float) var FRICTION_WEIGHT: float = 6.25
-export (int) var gravity: int = 10
+export (int) var gravity: int = 20
+export (AudioStream) var jump_sfx
+export (AudioStream) var walk_sfx
+export (AudioStream) var dash_sfx
+export (AudioStream) var death_sfx
+export (AudioStream) var damage_sfx
 export (PackedScene) var projectile_scene: PackedScene 
 
 var projectile_container: Node
@@ -273,3 +279,8 @@ func _on_Hitbox_area_entered(area):
 
 func _on_CutArea_body_entered(body):
 	body.notify_hit(3)
+
+
+func _walk_audio():
+	player_sfx.stream = walk_sfx
+	player_sfx.play() 

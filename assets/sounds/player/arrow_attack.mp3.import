@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/arrow_attack.mp3-07d509d6f6a42b903a89764874846594.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/player/arrow_attack.mp3"
+dest_files=[ "res://.import/arrow_attack.mp3-07d509d6f6a42b903a89764874846594.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

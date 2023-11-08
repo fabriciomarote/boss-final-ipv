@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/game/entities/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/fx/hits/hits-2/hits-2-6.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/textures/fx/hits/hits-2/hits-2-7.png" type="Texture" id=7]
 [ext_resource path="res://assets/textures/fx/hits/hits-2/hits-2-2.png" type="Texture" id=8]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.gd" type="Script" id=9]
+[ext_resource path="res://assets/sounds/arrow-body-impact-146419.mp3" type="AudioStream" id=10]
 [ext_resource path="res://assets/textures/player/105.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=2]
@@ -40,7 +41,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "hit"
-length = 0.35
+length = 0.6
 step = 0.05
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -104,6 +105,20 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/5/type = "audio"
+tracks/5/path = NodePath("HitSfx")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.0
@@ -114,7 +129,7 @@ script = ExtResource( 9 )
 VELOCITY = 700.0
 
 [node name="LifetimeTimer" parent="." index="0"]
-wait_time = 5.226
+wait_time = 4.0
 one_shot = true
 
 [node name="ProjectileAnimations" parent="." index="1"]
@@ -128,5 +143,8 @@ shape = SubResource( 1 )
 modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
 position = Vector2( -17, 0 )
 rotation = 0.785398
-scale = Vector2( 0.893966, 0.943727 )
+scale = Vector2( 0.820225, 0.810995 )
 texture = ExtResource( 14 )
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 10 )

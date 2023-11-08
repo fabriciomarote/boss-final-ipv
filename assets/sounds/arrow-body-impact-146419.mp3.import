@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/arrow-body-impact-146419.mp3-1be0b4aeebdc3efab3b2569b76b1dad4.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/arrow-body-impact-146419.mp3"
+dest_files=[ "res://.import/arrow-body-impact-146419.mp3-1be0b4aeebdc3efab3b2569b76b1dad4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

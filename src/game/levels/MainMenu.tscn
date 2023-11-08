@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/game/levels/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Blackcraft.otf" type="DynamicFontData" id=2]
@@ -7,6 +7,74 @@
 [ext_resource path="res://src/game/ui/options/OptionsMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/game/levels/LevelManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/ui/buttons/MenuButtonsSprite.png" type="Texture" id=7]
+[ext_resource path="res://assets/sounds/86_loop.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/start_game.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=21]
+resource_name = "start"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("UiSfx:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_transition_start"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BGM:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.9 ),
+"transitions": PoolRealArray( 5, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -78,6 +146,9 @@ level_manager_scene = ExtResource( 6 )
 
 [node name="MouseCamera" type="Camera2D" parent="."]
 
+[node name="StartAnimation" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 21 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Container" type="Control" parent="CanvasLayer"]
@@ -135,6 +206,19 @@ expand_icon = true
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="UiSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="pressed" from="CanvasLayer/Container/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/OptionsButton" to="CanvasLayer/OptionsMenu" method="show"]
