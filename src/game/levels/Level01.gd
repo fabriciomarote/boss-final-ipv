@@ -1,6 +1,10 @@
 extends Node
 class_name GameLevel
 
+onready var passage_area: Area2D = $Environment/PassageArea
+
+var enabled: bool = false
+
 # Regresa al menu principal
 signal return_requested()
 # Reinicia el nivel
@@ -23,3 +27,9 @@ func _on_return_requested() -> void:
 
 func _on_restart_requested() -> void:
 	emit_signal("restart_requested")
+
+
+func _on_DesactivationArea_body_entered(body):
+	if !enabled:
+		enabled = true
+		passage_area.visible = false
