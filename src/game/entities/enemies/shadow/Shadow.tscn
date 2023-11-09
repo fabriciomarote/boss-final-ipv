@@ -828,7 +828,7 @@ bg_color = Color( 0, 0, 0, 1 )
 extents = Vector2( 5, 22.5 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 218.083
+radius = 281.007
 
 [sub_resource type="Animation" id=84]
 resource_name = "alert"
@@ -845,7 +845,7 @@ resource_name = "idle"
 [node name="Shadow" type="KinematicBody2D"]
 modulate = Color( 1, 0, 0, 1 )
 collision_layer = 4
-collision_mask = 16
+collision_mask = 272
 collision/safe_margin = 3.539
 script = ExtResource( 12 )
 wander_radius = Vector2( 1, 1 )
@@ -902,7 +902,7 @@ position = Vector2( 2, -16 )
 scale = Vector2( 0.416016, 0.359701 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 8
+frame = 7
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -927,7 +927,6 @@ cast_to = Vector2( 0, 0 )
 collision_mask = 3
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 position = Vector2( 4, -12 )
 collision_layer = 0
 collision_mask = 128

@@ -215,7 +215,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=131]
-extents = Vector2( 396, 74 )
+extents = Vector2( 529, 80 )
 
 [node name="Sprout" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -308,11 +308,12 @@ playing = true
 flip_h = true
 
 [node name="DetectionArea" type="Area2D" parent="Pivot"]
+visible = false
 collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DetectionArea"]
-position = Vector2( 0, 1 )
+position = Vector2( -2, -5 )
 shape = SubResource( 131 )
 
 [node name="SproutSfx" type="AudioStreamPlayer" parent="."]

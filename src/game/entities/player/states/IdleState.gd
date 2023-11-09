@@ -20,6 +20,8 @@ func handle_input(event: InputEvent) -> void:
 		character._change_attack_mode()
 	if event.is_action_pressed("run"):
 		character.handle_velocity()
+	if event.is_action_pressed("protection"):
+		character._protection_active()
 
 
 # En esta función vamos a manejar las acciones apropiadas para este estado

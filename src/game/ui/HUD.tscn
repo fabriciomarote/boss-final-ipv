@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/game/ui/HUDManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui/GUISprite.png" type="Texture" id=2]
@@ -12,7 +12,7 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 5 )
-region = Rect2( 61.5831, 60.6741, 55.3242, 21.8223 )
+region = Rect2( 61.5831, 59.7347, 55.3242, 22.7617 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
@@ -24,11 +24,19 @@ region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 127.898, 15.7545, 16.4496, 16.1925 )
+region = Rect2( 128.091, 15.7545, 16.2569, 16.1925 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
 region = Rect2( 80.2449, 15.9627, 15.5886, 16.0383 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 128.208, 15.7913, 15.9754, 16.4908 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 80.0272, 15.8024, 15.9355, 16.1925 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
@@ -54,9 +62,9 @@ margin_bottom = 21.0
 custom_styles/panel = SubResource( 11 )
 
 [node name="Panel" type="Sprite" parent="StatsContainer/Panel"]
-modulate = Color( 0.533333, 0.533333, 0.533333, 0.427451 )
-position = Vector2( 33, 15 )
-scale = Vector2( 1.23636, 1.21887 )
+modulate = Color( 0.498039, 0.498039, 0.498039, 0.988235 )
+position = Vector2( 42.8182, 14 )
+scale = Vector2( 1.63636, 1.27273 )
 texture = SubResource( 12 )
 
 [node name="HpProgress" type="TextureProgress" parent="StatsContainer/Panel"]
@@ -68,8 +76,10 @@ margin_bottom = 22.0
 max_value = 5.0
 value = 5.0
 texture_under = SubResource( 6 )
+texture_over = SubResource( 6 )
 texture_progress = SubResource( 5 )
 fill_mode = 3
+tint_progress = Color( 0.847059, 0, 0, 1 )
 
 [node name="StaminaProgress" type="TextureProgress" parent="StatsContainer/Panel"]
 unique_name_in_owner = true
@@ -83,22 +93,35 @@ texture_under = SubResource( 9 )
 texture_over = SubResource( 9 )
 texture_progress = SubResource( 10 )
 fill_mode = 3
-tint_progress = Color( 0, 1, 0.976471, 1 )
+tint_progress = Color( 0.87451, 0.94902, 0, 1 )
+
+[node name="ProtectionProgress" type="TextureProgress" parent="StatsContainer/Panel"]
+unique_name_in_owner = true
+margin_left = 43.0
+margin_top = 6.0
+margin_right = 59.0
+margin_bottom = 22.0
+max_value = 10.0
+texture_under = SubResource( 14 )
+texture_over = SubResource( 14 )
+texture_progress = SubResource( 15 )
+fill_mode = 3
+tint_progress = Color( 0.00784314, 0, 1, 1 )
 
 [node name="Weapon" type="Sprite" parent="StatsContainer/Panel"]
 modulate = Color( 0.65098, 0.65098, 0.65098, 1 )
-position = Vector2( 52, 14 )
+position = Vector2( 70, 14 )
 scale = Vector2( 0.8, 0.8 )
 texture = SubResource( 13 )
 
 [node name="Counter" type="Sprite" parent="StatsContainer/Panel"]
-position = Vector2( 59, 21 )
+position = Vector2( 78, 21 )
 scale = Vector2( 0.00416667, 0.00551122 )
 texture = ExtResource( 6 )
 
 [node name="Bow" type="Sprite" parent="StatsContainer/Panel"]
 modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
-position = Vector2( 52, 14 )
+position = Vector2( 70, 14 )
 scale = Vector2( 0.0723954, 0.0732422 )
 texture = ExtResource( 4 )
 flip_h = true
@@ -106,7 +129,7 @@ flip_h = true
 [node name="Axe" type="Sprite" parent="StatsContainer/Panel"]
 visible = false
 modulate = Color( 0.890196, 0.890196, 0.890196, 1 )
-position = Vector2( 52, 14 )
+position = Vector2( 70, 14 )
 scale = Vector2( 0.0661526, 0.0652542 )
 texture = ExtResource( 3 )
 flip_h = true

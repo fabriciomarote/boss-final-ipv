@@ -65,9 +65,14 @@ _global_script_classes=[ {
 "path": "res://src/game/environment/Life.gd"
 }, {
 "base": "Node2D",
-"class": "Mushroom",
+"class": "MushroomProtection",
 "language": "GDScript",
-"path": "res://src/game/environment/Mushroom.gd"
+"path": "res://src/game/environment/MushroomProtection.gd"
+}, {
+"base": "Node2D",
+"class": "MushroomStamina",
+"language": "GDScript",
+"path": "res://src/game/environment/MushroomStamina.gd"
 }, {
 "base": "TileMap",
 "class": "PathfindAstar",
@@ -96,7 +101,8 @@ _global_script_class_icons={
 "GameLevel": "",
 "Game_State": "",
 "Life": "",
-"Mushroom": "",
+"MushroomProtection": "",
+"MushroomStamina": "",
 "PathfindAstar": "",
 "Player": "",
 "PodStateMachine": ""
@@ -167,6 +173,11 @@ pause_menu={
 run={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":86,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+protection={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

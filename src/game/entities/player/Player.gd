@@ -9,8 +9,8 @@ class_name Player
 signal hit(amount)
 signal healed(amount)
 signal hp_changed(current_hp, max_hp)
-
 signal stamina_changed(current_stamina, max_stamina)
+signal protection_changed(current_protection, max_protection)
 signal weapon_changed(weapon)
 signal dead()
 signal damage()
@@ -32,6 +32,8 @@ onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
 onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
 onready var player_sfx: AudioStreamPlayer = $PlayerSfx
+onready var color_rect: ColorRect = $BodyPivot/ProtectionArea/ColorRect
+onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/CollisionShape2D
 
 export (float) var ACCELERATION: float = 500.0
 export (float) var H_SPEED_LIMIT: float = 10.0
@@ -62,15 +64,17 @@ var is_attacked = false
 export (int) var max_hp: int = 5
 var hp: int = max_hp
 
+export (int) var max_protection: int = 3
+var protection: int = 0
+
 export (float) var max_stamina: float = 10.0
-var stamina: float = max_stamina
+var stamina: float = 0.0
 
 export (float) var stamina_recovery_time: float = 5.0
 export (float) var stamina_recovery_delay: float = 0.5
 
 var fire_tween: SceneTreeTween
 
-## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
 func _ready() -> void:
 	initialize()
@@ -83,8 +87,8 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	}
 	
 	self.projectile_container = projectile_container
-	attackHandler = attackHandlers.get(attackModes.AXE)
-	currentAttackMode = attackModes.AXE
+	attackHandler = attackHandlers.get(attackModes.BOW)
+	currentAttackMode = attackModes.BOW
 	emit_signal("weapon_changed", currentAttackMode)
 	GameState.set_current_player(self)
 
@@ -204,37 +208,42 @@ func notify_dead() -> void:
 
 
 func sum_hp() -> void:
-	print(hp)
-	print("hp actual")
 	hp += 1
-	print(hp)
-	print("hp actualizada")
 	emit_signal("hp_changed", hp, max_hp)
+
+
+func sum_stamina() -> void:
+	stamina = max_stamina
+	emit_signal("stamina_changed", stamina, max_stamina)
+
+
+func sum_protection() -> void:
+	protection = max_protection
+	emit_signal("protection_changed", protection, max_protection)
 
 
 var stamina_regen_tween: SceneTreeTween
 
-func sum_stamina(amount: float) -> void:
-	_update_passive_prop(
-		clamp(stamina + amount, 0.0, max_stamina),
-		max_stamina,
-		"stamina",
-		"stamina_changed"
-	)
-	if stamina < max_stamina:
-		if stamina_regen_tween:
-			stamina_regen_tween.kill()
-		stamina_regen_tween = create_tween()
-		var duration: float = (max_stamina - stamina) * stamina_recovery_time / max_stamina
-		stamina_regen_tween.tween_method(
-			self,
-			"_update_passive_prop",
-			stamina,
-			max_stamina,
-			duration,
-			[max_stamina, "stamina", "stamina_changed"]
-		).set_delay(stamina_recovery_delay)
-
+#func sum_stamina(amount: float) -> void:
+	#_update_passive_prop(
+	#	clamp(stamina + amount, 0.0, max_stamina),
+	#	max_stamina,
+	#	"stamina",
+	#	"stamina_changed"
+	#)
+	#if stamina < max_stamina:
+	#	if stamina_regen_tween:
+	#		stamina_regen_tween.kill()
+	#	stamina_regen_tween = create_tween()
+	#	var duration: float = (max_stamina - stamina) * stamina_recovery_time / max_stamina
+	#	stamina_regen_tween.tween_method(
+	#		self,
+	#		"_update_passive_prop",
+	#		stamina,
+	#		max_stamina,
+	#		duration,
+	#		[max_stamina, "stamina", "stamina_changed"]
+	#	).set_delay(stamina_recovery_delay)
 
 func _update_passive_prop(amount, max_amount, property: String, updated_signal) -> void:
 	set(property, amount)
@@ -285,3 +294,9 @@ func _on_CutArea_body_entered(body):
 func _walk_audio():
 	player_sfx.stream = walk_sfx
 	player_sfx.play() 
+
+func _protection_active():
+	#color_rect.color = Color(255,255,255,0)
+	color_rect.visible = true
+	collision_shape.disabled = false
+	#color_rect.color = Color(1,44,86,100)

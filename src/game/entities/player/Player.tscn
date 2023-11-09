@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
@@ -330,6 +330,46 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.1 )
 }
 
+[sub_resource type="Animation" id=21]
+resource_name = "protection"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/ProtectionArea/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/ProtectionArea/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1.1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.141176 ), Color( 0.00392157, 0.172549, 0.337255, 0.392157 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/ProtectionArea/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [sub_resource type="Animation" id=14]
 resource_name = "slide"
 length = 0.4
@@ -402,6 +442,9 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 11.5, 16 )
 
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 16, 17 )
+
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 7, 14.5 )
 
@@ -458,11 +501,13 @@ anims/death = SubResource( 8 )
 anims/fall = SubResource( 7 )
 anims/idle = SubResource( 4 )
 anims/jump = SubResource( 5 )
+anims/protection = SubResource( 21 )
 anims/slide = SubResource( 14 )
 anims/walk = SubResource( 6 )
 anims/whitoutArrow = SubResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -15 )
 shape = SubResource( 1 )
 
@@ -486,8 +531,8 @@ cast_to = Vector2( 10, 15 )
 [node name="BodyPivot" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite" parent="BodyPivot"]
-position = Vector2( 1, -28 )
-scale = Vector2( 1.03264, 0.913622 )
+position = Vector2( 0.0860799, -27.3982 )
+scale = Vector2( 1.01632, 0.904504 )
 texture = ExtResource( 2 )
 flip_h = true
 hframes = 12
@@ -524,9 +569,24 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea"]
-position = Vector2( 23.5, -17 )
+position = Vector2( 23, -16 )
 shape = SubResource( 18 )
 disabled = true
+
+[node name="ProtectionArea" type="Area2D" parent="BodyPivot"]
+collision_layer = 256
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/ProtectionArea"]
+position = Vector2( -1, -17 )
+shape = SubResource( 20 )
+
+[node name="ColorRect" type="ColorRect" parent="BodyPivot/ProtectionArea"]
+visible = false
+margin_left = -17.0
+margin_top = -34.0
+margin_right = 15.0
+color = Color( 0.00392157, 0.164706, 0.466667, 0.337255 )
 
 [node name="Hitbox2" type="Area2D" parent="."]
 collision_layer = 16
