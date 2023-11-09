@@ -82,7 +82,7 @@ _global_script_classes=[ {
 "base": "AbstractStateMachine",
 "class": "PodStateMachine",
 "language": "GDScript",
-"path": "res://src/game/entities/enemies/PodStateMachine.gd"
+"path": "res://src/game/entities/enemies/SproutStateMachine.gd"
 } ]
 _global_script_class_icons={
 "AbstractEnemyState": "",
