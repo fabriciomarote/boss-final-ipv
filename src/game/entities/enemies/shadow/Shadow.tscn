@@ -902,7 +902,7 @@ position = Vector2( 2, -16 )
 scale = Vector2( 0.416016, 0.359701 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 4
+frame = 8
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -930,7 +930,7 @@ collision_mask = 3
 visible = false
 position = Vector2( 4, -12 )
 collision_layer = 0
-collision_mask = 2
+collision_mask = 128
 script = ExtResource( 1 )
 
 [node name="green_circle" type="Sprite" parent="DetectionArea"]
