@@ -20,7 +20,7 @@ signal sliding_change(is_sliding)
 
 const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION: Vector2 = Vector2.DOWN
-const SNAP_LENGTH: float = 32.0
+const SNAP_LENGTH: float = 35.0
 const SLOPE_THRESHOLD: float = deg2rad(46)
 
 const attackModes = preload("res://src/game/entities/AttackModes.gd")
@@ -33,10 +33,10 @@ onready var object_check = $BodyPivot/Body/ObjectCheck
 onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
 onready var player_sfx: AudioStreamPlayer = $PlayerSfx
 
-export (float) var ACCELERATION: float = 20.0
-export (float) var H_SPEED_LIMIT: float = 70.0
-export (int) var jump_speed: int = 500
-export (float) var FRICTION_WEIGHT: float = 6.25
+export (float) var ACCELERATION: float = 500.0
+export (float) var H_SPEED_LIMIT: float = 10.0
+export (int) var jump_speed: int = 380
+export (float) var FRICTION_WEIGHT: float = 5.0
 export (int) var gravity: int = 20
 export (AudioStream) var jump_sfx
 export (AudioStream) var walk_sfx
@@ -111,6 +111,7 @@ func _fire() -> void:
 func _handle_move_input() -> void:
 	move_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if move_direction != 0:
+		_handle_deacceleration()
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
 		body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
 
