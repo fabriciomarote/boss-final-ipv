@@ -218,7 +218,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "fall"
-length = 1.2
+length = 1.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/WeaponPivot:position")
 tracks/0/interp = 1
@@ -255,7 +255,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 10 )
 } ],
-"times": PoolRealArray( 0.3 )
+"times": PoolRealArray( 0.9 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -290,7 +290,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "jump"
-length = 0.6
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/WeaponPivot:position")
 tracks/0/interp = 1
@@ -310,24 +310,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 34, 35, 36, 37, 38, 39 ]
-}
-tracks/2/type = "audio"
-tracks/2/path = NodePath("PlayerSfx")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 8 )
-} ],
-"times": PoolRealArray( 0.1 )
+"values": [ 34, 36, 37, 38 ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -428,6 +414,7 @@ extents = Vector2( 7, 14.5 )
 light_mask = 3
 collision_layer = 131
 script = ExtResource( 1 )
+jump_sfx = ExtResource( 8 )
 walk_sfx = ExtResource( 11 )
 projectile_scene = ExtResource( 5 )
 
@@ -576,7 +563,7 @@ shape = SubResource( 16 )
 disabled = true
 
 [node name="PlayerSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 10 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="protection_changed" from="." to="StateMachine" method="_on_Player_protection_changed"]

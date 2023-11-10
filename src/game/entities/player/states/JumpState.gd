@@ -8,6 +8,7 @@ func enter() -> void:
 	character.snap_vector = Vector2.ZERO
 	character.velocity.y -= character.jump_speed
 	character._play_animation("jump")
+	character._jump_audio()
 
 
 func exit() -> void:

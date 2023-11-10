@@ -38,7 +38,7 @@ onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/Collis
 
 export (float) var ACCELERATION: float = 500.0
 export (float) var H_SPEED_LIMIT: float = 10.0
-export (int) var jump_speed: int = 380
+export (int) var jump_speed: int = 360
 export (float) var FRICTION_WEIGHT: float = 5.0
 export (int) var gravity: int = 20
 export (AudioStream) var jump_sfx
@@ -333,6 +333,10 @@ func _walk_audio():
 	player_sfx.stream = walk_sfx
 	player_sfx.play() 
 
+
+func _jump_audio():
+	player_sfx.stream = jump_sfx
+	player_sfx.play() 
 
 
 func _on_ProtectionArea_body_entered(body):
