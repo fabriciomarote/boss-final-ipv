@@ -32,6 +32,7 @@ onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
 onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
 onready var player_sfx: AudioStreamPlayer = $PlayerSfx
+onready var protection_area: KinematicBody2D = $BodyPivot/Protection
 onready var color_rect: ColorRect = $BodyPivot/ProtectionArea/ColorRect
 onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/CollisionShape2D
 
@@ -60,6 +61,7 @@ var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
 var is_attacked = false
+var protection_actived = false
 
 export (int) var max_hp: int = 5
 var hp: int = max_hp
@@ -197,6 +199,15 @@ func is_on_floor() -> bool:
 func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
 
+func notify_hit_protection(amount: int = 1) -> void:
+	print(protection)
+	protection -= 1
+	if protection == 0:
+		protection_actived = false
+		_protection_disabled()  
+	else: 
+		true
+	emit_signal("protection_changed", amount)
 
 func notify_heal(amount: int = 1) -> void:
 	emit_signal("healed", amount)
@@ -250,6 +261,17 @@ func _update_passive_prop(amount, max_amount, property: String, updated_signal) 
 	emit_signal(updated_signal, amount, max_amount)
 
 
+func _handle_hit_protection(amount: int) -> void:
+	print(protection)
+	protection -= 1
+	if protection == 0:
+		protection_actived = false
+		_protection_disabled()  
+	else: 
+		true
+	emit_signal("protection_changed", amount)
+
+
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
 	dead = true if hp == 0 else false
@@ -262,13 +284,29 @@ func _remove() -> void:
 
 
 func handle_velocity() -> void:
-	self.ACCELERATION = 100
-	self.H_SPEED_LIMIT = 450
+	if stamina == 10:
+		self.ACCELERATION = 100
+		self.H_SPEED_LIMIT = 450
 
+
+func _protection_active():
+	print(protection)
+	if hay_escudo_disponible():
+		color_rect.visible = true
+		collision_shape.disabled = false
+		protection_actived = true
+
+
+func _protection_disabled():
+		color_rect.visible = false
 
 func _play_animation(animation: String) -> void:
 	if body_animations.has_animation(animation):
 		body_animations.play(animation)
+
+
+func hay_escudo_disponible() -> bool:
+	return protection > 0
 
 
 func _on_Hitbox_body_entered(body):
@@ -295,8 +333,7 @@ func _walk_audio():
 	player_sfx.stream = walk_sfx
 	player_sfx.play() 
 
-func _protection_active():
-	#color_rect.color = Color(255,255,255,0)
-	color_rect.visible = true
-	collision_shape.disabled = false
-	#color_rect.color = Color(1,44,86,100)
+
+
+func _on_ProtectionArea_body_entered(body):
+	print("hola")

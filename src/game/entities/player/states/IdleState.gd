@@ -56,4 +56,6 @@ func handle_event(event: String, value = null) -> void:
 			emit_signal("finished", "damage")
 			if character.dead:
 				emit_signal("finished", "dead")
+		#"protection_changed":
+		#	character._handle_hit_protection(value)
 

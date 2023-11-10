@@ -1,8 +1,5 @@
-
-## Al proyectil le cambiamos el tipo a Node2D para desacoplar
-## funciones tales como gráficos, para que pueda manejarlo de
-## manera independiente con su propia implementación
 extends Node2D
+class_name Proyectil
 
 onready var lifetime_timer: Timer = $LifetimeTimer
 onready var hitbox: Area2D = $Hitbox
@@ -56,7 +53,9 @@ func _remove() -> void:
 
 
 func _on_Hitbox_body_entered(body: Node) -> void:
-	if body.has_method("notify_hit"):
+	if body.has_method("notify_hit") && !body.protection_actived:
 		body.notify_hit()
+	if body.has_method("notify_hit_protection"):
+		body.notify_hit_protection()
 	remove()
 

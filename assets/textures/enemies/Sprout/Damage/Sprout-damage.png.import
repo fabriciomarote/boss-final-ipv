@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout-damage.png-f9a974cbfc3e7825c0e5c19105daa2da.stex"
+path="res://.import/Sprout-damage.png-8e4a8d00584af180dc8834a1af923ad1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Sprout/Damage/Sprout-damage.png"
-dest_files=[ "res://.import/Sprout-damage.png-f9a974cbfc3e7825c0e5c19105daa2da.stex" ]
+source_file="res://assets/textures/enemies/sprout/Damage/Sprout-damage.png"
+dest_files=[ "res://.import/Sprout-damage.png-8e4a8d00584af180dc8834a1af923ad1.stex" ]
 
 [params]
 

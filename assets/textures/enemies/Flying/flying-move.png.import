@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex"
+path="res://.import/flying-move.png-5bab0ee24439742aa943b35baf1707f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/sprout/Attack/Sprout_attack.png"
-dest_files=[ "res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex" ]
+source_file="res://assets/textures/enemies/flying/flying-move.png"
+dest_files=[ "res://.import/flying-move.png-5bab0ee24439742aa943b35baf1707f9.stex" ]
 
 [params]
 

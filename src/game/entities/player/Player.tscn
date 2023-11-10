@@ -334,40 +334,16 @@ tracks/2/keys = {
 resource_name = "protection"
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyPivot/ProtectionArea/CollisionShape2D:disabled")
+tracks/0/path = NodePath("BodyPivot/CutArea/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 1.1 ),
+"times": PoolRealArray( 0.1, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyPivot/ProtectionArea/ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1, 1.1, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.141176 ), Color( 0.00392157, 0.172549, 0.337255, 0.392157 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyPivot/ProtectionArea/ColorRect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -442,8 +418,8 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 11.5, 16 )
 
-[sub_resource type="RectangleShape2D" id=20]
-extents = Vector2( 16, 17 )
+[sub_resource type="CircleShape2D" id=22]
+radius = 20.0998
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 7, 14.5 )
@@ -451,7 +427,6 @@ extents = Vector2( 7, 14.5 )
 [node name="Player" type="KinematicBody2D"]
 light_mask = 3
 collision_layer = 131
-collision_mask = 513
 script = ExtResource( 1 )
 walk_sfx = ExtResource( 11 )
 projectile_scene = ExtResource( 5 )
@@ -576,18 +551,20 @@ disabled = true
 
 [node name="ProtectionArea" type="Area2D" parent="BodyPivot"]
 collision_layer = 256
-collision_mask = 4
+collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/ProtectionArea"]
-position = Vector2( -1, -17 )
-shape = SubResource( 20 )
+position = Vector2( 0, -15 )
+shape = SubResource( 22 )
+disabled = true
 
 [node name="ColorRect" type="ColorRect" parent="BodyPivot/ProtectionArea"]
 visible = false
-margin_left = -17.0
-margin_top = -34.0
-margin_right = 15.0
-color = Color( 0.00392157, 0.164706, 0.466667, 0.337255 )
+margin_left = -20.0
+margin_top = -35.0
+margin_right = 20.0
+margin_bottom = 5.0
+color = Color( 0, 0.2, 0.321569, 0.54902 )
 
 [node name="Hitbox2" type="Area2D" parent="."]
 collision_layer = 16
@@ -602,7 +579,9 @@ disabled = true
 stream = ExtResource( 8 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
+[connection signal="protection_changed" from="." to="StateMachine" method="_on_Player_protection_changed"]
 [connection signal="animation_finished" from="BodyAnimations" to="StateMachine" method="_on_animation_finished"]
 [connection signal="body_entered" from="BodyPivot/CutArea" to="." method="_on_CutArea_body_entered"]
+[connection signal="body_entered" from="BodyPivot/ProtectionArea" to="." method="_on_ProtectionArea_body_entered"]
 [connection signal="area_entered" from="Hitbox2" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox2" to="." method="_on_Hitbox_body_entered"]

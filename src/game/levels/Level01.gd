@@ -1,7 +1,11 @@
 extends Node
 class_name GameLevel
 
-onready var passage_area: Area2D = $Environment/PassageArea
+onready var passage: StaticBody2D  = $Environment/Passage
+onready var passage_area: Area2D = $Environment/Passage/PassageArea
+onready var collision_shape = $Environment/Passage/CollisionShape2D
+onready var collision_shape_area = $Environment/Passage/PassageArea/CollisionShape2D
+onready var animation_player = $AnimationPlayer
 
 var enabled: bool = false
 
@@ -32,4 +36,4 @@ func _on_restart_requested() -> void:
 func _on_DesactivationArea_body_entered(body):
 	if !enabled:
 		enabled = true
-		passage_area.visible = false
+		animation_player.play("passage")
