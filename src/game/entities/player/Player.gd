@@ -12,6 +12,7 @@ signal hp_changed(current_hp, max_hp)
 signal stamina_changed(current_stamina, max_stamina)
 signal protection_changed(current_protection, max_protection)
 signal weapon_changed(weapon)
+signal arrow_changed(amount)
 signal dead()
 signal damage()
 
@@ -60,6 +61,7 @@ var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
+var arrowAmount: int = 10
 var is_attacked = false
 var protection_actived = false
 
@@ -112,6 +114,7 @@ func _fire() -> void:
 		weapon_tip.global_position,
 		direction
 	)
+	subtract_arrow_quantity()
 
 
 func _handle_move_input() -> void:
@@ -171,8 +174,16 @@ func _change_attack_mode():
 	emit_signal("weapon_changed", currentAttackMode)
 
 
-## Se extrae el comportamiento de la aplicación de gravedad y movimiento
-## a una función para ser llamada apropiadamente desde la state machine
+func subtract_arrow_quantity() -> void:
+	if arrowAmount == 0:
+		arrowAmount = 0
+		print("no se descuenta")
+	else:
+		arrowAmount -= 1
+		print("se descuenta")
+	emit_signal("arrow_changed", arrowAmount)
+
+
 func _apply_movement(with_gravity: bool = true) -> void:
 	velocity.y += gravity * float(with_gravity)
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, stop_on_slope, 4, SLOPE_THRESHOLD)
@@ -180,9 +191,6 @@ func _apply_movement(with_gravity: bool = true) -> void:
 		snap_vector = SNAP_DIRECTION * SNAP_LENGTH
 
 
-## Función que pisa la función is_on_floor() ya existente
-## y le agrega el chequeo de raycasts para expandir la ventana
-## de chequeo de piso
 func is_on_floor() -> bool:
 	var is_colliding: bool = .is_on_floor()
 	for raycast in floor_raycasts:
@@ -193,11 +201,10 @@ func is_on_floor() -> bool:
 		is_colliding = is_colliding || raycast.is_colliding()
 	return is_colliding
 
-## Esta función ya no llama directamente a remove, sino que deriva
-## el handleo a la state machine emitiendo una señal. Esto es para
-## los casos de estados en los cuales no se manejan hits
+
 func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
+
 
 func notify_hit_protection(amount: int = 1) -> void:
 	print(protection)
@@ -208,6 +215,7 @@ func notify_hit_protection(amount: int = 1) -> void:
 	else: 
 		true
 	emit_signal("protection_changed", amount)
+
 
 func notify_heal(amount: int = 1) -> void:
 	emit_signal("healed", amount)

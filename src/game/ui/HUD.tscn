@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/game/ui/HUDManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui/GUISprite.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/items/axe.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/items/bow.png" type="Texture" id=4]
 [ext_resource path="res://assets/textures/ui/Newstuff.png" type="Texture" id=5]
-[ext_resource path="res://assets/textures/items/infinity.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/SpaceMadness.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -42,6 +42,10 @@ region = Rect2( 80.0272, 15.8024, 15.9355, 16.1925 )
 atlas = ExtResource( 5 )
 region = Rect2( 116.915, 31.9912, 20.1764, 20.1764 )
 
+[sub_resource type="DynamicFont" id=16]
+size = 7
+font_data = ExtResource( 6 )
+
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,7 +66,7 @@ margin_bottom = 21.0
 custom_styles/panel = SubResource( 11 )
 
 [node name="Panel" type="Sprite" parent="StatsContainer/Panel"]
-modulate = Color( 0.498039, 0.498039, 0.498039, 0.988235 )
+modulate = Color( 0.309804, 0.309804, 0.309804, 0.988235 )
 position = Vector2( 42.8182, 14 )
 scale = Vector2( 1.63636, 1.27273 )
 texture = SubResource( 12 )
@@ -114,11 +118,6 @@ position = Vector2( 70, 14 )
 scale = Vector2( 0.8, 0.8 )
 texture = SubResource( 13 )
 
-[node name="Counter" type="Sprite" parent="StatsContainer/Panel"]
-position = Vector2( 78, 21 )
-scale = Vector2( 0.00416667, 0.00551122 )
-texture = ExtResource( 6 )
-
 [node name="Bow" type="Sprite" parent="StatsContainer/Panel"]
 modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
 position = Vector2( 70, 14 )
@@ -133,3 +132,14 @@ position = Vector2( 70, 14 )
 scale = Vector2( 0.0661526, 0.0652542 )
 texture = ExtResource( 3 )
 flip_h = true
+
+[node name="Counter" type="Label" parent="StatsContainer/Panel"]
+margin_left = 75.0
+margin_top = 14.0
+margin_right = 83.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "0
+"
+align = 1
+valign = 1

@@ -5,7 +5,6 @@ const attackModes = preload("res://src/game/entities/AttackModes.gd")
 
 func enter() -> void:
 	character._play_animation("idle")
-	character.emit_signal("grounded_change",true)
 
 
 func handle_input(event: InputEvent) -> void:
@@ -24,21 +23,15 @@ func handle_input(event: InputEvent) -> void:
 		character._protection_active()
 
 
-# En esta función vamos a manejar las acciones apropiadas para este estado
 func update(delta: float) -> void:
 	
-	# Vamos a permitir detectar inputs de movimiento
 	character._handle_move_input()
-	# Para chequear si se realiza un movimiento
 	if character.move_direction != 0:
-		# Y cambiamos el estado a walk
 		emit_signal("finished", "walk")
 	else:
-		# Si no se realiza movimiento, desaceleramos y manejamos movimiento
 		character._handle_deacceleration()
 		character._apply_movement()
 		
-		# Y aplicamos la animación apropiada, ya sea idle o saltar/caer
 		if character.is_on_floor():
 			character._play_animation("idle")
 		else:

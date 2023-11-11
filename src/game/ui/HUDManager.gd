@@ -11,9 +11,11 @@ onready var hp_progress: TextureProgress = $"%HpProgress"
 onready var protection_progress = $"%ProtectionProgress"
 onready var bow: Sprite = $StatsContainer/Panel/Bow
 onready var axe: Sprite = $StatsContainer/Panel/Axe
-onready var counter: Sprite = $StatsContainer/Panel/Counter
+onready var counter: Label = $StatsContainer/Panel/Counter
+onready var weapon: Sprite = $StatsContainer/Panel/Weapon
+onready var panel: Sprite = $StatsContainer/Panel/Panel
 
-onready var fading_elements: Array = [hp_progress, stamina_progress]
+onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow]
 
 export (float) var fade_duration: float = 5.0
 export (float) var fade_delay: float = 2.0
@@ -37,6 +39,8 @@ func _on_current_player_changed(player: Player) -> void:
 	_on_stamina_changed(player.protection, player.max_protection)
 	player.connect("weapon_changed", self, "_on_weapon_changed")
 	_on_weapon_changed(player.currentAttackMode)
+	player.connect("arrow_changed", self, "_on_quantity_arrow_changed")
+	_on_quantity_arrow_changed(player.arrowAmount)
 
 
 func _on_hp_changed(hp: int, hp_max: int) -> void:
@@ -66,6 +70,12 @@ func _on_weapon_changed(weaponPlayer: int) -> void:
 		bow.visible = true
 		axe.visible = false
 		counter.visible = true
+	_animate_fade()
+
+
+func _on_quantity_arrow_changed(arrows: int) -> void:
+	counter.text = str(arrows)
+	_animate_fade()
 
 
 # Función de ayuda para animar el fade-out de elementos de la escena.
@@ -79,4 +89,4 @@ func _animate_fade() -> void:
 	
 	for element in fading_elements:
 		element.modulate = Color.white
-		stats_tween.set_parallel().tween_property(element, "modulate", Color.white, fade_duration).set_trans(Tween.TRANS_SINE).set_delay(fade_delay)
+		stats_tween.set_parallel().tween_property(element, "modulate", Color.transparent, fade_duration).set_trans(Tween.TRANS_SINE).set_delay(fade_delay)
