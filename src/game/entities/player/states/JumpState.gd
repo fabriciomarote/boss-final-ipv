@@ -21,8 +21,10 @@ func handle_input(event:InputEvent) -> void:
 		character.velocity.y = -character.jump_speed
 		character._play_animation("jump")
 	if event.is_action_pressed("attack"):
-		if character.attackHandler == "AxeAttack":  #Revisar
+		if character.attackHandler == "BowAttack":
 			emit_signal("finished", "arrow")
+		if character.attackHandler == "AxeAttack":
+			emit_signal("finished", "sword")
 	if event.is_action_pressed("change_attack"):
 		character._change_attack_mode()
 

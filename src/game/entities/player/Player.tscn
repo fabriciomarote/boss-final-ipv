@@ -1,8 +1,7 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
-[ext_resource path="res://src/game/entities/player/states/SlideState.gd" type="Script" id=3]
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
@@ -447,9 +446,6 @@ state_id = "sword"
 [node name="Arrow" type="Node" parent="StateMachine"]
 script = ExtResource( 18 )
 state_id = "arrow"
-
-[node name="Slide" type="Node" parent="StateMachine"]
-script = ExtResource( 3 )
 
 [node name="Damage" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )

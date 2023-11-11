@@ -1,11 +1,6 @@
 extends KinematicBody2D
 class_name Player
 
-## Señales que sirven para comunicar el estado del Player
-## a los elementos conectados. Se puede utilizar tanto para
-## comunicar estados a la State Machine (sin incluir código
-## de la state machine directamente) como para comunicarse,
-## por ejemplo, con el entorno del nivel.
 signal hit(amount)
 signal healed(amount)
 signal hp_changed(current_hp, max_hp)
@@ -16,8 +11,6 @@ signal arrow_changed(amount)
 signal dead()
 signal damage()
 
-signal grounded_change(is_grounded)
-signal sliding_change(is_sliding)
 
 const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION: Vector2 = Vector2.DOWN
@@ -104,8 +97,6 @@ func fire() -> void:
 			fire_tween.kill()
 
 
-## La animación de disparo llama a esta función que va a ser la que instancie
-## el proyectil
 func _fire() -> void:
 	var direction: Vector2 = Vector2(round(global_position.direction_to(weapon_tip.global_position).x), 0)
 	var proj = projectile_scene.instance()

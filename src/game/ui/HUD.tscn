@@ -43,7 +43,7 @@ atlas = ExtResource( 5 )
 region = Rect2( 116.915, 31.9912, 20.1764, 20.1764 )
 
 [sub_resource type="DynamicFont" id=16]
-size = 7
+size = 4
 font_data = ExtResource( 6 )
 
 [node name="GUI" type="Control"]
@@ -134,12 +134,10 @@ texture = ExtResource( 3 )
 flip_h = true
 
 [node name="Counter" type="Label" parent="StatsContainer/Panel"]
-margin_left = 75.0
-margin_top = 14.0
-margin_right = 83.0
-margin_bottom = 35.0
+margin_left = 76.0
+margin_top = 19.0
+margin_right = 84.0
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 16 )
 text = "0
 "
-align = 1
-valign = 1
