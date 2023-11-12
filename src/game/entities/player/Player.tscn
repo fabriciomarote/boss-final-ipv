@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/player/red_hood_sheet.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/player/red_hood_sheet2.png" type="Texture" id=2]
+[ext_resource path="res://assets/sounds/player/arrow_attack.mp3" type="AudioStream" id=3]
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
@@ -127,6 +128,50 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=14]
+resource_name = "arrowJump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 51, 52, 53, 54, 55, 56, 57, 58 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_fire"
+} ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("PlayerSfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
+
 [sub_resource type="Animation" id=12]
 resource_name = "axe"
 length = 0.7
@@ -137,7 +182,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.056, 0.112, 0.168, 0.224, 0.28, 0.336, 0.392, 0.448, 0.504, 0.56, 0.616 ),
+"times": PoolRealArray( 0, 0.056, 0.1, 0.168, 0.224, 0.28, 0.336, 0.392, 0.448, 0.504, 0.56, 0.616 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 90, 91, 92, 93, 94, 95, 96, 98, 99, 100, 101, 102 ]
@@ -331,22 +376,6 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "slide"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("BodyPivot/Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 52, 53, 54, 55 ]
-}
-
 [sub_resource type="Animation" id=6]
 resource_name = "walk"
 loop = true
@@ -454,6 +483,7 @@ state_id = "damage"
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/arrow = SubResource( 11 )
+anims/arrowJump = SubResource( 14 )
 anims/axe = SubResource( 12 )
 anims/damage = SubResource( 19 )
 anims/death = SubResource( 8 )
@@ -461,7 +491,6 @@ anims/fall = SubResource( 7 )
 anims/idle = SubResource( 4 )
 anims/jump = SubResource( 5 )
 anims/protection = SubResource( 21 )
-anims/slide = SubResource( 14 )
 anims/walk = SubResource( 6 )
 anims/whitoutArrow = SubResource( 17 )
 
@@ -489,6 +518,15 @@ cast_to = Vector2( 10, 15 )
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
+[node name="Sprite" type="Sprite" parent="BodyPivot"]
+visible = false
+position = Vector2( 2, 0 )
+texture = ExtResource( 2 )
+flip_h = true
+hframes = 12
+vframes = 11
+frame = 87
+
 [node name="Body" type="Sprite" parent="BodyPivot"]
 position = Vector2( 0.0860799, -27.3982 )
 scale = Vector2( 1.01632, 0.904504 )
@@ -515,7 +553,7 @@ update_scale = false
 
 [node name="WeaponTip" type="Position2D" parent="BodyPivot"]
 unique_name_in_owner = true
-position = Vector2( 19, -16 )
+position = Vector2( 19, -14 )
 rotation = -0.0217488
 
 [node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
@@ -537,7 +575,7 @@ collision_layer = 256
 collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/ProtectionArea"]
-position = Vector2( 0, -15 )
+position = Vector2( 0, -16 )
 shape = SubResource( 22 )
 disabled = true
 
@@ -559,7 +597,7 @@ shape = SubResource( 16 )
 disabled = true
 
 [node name="PlayerSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 3 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="protection_changed" from="." to="StateMachine" method="_on_Player_protection_changed"]

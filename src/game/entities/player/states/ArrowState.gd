@@ -1,8 +1,11 @@
 extends AbstractState
 
 func enter() -> void:
+	if character.is_on_floor():
 		character._play_animation("arrow")
-		character.fire()
+	else:
+		character._play_animation("arrowJump")
+	#character.fire()
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:
