@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/infinity.png-c0e218b4ed577e5f42d91c8ba954a538.stex"
+path="res://.import/battlepod.png-c908f24913eeb8e62c9d847990546f70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/items/infinity.png"
-dest_files=[ "res://.import/infinity.png-c0e218b4ed577e5f42d91c8ba954a538.stex" ]
+source_file="res://assets/textures/enemies/battlepod/battlepod.png"
+dest_files=[ "res://.import/battlepod.png-c908f24913eeb8e62c9d847990546f70.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

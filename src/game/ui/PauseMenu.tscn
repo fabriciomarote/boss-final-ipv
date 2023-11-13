@@ -97,7 +97,7 @@ margin_top = 9.0
 margin_right = -14.0
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 2 )
-text = "Paused"
+text = "Pausado"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
@@ -116,7 +116,7 @@ margin_bottom = 11.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Resume"
+text = "Continuar"
 icon_align = 1
 
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
@@ -127,7 +127,7 @@ margin_bottom = 26.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 toggle_mode = true
-text = "Restart"
+text = "Reiniciar"
 icon_align = 1
 
 [node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
@@ -136,7 +136,7 @@ margin_right = 58.0
 margin_bottom = 41.0
 custom_fonts/font = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-text = "Settings"
+text = "Controles"
 icon_align = 1
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
@@ -145,7 +145,7 @@ margin_right = 58.0
 margin_bottom = 56.0
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
-text = "Back to Menu"
+text = "Volver a inicio"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
 visible = false

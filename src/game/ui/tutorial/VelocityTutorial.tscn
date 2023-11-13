@@ -52,7 +52,7 @@ margin_top = 11.0
 margin_right = 38.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 2 )
-text = "Activate speed"
+text = "Correr"
 
 [node name="ActionLabel" type="Label" parent="TutorialElements/AttackAction1"]
 margin_top = 23.0

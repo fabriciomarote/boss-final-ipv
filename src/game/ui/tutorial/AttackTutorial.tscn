@@ -45,10 +45,10 @@ shape = SubResource( 1 )
 [node name="TutorialElements" type="Node2D" parent="."]
 
 [node name="AttackAction1" type="VBoxContainer" parent="TutorialElements"]
-margin_left = -36.0
-margin_top = -72.0
-margin_right = 1.0
-margin_bottom = -23.0
+margin_left = -42.0
+margin_top = -75.0
+margin_right = -5.0
+margin_bottom = -26.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="TutorialElements/AttackAction1"]
@@ -56,8 +56,10 @@ margin_top = 6.0
 margin_right = 37.0
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 2 )
-text = "Change
-Weapon"
+text = "Cambiar
+ arma"
+align = 1
+valign = 1
 
 [node name="ActionLabel" type="Label" parent="TutorialElements/AttackAction1"]
 margin_top = 29.0
@@ -66,18 +68,18 @@ margin_bottom = 43.0
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialElements/AttackAction1/ActionLabel"]
 modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
-margin_left = 1.0
-margin_top = -4.0
-margin_right = 14.0
-margin_bottom = 9.0
+margin_left = 13.0
+margin_top = -1.0
+margin_right = 26.0
+margin_bottom = 12.0
 texture = ExtResource( 3 )
 expand = true
 
 [node name="AttackAction2" type="VBoxContainer" parent="TutorialElements"]
-margin_left = -4.0
-margin_top = -69.0
-margin_right = 30.0
-margin_bottom = -29.0
+margin_left = -1.0
+margin_top = -73.0
+margin_right = 33.0
+margin_bottom = -33.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="TutorialElements/AttackAction2"]
@@ -85,7 +87,7 @@ margin_top = 7.0
 margin_right = 34.0
 margin_bottom = 15.0
 custom_fonts/font = SubResource( 3 )
-text = "Attack"
+text = "Atacar"
 
 [node name="ActionLabel" type="Label" parent="TutorialElements/AttackAction2"]
 margin_top = 19.0
@@ -94,10 +96,10 @@ margin_bottom = 33.0
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialElements/AttackAction2/ActionLabel"]
 modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
-margin_left = 4.0
-margin_top = 3.0
-margin_right = 17.0
-margin_bottom = 16.0
+margin_left = 2.0
+margin_top = 7.0
+margin_right = 15.0
+margin_bottom = 20.0
 texture = ExtResource( 2 )
 expand = true
 

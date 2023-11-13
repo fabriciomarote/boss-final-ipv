@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/houses.png-e8f19317122e8870a049e039be5d0567.stex"
+path="res://.import/arrow.png-a9eb2a39d2903f1db314604643876469.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/items/houses.png"
-dest_files=[ "res://.import/houses.png-e8f19317122e8870a049e039be5d0567.stex" ]
+source_file="res://assets/textures/items/arrow.png"
+dest_files=[ "res://.import/arrow.png-a9eb2a39d2903f1db314604643876469.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

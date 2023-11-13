@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://src/game/environment/DefaultBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_background_obj.png" type="Texture" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://src/game/ui/tutorial/VelocityTutorial.tscn" type="PackedScene" id=32]
 [ext_resource path="res://assets/textures/items/sign.png" type="Texture" id=33]
 [ext_resource path="res://assets/textures/items/fence_1.png" type="Texture" id=34]
+[ext_resource path="res://src/game/environment/Arrow.tscn" type="PackedScene" id=35]
+[ext_resource path="res://src/game/entities/enemies/mushroom/Mushroom.tscn" type="PackedScene" id=36]
 
 [sub_resource type="Animation" id=105]
 resource_name = "passage"
@@ -2118,7 +2120,7 @@ position = Vector2( 4767, 715 )
 navpoly = SubResource( 99 )
 
 [node name="Sprout" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
-position = Vector2( 1284, 449 )
+position = Vector2( 1479, 449 )
 
 [node name="Sprout2" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( 4632, 326 )
@@ -2146,6 +2148,9 @@ position = Vector2( 6048, 96 )
 
 [node name="Sprout10" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( 5486, 314 )
+
+[node name="Mushroom" parent="Environment/Entities/Enemies" instance=ExtResource( 36 )]
+position = Vector2( 1196, 463 )
 
 [node name="Mushrooms" type="Node2D" parent="Environment"]
 
@@ -2247,6 +2252,11 @@ modulate = Color( 0.0980392, 0.0941176, 0.0941176, 1 )
 position = Vector2( 138.492, 75 )
 scale = Vector2( 11.2504, 3.33333 )
 texture = SubResource( 103 )
+
+[node name="Arrows" type="Node2D" parent="Environment"]
+
+[node name="Arrow" parent="Environment/Arrows" instance=ExtResource( 35 )]
+position = Vector2( 158, 458 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )

@@ -46,15 +46,14 @@ margin_bottom = -12.0
 
 [node name="ActionName" type="Label" parent="TutorialsElements/Action1"]
 margin_right = 46.0
-margin_bottom = 19.0
+margin_bottom = 8.0
 custom_fonts/font = SubResource( 2 )
-text = "Active protective 
-       shield"
+text = "Activar escudo"
 
 [node name="ActionLabel" type="Label" parent="TutorialsElements/Action1"]
-margin_top = 23.0
+margin_top = 12.0
 margin_right = 46.0
-margin_bottom = 37.0
+margin_bottom = 26.0
 
 [node name="ActionTexture" type="TextureRect" parent="TutorialsElements/Action1/ActionLabel"]
 margin_left = 12.0

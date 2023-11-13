@@ -18,6 +18,7 @@ corner_radius_bottom_left = 10
 corner_detail = 2
 
 [sub_resource type="DynamicFont" id=3]
+size = 12
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -71,7 +72,7 @@ margin_top = 11.0
 margin_right = -9.0
 margin_bottom = 32.0
 custom_fonts/font = SubResource( 3 )
-text = "you have lost!"
+text = "¡Has perdido!"
 align = 1
 valign = 1
 
@@ -93,7 +94,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Restart"
+text = "Reiniciar"
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 23.0
@@ -105,7 +106,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Back to Menu"
+text = "Volver al inicio"
 
 [connection signal="pressed" from="Panel/VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

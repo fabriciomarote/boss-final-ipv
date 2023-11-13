@@ -54,7 +54,7 @@ var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
-var arrowAmount: int = 100
+var arrowAmount: int = 5
 var is_attacked = false
 var protection_actived = false
 
@@ -267,6 +267,11 @@ func _handle_hit_protection(amount: int) -> void:
 	else: 
 		true
 	emit_signal("protection_changed", amount)
+
+
+func handle_arrow() -> void:
+	arrowAmount += 1
+	emit_signal("arrow_changed", arrowAmount)
 
 
 func _handle_hit(amount: int) -> void:
