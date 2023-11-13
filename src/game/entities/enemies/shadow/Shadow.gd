@@ -30,7 +30,7 @@ var projectile_container: Node
 
 var velocity: Vector2 = Vector2.ZERO
 
-export (int) var max_hp: int = 5
+export (int) var max_hp: int = 10
 var hp: int = max_hp
 
 var dead: bool = false

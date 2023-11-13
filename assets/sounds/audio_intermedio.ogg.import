@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/audio_intermedio.ogg-d44a65b22bcab2e3afd5580fa21df81a.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/audio_intermedio.ogg"
+dest_files=[ "res://.import/audio_intermedio.ogg-d44a65b22bcab2e3afd5580fa21df81a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

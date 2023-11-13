@@ -6,7 +6,6 @@
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://assets/sounds/bow-release-bow-and-arrow-4-101936(1).mp3" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/player/GRASS - Pre Jump 6.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/player/atk_sword.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/player/GRASS - Post Jump 6.wav" type="AudioStream" id=10]
@@ -18,7 +17,7 @@
 [ext_resource path="res://src/game/entities/player/states/JumpState.gd" type="Script" id=16]
 [ext_resource path="res://src/game/entities/player/states/SwordState.gd" type="Script" id=17]
 [ext_resource path="res://src/game/entities/player/states/ArrowState.gd" type="Script" id=18]
-[ext_resource path="res://assets/sounds/player/PUNCH_DESIGNED_HEAVY_74.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/textures/player/red_hood_sheet3.png" type="Texture" id=19]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -73,7 +72,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "arrow"
-length = 0.6
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/Body:frame")
 tracks/0/interp = 1
@@ -124,9 +123,9 @@ tracks/3/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 7 )
+"stream": ExtResource( 3 )
 } ],
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0.3 )
 }
 
 [sub_resource type="Animation" id=14]
@@ -168,7 +167,7 @@ tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 19 )
+"stream": ExtResource( 3 )
 } ],
 "times": PoolRealArray( 0.5 )
 }
@@ -227,6 +226,48 @@ tracks/3/keys = {
 "stream": ExtResource( 9 )
 } ],
 "times": PoolRealArray( 0.4 )
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "axeJump"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("PlayerSfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/CutArea2/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -426,40 +467,30 @@ tracks/0/keys = {
 "values": [ 32, 33 ]
 }
 
+[sub_resource type="Animation" id=27]
+resource_name = "whitoutArrowJump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 57, 58 ]
+}
+
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
 height = 14.0
 
-[sub_resource type="Shader" id=23]
-code = "shader_type canvas_item;
-
-uniform vec4 line_color : hint_color = vec4(0.7);
-uniform float line_thickness : hint_range(0, 10) = 0.3;
-
-void fragment() {
-	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
-	
-	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
-	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
-	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
-	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
-	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
-	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
-	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
-	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
-	outline = min(outline, 0.8);
-	
-	vec4 color = texture(TEXTURE, UV);
-	COLOR = mix(color, line_color, outline - color.a);
-}"
-
-[sub_resource type="ShaderMaterial" id=24]
-shader = SubResource( 23 )
-shader_param/line_color = Color( 0.7, 0.7, 0.7, 0.7 )
-shader_param/line_thickness = 0.3
-
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 11.5, 16 )
+extents = Vector2( 6.75, 14 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 6.5, 14.5 )
 
 [sub_resource type="CircleShape2D" id=22]
 radius = 20.0998
@@ -514,6 +545,7 @@ anims/RESET = SubResource( 3 )
 anims/arrow = SubResource( 11 )
 anims/arrowJump = SubResource( 14 )
 anims/axe = SubResource( 12 )
+anims/axeJump = SubResource( 25 )
 anims/damage = SubResource( 19 )
 anims/death = SubResource( 8 )
 anims/fall = SubResource( 7 )
@@ -522,6 +554,7 @@ anims/jump = SubResource( 5 )
 anims/protection = SubResource( 21 )
 anims/walk = SubResource( 6 )
 anims/whitoutArrow = SubResource( 17 )
+anims/whitoutArrowJump = SubResource( 27 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -554,13 +587,12 @@ texture = ExtResource( 2 )
 flip_h = true
 hframes = 12
 vframes = 11
-frame = 87
+frame = 86
 
 [node name="Body" type="Sprite" parent="BodyPivot"]
-material = SubResource( 24 )
 position = Vector2( 0.0860799, -27.3982 )
 scale = Vector2( 1.01632, 0.904504 )
-texture = ExtResource( 2 )
+texture = ExtResource( 19 )
 flip_h = true
 hframes = 12
 vframes = 11
@@ -596,8 +628,17 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea"]
-position = Vector2( 23, -16 )
+position = Vector2( 19, -14 )
 shape = SubResource( 18 )
+disabled = true
+
+[node name="CutArea2" type="Area2D" parent="BodyPivot"]
+collision_layer = 128
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea2"]
+position = Vector2( 12.5, -13.5 )
+shape = SubResource( 26 )
 disabled = true
 
 [node name="ProtectionArea" type="Area2D" parent="BodyPivot"]
@@ -605,7 +646,7 @@ collision_layer = 256
 collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/ProtectionArea"]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -15 )
 shape = SubResource( 22 )
 disabled = true
 
@@ -633,6 +674,6 @@ stream = ExtResource( 3 )
 [connection signal="protection_changed" from="." to="StateMachine" method="_on_Player_protection_changed"]
 [connection signal="animation_finished" from="BodyAnimations" to="StateMachine" method="_on_animation_finished"]
 [connection signal="body_entered" from="BodyPivot/CutArea" to="." method="_on_CutArea_body_entered"]
-[connection signal="body_entered" from="BodyPivot/ProtectionArea" to="." method="_on_ProtectionArea_body_entered"]
+[connection signal="body_entered" from="BodyPivot/CutArea2" to="." method="_on_CutArea2_body_entered"]
 [connection signal="area_entered" from="Hitbox2" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox2" to="." method="_on_Hitbox_body_entered"]

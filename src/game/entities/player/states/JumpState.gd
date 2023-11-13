@@ -27,6 +27,8 @@ func handle_input(event:InputEvent) -> void:
 			emit_signal("finished", "sword")
 	if event.is_action_pressed("change_attack"):
 		character._change_attack_mode()
+	if event.is_action_pressed("protection"):
+		character._protection_active()
 
 
 func update(delta: float) -> void:

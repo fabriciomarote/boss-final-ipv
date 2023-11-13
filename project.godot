@@ -84,11 +84,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/entities/player/Player.gd"
 }, {
-"base": "AbstractStateMachine",
-"class": "PodStateMachine",
-"language": "GDScript",
-"path": "res://src/game/entities/enemies/SproutStateMachine.gd"
-}, {
 "base": "Node2D",
 "class": "Proyectil",
 "language": "GDScript",
@@ -110,7 +105,6 @@ _global_script_class_icons={
 "MushroomStamina": "",
 "PathfindAstar": "",
 "Player": "",
-"PodStateMachine": "",
 "Proyectil": ""
 }
 
@@ -128,7 +122,6 @@ GameState="*res://src/game/singletons/GameState.gd"
 
 window/size/width=288
 window/size/height=162
-window/size/fullscreen=true
 window/size/test_width=930
 window/size/test_height=520
 mouse_cursor/custom_image="res://assets/textures/items/6.png"

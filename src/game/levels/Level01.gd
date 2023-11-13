@@ -6,6 +6,7 @@ onready var passage_area: Area2D = $Environment/Passage/PassageArea
 onready var collision_shape = $Environment/Passage/CollisionShape2D
 onready var collision_shape_area = $Environment/Passage/PassageArea/CollisionShape2D
 onready var animation_player = $AnimationPlayer
+onready var bgm: AudioStreamPlayer = $BGM
 
 var enabled: bool = false
 
@@ -37,3 +38,8 @@ func _on_DesactivationArea_body_entered(body):
 	if !enabled:
 		enabled = true
 		animation_player.play("passage")
+
+
+func _on_ChangeAudioArea_body_entered(body):
+	 bgm.stream = preload("res://assets/sounds/audio_final.ogg")
+	 bgm.play()

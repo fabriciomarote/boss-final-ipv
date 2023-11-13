@@ -7,7 +7,7 @@
 [ext_resource path="res://src/game/ui/options/OptionsMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/game/levels/LevelManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/ui/buttons/MenuButtonsSprite.png" type="Texture" id=7]
-[ext_resource path="res://assets/sounds/86_loop.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/1071_loop.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/start_game.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=21]

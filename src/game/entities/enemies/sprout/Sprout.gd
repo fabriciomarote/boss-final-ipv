@@ -18,7 +18,7 @@ export (float) var max_speed:float = 100.0
 export (int) var gravity: int = 10
 export (float) var ACCELERATION: float = 20.0
 export (float) var H_SPEED_LIMIT: float = 30.0
-export (int) var max_hp: int = 3
+export (int) var max_hp: int = 6
 var hp: int = max_hp
 export (AudioStream) var death_sfx
 

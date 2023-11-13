@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex"
+path="res://.import/Projectile_sprite.png-a6df2cb605be030b8970bfef89bd7b5d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/sprout/Attack/Sprout_attack.png"
-dest_files=[ "res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex" ]
+source_file="res://assets/textures/enemies/mushroom/Projectile_sprite.png"
+dest_files=[ "res://.import/Projectile_sprite.png-a6df2cb605be030b8970bfef89bd7b5d.stex" ]
 
 [params]
 

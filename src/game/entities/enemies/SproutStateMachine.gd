@@ -1,5 +1,4 @@
 extends AbstractStateMachine
-class_name PodStateMachine
 
 
 func _on_DetectionArea_body_entered(body):

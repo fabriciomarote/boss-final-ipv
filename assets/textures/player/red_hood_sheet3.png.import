@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex"
+path="res://.import/red_hood_sheet3.png-d83817deba8dd75d4d135e508ad1943d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/sprout/Attack/Sprout_attack.png"
-dest_files=[ "res://.import/Sprout_attack.png-b1810bc06b066ae712d73858851d3651.stex" ]
+source_file="res://assets/textures/player/red_hood_sheet3.png"
+dest_files=[ "res://.import/red_hood_sheet3.png-d83817deba8dd75d4d135e508ad1943d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

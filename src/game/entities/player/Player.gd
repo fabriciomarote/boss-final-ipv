@@ -54,7 +54,7 @@ var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
-var arrowAmount: int = 10
+var arrowAmount: int = 100
 var is_attacked = false
 var protection_actived = false
 
@@ -168,10 +168,8 @@ func _change_attack_mode():
 func subtract_arrow_quantity() -> void:
 	if arrowAmount == 0:
 		arrowAmount = 0
-		print("no se descuenta")
 	else:
 		arrowAmount -= 1
-		print("se descuenta")
 	emit_signal("arrow_changed", arrowAmount)
 
 
@@ -338,5 +336,5 @@ func _jump_audio():
 	player_sfx.play() 
 
 
-func _on_ProtectionArea_body_entered(body):
-	print("hola")
+func _on_CutArea2_body_entered(body):
+	body.notify_hit(3)
