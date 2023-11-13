@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=2]
+[gd_scene load_steps=177 format=2]
 
 [ext_resource path="res://src/game/entities/enemies/DetectionArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/green_circle.png" type="Texture" id=2]
@@ -30,6 +30,63 @@ flag_disable_z = true
 gravity = Vector3( 0, 98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+
+[sub_resource type="Shader" id=198]
+code = "/* 
+Rainbow outline by @Farfalk and @ThePadDev, And Edit for @LURGX in 2022
+
+Apply to canvas items with transparent backgrounds.
+Check that there is sufficient transparent background space for the outline!
+
+CC0 License (but citation is welcome <3)
+All code is property of @Farfalk and @ThePadDev
+Thanks for shader and I'm a newbie with shaders 
+*/
+
+shader_type canvas_item;
+
+uniform bool rainbow  = false; //Activate the rainbow or select you color
+uniform vec4 line_color : hint_color = vec4(1.0, 1.0, 1.0, 0.4);//color line
+uniform float line_scale : hint_range(0, 20) = 1.2;    // thickness of the line
+uniform float frequency : hint_range(0.0, 2.0) = 0.5;  // frequency of the rainbow
+uniform float light_offset : hint_range(0.00001, 1.0) = 0.5;   // this offsets all color channels;
+uniform float alpha : hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_scale;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 animated_line_color = vec4(light_offset + sin(2.0*3.14*frequency*TIME),
+							   light_offset + sin(2.0*3.14*frequency*TIME + radians(120.0)),
+							   light_offset + sin(2.0*3.14*frequency*TIME + radians(240.0)),
+							   alpha);
+	
+	vec4 color = texture(TEXTURE, UV);
+	if (rainbow == true){//if rainbow is activated
+		COLOR = mix(color, animated_line_color, outline - color.a);
+	}
+	if (rainbow == false){//if rainbow not is activated and you pick a color
+		COLOR = mix(color, line_color , outline - color.a);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=199]
+shader = SubResource( 198 )
+shader_param/rainbow = false
+shader_param/line_color = Color( 1, 1, 1, 0.4 )
+shader_param/line_scale = 1.2
+shader_param/frequency = 0.5
+shader_param/light_offset = 0.5
+shader_param/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id=162]
 flags = 4
@@ -898,10 +955,12 @@ process_material = SubResource( 80 )
 texture = ExtResource( 4 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
+material = SubResource( 199 )
 position = Vector2( 2, -16 )
 scale = Vector2( 0.416016, 0.359701 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 7
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -932,12 +991,14 @@ collision_mask = 128
 script = ExtResource( 1 )
 
 [node name="green_circle" type="Sprite" parent="DetectionArea"]
+visible = false
 modulate = Color( 1, 1, 1, 0.301961 )
 position = Vector2( 1.50001, 2 )
 scale = Vector2( 0.561667, 0.595 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+visible = false
 position = Vector2( -3, 1 )
 shape = SubResource( 2 )
 

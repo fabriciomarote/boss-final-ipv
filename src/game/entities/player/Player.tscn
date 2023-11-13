@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet2.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://src/game/entities/player/states/JumpState.gd" type="Script" id=16]
 [ext_resource path="res://src/game/entities/player/states/SwordState.gd" type="Script" id=17]
 [ext_resource path="res://src/game/entities/player/states/ArrowState.gd" type="Script" id=18]
+[ext_resource path="res://assets/sounds/player/PUNCH_DESIGNED_HEAVY_74.wav" type="AudioStream" id=19]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -167,7 +168,7 @@ tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 3 )
+"stream": ExtResource( 19 )
 } ],
 "times": PoolRealArray( 0.5 )
 }
@@ -429,6 +430,34 @@ tracks/0/keys = {
 radius = 7.0
 height = 14.0
 
+[sub_resource type="Shader" id=23]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : hint_color = vec4(0.7);
+uniform float line_thickness : hint_range(0, 10) = 0.3;
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 0.8);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=24]
+shader = SubResource( 23 )
+shader_param/line_color = Color( 0.7, 0.7, 0.7, 0.7 )
+shader_param/line_thickness = 0.3
+
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 11.5, 16 )
 
@@ -528,6 +557,7 @@ vframes = 11
 frame = 87
 
 [node name="Body" type="Sprite" parent="BodyPivot"]
+material = SubResource( 24 )
 position = Vector2( 0.0860799, -27.3982 )
 scale = Vector2( 1.01632, 0.904504 )
 texture = ExtResource( 2 )

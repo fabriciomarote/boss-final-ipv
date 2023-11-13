@@ -70,7 +70,7 @@ motion_scale = Vector2( 0.05, 0 )
 motion_mirroring = Vector2( 288, 0 )
 
 [node name="Sprite" type="Sprite" parent="MountainsLayer4"]
-modulate = Color( 0.247059, 0.239216, 0.239216, 1 )
+modulate = Color( 0.282353, 0.831373, 0.690196, 1 )
 position = Vector2( 171, -59 )
 scale = Vector2( 0.206537, 0.252711 )
 texture = ExtResource( 9 )
@@ -90,7 +90,7 @@ motion_scale = Vector2( 0.05, 0 )
 motion_mirroring = Vector2( 225, 0 )
 
 [node name="Sprite" type="Sprite" parent="MountainsLayer6"]
-modulate = Color( 0.294118, 0.294118, 0.294118, 1 )
+modulate = Color( 0.137255, 0.886275, 0.745098, 1 )
 position = Vector2( 78, -64 )
 scale = Vector2( 0.188207, 0.235771 )
 texture = ExtResource( 7 )
@@ -120,7 +120,7 @@ motion_scale = Vector2( 0.05, 0 )
 motion_mirroring = Vector2( 288, 0 )
 
 [node name="Sprite" type="Sprite" parent="MountainsLayer9"]
-modulate = Color( 0.0572408, 0.015564, 0.265625, 1 )
+modulate = Color( 0.870588, 0.631373, 0.215686, 1 )
 position = Vector2( 142, -131 )
 scale = Vector2( 0.336544, 0.434858 )
 texture = ExtResource( 10 )
