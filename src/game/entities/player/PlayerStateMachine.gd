@@ -23,8 +23,3 @@ func _on_Player_protection_changed(protection, max_protection):
 func notify_healed(amount: int) -> void:
 	current_state.handle_event("healed", amount)
 
-
-
-
-func _on_CutArea2_body_entered(body):
-	pass # Replace with function body.

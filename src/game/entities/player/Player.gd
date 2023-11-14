@@ -4,6 +4,7 @@ class_name Player
 signal hit(amount)
 signal healed(amount)
 signal hp_changed(current_hp, max_hp)
+signal chance_changed(chance, max_chance)
 signal stamina_changed(current_stamina, max_stamina)
 signal protection_changed(current_protection, max_protection)
 signal weapon_changed(weapon)
@@ -57,6 +58,9 @@ var hit_Direction : int = 0
 var arrowAmount: int = 5
 var is_attacked = false
 var protection_actived = false
+
+export (int) var max_chance: int = 3
+var chance: int = max_chance
 
 export (int) var max_hp: int = 5
 var hp: int = max_hp
@@ -121,7 +125,6 @@ func _handle_deacceleration() -> void:
 
 
 func move_is_attackingAxe() -> void:
-	print(body_pivot.scale.x)
 	if move_direction > 0 || (move_direction == 0 && body_pivot.scale.x > 0):
 		move_direction = 5
 	if move_direction < 0 || (move_direction == 0 && body_pivot.scale.x < 0):
@@ -131,7 +134,6 @@ func move_is_attackingAxe() -> void:
 
 
 func move_is_attackingBow() -> void:
-	print(body_pivot.scale.x)
 	if !is_on_floor() || (move_direction == 0 && body_pivot.scale.x > 0):
 		move_direction = -5
 	if !is_on_floor() || (move_direction == 0 && body_pivot.scale.x < 0):
@@ -196,7 +198,6 @@ func notify_hit(amount: int = 1) -> void:
 
 
 func notify_hit_protection(amount: int = 1) -> void:
-	print(protection)
 	protection -= 1
 	if protection == 0:
 		protection_actived = false
@@ -259,7 +260,6 @@ func _update_passive_prop(amount, max_amount, property: String, updated_signal) 
 
 
 func _handle_hit_protection(amount: int) -> void:
-	print(protection)
 	protection -= 1
 	if protection == 0:
 		protection_actived = false
@@ -276,8 +276,10 @@ func handle_arrow() -> void:
 
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
+	chance = (chance-1) if hp == 0 else chance
 	dead = true if hp == 0 else false
 	emit_signal("hp_changed", hp, max_hp)
+	emit_signal("chance_changed", chance, max_chance)
 
 
 func _remove() -> void:
@@ -292,7 +294,6 @@ func handle_velocity() -> void:
 
 
 func _protection_active():
-	print(protection)
 	if hay_escudo_disponible():
 		color_rect.visible = true
 		collision_shape.disabled = false

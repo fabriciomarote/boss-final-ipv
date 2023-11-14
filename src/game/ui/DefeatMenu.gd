@@ -12,12 +12,12 @@ func _ready() -> void:
 
 
 func _on_current_player_changed(player: Player) -> void:
-	player.connect("hp_changed", self, "_on_hp_changed")
-	_on_hp_changed(player.hp, player.max_hp)
+	player.connect("chance_changed", self, "_on_chance_changed")
+	_on_chance_changed(player.chance, player.max_chance)
 
 
-func _on_hp_changed(hp: int, hp_max: int) -> void:
-	if hp == 0:
+func _on_chance_changed(chance: int, chance_max: int) -> void:
+	if chance == 0:
 		show()
 
 

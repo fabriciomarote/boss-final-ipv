@@ -1,7 +1,6 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/player/red_hood_sheet2.png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/player/arrow_attack.mp3" type="AudioStream" id=3]
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
@@ -490,7 +489,7 @@ height = 14.0
 extents = Vector2( 6.75, 14 )
 
 [sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 6.5, 14.5 )
+extents = Vector2( 9.5, 16 )
 
 [sub_resource type="CircleShape2D" id=22]
 radius = 20.0998
@@ -580,15 +579,6 @@ cast_to = Vector2( 10, 15 )
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="BodyPivot"]
-visible = false
-position = Vector2( 2, 0 )
-texture = ExtResource( 2 )
-flip_h = true
-hframes = 12
-vframes = 11
-frame = 86
-
 [node name="Body" type="Sprite" parent="BodyPivot"]
 position = Vector2( 0.0860799, -27.3982 )
 scale = Vector2( 1.01632, 0.904504 )
@@ -637,7 +627,7 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea2"]
-position = Vector2( 12.5, -13.5 )
+position = Vector2( 9.5, -15 )
 shape = SubResource( 26 )
 disabled = true
 
@@ -668,7 +658,7 @@ shape = SubResource( 16 )
 disabled = true
 
 [node name="PlayerSfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 9 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="protection_changed" from="." to="StateMachine" method="_on_Player_protection_changed"]

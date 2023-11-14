@@ -1,6 +1,8 @@
 extends Node
 class_name Game_State
 
+var level_start: bool = true
+var spawn_point :Vector2
 
 ## Señal y variable de ayuda que permite notificar la existencia
 ## del jugador actual a cualquiera interesado

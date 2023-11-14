@@ -1,16 +1,18 @@
 extends Node
 
+var level_start: bool = true
+var spawn_point :Vector2
+var paused = false
+var current_time : float 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var health = 5
 
+var scoreboard = [["0",420], ["1",420], ["2",420], ["3",420], ["4",420], ["5",420]]
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _enter_score (name: String, time: float):
+	for i in 6 :
+		var score = scoreboard[i]
+		if time < score[1]:
+			scoreboard.insert(i, [name, time])
+			_enter_score(score[0], score [1])
+			return

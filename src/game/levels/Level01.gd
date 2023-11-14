@@ -7,6 +7,7 @@ onready var collision_shape = $Environment/Passage/CollisionShape2D
 onready var collision_shape_area = $Environment/Passage/PassageArea/CollisionShape2D
 onready var animation_player = $AnimationPlayer
 onready var bgm: AudioStreamPlayer = $BGM
+onready var player: Player = $Environment/Entities/Player
 
 var enabled: bool = false
 
@@ -16,10 +17,25 @@ signal return_requested()
 signal restart_requested()
 # Inicia el siguiente nivel
 signal next_level_requested()
+signal continue_level()
+signal player_dead
 
 func _ready() -> void:
 	randomize()
+	
+	if GameState.level_start:
+#		Global.spawn_point = $StartPosition.global_position
+		GameState.spawn_point = player.global_position
+		
+	player.global_position = GameState.spawn_point
+	print(player.global_position)
+	
+	player.connect("dead",self,"on_player_dead")
 
+
+func on_player_dead():
+	GameState.level_start = false 
+	emit_signal("player_dead")
 
 # Funciones que hacen de interfaz para las señales
 func _on_level_won() -> void:
@@ -33,6 +49,9 @@ func _on_return_requested() -> void:
 func _on_restart_requested() -> void:
 	emit_signal("restart_requested")
 
+
+func _on_continue_level() -> void:
+	emit_signal("continue_level")
 
 func _on_DesactivationArea_body_entered(body):
 	if !enabled:
