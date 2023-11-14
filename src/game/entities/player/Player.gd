@@ -9,8 +9,6 @@ signal stamina_changed(current_stamina, max_stamina)
 signal protection_changed(current_protection, max_protection)
 signal weapon_changed(weapon)
 signal arrow_changed(amount)
-signal dead()
-signal damage()
 
 
 const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)

@@ -11,7 +11,7 @@ func enter() -> void:
 
 ## Y en update solo manejamos la fricción y movimiento
 ## para que no sea un cubo de hielo al morir
-func update(delta) -> void:
+func update(_delta) -> void:
 	character._handle_deacceleration()
 	character._apply_movement()
 

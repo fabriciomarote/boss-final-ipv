@@ -43,7 +43,6 @@ func _initialize() -> void:
 	
 	# Se chequea que se haya asignado un character a controlar
 	if !character_path.is_empty():
-		print(character_path)
 		var ch: Node = get_node_or_null(character_path)
 		if ch != null:
 			## Al setear la variable de esta manera se llama

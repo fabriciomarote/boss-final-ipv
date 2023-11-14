@@ -16,7 +16,7 @@ func _on_current_player_changed(player: Player) -> void:
 	_on_chance_changed(player.chance, player.max_chance)
 
 
-func _on_chance_changed(chance: int, chance_max: int) -> void:
+func _on_chance_changed(chance: int, _chance_max: int) -> void:
 	if chance == 0:
 		show()
 

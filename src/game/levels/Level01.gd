@@ -53,12 +53,12 @@ func _on_restart_requested() -> void:
 func _on_continue_level() -> void:
 	emit_signal("continue_level")
 
-func _on_DesactivationArea_body_entered(body):
+func _on_DesactivationArea_body_entered(_body):
 	if !enabled:
 		enabled = true
 		animation_player.play("passage")
 
 
-func _on_ChangeAudioArea_body_entered(body):
+func _on_ChangeAudioArea_body_entered(_body):
 	 bgm.stream = preload("res://assets/sounds/audio_final.ogg")
 	 bgm.play()

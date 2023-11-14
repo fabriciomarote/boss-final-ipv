@@ -30,11 +30,6 @@ _global_script_classes=[ {
 "path": "res://src/game/environment/Arrow.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "EnemyFlying",
-"language": "GDScript",
-"path": "res://src/game/entities/enemies/flying/Flying.gd"
-}, {
-"base": "KinematicBody2D",
 "class": "EnemyMushroom",
 "language": "GDScript",
 "path": "res://src/game/entities/enemies/mushroom/Mushroom.gd"
@@ -99,7 +94,6 @@ _global_script_class_icons={
 "AbstractState": "",
 "AbstractStateMachine": "",
 "Arrow": "",
-"EnemyFlying": "",
 "EnemyMushroom": "",
 "EnemyShadow": "",
 "EnemySprout": "",

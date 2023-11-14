@@ -32,7 +32,7 @@ func enter() -> void:
 func exited() -> void:
 	path = []
 	
-func update(delta:float) -> void:
+func update(_delta:float) -> void:
 	if character._can_see_target():
 		emit_signal("finished", "alert")
 		return

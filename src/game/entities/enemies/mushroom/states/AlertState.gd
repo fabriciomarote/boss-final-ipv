@@ -9,7 +9,7 @@ func enter() -> void:
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.start()
 	
-func update(delta:float) -> void:
+func update(_delta:float) -> void:
 	character._look_at_target()
 	
 func exit() -> void:

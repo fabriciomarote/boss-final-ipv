@@ -23,7 +23,7 @@ func handle_input(event: InputEvent) -> void:
 		character._protection_active()
 
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	
 	character._handle_move_input()
 	if character.move_direction != 0:
