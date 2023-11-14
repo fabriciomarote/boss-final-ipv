@@ -28,3 +28,14 @@ func update(delta:float) -> void:
 		var steering = (desired_velocity - character.velocity) * delta * character.ACCELERATION
 		character.velocity += steering 
 	character._apply_movement()
+
+
+func handle_event(event: String, value = null) -> void:
+	.handle_event(event,value)
+	match event:
+		"hit":
+			character._handle_hit(value)
+			emit_signal("finished", "damage")
+		"hp_changed":
+			if value[0] == 0:
+				emit_signal("finished", "die")

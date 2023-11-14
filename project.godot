@@ -35,7 +35,7 @@ _global_script_classes=[ {
 "path": "res://src/game/entities/enemies/flying/Flying.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "EnemyPod",
+"class": "EnemyMushroom",
 "language": "GDScript",
 "path": "res://src/game/entities/enemies/mushroom/Mushroom.gd"
 }, {
@@ -89,11 +89,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/entities/player/Player.gd"
 }, {
-"base": "AbstractStateMachine",
-"class": "PodStateMachine",
-"language": "GDScript",
-"path": "res://src/game/entities/enemies/mushroom/PodStateMachine.gd"
-}, {
 "base": "Node2D",
 "class": "Proyectil",
 "language": "GDScript",
@@ -105,7 +100,7 @@ _global_script_class_icons={
 "AbstractStateMachine": "",
 "Arrow": "",
 "EnemyFlying": "",
-"EnemyPod": "",
+"EnemyMushroom": "",
 "EnemyShadow": "",
 "EnemySprout": "",
 "FlyStateMachine": "",
@@ -116,7 +111,6 @@ _global_script_class_icons={
 "MushroomStamina": "",
 "PathfindAstar": "",
 "Player": "",
-"PodStateMachine": "",
 "Proyectil": ""
 }
 

@@ -1,25 +1,25 @@
 extends KinematicBody2D
-class_name EnemyPod
+class_name EnemyMushroom
 
 export (float) var ACCELERATION: float = 10.0
 export (float) var H_SPEED_LIMIT: float = 30.0
 
-const MAX_LIFE = 5
-
 signal hit(amount)
+signal hp_changed(current_hp, max_hp)
 
 onready var fire_position: Position2D = $Pivot/FirePosition
 onready var raycast: RayCast2D = $Pivot/RayCast2D
 onready var body_anim: AnimatedSprite = $Pivot/Body
 onready var navigation_agent = $NavigationAgent2D
-onready var life_progress_bar:ProgressBar = $Pivot/HUD/Control/LifeProgressBar
+onready var hp_progress:ProgressBar = $Pivot/HUD/Control/LifeProgressBar
 onready var hud:Node2D = $Pivot/HUD
 onready var pivot:Node2D = $Pivot
 
 export (float) var speed:float  = 10.0
 export (float) var max_speed:float = 100.0
 export (int) var gravity: int = 10
-export (int) var life: int = MAX_LIFE
+export (int) var max_hp: int = 6
+var hp: int = max_hp
 export (PackedScene) var projectile_scene: PackedScene
 
 
@@ -28,13 +28,13 @@ var projectile_container: Node
 
 var velocity: Vector2 = Vector2.ZERO
 
-## Flag de ayuda para saber identificar el estado de actividad
 var dead: bool = false
 
 
 func _ready():
-	life_progress_bar.max_value = MAX_LIFE
-	life_progress_bar.value = life
+	hp_progress.max_value = max_hp
+	hp_progress.value = hp
+	hp_progress.modulate = Color.transparent
 	
 func _fire() -> void:
 	if target != null:
@@ -78,7 +78,23 @@ func _apply_movement() -> void:
 func notify_hit(amount:int = 1) -> void:
 	emit_signal("hit", amount)
 
+
+var hp_tween: SceneTreeTween
+
+func _handle_hit(amount: int) -> void:
+	hp = max(0, hp - amount)
+	hp_progress.max_value = max_hp
+	hp_progress.value = hp
+	dead = true if hp == 0 else false
+	emit_signal("hp_changed", hp, max_hp)
 	
+	if hp_tween:
+		hp_tween.kill()
+	hp_tween = create_tween()
+	hp_progress.modulate = Color.white
+	hp_tween.tween_property(hp_progress, "modulate", Color.transparent, 5.0)
+
+
 func _remove() -> void:
 	dead = true
 	collision_layer = 0
