@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/projectile_sprite.png-f5cd98982c6f15e1479216569d6b062d.stex"
+path="res://.import/Attack2.png-564c0537f6921b44493c3361dc334f2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/flying/projectile_sprite.png"
-dest_files=[ "res://.import/projectile_sprite.png-f5cd98982c6f15e1479216569d6b062d.stex" ]
+source_file="res://assets/textures/enemies/mushroom/Attack2.png"
+dest_files=[ "res://.import/Attack2.png-564c0537f6921b44493c3361dc334f2e.stex" ]
 
 [params]
 

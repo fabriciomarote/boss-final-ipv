@@ -2121,7 +2121,7 @@ position = Vector2( 4767, 715 )
 navpoly = SubResource( 99 )
 
 [node name="Sprout" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
-position = Vector2( 1479, 449 )
+position = Vector2( 1923, 7 )
 
 [node name="Sprout3" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( 4090, 652 )
@@ -2142,7 +2142,7 @@ position = Vector2( 5900, 95 )
 position = Vector2( 6048, 96 )
 
 [node name="Mushroom" parent="Environment/Entities/Enemies" instance=ExtResource( 36 )]
-position = Vector2( 1138, 468 )
+position = Vector2( 1292, 463 )
 
 [node name="Mushroom2" parent="Environment/Entities/Enemies" instance=ExtResource( 36 )]
 position = Vector2( 5490, 327 )

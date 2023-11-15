@@ -22,7 +22,7 @@ func _should_fire() -> bool:
 	return abs_position_diff <= attack_distance_threshold
 
 func _attack() -> void:
-	#character._play_animation("attack")
+	character._play_animation("attack")
 	character._fire()
 	timer.start()
 		

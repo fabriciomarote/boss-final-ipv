@@ -539,6 +539,10 @@ state_id = "arrow"
 script = ExtResource( 4 )
 state_id = "damage"
 
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/arrow = SubResource( 11 )
@@ -662,6 +666,7 @@ stream = ExtResource( 9 )
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="protection_changed" from="." to="StateMachine" method="_on_Player_protection_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="BodyAnimations" to="StateMachine" method="_on_animation_finished"]
 [connection signal="body_entered" from="BodyPivot/CutArea" to="." method="_on_CutArea_body_entered"]
 [connection signal="body_entered" from="BodyPivot/CutArea2" to="." method="_on_CutArea2_body_entered"]

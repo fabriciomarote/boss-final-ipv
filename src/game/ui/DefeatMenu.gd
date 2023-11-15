@@ -8,16 +8,7 @@ signal return_selected()
 
 func _ready() -> void:
 	hide()
-	GameState.connect("current_player_changed", self, "_on_current_player_changed")
-
-
-func _on_current_player_changed(player: Player) -> void:
-	player.connect("chance_changed", self, "_on_chance_changed")
-	_on_chance_changed(player.chance, player.max_chance)
-
-
-func _on_chance_changed(chance: int, _chance_max: int) -> void:
-	if chance == 0:
+	if GameState.chance == 0:
 		show()
 
 

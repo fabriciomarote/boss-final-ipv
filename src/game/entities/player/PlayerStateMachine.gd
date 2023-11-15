@@ -18,8 +18,3 @@ func _on_Player_protection_changed(protection, max_protection):
 	current_state.handle_event("protection_changed", [protection, max_protection])
 
 
-## Esta función no se utiliza aun, ya que aun no contamos con
-## una pool de HP variable.
-func notify_healed(amount: int) -> void:
-	current_state.handle_event("healed", amount)
-

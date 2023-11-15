@@ -22,20 +22,6 @@ signal player_dead
 
 func _ready() -> void:
 	randomize()
-	
-	if GameState.level_start:
-#		Global.spawn_point = $StartPosition.global_position
-		GameState.spawn_point = player.global_position
-		
-	player.global_position = GameState.spawn_point
-	print(player.global_position)
-	
-	player.connect("dead",self,"on_player_dead")
-
-
-func on_player_dead():
-	GameState.level_start = false 
-	emit_signal("player_dead")
 
 # Funciones que hacen de interfaz para las señales
 func _on_level_won() -> void:

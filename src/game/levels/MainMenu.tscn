@@ -186,7 +186,7 @@ anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Container"]
 material = SubResource( 28 )
-position = Vector2( 144.141, 81.1389 )
+position = Vector2( 144, 81 )
 scale = Vector2( 0.281525, 0.277873 )
 texture = ExtResource( 4 )
 

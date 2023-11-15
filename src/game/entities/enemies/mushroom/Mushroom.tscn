@@ -162,7 +162,7 @@ animations = [ {
 "frames": [ SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ) ],
 "loop": false,
 "name": "attack",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [ SubResource( 118 ), SubResource( 119 ) ],
 "loop": true,
@@ -268,8 +268,8 @@ collision_mask = 3
 position = Vector2( -7.62939e-06, -13 )
 scale = Vector2( 2.955, 2.14833 )
 frames = SubResource( 80 )
-animation = "idle"
-frame = 2
+animation = "attack"
+frame = 10
 playing = true
 flip_h = true
 

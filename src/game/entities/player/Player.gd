@@ -4,7 +4,6 @@ class_name Player
 signal hit(amount)
 signal healed(amount)
 signal hp_changed(current_hp, max_hp)
-signal chance_changed(chance, max_chance)
 signal stamina_changed(current_stamina, max_stamina)
 signal protection_changed(current_protection, max_protection)
 signal weapon_changed(weapon)
@@ -28,9 +27,10 @@ onready var player_sfx: AudioStreamPlayer = $PlayerSfx
 onready var protection_area: KinematicBody2D = $BodyPivot/Protection
 onready var color_rect: ColorRect = $BodyPivot/ProtectionArea/ColorRect
 onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/CollisionShape2D
+onready var timer: Timer = $"%Timer"
 
-export (float) var ACCELERATION: float = 500.0
-export (float) var H_SPEED_LIMIT: float = 10.0
+export (float) var ACCELERATION: float = 500
+export (float) var H_SPEED_LIMIT: float = 300
 export (int) var jump_speed: int = 360
 export (float) var FRICTION_WEIGHT: float = 5.0
 export (int) var gravity: int = 20
@@ -57,9 +57,6 @@ var arrowAmount: int = 5
 var is_attacked = false
 var protection_actived = false
 
-export (int) var max_chance: int = 3
-var chance: int = max_chance
-
 export (int) var max_hp: int = 5
 var hp: int = max_hp
 
@@ -76,6 +73,7 @@ var fire_tween: SceneTreeTween
 
 var dead: bool = false
 func _ready() -> void:
+	$Timer.connect("timeout", self, "_on_Timer_timeout")
 	initialize()
 
 
@@ -84,17 +82,15 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 		attackModes.AXE: "AxeAttack",
 		attackModes.BOW: "BowAttack"
 	}
-	
 	self.projectile_container = projectile_container
-	attackHandler = attackHandlers.get(attackModes.BOW)
-	currentAttackMode = attackModes.BOW
+	attackHandler = attackHandlers.get(attackModes.AXE)
+	currentAttackMode = attackModes.AXE
 	emit_signal("weapon_changed", currentAttackMode)
 	GameState.set_current_player(self)
 
 
 func fire() -> void:
-	if !body_animations.is_playing(): #and contiene flecha:
-		## Mato al tween antes de disparar para que no me cambie la rotación
+	if !body_animations.is_playing():
 		if fire_tween != null:
 			fire_tween.kill()
 
@@ -183,9 +179,6 @@ func _apply_movement(with_gravity: bool = true) -> void:
 func is_on_floor() -> bool:
 	var is_colliding: bool = .is_on_floor()
 	for raycast in floor_raycasts:
-		## Al tener deshabilitados los raycasts por default
-		## ya que queremos que solamente se procesen en esta
-		## función, debemos forzar una actualización
 		raycast.force_raycast_update()
 		is_colliding = is_colliding || raycast.is_colliding()
 	return is_colliding
@@ -202,16 +195,7 @@ func notify_hit_protection(amount: int = 1) -> void:
 		_protection_disabled()  
 	else: 
 		true
-	emit_signal("protection_changed", amount)
-
-
-func notify_heal(amount: int = 1) -> void:
-	emit_signal("healed", amount)
-
-
-func notify_dead() -> void:
-	hp = 0
-	emit_signal("hp_changed", hp, max_hp)
+	emit_signal("protection_changed", protection, max_protection)
 
 
 func sum_hp() -> void:
@@ -229,44 +213,6 @@ func sum_protection() -> void:
 	emit_signal("protection_changed", protection, max_protection)
 
 
-var stamina_regen_tween: SceneTreeTween
-
-#func sum_stamina(amount: float) -> void:
-	#_update_passive_prop(
-	#	clamp(stamina + amount, 0.0, max_stamina),
-	#	max_stamina,
-	#	"stamina",
-	#	"stamina_changed"
-	#)
-	#if stamina < max_stamina:
-	#	if stamina_regen_tween:
-	#		stamina_regen_tween.kill()
-	#	stamina_regen_tween = create_tween()
-	#	var duration: float = (max_stamina - stamina) * stamina_recovery_time / max_stamina
-	#	stamina_regen_tween.tween_method(
-	#		self,
-	#		"_update_passive_prop",
-	#		stamina,
-	#		max_stamina,
-	#		duration,
-	#		[max_stamina, "stamina", "stamina_changed"]
-	#	).set_delay(stamina_recovery_delay)
-
-func _update_passive_prop(amount, max_amount, property: String, updated_signal) -> void:
-	set(property, amount)
-	emit_signal(updated_signal, amount, max_amount)
-
-
-func _handle_hit_protection(amount: int) -> void:
-	protection -= 1
-	if protection == 0:
-		protection_actived = false
-		_protection_disabled()  
-	else: 
-		true
-	emit_signal("protection_changed", amount)
-
-
 func handle_arrow() -> void:
 	arrowAmount += 1
 	emit_signal("arrow_changed", arrowAmount)
@@ -274,21 +220,26 @@ func handle_arrow() -> void:
 
 func _handle_hit(amount: int) -> void:
 	hp = max(0, hp - amount)
-	chance = (chance-1) if hp == 0 else chance
 	dead = true if hp == 0 else false
 	emit_signal("hp_changed", hp, max_hp)
-	emit_signal("chance_changed", chance, max_chance)
 
 
 func _remove() -> void:
-	set_physics_process(false)
-	collision_layer = 0
+	print(GameState.chance)
+	if GameState.chance > 0:
+		GameState.chance -= 1
+		print(GameState.chance)
+		get_tree().reload_current_scene()
+	else:
+		set_physics_process(false)
+		collision_layer = 0
+	
 
 
 func handle_velocity() -> void:
 	if stamina == 10:
-		self.ACCELERATION = 100
-		self.H_SPEED_LIMIT = 450
+		timer.start()
+		self.H_SPEED_LIMIT = 550
 
 
 func _protection_active():
@@ -342,3 +293,13 @@ func _jump_audio():
 
 func _on_CutArea2_body_entered(body):
 	body.notify_hit(3)
+
+
+func _on_Timer_timeout():
+	if stamina > 0:
+		stamina -= 1
+		emit_signal("stamina_changed", stamina, max_stamina)
+	else:
+		timer.stop()
+		self.ACCELERATION = 500
+		self.H_SPEED_LIMIT = 300

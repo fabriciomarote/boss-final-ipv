@@ -1,22 +1,23 @@
 extends Node
 class_name Game_State
 
-var level_start: bool = true
-var spawn_point :Vector2
+var checkpoint_actived: bool = false
+var spawn_point = null
 
-## Señal y variable de ayuda que permite notificar la existencia
-## del jugador actual a cualquiera interesado
+
 signal current_player_changed(player)
+
+var chance: int = 3
 
 var current_player: Player
 
 func set_current_player(player: Player) -> void:
 	current_player = player
+	if checkpoint_actived:
+		current_player.global_position = spawn_point
 	emit_signal("current_player_changed", player)
 
 
-## Señal genérica que avisa del cumplimiento de la condición
-## de victoria a todos los interesados.
 signal level_won()
 
 func notify_level_won() -> void:
