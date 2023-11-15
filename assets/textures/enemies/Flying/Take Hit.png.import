@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Take Hit.png-e9ea24fa34eba9c3883725b33428bb37.stex"
+path="res://.import/Take Hit.png-abcfe48f2f306721aadfd9192cd3eb6e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/flying/Take Hit.png"
-dest_files=[ "res://.import/Take Hit.png-e9ea24fa34eba9c3883725b33428bb37.stex" ]
+source_file="res://assets/textures/enemies/Flying/Take Hit.png"
+dest_files=[ "res://.import/Take Hit.png-abcfe48f2f306721aadfd9192cd3eb6e.stex" ]
 
 [params]
 
