@@ -6,17 +6,16 @@ var attacks = 0
 
 func enter() -> void:
 	if character.is_on_floor():
-		if character.arrowAmount > 0:
-			character._play_animation("arrow")
-		else:
+		if character.arrowAmount == 0:
 			character._play_animation("whitoutArrow")
-	else:
-		if character.arrowAmount > 0:
-			character._play_animation("arrowJump")
-			attacks += 1 
-			print(attacks)
 		else:
+			character._play_animation("arrow")
+	else:
+		if character.arrowAmount == 0:
 			character._play_animation("whitoutArrowJump")
+			attacks += 1 
+		else:
+			character._play_animation("arrowJump")
 
 func handle_input(event:InputEvent) -> void:
 	if event.is_action_pressed("attack") && character.attackHandler == "BowAttack" && !character.is_on_floor() && attacks < attacks_limit:

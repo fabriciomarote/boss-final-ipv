@@ -53,7 +53,7 @@ var snap_vector: Vector2 = SNAP_DIRECTION * SNAP_LENGTH
 var stop_on_slope: bool = true
 var move_direction: int = 0
 var hit_Direction : int = 0
-var arrowAmount: int = 5
+var arrowAmount: int = 0
 var is_attacked = false
 var protection_actived = false
 

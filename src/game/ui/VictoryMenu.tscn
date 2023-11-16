@@ -90,7 +90,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Reiniciar"
+text = "Volver a jugar"
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 16.0
@@ -102,7 +102,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Volver al inicio"
+text = "Ir a inicio"
 
 [connection signal="pressed" from="Panel/VBoxContainer/RestartButton" to="." method="_on_restart_requested"]
 [connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
