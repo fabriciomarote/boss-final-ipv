@@ -13,6 +13,7 @@ func _ready() -> void:
 
 
 func _on_RetryButton_pressed() -> void:
+	hide()
 	emit_signal("retry_selected")
 
 

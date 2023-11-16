@@ -2142,16 +2142,16 @@ position = Vector2( 5900, 95 )
 position = Vector2( 6048, 96 )
 
 [node name="Mushroom" parent="Environment/Entities/Enemies" instance=ExtResource( 36 )]
-position = Vector2( 1292, 463 )
+position = Vector2( 2964, 1125 )
 
 [node name="Mushroom2" parent="Environment/Entities/Enemies" instance=ExtResource( 36 )]
-position = Vector2( 5490, 327 )
+position = Vector2( 5341, 1087 )
 
 [node name="Mushroom3" parent="Environment/Entities/Enemies" instance=ExtResource( 36 )]
-position = Vector2( 5051, 823 )
+position = Vector2( 5087, 1117 )
 
 [node name="Mushroom4" parent="Environment/Entities/Enemies" instance=ExtResource( 36 )]
-position = Vector2( 4757, 731 )
+position = Vector2( 4822, 1104 )
 
 [node name="Mushrooms" type="Node2D" parent="Environment"]
 

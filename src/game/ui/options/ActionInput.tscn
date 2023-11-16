@@ -4,16 +4,16 @@
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.180392, 0, 0, 1 )
+bg_color = Color( 0.45098, 0, 0, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_color = Color( 0.282353, 0.00392157, 0.00392157, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [sub_resource type="DynamicFont" id=4]
 size = 12
@@ -24,19 +24,19 @@ content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
-bg_color = Color( 0.180392, 0, 0, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [sub_resource type="DynamicFont" id=2]
-size = 12
+size = 10
 font_data = ExtResource( 2 )
 
 [node name="ActionInput" type="PanelContainer"]
-margin_right = 94.0
-margin_bottom = 23.0
+margin_right = 80.0
+margin_bottom = 17.0
 custom_styles/panel = SubResource( 3 )
 script = ExtResource( 1 )
 action_name = "hola"
@@ -44,13 +44,13 @@ action_name = "hola"
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 93.0
-margin_bottom = 22.0
+margin_right = 79.0
+margin_bottom = 16.0
 
 [node name="ActionKeyButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 margin_right = 16.0
-margin_bottom = 21.0
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 text = "a"
@@ -59,9 +59,9 @@ flat = true
 [node name="ActionNameLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 margin_left = 20.0
-margin_top = 3.0
-margin_right = 46.0
-margin_bottom = 18.0
+margin_top = 1.0
+margin_right = 42.0
+margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
 text = "hola"
 

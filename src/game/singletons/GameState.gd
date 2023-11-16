@@ -3,7 +3,8 @@ class_name Game_State
 
 var checkpoint_actived: bool = false
 var spawn_point = null
-
+var position_original : Vector2
+var game_finished: bool = false
 
 signal current_player_changed(player)
 
@@ -12,8 +13,10 @@ var chance: int = 3
 var current_player: Player
 
 func set_current_player(player: Player) -> void:
+	print(game_finished)
 	current_player = player
-	if checkpoint_actived:
+	position_original = current_player.global_position
+	if checkpoint_actived && !game_finished:
 		current_player.global_position = spawn_point
 	emit_signal("current_player_changed", player)
 
