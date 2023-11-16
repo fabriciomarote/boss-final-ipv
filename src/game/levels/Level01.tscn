@@ -27,7 +27,7 @@
 [ext_resource path="res://assets/textures/tileset/Yellow-Tree.png" type="Texture" id=25]
 [ext_resource path="res://assets/textures/tileset/Dark-Tree.png" type="Texture" id=26]
 [ext_resource path="res://assets/textures/tileset/Buildings.png" type="Texture" id=27]
-[ext_resource path="res://assets/sounds/audio_tutorial.ogg" type="AudioStream" id=28]
+[ext_resource path="res://assets/sounds/Spooky 1.wav" type="AudioStream" id=28]
 [ext_resource path="res://assets/textures/tileset/Red-Tree.png" type="Texture" id=29]
 [ext_resource path="res://src/game/environment/MushroomStamina.tscn" type="PackedScene" id=30]
 [ext_resource path="res://src/game/ui/tutorial/ProtectionTutorial.tscn" type="PackedScene" id=31]
@@ -2289,6 +2289,7 @@ position = Vector2( 4501, 842 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )
+volume_db = 2.0
 autoplay = true
 bus = "Music"
 
