@@ -82,7 +82,7 @@ margin_bottom = 54.0
 
 [node name="RetryButton" type="Button" parent="Panel/VBoxContainer"]
 visible = false
-margin_right = 118.0
+margin_right = 78.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 4 )
 custom_styles/hover = SubResource( 2 )

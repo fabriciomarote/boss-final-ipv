@@ -14,5 +14,6 @@ func _on_body_entered(_body: Node) -> void:
 		GameState.game_finished = true
 		GameState.checkpoint_actived = false
 		GameState.spawn_point = null
+		GameState.chance = 3
 		GameState.notify_level_won()
 
