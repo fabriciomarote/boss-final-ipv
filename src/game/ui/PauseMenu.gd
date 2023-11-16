@@ -31,18 +31,27 @@ func _on_ResumeButton_pressed():
 func _on_ReturnButton_pressed():
 	pause_sfx.stream = button
 	pause_sfx.play()
+	GameState.game_finished = true
+	GameState.checkpoint_actived = false
+	GameState.spawn_point = null
 	emit_signal("return_selected")
 
 
 func _on_RestartButton_pressed():
 	pause_sfx.stream = button
 	pause_sfx.play()
+	GameState.game_finished = true
+	GameState.checkpoint_actived = false
+	GameState.spawn_point = null
 	hide()
 	emit_signal("restart_selected")
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("reset"):
+		GameState.game_finished = true
+		GameState.checkpoint_actived = false
+		GameState.spawn_point = null
 		get_tree().reload_current_scene()
 
 func _on_restart_requested():

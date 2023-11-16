@@ -42,7 +42,6 @@ func _on_continue_level() -> void:
 func _on_DesactivationArea_body_entered(_body):
 	if !enabled:
 		enabled = true
-		print("desbloqueo")
 		animation_player.play("passage")
 
 
