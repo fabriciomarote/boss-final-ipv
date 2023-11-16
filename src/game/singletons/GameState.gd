@@ -13,7 +13,6 @@ var chance: int = 3
 var current_player: Player
 
 func set_current_player(player: Player) -> void:
-	print(game_finished)
 	current_player = player
 	position_original = current_player.global_position
 	if checkpoint_actived && !game_finished:

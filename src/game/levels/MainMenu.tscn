@@ -194,9 +194,9 @@ texture = ExtResource( 4 )
 margin_left = 9.0
 margin_top = 135.0
 margin_right = 140.0
-margin_bottom = 158.0
+margin_bottom = 153.0
 custom_fonts/font = SubResource( 1 )
-text = "caperucita ninja"
+text = "Caperucita ninja"
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Container"]
 margin_left = 228.0

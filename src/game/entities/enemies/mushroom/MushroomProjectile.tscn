@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/game/entities/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/enemies/mushroom/hit4.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/enemies/mushroom/hit2.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/enemies/mushroom/hit3.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/enemies/mushroom/proyectile.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/enemies/mushroom/hit1.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+
+[sub_resource type="Animation" id=2]
+resource_name = "fire_loop"
+length = 0.5
+loop = true
+step = 0.05
+
+[sub_resource type="Animation" id=3]
+resource_name = "fire_start"
+length = 0.1
+
+[sub_resource type="Animation" id=4]
+resource_name = "hit"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_remove"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 3.5, 9.5 )
+
+[node name="PodProjectile" instance=ExtResource( 1 )]
+scale = Vector2( 0.5, 0.5 )
+VELOCITY = 150.0
+
+[node name="LifetimeTimer" parent="." index="0"]
+wait_time = 3.0
+
+[node name="ProjectileAnimations" parent="." index="1"]
+anims/RESET = SubResource( 8 )
+anims/fire_loop = SubResource( 2 )
+anims/fire_start = SubResource( 3 )
+anims/hit = SubResource( 4 )
+
+[node name="Hitbox" parent="." index="2"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+position = Vector2( -2, -2 )
+scale = Vector2( 2.165, 2.035 )
+texture = ExtResource( 5 )

@@ -92,12 +92,11 @@ margin_top = 4.0
 margin_right = 40.0
 margin_bottom = 20.0
 max_value = 10.0
-value = 10.0
 texture_under = SubResource( 9 )
 texture_over = SubResource( 9 )
 texture_progress = SubResource( 10 )
 fill_mode = 3
-tint_progress = Color( 0.87451, 0.94902, 0, 1 )
+tint_progress = Color( 0.968627, 1, 0, 1 )
 
 [node name="ProtectionProgress" type="TextureProgress" parent="StatsContainer/Panel"]
 unique_name_in_owner = true
@@ -110,7 +109,7 @@ texture_under = SubResource( 14 )
 texture_over = SubResource( 14 )
 texture_progress = SubResource( 15 )
 fill_mode = 3
-tint_progress = Color( 0.00784314, 0, 1, 1 )
+tint_progress = Color( 0, 0.27451, 1, 1 )
 
 [node name="Weapon" type="Sprite" parent="StatsContainer/Panel"]
 modulate = Color( 0.65098, 0.65098, 0.65098, 1 )
@@ -119,6 +118,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = SubResource( 13 )
 
 [node name="Bow" type="Sprite" parent="StatsContainer/Panel"]
+visible = false
 modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
 position = Vector2( 67, 12 )
 scale = Vector2( 0.0723954, 0.0732422 )
@@ -133,6 +133,7 @@ texture = ExtResource( 3 )
 flip_h = true
 
 [node name="Counter" type="Label" parent="StatsContainer/Panel"]
+visible = false
 margin_left = 75.0
 margin_top = 16.0
 margin_right = 83.0
