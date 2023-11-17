@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout-death.png-c0dc3a944be4ac3ed7adb9244479a57f.stex"
+path="res://.import/sprout-death.png-869394dea54de8f7b96f88f66640417f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Sprout/Death/Sprout-death.png"
-dest_files=[ "res://.import/Sprout-death.png-c0dc3a944be4ac3ed7adb9244479a57f.stex" ]
+source_file="res://assets/textures/enemies/sprout/sprout-death.png"
+dest_files=[ "res://.import/sprout-death.png-869394dea54de8f7b96f88f66640417f.stex" ]
 
 [params]
 

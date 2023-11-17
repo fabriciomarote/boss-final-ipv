@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sprout_attack.png-fdcd4c93f5b22f7f0ad1d4e52381283f.stex"
+path="res://.import/sprout_idle.png-660cce3f4b0c5aaddf787be0ce34d3c4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Sprout/Attack/Sprout_attack.png"
-dest_files=[ "res://.import/Sprout_attack.png-fdcd4c93f5b22f7f0ad1d4e52381283f.stex" ]
+source_file="res://assets/textures/enemies/sprout/sprout_idle.png"
+dest_files=[ "res://.import/sprout_idle.png-660cce3f4b0c5aaddf787be0ce34d3c4.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
