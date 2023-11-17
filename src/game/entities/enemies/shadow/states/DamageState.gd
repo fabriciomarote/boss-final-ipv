@@ -2,7 +2,6 @@ extends AbstractState
 
 
 func enter() -> void:
-	character.emit_signal("damage")
 	character._play_animation("damage")
 
 

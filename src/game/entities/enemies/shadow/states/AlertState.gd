@@ -10,7 +10,7 @@ func fire() -> void:
 	character._play_animation("attack")
 
 
-func update(delta:float) -> void:
+func update(_delta:float) -> void:
 	character._look_at_target()
 
 

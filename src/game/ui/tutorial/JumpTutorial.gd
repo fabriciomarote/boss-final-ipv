@@ -14,7 +14,7 @@ func _ready() -> void:
 func _refresh_inputs() -> void:
 	pass
 
-func _on_PlayerCloseArea_body_entered(body):
+func _on_PlayerCloseArea_body_entered(_body):
 	if !enabled:
 		enabled = true
 		enabling_animation.play("enabled")

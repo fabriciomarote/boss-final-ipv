@@ -5,7 +5,7 @@ func enter() -> void:
 	character._play_animation("idle")
 	
 	
-func update(delta:float) -> void:
+func update(_delta:float) -> void:
 	character._apply_movement()
 	if character._can_see_target():
 		emit_signal("finished", "alert")
