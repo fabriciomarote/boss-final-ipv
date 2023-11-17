@@ -41,6 +41,7 @@ position = Vector2( 0, -10 )
 shape = SubResource( 2 )
 
 [node name="TutorialsElements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="MoveAction1" type="VBoxContainer" parent="TutorialsElements"]
 margin_left = -23.0
