@@ -18,7 +18,6 @@ signal restart_requested()
 # Inicia el siguiente nivel
 signal next_level_requested()
 signal continue_level()
-signal player_dead
 
 func _ready() -> void:
 	randomize()

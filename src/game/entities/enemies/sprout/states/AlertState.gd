@@ -10,7 +10,7 @@ func enter() -> void:
 	timer.start()
 
 
-func update(delta:float) -> void:
+func update(_delta:float) -> void:
 	character._look_at_target()
 
 

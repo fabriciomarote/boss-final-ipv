@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Player
 
 signal hit(amount)
-signal healed(amount)
 signal hp_changed(current_hp, max_hp)
 signal stamina_changed(current_stamina, max_stamina)
 signal protection_changed(current_protection, max_protection)
@@ -24,7 +23,6 @@ onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
 onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
 onready var player_sfx: AudioStreamPlayer = $PlayerSfx
-onready var protection_area: KinematicBody2D = $BodyPivot/Protection
 onready var color_rect: ColorRect = $BodyPivot/ProtectionArea/ColorRect
 onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/CollisionShape2D
 onready var timer: Timer = $"%Timer"
@@ -73,7 +71,7 @@ var fire_tween: SceneTreeTween
 
 var dead: bool = false
 func _ready() -> void:
-	$Timer.connect("timeout", self, "_on_Timer_timeout")
+	#$Timer.connect("timeout", self, "_on_Timer_timeout")
 	initialize()
 
 
@@ -116,24 +114,6 @@ func _handle_move_input() -> void:
 
 func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
-
-
-func move_is_attackingAxe() -> void:
-	if move_direction > 0 || (move_direction == 0 && body_pivot.scale.x > 0):
-		move_direction = 5
-	if move_direction < 0 || (move_direction == 0 && body_pivot.scale.x < 0):
-		move_direction -5
-	velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
-	body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
-
-
-func move_is_attackingBow() -> void:
-	if !is_on_floor() || (move_direction == 0 && body_pivot.scale.x > 0):
-		move_direction = -5
-	if !is_on_floor() || (move_direction == 0 && body_pivot.scale.x < 0):
-		move_direction = -10
-	velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
-	body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
 
 
 func is_near_wall():
@@ -188,7 +168,7 @@ func notify_hit(amount: int = 1) -> void:
 	emit_signal("hit", amount)
 
 
-func notify_hit_protection(amount: int = 1) -> void:
+func notify_hit_protection(_amount: int = 1) -> void:
 	protection -= 1
 	if protection == 0:
 		protection_actived = false
@@ -225,10 +205,8 @@ func _handle_hit(amount: int) -> void:
 
 
 func _remove() -> void:
-	print(GameState.chance)
 	if GameState.chance > 0:
 		GameState.chance -= 1
-		print(GameState.chance)
 		get_tree().reload_current_scene()
 	else:
 		set_physics_process(false)

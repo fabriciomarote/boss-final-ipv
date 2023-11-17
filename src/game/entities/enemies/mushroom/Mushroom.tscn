@@ -298,7 +298,6 @@ script = ExtResource( 5 )
 state_id = "alert"
 
 [node name="Timer" type="Timer" parent="StateMachine/Alert"]
-wait_time = 1.5
 one_shot = true
 
 [node name="Damage" type="Node" parent="StateMachine"]
@@ -350,7 +349,7 @@ position = Vector2( -7.62939e-06, -13 )
 scale = Vector2( 2.955, 2.14833 )
 frames = SubResource( 80 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 

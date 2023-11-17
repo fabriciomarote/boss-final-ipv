@@ -19,5 +19,5 @@ func update(_delta) -> void:
 ## Para este punto solo hay una animación reproduciendose
 ## por lo que podemos extraer el llamado a _remove desde la
 ## animación a esta función
-func _on_animation_finished(anim_name:String) -> void:
+func _on_animation_finished(_anim_name:String) -> void:
 	character._remove()

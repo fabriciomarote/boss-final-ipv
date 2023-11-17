@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Golem_AttackB_FX.png-518ec77bbd315897b28e7f931e6cd0fb.stex"
+path="res://.import/sprout_attack.png-f1a104cf9ef995c2a2f1629ec8cb380e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/golem/Golem_AttackB_FX.png"
-dest_files=[ "res://.import/Golem_AttackB_FX.png-518ec77bbd315897b28e7f931e6cd0fb.stex" ]
+source_file="res://assets/textures/enemies/sprout/sprout_attack.png"
+dest_files=[ "res://.import/sprout_attack.png-f1a104cf9ef995c2a2f1629ec8cb380e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

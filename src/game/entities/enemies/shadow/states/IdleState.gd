@@ -17,7 +17,7 @@ func exit() -> void:
 	idle_timer.stop()
 
 
-func update(delta:float) -> void:
+func update(_delta:float) -> void:
 	character._apply_movement()
 	if character._can_see_target():
 		emit_signal("finished", "alert")

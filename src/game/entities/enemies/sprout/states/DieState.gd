@@ -8,5 +8,5 @@ func enter() -> void:
 	character.collision_mask = 0
 
 
-func _on_animation_finished(anim_name: String) ->  void:
+func _on_animation_finished(_anim_name: String) ->  void:
 	character._remove()

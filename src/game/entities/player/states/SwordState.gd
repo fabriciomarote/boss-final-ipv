@@ -16,5 +16,5 @@ func handle_event(event: String, value = null) -> void:
 				emit_signal("finished", "dead")
 
 
-func _on_animation_finished(anim_name:String) -> void:
+func _on_animation_finished(_anim_name:String) -> void:
 	emit_signal("finished", "idle")	
