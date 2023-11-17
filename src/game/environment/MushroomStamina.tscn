@@ -8,7 +8,6 @@ radius = 5.0
 height = 0.0
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 16.3491, -0.225245, 14.5219, 16.1925 )
 

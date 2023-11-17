@@ -1,119 +1,114 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Dark/Space_Key_Dark.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/game/ui/tutorial/JumpTutorial.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Light/Space_Key_Light.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "enabled"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("TutorialElements:modulate")
+tracks/0/path = NodePath("Elements:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 15 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 5
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 8
+[sub_resource type="DynamicFont" id=2]
+size = 9
 font_data = ExtResource( 3 )
 
 [node name="JumpTutorial" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="EnablingAnimation" type="AnimationPlayer" parent="."]
-anims/enabled = SubResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/enabled = SubResource( 3 )
 
 [node name="PlayerCloseArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCloseArea"]
-position = Vector2( 0, -10 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
-[node name="TutorialElements" type="Node2D" parent="."]
+[node name="Elements" type="Node2D" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TutorialElements"]
-margin_left = -40.0
-margin_top = -60.0
-margin_bottom = -20.0
+[node name="JumpAction1" type="VBoxContainer" parent="Elements"]
+margin_left = -31.0
+margin_top = -52.0
+margin_right = 9.0
+margin_bottom = -12.0
 
-[node name="ActionName" type="Label" parent="TutorialElements/VBoxContainer"]
+[node name="ActionName" type="Label" parent="Elements/JumpAction1"]
 margin_right = 40.0
 margin_bottom = 7.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 1 )
 text = "Saltar"
-align = 1
 
-[node name="ActionLabel" type="Label" parent="TutorialElements/VBoxContainer"]
+[node name="ActionLabel" type="Label" parent="Elements/JumpAction1"]
 margin_top = 11.0
 margin_right = 40.0
 margin_bottom = 25.0
-align = 1
 
-[node name="ActionTexture" type="TextureRect" parent="TutorialElements/VBoxContainer/ActionLabel"]
-modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
-margin_left = 12.0
-margin_top = -3.0
-margin_right = 28.0
-margin_bottom = 11.0
-texture = ExtResource( 1 )
-expand = true
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="TutorialElements"]
-margin_left = -15.0
-margin_top = -60.0
-margin_right = 47.0
-margin_bottom = -20.0
-
-[node name="ActionName" type="Label" parent="TutorialElements/VBoxContainer2"]
-margin_right = 62.0
-margin_bottom = 7.0
-custom_fonts/font = SubResource( 3 )
-text = "Doble salto"
-align = 1
-
-[node name="ActionLabel" type="Label" parent="TutorialElements/VBoxContainer2"]
-margin_top = 11.0
-margin_right = 62.0
-margin_bottom = 25.0
-align = 1
-
-[node name="ActionTexture2" type="TextureRect" parent="TutorialElements/VBoxContainer2/ActionLabel"]
-modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
-margin_left = 10.0
-margin_top = -3.0
-margin_right = 26.0
-margin_bottom = 11.0
-texture = ExtResource( 1 )
-expand = true
-
-[node name="Label" type="Label" parent="TutorialElements/VBoxContainer2/ActionLabel"]
-margin_left = 23.0
-margin_right = 36.0
+[node name="ActionTexture" type="TextureRect" parent="Elements/JumpAction1/ActionLabel"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = -2.0
+margin_top = -1.0
+margin_right = 18.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
-text = "+"
-align = 1
-
-[node name="ActionTexture3" type="TextureRect" parent="TutorialElements/VBoxContainer2/ActionLabel"]
-modulate = Color( 0.788235, 0.788235, 0.788235, 1 )
-margin_left = 32.0
-margin_top = -3.0
-margin_right = 48.0
-margin_bottom = 11.0
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 expand = true
+
+[node name="JumpAction2" type="VBoxContainer" parent="Elements"]
+margin_left = 9.0
+margin_top = -52.0
+margin_right = 49.0
+margin_bottom = -12.0
+
+[node name="ActionName" type="Label" parent="Elements/JumpAction2"]
+margin_right = 40.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 1 )
+text = "Doble salto"
+
+[node name="ActionLabel" type="Label" parent="Elements/JumpAction2"]
+margin_top = 11.0
+margin_right = 40.0
+margin_bottom = 25.0
+
+[node name="ActionTexture" type="TextureRect" parent="Elements/JumpAction2/ActionLabel"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = -8.0
+margin_top = -1.0
+margin_right = 12.0
+margin_bottom = 19.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="ActionTexture2" type="TextureRect" parent="Elements/JumpAction2/ActionLabel"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = 17.0
+margin_top = -1.0
+margin_right = 37.0
+margin_bottom = 19.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Elements/JumpAction2/ActionLabel"]
+margin_left = 13.0
+margin_top = 4.0
+margin_right = 53.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 2 )
+text = "+"
 
 [connection signal="body_entered" from="PlayerCloseArea" to="." method="_on_PlayerCloseArea_body_entered"]

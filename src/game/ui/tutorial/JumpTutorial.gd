@@ -1,20 +1,15 @@
 extends Node2D
 
-
-onready var enabling_animation: AnimationPlayer = $EnablingAnimation
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var enabled: bool = false
 
-
-func _ready() -> void:
+func ready() -> void:
 	GameState.connect("input_map_changed", self, "_refresh_inputs")
-	_refresh_inputs()
+	#_refresh_inputs()
 
 
-func _refresh_inputs() -> void:
-	pass
-
-func _on_PlayerCloseArea_body_entered(_body):
+func _on_PlayerCloseArea_body_entered(body):
 	if !enabled:
 		enabled = true
-		enabling_animation.play("enabled")
+		animation_player.play("enabled")

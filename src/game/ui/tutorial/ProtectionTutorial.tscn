@@ -1,66 +1,70 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Dark/C_Key_Dark.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Light/C_Key_Light.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/game/ui/tutorial/ProtectionTutorial.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "enabled"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("TutorialsElements:modulate")
+tracks/0/path = NodePath("Elements:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-
-[sub_resource type="DynamicFont" id=2]
-size = 6
-font_data = ExtResource( 1 )
+extents = Vector2( 20, 18.5 )
 
 [node name="ProtectionTutorial" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="EnablingAnimation" type="AnimationPlayer" parent="."]
-anims/enabled = SubResource( 3 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/enabled = SubResource( 2 )
 
 [node name="PlayerCloseArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCloseArea"]
+position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
-[node name="TutorialsElements" type="Node2D" parent="."]
+[node name="Elements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
-[node name="Action1" type="VBoxContainer" parent="TutorialsElements"]
-margin_left = -20.0
-margin_top = -52.0
-margin_right = 26.0
-margin_bottom = -12.0
+[node name="Action" type="VBoxContainer" parent="Elements"]
+margin_left = -46.0
+margin_top = -63.0
+margin_right = 48.0
+margin_bottom = -23.0
+alignment = 1
 
-[node name="ActionName" type="Label" parent="TutorialsElements/Action1"]
-margin_right = 46.0
-margin_bottom = 8.0
-custom_fonts/font = SubResource( 2 )
+[node name="ActionName" type="Label" parent="Elements/Action"]
+margin_top = 7.0
+margin_right = 94.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 2 )
 text = "Activar escudo"
+align = 1
 
-[node name="ActionLabel" type="Label" parent="TutorialsElements/Action1"]
-margin_top = 12.0
-margin_right = 46.0
-margin_bottom = 26.0
+[node name="ActionLabel" type="Label" parent="Elements/Action"]
+margin_top = 18.0
+margin_right = 94.0
+margin_bottom = 32.0
 
-[node name="ActionTexture" type="TextureRect" parent="TutorialsElements/Action1/ActionLabel"]
-margin_left = 12.0
+[node name="ActionTexture" type="TextureRect" parent="Elements/Action/ActionLabel"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = 33.0
 margin_top = -2.0
-margin_right = 29.0
-margin_bottom = 15.0
-texture = ExtResource( 2 )
+margin_right = 58.0
+margin_bottom = 23.0
+texture = ExtResource( 1 )
 expand = true
 
 [connection signal="body_entered" from="PlayerCloseArea" to="." method="_on_PlayerCloseArea_body_entered"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Light/V_Key_Light.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/game/ui/tutorial/RunTutorial.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "enabled"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Elements:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 13.5, 14 )
+
+[node name="RunTutorial" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/enabled = SubResource( 1 )
+
+[node name="PlayerCloseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCloseArea"]
+shape = SubResource( 2 )
+
+[node name="Elements" type="Node2D" parent="."]
+
+[node name="RunAction" type="VBoxContainer" parent="Elements"]
+margin_left = -19.0
+margin_top = -58.0
+margin_right = 21.0
+margin_bottom = -18.0
+
+[node name="ActionName" type="Label" parent="Elements/RunAction"]
+margin_right = 40.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 2 )
+text = "Correr"
+align = 1
+
+[node name="ActionLabel" type="Label" parent="Elements/RunAction"]
+margin_top = 11.0
+margin_right = 40.0
+margin_bottom = 25.0
+
+[node name="ActionTexture" type="TextureRect" parent="Elements/RunAction/ActionLabel"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+margin_left = 10.0
+margin_right = 30.0
+margin_bottom = 20.0
+texture = ExtResource( 1 )
+expand = true
+
+[connection signal="body_entered" from="PlayerCloseArea" to="." method="_on_PlayerCloseArea_body_entered"]

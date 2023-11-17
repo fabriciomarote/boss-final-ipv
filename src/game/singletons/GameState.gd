@@ -5,6 +5,10 @@ var checkpoint_actived: bool = false
 var spawn_point = null
 var position_original : Vector2
 var game_finished: bool = false
+var current_audio = preload("res://assets/sounds/level/audio_tutorial2.ogg")
+#var current_audio = preload("res://assets/sounds/level/audio_final2.mp3")
+var checkpoint_final_audio: bool = false
+var checkpoint_intermedio_audio: bool = false
 
 signal current_player_changed(player)
 

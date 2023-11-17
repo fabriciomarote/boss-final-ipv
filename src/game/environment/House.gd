@@ -15,5 +15,6 @@ func _on_body_entered(_body: Node) -> void:
 		GameState.checkpoint_actived = false
 		GameState.spawn_point = null
 		GameState.chance = 3
+		GameState.checkpoint_final_audio = false
 		GameState.notify_level_won()
 

@@ -20,7 +20,17 @@ signal next_level_requested()
 signal continue_level()
 
 func _ready() -> void:
+	if !GameState.checkpoint_actived:
+		bgm.stream = preload("res://assets/sounds/level/audio_tutorial2.ogg")
+		bgm.play()
+	if GameState.checkpoint_intermedio_audio && !GameState.checkpoint_final_audio:
+		bgm.stream = preload("res://assets/sounds/level/audio_intermedio2.mp3")
+		bgm.play()
+	if GameState.checkpoint_final_audio && !GameState.checkpoint_intermedio_audio:
+		bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
+		bgm.play()
 	randomize()
+
 
 # Funciones que hacen de interfaz para las señales
 func _on_level_won() -> void:
@@ -45,5 +55,13 @@ func _on_DesactivationArea_body_entered(_body):
 
 
 func _on_ChangeAudioArea_body_entered(_body):
-	 bgm.stream = preload("res://assets/sounds/audio_final.ogg")
+	 GameState.checkpoint_intermedio_audio = true
+	 bgm.stream = preload("res://assets/sounds/level/audio_intermedio2.mp3")
 	 bgm.play()
+
+
+func _on_ChangeAudioArea2_body_entered(body):
+	GameState.checkpoint_intermedio_audio = false
+	GameState.checkpoint_final_audio = true
+	#bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
+	#bgm.play()

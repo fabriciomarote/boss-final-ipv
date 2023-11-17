@@ -259,8 +259,8 @@ motion_mirroring = Vector2( 235, 0 )
 [node name="Sprite" type="Sprite" parent="MountainsLayer"]
 modulate = Color( 0.168627, 0.941176, 0.741176, 1 )
 material = SubResource( 6 )
-position = Vector2( 4, -57 )
-scale = Vector2( 0.277386, 0.273623 )
+position = Vector2( 102.5, -116.231 )
+scale = Vector2( 0.332974, 0.424827 )
 texture = ExtResource( 5 )
 
 [node name="MountainsLayer2" type="ParallaxLayer" parent="."]
@@ -269,7 +269,7 @@ motion_mirroring = Vector2( 220, 0 )
 
 [node name="Sprite" type="Sprite" parent="MountainsLayer2"]
 modulate = Color( 0.027451, 0.360784, 0.0627451, 1 )
-position = Vector2( -622, -139 )
+position = Vector2( -567, -139 )
 scale = Vector2( 0.393807, 0.249648 )
 texture = ExtResource( 6 )
 
@@ -312,8 +312,8 @@ motion_mirroring = Vector2( 225, 0 )
 [node name="Sprite" type="Sprite" parent="MountainsLayer6"]
 modulate = Color( 0.137255, 0.886275, 0.745098, 1 )
 material = SubResource( 12 )
-position = Vector2( 99, -106 )
-scale = Vector2( 0.188207, 0.404168 )
+position = Vector2( 110.836, -118.787 )
+scale = Vector2( 0.213716, 0.426229 )
 texture = ExtResource( 7 )
 
 [node name="MountainsLayer7" type="ParallaxLayer" parent="."]
@@ -339,11 +339,11 @@ texture = ExtResource( 10 )
 
 [node name="ColorRect" type="ColorRect" parent="MountainsLayer9"]
 material = SubResource( 10 )
-margin_left = -13.0
-margin_top = 61.0
-margin_right = 299.0
-margin_bottom = 195.0
-color = Color( 0.0156863, 0.0941176, 0.0196078, 1 )
+margin_left = -15.0
+margin_top = 64.0
+margin_right = 297.0
+margin_bottom = 198.0
+color = Color( 0.00392157, 0.0941176, 0.0117647, 1 )
 
 [node name="MountainsLayer8" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.05, 0 )
@@ -352,6 +352,6 @@ motion_mirroring = Vector2( 288, 0 )
 [node name="Sprite" type="Sprite" parent="MountainsLayer8"]
 modulate = Color( 0.054902, 0.372549, 0.0823529, 1 )
 material = SubResource( 14 )
-position = Vector2( 146, -96 )
+position = Vector2( 138, -97 )
 scale = Vector2( 0.329001, 0.40938 )
 texture = ExtResource( 8 )

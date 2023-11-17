@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/player/arrow_attack.mp3" type="AudioStream" id=3]
@@ -546,10 +546,7 @@ extents = Vector2( 9.5, 16 )
 [sub_resource type="CircleShape2D" id=22]
 radius = 20.0998
 
-[sub_resource type="Shader" id=28]
-
-[sub_resource type="ShaderMaterial" id=29]
-shader = SubResource( 28 )
+[sub_resource type="ShaderMaterial" id=33]
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 7, 14.5 )
@@ -704,7 +701,7 @@ disabled = true
 
 [node name="ColorRect" type="ColorRect" parent="BodyPivot/ProtectionArea"]
 visible = false
-material = SubResource( 29 )
+material = SubResource( 33 )
 margin_left = -28.0
 margin_top = -43.0
 margin_right = 28.0
