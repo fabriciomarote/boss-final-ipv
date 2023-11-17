@@ -35,7 +35,8 @@ func _ready():
 	hp_progress.max_value = max_hp
 	hp_progress.value = hp
 	hp_progress.modulate = Color.transparent
-	
+
+
 func _fire() -> void:
 	if target != null:
 		var proj_instance: Node = projectile_scene.instance()
@@ -47,12 +48,14 @@ func _fire() -> void:
 			#fire_position.global_position.direction_to(target.global_position)
 			fire_position.global_position.direction_to(Vector2(target.global_position.x, fire_position.global_position.y))
 		)
-	
+
+
 func _look_at_target() -> void:
 	if target != null:
 		pivot.scale.x = -1 if target.global_position.x > global_position.x else 1
 	else:
 		pivot.scale.x = -1 if velocity.x > 0 else 1
+
 
 func _can_see_target() -> bool:
 	if target == null:
@@ -72,9 +75,7 @@ func _apply_movement() -> void:
 	velocity = move_and_slide(velocity)
 	_look_at_target()
 
-## Esta función ya no llama directamente a remove, sino que inhabilita las
-## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
-## dependiendo de si el enemigo esta o no alerta
+
 func notify_hit(amount:int = 1) -> void:
 	emit_signal("hit", amount)
 
@@ -106,11 +107,11 @@ func _remove() -> void:
 	get_parent().remove_child(self)
 	queue_free()
 
-## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
-## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
+
 func _play_animation(animation: String) -> void:
 	if body_anim.frames.has_animation(animation):
 		body_anim.play(animation)
+
 
 func get_current_animation() -> String:
 	return body_anim.animation

@@ -217,7 +217,7 @@ func _remove() -> void:
 func handle_velocity() -> void:
 	if stamina == 10:
 		timer.start()
-		self.H_SPEED_LIMIT = 550
+		self.H_SPEED_LIMIT = 500
 
 
 func _protection_active():
@@ -229,6 +229,7 @@ func _protection_active():
 
 func _protection_disabled():
 		color_rect.visible = false
+
 
 func _play_animation(animation: String) -> void:
 	if body_animations.has_animation(animation):

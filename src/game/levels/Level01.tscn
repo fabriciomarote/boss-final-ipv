@@ -1986,7 +1986,7 @@ position = Vector2( 5497, 329 )
 position = Vector2( 5383, 115 )
 
 [node name="Mushroom8" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
-position = Vector2( 7740, 458 )
+position = Vector2( 7711, 419 )
 
 [node name="Mushroom9" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
 position = Vector2( 9261, 732 )
@@ -2061,7 +2061,7 @@ extents = Vector2( 50, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner6" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 6656, 39 )
+position = Vector2( 6658, 39 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 3
@@ -2077,7 +2077,7 @@ extents = Vector2( 200, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner13" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 8154, 288 )
+position = Vector2( 8148, 294 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 3
@@ -2085,7 +2085,7 @@ extents = Vector2( 200, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner14" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 7765, 286 )
+position = Vector2( 7765, 294 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 2
@@ -2093,7 +2093,7 @@ extents = Vector2( 200, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner15" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 8030, 326 )
+position = Vector2( 8037, 330 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 2
@@ -2116,7 +2116,7 @@ position = Vector2( 4618, 546 )
 navpoly = SubResource( 92 )
 
 [node name="NavigationPolygonInstance10" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
-position = Vector2( 7518, 137 )
+position = Vector2( 7443, 138 )
 navpoly = SubResource( 92 )
 
 [node name="NavigationPolygonInstance3" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
@@ -2203,6 +2203,9 @@ position = Vector2( 2207, 632 )
 [node name="MushroomStamina2" parent="Environment/Mushrooms" instance=ExtResource( 30 )]
 position = Vector2( 7219, 328 )
 
+[node name="MushroomStamina3" parent="Environment/Mushrooms" instance=ExtResource( 30 )]
+position = Vector2( 5017, 453 )
+
 [node name="Lifes" type="Node2D" parent="Environment"]
 
 [node name="Life" parent="Environment/Lifes" instance=ExtResource( 19 )]
@@ -2219,9 +2222,6 @@ position = Vector2( 4061, 756 )
 
 [node name="Life5" parent="Environment/Lifes" instance=ExtResource( 19 )]
 position = Vector2( 5853, 822 )
-
-[node name="Life6" parent="Environment/Lifes" instance=ExtResource( 19 )]
-position = Vector2( 5951, 470 )
 
 [node name="Life9" parent="Environment/Lifes" instance=ExtResource( 19 )]
 position = Vector2( 6172, 125 )
@@ -2257,7 +2257,7 @@ modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
 position = Vector2( 9981, 752 )
 
 [node name="DesactivationArea" type="Area2D" parent="Environment"]
-position = Vector2( 5932, 126 )
+position = Vector2( 5699, 125 )
 collision_layer = 4097
 collision_mask = 18
 
@@ -2424,10 +2424,10 @@ rotation = 1.08559
 shape = SubResource( 114 )
 
 [node name="ChangeAudioArea2" type="Area2D" parent="Environment"]
-position = Vector2( 6572, 119 )
+position = Vector2( 6611, 119 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/ChangeAudioArea2"]
-position = Vector2( 56, -68 )
+position = Vector2( -1, -69 )
 shape = SubResource( 125 )
 
 [node name="Checkpoints" type="Node2D" parent="Environment"]
@@ -2435,14 +2435,14 @@ shape = SubResource( 125 )
 [node name="Checkpoint" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
 position = Vector2( 3575, 564 )
 
-[node name="Checkpoint3" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
-position = Vector2( 7316, 334 )
+[node name="Checkpoint2" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
+position = Vector2( 4501, 842 )
 
-[node name="Checkpoint4" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
+[node name="Checkpoint3" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
 position = Vector2( 6263, 303 )
 
-[node name="Checkpoint5" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
-position = Vector2( 4501, 842 )
+[node name="Checkpoint4" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
+position = Vector2( 7316, 334 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )

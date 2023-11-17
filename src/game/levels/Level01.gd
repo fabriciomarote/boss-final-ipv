@@ -23,11 +23,8 @@ func _ready() -> void:
 	if !GameState.checkpoint_actived:
 		bgm.stream = preload("res://assets/sounds/level/audio_tutorial2.ogg")
 		bgm.play()
-	if GameState.checkpoint_intermedio_audio && !GameState.checkpoint_final_audio:
-		bgm.stream = preload("res://assets/sounds/level/audio_intermedio2.mp3")
-		bgm.play()
-	if GameState.checkpoint_final_audio && !GameState.checkpoint_intermedio_audio:
-		bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
+	else:
+		bgm.stream = GameState.set_level()
 		bgm.play()
 	randomize()
 
@@ -55,13 +52,14 @@ func _on_DesactivationArea_body_entered(_body):
 
 
 func _on_ChangeAudioArea_body_entered(_body):
-	 GameState.checkpoint_intermedio_audio = true
+	 GameState.intermedio_audio = true
 	 bgm.stream = preload("res://assets/sounds/level/audio_intermedio2.mp3")
 	 bgm.play()
 
 
 func _on_ChangeAudioArea2_body_entered(body):
-	GameState.checkpoint_intermedio_audio = false
-	GameState.checkpoint_final_audio = true
-	#bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
-	#bgm.play()
+	GameState.intermedio_audio = false
+	if !GameState.intermedio_audio:
+		GameState.final_audio = true
+		bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
+		bgm.play()
