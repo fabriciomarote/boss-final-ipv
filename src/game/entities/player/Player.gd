@@ -25,6 +25,7 @@ onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
 onready var player_sfx: AudioStreamPlayer = $PlayerSfx
 onready var color_rect: ColorRect = $BodyPivot/ProtectionArea/ColorRect
 onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/CollisionShape2D
+onready var particles: Particles2D = $BodyPivot/Particles/Dash
 onready var timer: Timer = $"%Timer"
 
 export (float) var ACCELERATION: float = 200
@@ -38,7 +39,9 @@ export (AudioStream) var dash_sfx
 export (AudioStream) var death_sfx
 export (AudioStream) var damage_sfx
 export (PackedScene) var projectile_scene: PackedScene 
+export(bool) var can_dash : bool #Comprueba si puede hacer el dash
 
+var dash : bool #Comprueba si lo esta haciendo
 var projectile_container: Node
 
 var BowAttack: String
@@ -255,6 +258,11 @@ func _on_Hitbox_area_entered(area):
 		hit_Direction = -1
 	notify_hit(1)
 
+func _dash():
+	if can_dash and Input.is_action_just_pressed("run"):
+		dash = true
+		can_dash = false
+		$Dash.start()
 
 func _on_CutArea_body_entered(body):
 	body.notify_hit(3)
@@ -278,7 +286,13 @@ func _on_Timer_timeout():
 	if stamina > 0:
 		stamina -= 1
 		emit_signal("stamina_changed", stamina, max_stamina)
+		if  velocity.x == 0:
+			particles.emitting = false
+		else:
+			particles.emitting = true
 	else:
+		particles.emitting = false
 		timer.stop()
 		self.ACCELERATION = 500
 		self.H_SPEED_LIMIT = 300
+

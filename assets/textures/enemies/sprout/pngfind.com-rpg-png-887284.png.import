@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex"
+path="res://.import/pngfind.com-rpg-png-887284.png-c2f6a55e8915372ecd5bbd81b8ec1138.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Flying/Death.png"
-dest_files=[ "res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex" ]
+source_file="res://assets/textures/enemies/sprout/pngfind.com-rpg-png-887284.png"
+dest_files=[ "res://.import/pngfind.com-rpg-png-887284.png-c2f6a55e8915372ecd5bbd81b8ec1138.stex" ]
 
 [params]
 

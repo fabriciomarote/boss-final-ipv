@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex"
+path="res://.import/png-clipart-sprite-graphic-design-video-game-slash-purple-blue.png-46072db28c7245c796a8ef68202cdcae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Flying/Death.png"
-dest_files=[ "res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex" ]
+source_file="res://assets/textures/enemies/shadow/png-clipart-sprite-graphic-design-video-game-slash-purple-blue.png"
+dest_files=[ "res://.import/png-clipart-sprite-graphic-design-video-game-slash-purple-blue.png-46072db28c7245c796a8ef68202cdcae.stex" ]
 
 [params]
 
