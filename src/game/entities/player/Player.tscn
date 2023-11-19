@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/player/red_hood_sheet(1).png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/player/arrow_attack.mp3" type="AudioStream" id=3]
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
@@ -712,6 +713,15 @@ shader_param/Size_Inner = null
 shader_param/Opaticy = null
 shader_param/Size_Outer = null
 
+[sub_resource type="ParticlesMaterial" id=35]
+lifetime_randomness = 0.35
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( -90, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 0, 0, 0.92549 )
+
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 7, 14.5 )
 
@@ -837,6 +847,7 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
 [node name="CutArea" type="Area2D" parent="BodyPivot"]
+visible = false
 collision_layer = 128
 collision_mask = 4
 
@@ -855,11 +866,12 @@ shape = SubResource( 26 )
 disabled = true
 
 [node name="ProtectionArea" type="Area2D" parent="BodyPivot"]
+visible = false
 collision_layer = 256
 collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/ProtectionArea"]
-position = Vector2( 0, -15 )
+position = Vector2( -1, -14 )
 shape = SubResource( 22 )
 disabled = true
 
@@ -872,7 +884,19 @@ margin_right = 28.0
 margin_bottom = 15.0
 color = Color( 0, 0.2, 0.321569, 0.54902 )
 
+[node name="Particles" type="Position2D" parent="BodyPivot"]
+
+[node name="Dash" type="Particles2D" parent="BodyPivot/Particles"]
+modulate = Color( 0.788235, 0.611765, 0.611765, 0.537255 )
+position = Vector2( -8, -1 )
+emitting = false
+amount = 3
+speed_scale = 3.0
+process_material = SubResource( 35 )
+texture = ExtResource( 2 )
+
 [node name="Hitbox2" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 24
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex"
+path="res://.import/red_hood_sheet(1).png-cd086091fa46cfa3800fcb293b9b6b2b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Flying/Death.png"
-dest_files=[ "res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex" ]
+source_file="res://assets/textures/player/red_hood_sheet(1).png"
+dest_files=[ "res://.import/red_hood_sheet(1).png-cd086091fa46cfa3800fcb293b9b6b2b.stex" ]
 
 [params]
 

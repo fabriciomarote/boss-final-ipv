@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex"
+path="res://.import/360_F_499808357_uVnzzppcNsDDnEXSwYGLwvtvqGKhkoht.jpg-1d41b9b33e47a87461297801f3a36a0c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Flying/Death.png"
-dest_files=[ "res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex" ]
+source_file="res://assets/textures/enemies/shadow/360_F_499808357_uVnzzppcNsDDnEXSwYGLwvtvqGKhkoht.jpg"
+dest_files=[ "res://.import/360_F_499808357_uVnzzppcNsDDnEXSwYGLwvtvqGKhkoht.jpg-1d41b9b33e47a87461297801f3a36a0c.stex" ]
 
 [params]
 

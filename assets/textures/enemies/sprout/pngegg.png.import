@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex"
+path="res://.import/pngegg.png-0909f19c45f048b07cffdb8bbd340562.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Flying/Death.png"
-dest_files=[ "res://.import/Death.png-2799315450f12d8bd14f6a080096be2c.stex" ]
+source_file="res://assets/textures/enemies/sprout/pngegg.png"
+dest_files=[ "res://.import/pngegg.png-0909f19c45f048b07cffdb8bbd340562.stex" ]
 
 [params]
 
