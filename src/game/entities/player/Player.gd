@@ -27,9 +27,9 @@ onready var color_rect: ColorRect = $BodyPivot/ProtectionArea/ColorRect
 onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/CollisionShape2D
 onready var timer: Timer = $"%Timer"
 
-export (float) var ACCELERATION: float = 500
-export (float) var H_SPEED_LIMIT: float = 300
-export (int) var jump_speed: int = 360
+export (float) var ACCELERATION: float = 200
+export (float) var H_SPEED_LIMIT: float = 100
+export (int) var jump_speed: int = 380
 export (float) var FRICTION_WEIGHT: float = 5.0
 export (int) var gravity: int = 20
 export (AudioStream) var jump_sfx

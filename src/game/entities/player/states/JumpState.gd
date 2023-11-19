@@ -21,6 +21,7 @@ func handle_input(event:InputEvent) -> void:
 		character.velocity.y = -character.jump_speed
 		character._play_animation("jump")
 	if event.is_action_pressed("attack"):
+		print("hola")
 		if character.attackHandler == "BowAttack":
 			emit_signal("finished", "arrow")
 		if character.attackHandler == "AxeAttack":

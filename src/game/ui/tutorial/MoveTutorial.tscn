@@ -40,6 +40,8 @@ extents = Vector2( 7.25, 23 )
 
 [node name="MoveTutorial" type="Node2D"]
 script = ExtResource( 10 )
+action1 = "move_left"
+action2 = "move_right"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enabled = SubResource( 2 )
@@ -87,6 +89,13 @@ margin_right = 37.0
 margin_bottom = 21.0
 texture = ExtResource( 1 )
 expand = true
+
+[node name="Label" type="Label" parent="Elements/MoveAction1/ActionLabel"]
+unique_name_in_owner = true
+margin_left = 3.0
+margin_top = 19.0
+margin_right = 32.0
+margin_bottom = 33.0
 
 [node name="MoveAction2" type="VBoxContainer" parent="Elements"]
 margin_left = 7.0
