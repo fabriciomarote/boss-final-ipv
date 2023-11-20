@@ -1,16 +1,59 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/textures/items/mushrooms.png" type="Texture" id=1]
+[ext_resource path="res://pngfind.com-mushrooms-png-2385643.png" type="Texture" id=1]
 [ext_resource path="res://src/game/environment/MushroomProtection.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
 height = 0.0
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 112.965, 16.4813, 12.0629, 15.1478 )
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial; 
+render_mode unshaded;
+
+// These are the Uniforms I have, yours may differ
+// Names must match what exists in your Shader Globals
+global uniform vec4 EnvFogColor;
+global uniform float EnvFogStart;
+global uniform float EnvFogEnd;
+global uniform vec4 EnvLightColor;
+global uniform vec3 EnvLightDir;
+
+uniform sampler2D _texture : source_color, filter_nearest; // Forces point sampling for now
+uniform vec2 uv_scale = vec2(0.5, 0.5);
+
+varying float vfog;
+
+void vertex() {
+	// World-space UVs
+	vec3 p = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	UV = p.xz * uv_scale;
+	
+	// Vertex Fog, using View Z-depth
+	vec4 V = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0);
+	float z = V.z;
+	z = max(0.0, z-EnvFogStart);
+	vfog = clamp(z / (EnvFogEnd - EnvFogStart), 0.0, 1.0);
+	
+	// Vertex Lighting, simple
+	vec3 N = (MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz;
+	N = normalize(N); // Must normalize b/c of potential Scaling
+	float ndl =  max(0.0, dot(N, EnvLightDir));
+	COLOR.rgb = EnvFogColor.rgb + (EnvLightColor.rgb * ndl);
+}
+
+void fragment() {
+	// Texture & Vertex Lighting
+	vec4 tex = texture(_texture, UV);
+	ALBEDO = tex.rgb * COLOR.rgb;
+	
+	// Blend over the Vertex Fog
+	FOG.rgb = EnvFogColor.rgb;
+	FOG.a = vfog;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 
 [node name="Mushroom" type="Node2D"]
 script = ExtResource( 2 )
@@ -24,8 +67,9 @@ position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 2.38419e-07 )
-scale = Vector2( 1.24879, 1.16988 )
-texture = SubResource( 2 )
+material = SubResource( 3 )
+position = Vector2( 0, -1.19209e-07 )
+scale = Vector2( 0.00870188, 0.00741465 )
+texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

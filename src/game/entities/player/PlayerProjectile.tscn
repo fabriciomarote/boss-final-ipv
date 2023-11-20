@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/game/entities/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/fx/hits/hits-2/hits-2-6.png" type="Texture" id=2]
@@ -123,6 +123,11 @@ tracks/5/keys = {
 [sub_resource type="CircleShape2D" id=1]
 radius = 1.0
 
+[sub_resource type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+
 [node name="PlayerProjectile" instance=ExtResource( 1 )]
 light_mask = 5
 script = ExtResource( 9 )
@@ -144,6 +149,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
 modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
+material = SubResource( 7 )
 position = Vector2( -17, 0 )
 rotation = 0.785398
 scale = Vector2( 0.637924, 0.62317 )

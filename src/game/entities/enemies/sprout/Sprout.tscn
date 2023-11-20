@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://src/game/entities/enemies/sprout/SproutProjectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/enemies/sprout/sprout_idle.png" type="Texture" id=2]
@@ -29,6 +29,11 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+
+[sub_resource type="Shader" id=163]
+
+[sub_resource type="ShaderMaterial" id=164]
+shader = SubResource( 163 )
 
 [sub_resource type="AtlasTexture" id=132]
 flags = 4
@@ -298,6 +303,7 @@ cast_to = Vector2( -120, 0 )
 collision_mask = 3
 
 [node name="Body" type="AnimatedSprite" parent="Pivot"]
+material = SubResource( 164 )
 position = Vector2( 0, 1 )
 scale = Vector2( 3.22917, 2.54167 )
 frames = SubResource( 80 )
