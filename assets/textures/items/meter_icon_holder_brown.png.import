@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/basic life bars a icons .png-3ac20cc284779ff19d27ccf87563858c.stex"
+path="res://.import/meter_icon_holder_brown.png-14bab1e1d5d7417a8bd755ab4bb7c6be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/tileset/basic life bars a icons .png"
-dest_files=[ "res://.import/basic life bars a icons .png-3ac20cc284779ff19d27ccf87563858c.stex" ]
+source_file="res://assets/textures/items/meter_icon_holder_brown.png"
+dest_files=[ "res://.import/meter_icon_holder_brown.png-14bab1e1d5d7417a8bd755ab4bb7c6be.stex" ]
 
 [params]
 

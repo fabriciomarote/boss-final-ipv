@@ -8,6 +8,7 @@ signal protection_changed(current_protection, max_protection)
 signal weapon_changed(weapon)
 signal arrow_changed(amount)
 signal deaths_changed(amount)
+signal chances_changed(amount)
 
 const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION: Vector2 = Vector2.DOWN
@@ -58,6 +59,7 @@ var arrowAmount: int = 0
 var is_attacked = false
 var protection_actived = false
 var deaths: int = 0
+var chances: int = 3
 
 export (int) var max_hp: int = 5
 var hp: int = max_hp
@@ -91,11 +93,18 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	emit_signal("weapon_changed", currentAttackMode)
 	GameState.set_current_player(self)
 	GameState.connect("enemy_dead", self, "_sum_dead")
+	GameState.connect("chance_subtract", self, "_chance_changed")
 
 
 func _sum_dead() -> void:
 	deaths += 1
 	emit_signal("deaths_changed", deaths)
+
+
+func _chance_changed() -> void:
+	chances -= 1
+	print("chances de Player :", chances)
+	emit_signal("chances_changed", chances)
 
 
 func fire() -> void:
@@ -217,7 +226,7 @@ func _handle_hit(amount: int) -> void:
 
 func _remove() -> void:
 	if GameState.chance > 0:
-		GameState.chance -= 1
+		GameState.chances_subtract()
 		get_tree().reload_current_scene()
 	else:
 		set_physics_process(false)
@@ -303,9 +312,3 @@ func _on_Timer_timeout():
 		timer.stop()
 		self.ACCELERATION = 500
 		self.H_SPEED_LIMIT = 300
-
-
-
-func _on_Player_enemy_dead():
-	deaths += 1
-	print(deaths)

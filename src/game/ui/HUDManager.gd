@@ -15,6 +15,7 @@ onready var counter: Label = $StatsContainer/Panel/Counter
 onready var weapon: Sprite = $StatsContainer/Panel/Weapon
 onready var panel: Sprite = $StatsContainer/Panel/Panel
 onready var deaths = $StatsContainer/Panel/Deaths
+onready var chances = $StatsContainer/Panel/Chances
 
 onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow, deaths]
 
@@ -27,7 +28,6 @@ var stats_tween: SceneTreeTween
 # Recupera la información de cuál es el Player actual desde GameState.
 func _ready() -> void:
 	GameState.connect("current_player_changed", self, "_on_current_player_changed")
-
 
 ## Cuando se asigna un Player nuevo, se conecta a las señales que
 ## interesan, y se refresca la data.
@@ -44,9 +44,9 @@ func _on_current_player_changed(player: Player) -> void:
 	_on_quantity_arrow_changed(player.arrowAmount)
 	player.connect("deaths_changed", self, "_on_quantity_deaths_changed")
 	_on_quantity_deaths_changed(player.deaths)
+	player.connect("chances_changed", self, "_on_quantity_chances_changed")
+	_on_quantity_chances_changed(player.chances)
 
-func deaths_changed() -> void:
-	deaths = GameState.deaths
 
 func _on_hp_changed(hp: int, hp_max: int) -> void:
 	hp_progress.max_value = hp_max
@@ -87,6 +87,10 @@ func _on_quantity_deaths_changed(dead: int) -> void:
 	deaths.text = str(dead)
 	_animate_fade()
 
+
+func _on_quantity_chances_changed(chance: int) -> void:
+	chances.text = str(chance)
+	_animate_fade()
 
 
 # Función de ayuda para animar el fade-out de elementos de la escena.

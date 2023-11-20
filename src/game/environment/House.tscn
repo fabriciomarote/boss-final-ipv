@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/game/environment/House.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/items/house2.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/items/key-131982518810247060.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/items/pngwing.com.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
 region = Rect2( 15.5052, 106.069, 289.298, 87.829 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "globe"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Globe:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.5, 28 )
@@ -23,6 +41,22 @@ position = Vector2( 1.00001, -58 )
 scale = Vector2( 1.06658, 1.30453 )
 texture = SubResource( 2 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/globe = SubResource( 3 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, -30 )
 shape = SubResource( 1 )
+
+[node name="Globe" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="Globe"]
+position = Vector2( 20, -59 )
+scale = Vector2( 0.0898438, 0.0849609 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="Globe"]
+position = Vector2( 21, -66 )
+scale = Vector2( 0.0289666, 0.0270508 )
+texture = ExtResource( 3 )

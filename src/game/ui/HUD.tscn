@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/game/ui/HUDManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui/GUISprite.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/textures/ui/Newstuff.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/SpaceMadness.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/textures/player/red_hood_sheet3.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/items/skull.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -44,14 +46,22 @@ atlas = ExtResource( 5 )
 region = Rect2( 116.915, 31.9912, 20.1764, 20.1764 )
 
 [sub_resource type="DynamicFont" id=16]
-size = 4
+size = 5
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=17]
-size = 10
+size = 7
 font_data = ExtResource( 7 )
 
-[node name="GUI" type="Control"]
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 8 )
+region = Rect2( 52.2948, 1393.38, 22.0615, 36.1809 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 7
+font_data = ExtResource( 7 )
+
+[node name="HUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -64,16 +74,16 @@ margin_bottom = 1.0
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="StatsContainer"]
-margin_left = 3.0
-margin_top = 1.0
-margin_right = 52.0
-margin_bottom = 21.0
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 53.0
+margin_bottom = 23.0
 custom_styles/panel = SubResource( 11 )
 
 [node name="Panel" type="Sprite" parent="StatsContainer/Panel"]
 modulate = Color( 0.309804, 0.309804, 0.309804, 0.988235 )
-position = Vector2( 41.291, 12 )
-scale = Vector2( 1.58182, 1.09091 )
+position = Vector2( 51.9818, 11.5 )
+scale = Vector2( 1.96364, 1.22727 )
 texture = SubResource( 12 )
 
 [node name="HpProgress" type="TextureProgress" parent="StatsContainer/Panel"]
@@ -138,10 +148,9 @@ texture = ExtResource( 3 )
 flip_h = true
 
 [node name="Counter" type="Label" parent="StatsContainer/Panel"]
-visible = false
-margin_left = 75.0
+margin_left = 59.0
 margin_top = 16.0
-margin_right = 83.0
+margin_right = 62.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 16 )
 text = "0
@@ -149,8 +158,26 @@ text = "0
 
 [node name="Deaths" type="Label" parent="StatsContainer/Panel"]
 margin_left = 88.0
-margin_top = 5.0
+margin_top = 12.0
 margin_right = 94.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 custom_fonts/font = SubResource( 17 )
+text = "0"
+
+[node name="Player" type="Sprite" parent="StatsContainer/Panel"]
+position = Vector2( 82, 8 )
+scale = Vector2( 0.253342, 0.201111 )
+texture = SubResource( 18 )
+
+[node name="Skull" type="Sprite" parent="StatsContainer/Panel"]
+position = Vector2( 82.6094, 16.8438 )
+scale = Vector2( 0.00810382, 0.00830592 )
+texture = ExtResource( 9 )
+
+[node name="Chances" type="Label" parent="StatsContainer/Panel"]
+margin_left = 88.0
+margin_top = 4.0
+margin_right = 93.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 19 )
 text = "0"
