@@ -7,6 +7,7 @@ var position_original : Vector2
 var game_finished: bool = false
 var final_audio: bool = false
 var intermedio_audio: bool = false
+var deaths: int = 0
 
 signal current_player_changed(player)
 
@@ -19,6 +20,7 @@ func set_current_player(player: Player) -> void:
 	#position_original = current_player.global_position
 	if checkpoint_actived && !game_finished:
 		current_player.global_position = spawn_point
+	current_player.deaths = deaths
 	emit_signal("current_player_changed", player)
 	
 
@@ -32,6 +34,14 @@ signal level_won()
 
 func notify_level_won() -> void:
 	emit_signal("level_won")
+
+
+signal enemy_dead()
+
+func notify_dead() -> void:
+	emit_signal("enemy_dead")
+	deaths += 1
+	print(deaths)
 
 
 signal input_map_changed()

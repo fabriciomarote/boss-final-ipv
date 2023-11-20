@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portal.png-9a75ad83d42e4d54b4eb8a12b7bc2095.stex"
+path="res://.import/Daco_4214706.png-a27b7b35afb3e5f9e67a24c2614a9a22.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/items/portal.png"
-dest_files=[ "res://.import/portal.png-9a75ad83d42e4d54b4eb8a12b7bc2095.stex" ]
+source_file="res://assets/textures/items/Daco_4214706.png"
+dest_files=[ "res://.import/Daco_4214706.png-a27b7b35afb3e5f9e67a24c2614a9a22.stex" ]
 
 [params]
 

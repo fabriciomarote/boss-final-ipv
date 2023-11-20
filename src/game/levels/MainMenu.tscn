@@ -1,11 +1,10 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/game/levels/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Blackcraft.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/BleedingPixels.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/textures/fondo.png" type="Texture" id=4]
 [ext_resource path="res://src/game/ui/options/OptionsMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/game/levels/LevelManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/ui/buttons/MenuButtonsSprite.png" type="Texture" id=7]
 [ext_resource path="res://assets/sounds/mainMenu/Spooky 5.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/start_game.ogg" type="AudioStream" id=10]
@@ -18,7 +17,7 @@ tracks/0/path = NodePath("UiSfx:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -171,7 +170,6 @@ region = Rect2( 1212.24, 621.968, 606.366, 205.66 )
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 1 )
-level_manager_scene = ExtResource( 6 )
 
 [node name="MouseCamera" type="Camera2D" parent="."]
 

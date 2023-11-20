@@ -14,8 +14,9 @@ onready var axe: Sprite = $StatsContainer/Panel/Axe
 onready var counter: Label = $StatsContainer/Panel/Counter
 onready var weapon: Sprite = $StatsContainer/Panel/Weapon
 onready var panel: Sprite = $StatsContainer/Panel/Panel
+onready var deaths = $StatsContainer/Panel/Deaths
 
-onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow]
+onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow, deaths]
 
 export (float) var fade_duration: float = 5.0
 export (float) var fade_delay: float = 2.0
@@ -41,7 +42,11 @@ func _on_current_player_changed(player: Player) -> void:
 	_on_weapon_changed(player.currentAttackMode)
 	player.connect("arrow_changed", self, "_on_quantity_arrow_changed")
 	_on_quantity_arrow_changed(player.arrowAmount)
+	player.connect("deaths_changed", self, "_on_quantity_deaths_changed")
+	_on_quantity_deaths_changed(player.deaths)
 
+func deaths_changed() -> void:
+	deaths = GameState.deaths
 
 func _on_hp_changed(hp: int, hp_max: int) -> void:
 	hp_progress.max_value = hp_max
@@ -76,6 +81,12 @@ func _on_weapon_changed(weaponPlayer: int) -> void:
 func _on_quantity_arrow_changed(arrows: int) -> void:
 	counter.text = str(arrows)
 	_animate_fade()
+
+
+func _on_quantity_deaths_changed(dead: int) -> void:
+	deaths.text = str(dead)
+	_animate_fade()
+
 
 
 # Función de ayuda para animar el fade-out de elementos de la escena.

@@ -7,7 +7,7 @@ signal stamina_changed(current_stamina, max_stamina)
 signal protection_changed(current_protection, max_protection)
 signal weapon_changed(weapon)
 signal arrow_changed(amount)
-
+signal deaths_changed(amount)
 
 const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION: Vector2 = Vector2.DOWN
@@ -57,6 +57,7 @@ var hit_Direction : int = 0
 var arrowAmount: int = 0
 var is_attacked = false
 var protection_actived = false
+var deaths: int = 0
 
 export (int) var max_hp: int = 5
 var hp: int = max_hp
@@ -73,8 +74,9 @@ export (float) var stamina_recovery_delay: float = 0.5
 var fire_tween: SceneTreeTween
 
 var dead: bool = false
+
+
 func _ready() -> void:
-	#$Timer.connect("timeout", self, "_on_Timer_timeout")
 	initialize()
 
 
@@ -88,6 +90,12 @@ func initialize(projectile_container: Node = get_parent()) -> void:
 	currentAttackMode = attackModes.AXE
 	emit_signal("weapon_changed", currentAttackMode)
 	GameState.set_current_player(self)
+	GameState.connect("enemy_dead", self, "_sum_dead")
+
+
+func _sum_dead() -> void:
+	deaths += 1
+	emit_signal("deaths_changed", deaths)
 
 
 func fire() -> void:
@@ -296,3 +304,8 @@ func _on_Timer_timeout():
 		self.ACCELERATION = 500
 		self.H_SPEED_LIMIT = 300
 
+
+
+func _on_Player_enemy_dead():
+	deaths += 1
+	print(deaths)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/game/ui/HUDManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui/GUISprite.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/textures/items/bow.png" type="Texture" id=4]
 [ext_resource path="res://assets/textures/ui/Newstuff.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/SpaceMadness.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -45,6 +46,10 @@ region = Rect2( 116.915, 31.9912, 20.1764, 20.1764 )
 [sub_resource type="DynamicFont" id=16]
 size = 4
 font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 10
+font_data = ExtResource( 7 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -141,3 +146,11 @@ margin_bottom = 29.0
 custom_fonts/font = SubResource( 16 )
 text = "0
 "
+
+[node name="Deaths" type="Label" parent="StatsContainer/Panel"]
+margin_left = 88.0
+margin_top = 5.0
+margin_right = 94.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 17 )
+text = "0"

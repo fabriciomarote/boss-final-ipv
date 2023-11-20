@@ -95,6 +95,7 @@ func _handle_hit(amount: int) -> void:
 
 
 func _remove() -> void:
+	GameState.notify_dead()
 	dead = true
 	collision_layer = 0
 	collision_mask = 0

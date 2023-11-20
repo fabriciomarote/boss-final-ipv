@@ -34,6 +34,7 @@ func _on_ReturnButton_pressed():
 	GameState.game_finished = true
 	GameState.checkpoint_actived = false
 	GameState.spawn_point = null
+	GameState.deaths = 0
 	emit_signal("return_selected")
 
 
@@ -44,6 +45,7 @@ func _on_RestartButton_pressed():
 	GameState.checkpoint_actived = false
 	GameState.spawn_point = null
 	hide()
+	GameState.deaths = 0
 	emit_signal("restart_selected")
 
 
@@ -52,6 +54,7 @@ func _input(event: InputEvent) -> void:
 		GameState.game_finished = true
 		GameState.checkpoint_actived = false
 		GameState.spawn_point = null
+		print(GameState.chance)
 		get_tree().reload_current_scene()
 
 func _on_restart_requested():

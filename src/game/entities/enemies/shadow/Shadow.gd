@@ -98,6 +98,7 @@ func _handle_hit(amount: int) -> void:
 
 
 func _remove() -> void:
+	GameState.notify_dead()
 	particles_2d.queue_free()
 	get_parent().remove_child(self)
 	queue_free()
