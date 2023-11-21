@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Stacked pixel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/game/ui/tutorial/AttackTutorial.gd" type="Script" id=4]
-[ext_resource path="res://assets/textures/items/meter_icon_holder_orange.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=2]
 resource_name = "enabled"
@@ -20,32 +19,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Elements:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 14.5 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 8
+size = 14
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 8
+size = 14
 font_data = ExtResource( 1 )
 
 [node name="AttackTutorial" type="Node2D"]
 script = ExtResource( 4 )
+action1 = "change_attack"
+action2 = "attack"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enabled = SubResource( 2 )
@@ -59,9 +48,10 @@ shape = SubResource( 1 )
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Elements"]
-margin_left = -40.0
-margin_top = -55.0
-margin_bottom = -15.0
+margin_left = -39.0
+margin_top = -63.0
+margin_right = 1.0
+margin_bottom = -23.0
 
 [node name="Label" type="Label" parent="Elements/VBoxContainer"]
 margin_right = 40.0
@@ -74,27 +64,19 @@ margin_top = 11.0
 margin_right = 40.0
 margin_bottom = 25.0
 
-[node name="TextureRect" type="TextureRect" parent="Elements/VBoxContainer/Label2"]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = 6.0
-margin_right = 26.0
-margin_bottom = 20.0
-texture = ExtResource( 5 )
-expand = true
-
-[node name="Label" type="Label" parent="Elements/VBoxContainer/Label2"]
-margin_left = 13.0
-margin_top = 4.0
-margin_right = 20.0
-margin_bottom = 17.0
+[node name="Keyboard" type="Label" parent="Elements/VBoxContainer/Label2"]
+margin_left = 12.0
+margin_top = 3.0
+margin_right = 22.0
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 3 )
 text = "Q"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Elements"]
-margin_left = 12.0
-margin_top = -55.0
-margin_right = 52.0
-margin_bottom = -15.0
+margin_left = 10.0
+margin_top = -63.0
+margin_right = 50.0
+margin_bottom = -23.0
 
 [node name="Label" type="Label" parent="Elements/VBoxContainer2"]
 margin_right = 40.0
@@ -107,19 +89,11 @@ margin_top = 11.0
 margin_right = 40.0
 margin_bottom = 25.0
 
-[node name="TextureRect" type="TextureRect" parent="Elements/VBoxContainer2/Label2"]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = -1.0
-margin_right = 19.0
-margin_bottom = 20.0
-texture = ExtResource( 5 )
-expand = true
-
-[node name="Label2" type="Label" parent="Elements/VBoxContainer2/Label2"]
-margin_left = 7.0
-margin_top = 4.0
+[node name="Keyboard1" type="Label" parent="Elements/VBoxContainer2/Label2"]
+margin_left = 3.0
+margin_top = 3.0
 margin_right = 12.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 custom_fonts/font = SubResource( 4 )
 text = "E"
 

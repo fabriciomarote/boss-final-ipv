@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/game/ui/tutorial/JumpTutorial.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Light/Space_Key_Light.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/Stacked pixel.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="Animation" id=3]
 resource_name = "enabled"
@@ -24,12 +24,25 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 15 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 7
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 7
+font_data = ExtResource( 5 )
+
 [sub_resource type="DynamicFont" id=2]
 size = 9
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 7
+font_data = ExtResource( 5 )
+
 [node name="JumpTutorial" type="Node2D"]
 script = ExtResource( 2 )
+action = "jump"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enabled = SubResource( 3 )
@@ -44,9 +57,9 @@ modulate = Color( 1, 1, 1, 0 )
 
 [node name="JumpAction1" type="VBoxContainer" parent="Elements"]
 margin_left = -31.0
-margin_top = -52.0
+margin_top = -68.0
 margin_right = 9.0
-margin_bottom = -12.0
+margin_bottom = -28.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction1"]
 margin_right = 40.0
@@ -59,20 +72,19 @@ margin_top = 11.0
 margin_right = 40.0
 margin_bottom = 25.0
 
-[node name="ActionTexture" type="TextureRect" parent="Elements/JumpAction1/ActionLabel"]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = -2.0
-margin_top = -1.0
-margin_right = 18.0
-margin_bottom = 19.0
-texture = ExtResource( 4 )
-expand = true
+[node name="Keyboard1" type="Label" parent="Elements/JumpAction1/ActionLabel"]
+margin_left = -6.0
+margin_top = 5.0
+margin_right = 19.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "space"
 
 [node name="JumpAction2" type="VBoxContainer" parent="Elements"]
-margin_left = 9.0
-margin_top = -52.0
-margin_right = 49.0
-margin_bottom = -12.0
+margin_left = 1.0
+margin_top = -68.0
+margin_right = 41.0
+margin_bottom = -28.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction2"]
 margin_right = 40.0
@@ -85,30 +97,28 @@ margin_top = 11.0
 margin_right = 40.0
 margin_bottom = 25.0
 
-[node name="ActionTexture" type="TextureRect" parent="Elements/JumpAction2/ActionLabel"]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = -8.0
-margin_top = -1.0
-margin_right = 12.0
-margin_bottom = 19.0
-texture = ExtResource( 4 )
-expand = true
-
-[node name="ActionTexture2" type="TextureRect" parent="Elements/JumpAction2/ActionLabel"]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-margin_left = 17.0
-margin_top = -1.0
-margin_right = 37.0
-margin_bottom = 19.0
-texture = ExtResource( 4 )
-expand = true
+[node name="Keyboard" type="Label" parent="Elements/JumpAction2/ActionLabel"]
+margin_left = -11.0
+margin_top = 5.0
+margin_right = 9.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 5 )
+text = "Space"
 
 [node name="Label" type="Label" parent="Elements/JumpAction2/ActionLabel"]
-margin_left = 13.0
-margin_top = 4.0
-margin_right = 53.0
-margin_bottom = 23.0
+margin_left = 11.0
+margin_top = 3.0
+margin_right = 14.0
+margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
 text = "+"
+
+[node name="keyboard2" type="Label" parent="Elements/JumpAction2/ActionLabel"]
+margin_left = 17.0
+margin_top = 5.0
+margin_right = 37.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 6 )
+text = "Space"
 
 [connection signal="body_entered" from="PlayerCloseArea" to="." method="_on_PlayerCloseArea_body_entered"]

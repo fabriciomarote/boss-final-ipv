@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://assets/fonts/Blackcraft.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/fonts/BleedingPixels.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/DirtyHarold.woff2" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/ChainsawCarnage.woff2" type="DynamicFontData" id=2]
 [ext_resource path="res://src/game/ui/options/ActionInput.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/game/ui/options/OptionsMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=5]
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0, 0, 0, 1 )
+bg_color = Color( 0.0745098, 0.0666667, 0.0666667, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -19,33 +19,54 @@ size = 12
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=12]
-size = 10
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=3]
 size = 8
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = ExtResource( 5 )
+
 [sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.113725, 0.00392157, 0.00392157, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color( 0.368627, 0, 0.0196078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.368627, 0, 0.0196078, 1 )
+corner_radius_top_right = 1
+corner_radius_bottom_left = 1
 shadow_color = Color( 0.482353, 0.482353, 0.482353, 0.6 )
-shadow_size = 1
-shadow_offset = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.368627, 0, 0.0196078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.368627, 0, 0.0196078, 1 )
+corner_radius_top_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.368627, 0, 0.0196078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.368627, 0, 0.0196078, 1 )
+corner_radius_top_right = 1
+corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.368627, 0, 0.0196078, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color( 0.368627, 0, 0.0196078, 1 )
-corner_radius_top_left = 1
 corner_radius_top_right = 1
-corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 shadow_color = Color( 0.537255, 0.52549, 0.52549, 0.6 )
-shadow_size = 2
-shadow_offset = Vector2( 0, 1 )
 
 [node name="OptionsMenu" type="Control"]
 anchor_right = 1.0
@@ -78,9 +99,9 @@ valign = 1
 
 [node name="Label2" type="Label" parent="MainPanel"]
 margin_left = 9.0
-margin_top = 27.0
+margin_top = 28.0
 margin_right = 55.0
-margin_bottom = 41.0
+margin_bottom = 42.0
 custom_fonts/font = SubResource( 12 )
 text = "Controles"
 
@@ -91,6 +112,8 @@ margin_right = 243.0
 margin_bottom = 134.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
 custom_styles/normal = SubResource( 8 )
 text = "Volver"
 
@@ -99,57 +122,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
 margin_top = 43.0
-margin_right = -90.0
+margin_right = -148.0
 margin_bottom = -27.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/ScrollContainer"]
-margin_right = 87.0
-margin_bottom = 143.0
+margin_right = 74.0
+margin_bottom = 108.0
 
 [node name="ActionInput" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_right = 87.0
+margin_right = 74.0
+margin_bottom = 12.0
 action = "move_left"
 action_name = "ir a izquierda"
 
 [node name="ActionInput2" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 21.0
-margin_right = 87.0
-margin_bottom = 38.0
+margin_top = 16.0
+margin_right = 74.0
+margin_bottom = 28.0
 action = "move_right"
 action_name = "ir a Derecha"
 
 [node name="ActionInput5" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 42.0
-margin_right = 87.0
-margin_bottom = 59.0
+margin_top = 32.0
+margin_right = 74.0
+margin_bottom = 44.0
 action = "jump"
 action_name = "Saltar"
 
 [node name="ActionInput6" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 63.0
-margin_right = 87.0
-margin_bottom = 80.0
+margin_top = 48.0
+margin_right = 74.0
+margin_bottom = 60.0
 action = "change_attack"
 action_name = "Cambiar arma"
 
 [node name="ActionInput7" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 84.0
-margin_right = 87.0
-margin_bottom = 101.0
+margin_top = 64.0
+margin_right = 74.0
+margin_bottom = 76.0
 action = "attack"
 action_name = "atacar"
 
 [node name="ActionInput3" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 105.0
-margin_right = 87.0
-margin_bottom = 122.0
+margin_top = 80.0
+margin_right = 74.0
+margin_bottom = 92.0
 action = "protection"
 action_name = "Activar escudo"
 
 [node name="ActionInput4" parent="MainPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 126.0
-margin_right = 87.0
-margin_bottom = 143.0
+margin_top = 96.0
+margin_right = 74.0
+margin_bottom = 108.0
 action = "run"
 action_name = "Correr"
 

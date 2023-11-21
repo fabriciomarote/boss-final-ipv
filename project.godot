@@ -120,8 +120,9 @@ GameState="*res://src/game/singletons/GameState.gd"
 
 [display]
 
-window/size/width=288
-window/size/height=162
+window/size/width=310
+window/size/height=175
+window/size/fullscreen=true
 window/size/test_width=930
 window/size/test_height=520
 mouse_cursor/custom_image="res://assets/textures/items/6.png"
