@@ -713,12 +713,12 @@ shader_param/Opaticy = null
 shader_param/Size_Outer = null
 
 [sub_resource type="ParticlesMaterial" id=35]
-lifetime_randomness = 0.35
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 gravity = Vector3( -90, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale = 1.5
 color = Color( 1, 0, 0, 0.92549 )
 
 [sub_resource type="RectangleShape2D" id=16]
@@ -864,6 +864,7 @@ shape = SubResource( 26 )
 disabled = true
 
 [node name="ProtectionArea" type="Area2D" parent="BodyPivot"]
+visible = false
 collision_layer = 256
 collision_mask = 516
 
@@ -882,22 +883,28 @@ margin_bottom = 12.0
 color = Color( 0, 0.2, 0.321569, 0.54902 )
 
 [node name="Particles" type="Position2D" parent="BodyPivot"]
+position = Vector2( -6, -3 )
+__meta__ = {
+"_gizmo_extents_": 0.0
+}
 
 [node name="Dash" type="Particles2D" parent="BodyPivot/Particles"]
 modulate = Color( 0.788235, 0.611765, 0.611765, 0.537255 )
-position = Vector2( -8, -1 )
+position = Vector2( -5, -1 )
 emitting = false
 amount = 3
-speed_scale = 3.0
+speed_scale = 1.5
+fract_delta = false
 process_material = SubResource( 35 )
 texture = ExtResource( 2 )
 
 [node name="Hitbox2" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
-position = Vector2( 0, -23.75 )
+position = Vector2( 0, -24 )
 shape = SubResource( 16 )
 disabled = true
 
