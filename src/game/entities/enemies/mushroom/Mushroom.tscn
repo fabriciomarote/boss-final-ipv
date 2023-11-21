@@ -15,7 +15,7 @@
 [ext_resource path="res://src/game/entities/enemies/mushroom/states/DamageState.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=81]
-extents = Vector2( 21, 35 )
+extents = Vector2( 23, 54 )
 
 [sub_resource type="StyleBoxFlat" id=104]
 bg_color = Color( 0.72549, 0.109804, 0.345098, 1 )
@@ -308,7 +308,7 @@ state_id = "damage"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 3 )
+position = Vector2( -3, -16 )
 shape = SubResource( 81 )
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -324,10 +324,10 @@ margin_right = 16.0
 margin_bottom = -35.0
 
 [node name="LifeProgressBar" type="ProgressBar" parent="Pivot/HUD/Control"]
-margin_left = -2.0
-margin_top = -5.0
-margin_right = 30.0
-margin_bottom = -4.0
+margin_left = -6.0
+margin_top = -43.0
+margin_right = 26.0
+margin_bottom = -42.0
 custom_styles/fg = SubResource( 104 )
 custom_styles/bg = SubResource( 103 )
 max_value = 10.0
@@ -337,7 +337,7 @@ rounded = true
 percent_visible = false
 
 [node name="FirePosition" type="Position2D" parent="Pivot"]
-position = Vector2( -16, -14.0339 )
+position = Vector2( -30, -45 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Pivot"]
 position = Vector2( 0, 1 )
@@ -346,15 +346,16 @@ collision_mask = 3
 
 [node name="Body" type="AnimatedSprite" parent="Pivot"]
 material = SubResource( 138 )
-position = Vector2( -7.62939e-06, -13 )
-scale = Vector2( 2.955, 2.14833 )
+position = Vector2( 7.62939e-06, -39 )
+scale = Vector2( 3.69083, 3.27417 )
 frames = SubResource( 80 )
-animation = "idle"
-frame = 1
+animation = "attack"
+frame = 10
 playing = true
 flip_h = true
 
 [node name="DetectionArea" type="Area2D" parent="Pivot"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
