@@ -956,18 +956,18 @@ texture = ExtResource( 4 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
 material = SubResource( 199 )
-position = Vector2( 2, -7 )
-scale = Vector2( 0.637695, 0.578288 )
+position = Vector2( 2, -19 )
+scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
 margin_left = -8.0
-margin_top = 42.0
+margin_top = 27.0
 margin_right = 12.0
-margin_bottom = 45.0
+margin_bottom = 30.0
 custom_styles/fg = SubResource( 82 )
 custom_styles/bg = SubResource( 83 )
 max_value = 5.0

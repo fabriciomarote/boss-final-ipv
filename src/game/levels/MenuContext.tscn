@@ -73,9 +73,10 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="Context" type="Label" parent="."]
-margin_top = 53.0
-margin_right = 309.0
-margin_bottom = 86.0
+margin_left = 1.0
+margin_top = 66.0
+margin_right = 310.0
+margin_bottom = 99.0
 custom_fonts/font = SubResource( 3 )
 text = "Una pequeña ninja tiene que atravesar un bosque oscuro y encantado 
 para llegar a la casa de su abuelita que esta en peligro, para poder 
@@ -84,9 +85,10 @@ align = 1
 valign = 1
 
 [node name="Label" type="Label" parent="."]
-margin_top = 125.0
-margin_right = 309.0
-margin_bottom = 133.0
+margin_left = 1.0
+margin_top = 163.0
+margin_right = 310.0
+margin_bottom = 171.0
 custom_fonts/font = SubResource( 2 )
 text = "Presiona Enter para empezar"
 align = 1

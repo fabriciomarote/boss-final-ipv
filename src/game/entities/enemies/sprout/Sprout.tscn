@@ -17,7 +17,7 @@
 [ext_resource path="res://assets/sounds/enemies/die_monster.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=81]
-extents = Vector2( 41, 86 )
+extents = Vector2( 41, 90 )
 
 [sub_resource type="StyleBoxFlat" id=104]
 bg_color = Color( 0.338867, 0.153037, 0, 1 )
@@ -266,7 +266,7 @@ state_id = "damage"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7, -24 )
+position = Vector2( -7, -20 )
 shape = SubResource( 81 )
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -283,9 +283,9 @@ margin_bottom = -35.0
 
 [node name="HpProgress" type="ProgressBar" parent="Pivot/HUD/Control"]
 margin_left = -4.0
-margin_top = -53.0
+margin_top = -81.0
 margin_right = 28.0
-margin_bottom = -50.0
+margin_bottom = -78.0
 custom_styles/fg = SubResource( 104 )
 custom_styles/bg = SubResource( 103 )
 max_value = 10.0
@@ -304,8 +304,8 @@ collision_mask = 3
 
 [node name="Body" type="AnimatedSprite" parent="Pivot"]
 material = SubResource( 164 )
-position = Vector2( -2, -29 )
-scale = Vector2( 4.61459, 4.25 )
+position = Vector2( -4, -17 )
+scale = Vector2( 3.51758, 3.02865 )
 frames = SubResource( 80 )
 animation = "idle"
 frame = 2
@@ -317,7 +317,8 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DetectionArea"]
-position = Vector2( -2, -53 )
+visible = false
+position = Vector2( -2, -25 )
 shape = SubResource( 131 )
 
 [node name="SproutSfx" type="AudioStreamPlayer" parent="."]

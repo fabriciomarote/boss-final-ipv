@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://src/game/entities/enemies/mushroom/MushroomProjectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/game/entities/enemies/mushroom/states/DieState.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/textures/enemies/mushroom/Take Hit.png" type="Texture" id=11]
 [ext_resource path="res://assets/textures/enemies/mushroom/Attack3.png" type="Texture" id=12]
 [ext_resource path="res://src/game/entities/enemies/mushroom/states/DamageState.gd" type="Script" id=13]
+[ext_resource path="res://src/game/entities/enemies/mushroom/states/AttackState.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=81]
 extents = Vector2( 23, 54 )
@@ -242,7 +243,7 @@ animations = [ {
 "frames": [ SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ) ],
 "loop": false,
 "name": "attack",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [ SubResource( 118 ), SubResource( 119 ) ],
 "loop": true,
@@ -252,7 +253,7 @@ animations = [ {
 "frames": [ SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ) ],
 "loop": false,
 "name": "die",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ) ],
 "loop": true,
@@ -279,7 +280,7 @@ projectile_scene = ExtResource( 1 )
 script = ExtResource( 7 )
 character_path = NodePath("..")
 START_STATE = NodePath("Walk")
-STATES_LIST = [ NodePath("Idle"), NodePath("Die"), NodePath("Walk"), NodePath("Alert"), NodePath("Damage") ]
+STATES_LIST = [ NodePath("Idle"), NodePath("Die"), NodePath("Walk"), NodePath("Alert"), NodePath("Damage"), NodePath("Attack") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
@@ -298,12 +299,16 @@ script = ExtResource( 5 )
 state_id = "alert"
 
 [node name="Timer" type="Timer" parent="StateMachine/Alert"]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
 
 [node name="Damage" type="Node" parent="StateMachine"]
 script = ExtResource( 13 )
 state_id = "damage"
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource( 14 )
+state_id = "attack"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Spooky-menu.ogg-0753abae3f2e6f80c9461a2180adde43.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/mainMenu/Spooky-menu.ogg"
+dest_files=[ "res://.import/Spooky-menu.ogg-0753abae3f2e6f80c9461a2180adde43.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

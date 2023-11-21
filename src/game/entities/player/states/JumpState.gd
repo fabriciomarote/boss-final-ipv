@@ -43,6 +43,9 @@ func update(_delta: float) -> void:
 		else: 
 			emit_signal("finished", "walk")
 	else:
+		if character.velocity.y > 0:
+			character._play_animation("fall")
+		else:
 			character._play_animation("jump")
 
 # En este callback manejamos, por el momento, solo los impactos
