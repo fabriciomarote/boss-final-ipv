@@ -29,8 +29,8 @@ onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/Collis
 onready var particles: Particles2D = $BodyPivot/Particles/Dash
 onready var timer: Timer = $"%Timer"
 
-export (float) var ACCELERATION: float = 200
-export (float) var H_SPEED_LIMIT: float = 100
+export (float) var ACCELERATION: float = 100
+export (float) var H_SPEED_LIMIT: float = 10
 export (int) var jump_speed: int = 380
 export (float) var FRICTION_WEIGHT: float = 5.0
 export (int) var gravity: int = 20

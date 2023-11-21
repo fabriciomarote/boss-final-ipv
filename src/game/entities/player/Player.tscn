@@ -539,13 +539,13 @@ shader_param/THRESHOLD = 0.1
 shader_param/AA_SCALE = 10.0
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 6.75, 14 )
+extents = Vector2( 8.375, 18 )
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 9.5, 16 )
 
 [sub_resource type="CircleShape2D" id=22]
-radius = 20.0998
+radius = 35.0143
 
 [sub_resource type="Shader" id=34]
 code = "shader_type canvas_item;
@@ -814,8 +814,8 @@ cast_to = Vector2( 10, 15 )
 
 [node name="Body" type="Sprite" parent="BodyPivot"]
 material = SubResource( 31 )
-position = Vector2( 0.0860799, -27.3982 )
-scale = Vector2( 1.01632, 0.904504 )
+position = Vector2( 2, -46 )
+scale = Vector2( 1.57512, 1.51177 )
 texture = ExtResource( 19 )
 flip_h = true
 hframes = 12
@@ -839,7 +839,7 @@ update_scale = false
 
 [node name="WeaponTip" type="Position2D" parent="BodyPivot"]
 unique_name_in_owner = true
-position = Vector2( 19, -14 )
+position = Vector2( 21, -26 )
 rotation = -0.0217488
 
 [node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
@@ -848,12 +848,11 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
 [node name="CutArea" type="Area2D" parent="BodyPivot"]
-visible = false
 collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea"]
-position = Vector2( 19, -14 )
+position = Vector2( 20.625, -18 )
 shape = SubResource( 18 )
 disabled = true
 
@@ -862,7 +861,7 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea2"]
-position = Vector2( 9.5, -15 )
+position = Vector2( 20, -16 )
 shape = SubResource( 26 )
 disabled = true
 
@@ -871,17 +870,17 @@ collision_layer = 256
 collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/ProtectionArea"]
-position = Vector2( -1, -14 )
+position = Vector2( 0, -25 )
 shape = SubResource( 22 )
 disabled = true
 
 [node name="ColorRect" type="ColorRect" parent="BodyPivot/ProtectionArea"]
 visible = false
 material = SubResource( 33 )
-margin_left = -28.0
-margin_top = -43.0
-margin_right = 28.0
-margin_bottom = 15.0
+margin_left = -36.0
+margin_top = -61.0
+margin_right = 36.0
+margin_bottom = 12.0
 color = Color( 0, 0.2, 0.321569, 0.54902 )
 
 [node name="Particles" type="Position2D" parent="BodyPivot"]
