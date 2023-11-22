@@ -850,6 +850,7 @@ use_parent_material = true
 position = Vector2( -11, -2 )
 scale = Vector2( 0.08, 0.08 )
 z_index = 10
+emitting = false
 amount = 3
 speed_scale = 2.0
 fract_delta = false
