@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet(1).png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://assets/textures/items/hoja.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/items/pngwing.com(1).png" type="Texture" id=7]
 [ext_resource path="res://assets/sounds/player/GRASS - Pre Jump 6.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/player/atk_sword.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/player/GRASS - Post Jump 6.wav" type="AudioStream" id=10]
@@ -485,6 +485,10 @@ scale = 1.5
 color = Color( 1, 0, 0, 0.92549 )
 anim_speed = 1.0
 
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 7 )
+region = Rect2( 542.89, 274.289, 44.1055, 44.8793 )
+
 [sub_resource type="Shader" id=30]
 code = "shader_type canvas_item;
 
@@ -566,7 +570,7 @@ shader_param/THRESHOLD = 0.1
 shader_param/AA_SCALE = 10.0
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 8.375, 18 )
+extents = Vector2( 11.375, 18 )
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 9.5, 16 )
@@ -846,16 +850,17 @@ process_material = SubResource( 35 )
 texture = ExtResource( 2 )
 
 [node name="Hojas" type="CPUParticles2D" parent="BodyPivot/Particles"]
+modulate = Color( 0.0745098, 0.662745, 0.541176, 1 )
 use_parent_material = true
 position = Vector2( -11, -2 )
 scale = Vector2( 0.08, 0.08 )
 z_index = 10
 emitting = false
-amount = 3
+amount = 9
 speed_scale = 2.0
 fract_delta = false
 draw_order = 1
-texture = ExtResource( 7 )
+texture = SubResource( 36 )
 emission_shape = 1
 emission_sphere_radius = 78.69
 direction = Vector2( -20, -20 )
@@ -909,7 +914,7 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea"]
-position = Vector2( 20.625, -18 )
+position = Vector2( 23.625, -18 )
 shape = SubResource( 18 )
 disabled = true
 
@@ -923,7 +928,6 @@ shape = SubResource( 26 )
 disabled = true
 
 [node name="ProtectionArea" type="Area2D" parent="BodyPivot"]
-visible = false
 collision_layer = 256
 collision_mask = 516
 

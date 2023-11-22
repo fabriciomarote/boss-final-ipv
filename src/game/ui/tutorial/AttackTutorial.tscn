@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14, 14.5 )
+extents = Vector2( 25, 27.25 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 14

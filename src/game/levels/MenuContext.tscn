@@ -66,8 +66,10 @@ level_manager_scene = ExtResource( 2 )
 anims/start = SubResource( 1 )
 
 [node name="ColorRect" type="TextureRect" parent="."]
-margin_right = 45.0
-margin_bottom = 44.0
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 43.0
+margin_bottom = 43.0
 rect_scale = Vector2( 7, 4 )
 texture = ExtResource( 3 )
 expand = true

@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
-height = 0.0
+height = 6.0
 
 [sub_resource type="Shader" id=2]
 code = "shader_type spatial; 
@@ -71,7 +71,8 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 3 )
-scale = Vector2( 1.19984, 1.1358 )
+position = Vector2( 4.76837e-07, 1.19209e-07 )
+scale = Vector2( 1.52849, 1.3804 )
 texture = SubResource( 4 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -12,11 +12,11 @@ func _ready() -> void:
 
 
 func _on_StartButton_pressed():
+	ui_sfx.play()
 	start_animation.play("start")
 
 
 func _on_ExitButton_pressed():
-	ui_sfx.stream = button
 	ui_sfx.play()
 	get_tree().quit()
 

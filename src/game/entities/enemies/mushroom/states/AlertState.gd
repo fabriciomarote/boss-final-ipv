@@ -6,7 +6,7 @@ var attack_distance_threshold:int = 200
 func enter() -> void:
 	character.velocity = Vector2.ZERO
 	character._play_animation("alert")
-	attack()
+	#attack()
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.start()
 

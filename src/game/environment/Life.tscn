@@ -50,10 +50,9 @@ gravity = Vector3( 0, 98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 1.2861, 2.76698, 13.2142, 11.7891 )
+region = Rect2( 1.59829, 3.60214, 12.6122, 10.7136 )
 
 [node name="Life" type="Node2D"]
 material = SubResource( 6 )
@@ -76,8 +75,8 @@ process_material = SubResource( 4 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.461538, -0.363636 )
-scale = Vector2( 1.07692, 1.27273 )
-texture = SubResource( 2 )
+position = Vector2( -0.372595, -0.397727 )
+scale = Vector2( 0.562099, 0.679546 )
+texture = SubResource( 7 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 18.5 )
+extents = Vector2( 35.5, 35.25 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 13
@@ -37,7 +37,6 @@ anims/enabled = SubResource( 2 )
 [node name="PlayerCloseArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCloseArea"]
-position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
