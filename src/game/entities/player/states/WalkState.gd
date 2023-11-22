@@ -4,7 +4,6 @@ extends AbstractState
 func enter() -> void:
 	character._play_animation("walk")
 
-
 func handle_input(event:InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		if character.attackHandler == "BowAttack":

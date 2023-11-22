@@ -2,6 +2,7 @@ extends AbstractState
 
 
 func enter() -> void:
+	character._shader_hojas(false)
 	character._play_animation("damage")
 
 

@@ -14,12 +14,14 @@ onready var navigation_agent = $NavigationAgent2D
 onready var hp_progress:ProgressBar = $Pivot/HUD/Control/LifeProgressBar
 onready var hud:Node2D = $Pivot/HUD
 onready var pivot:Node2D = $Pivot
+onready var mushroom_sfx: AudioStreamPlayer = $MushroomFx
 
 export (float) var speed:float  = 10.0
 export (float) var max_speed:float = 100.0
 export (int) var gravity: int = 10
 export (int) var max_hp: int = 6
 var hp: int = max_hp
+export (AudioStream) var death_sfx
 export (PackedScene) var projectile_scene: PackedScene
 
 
@@ -116,3 +118,7 @@ func _play_animation(animation: String) -> void:
 
 func get_current_animation() -> String:
 	return body_anim.animation
+
+func _death_audio():
+	mushroom_sfx.stream = death_sfx
+	mushroom_sfx.play() 

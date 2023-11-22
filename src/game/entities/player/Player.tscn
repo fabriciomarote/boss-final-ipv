@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet(1).png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/items/hoja.png" type="Texture" id=7]
 [ext_resource path="res://assets/sounds/player/GRASS - Pre Jump 6.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/player/atk_sword.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/player/GRASS - Post Jump 6.wav" type="AudioStream" id=10]
@@ -422,6 +423,20 @@ tracks/1/keys = {
 "method": "_walk_audio"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "_shader_hojas"
+} ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "whitoutArrow"
@@ -456,6 +471,19 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 28.0
+
+[sub_resource type="ParticlesMaterial" id=35]
+lifetime_randomness = 0.35
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( -90, 0, 0 )
+initial_velocity = 5.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 1.5
+color = Color( 1, 0, 0, 0.92549 )
+anim_speed = 1.0
 
 [sub_resource type="Shader" id=30]
 code = "shader_type canvas_item;
@@ -712,15 +740,6 @@ shader_param/Size_Inner = null
 shader_param/Opaticy = null
 shader_param/Size_Outer = null
 
-[sub_resource type="ParticlesMaterial" id=35]
-lifetime_randomness = 0.35
-flag_disable_z = true
-direction = Vector3( 0, 0, 0 )
-gravity = Vector3( -90, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-color = Color( 1, 0, 0, 0.92549 )
-
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 9, 23.25 )
 
@@ -810,6 +829,45 @@ cast_to = Vector2( 10, 15 )
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
+[node name="Particles" type="Position2D" parent="BodyPivot"]
+position = Vector2( -6, -3 )
+__meta__ = {
+"_gizmo_extents_": 0.0
+}
+
+[node name="Dash" type="Particles2D" parent="BodyPivot/Particles"]
+modulate = Color( 0.788235, 0.611765, 0.611765, 0.537255 )
+position = Vector2( -5, -1 )
+emitting = false
+amount = 3
+speed_scale = 1.5
+fract_delta = false
+process_material = SubResource( 35 )
+texture = ExtResource( 2 )
+
+[node name="Hojas" type="CPUParticles2D" parent="BodyPivot/Particles"]
+use_parent_material = true
+position = Vector2( -11, -2 )
+scale = Vector2( 0.08, 0.08 )
+z_index = 10
+amount = 3
+speed_scale = 2.0
+fract_delta = false
+draw_order = 1
+texture = ExtResource( 7 )
+emission_shape = 1
+emission_sphere_radius = 78.69
+direction = Vector2( -20, -20 )
+spread = 0.0
+gravity = Vector2( -90, -180 )
+initial_velocity = 2.0
+radial_accel = 95.42
+radial_accel_random = 0.53
+angle = 383.1
+angle_random = 0.84
+scale_amount = 0.02
+color = Color( 0.207843, 0.392157, 0.443137, 1 )
+
 [node name="Body" type="Sprite" parent="BodyPivot"]
 material = SubResource( 31 )
 position = Vector2( 2, -46 )
@@ -864,6 +922,7 @@ shape = SubResource( 26 )
 disabled = true
 
 [node name="ProtectionArea" type="Area2D" parent="BodyPivot"]
+visible = false
 collision_layer = 256
 collision_mask = 516
 
@@ -880,22 +939,6 @@ margin_top = -61.0
 margin_right = 36.0
 margin_bottom = 12.0
 color = Color( 0, 0.2, 0.321569, 0.54902 )
-
-[node name="Particles" type="Position2D" parent="BodyPivot"]
-position = Vector2( -6, -3 )
-__meta__ = {
-"_gizmo_extents_": 0.0
-}
-
-[node name="Dash" type="Particles2D" parent="BodyPivot/Particles"]
-modulate = Color( 0.788235, 0.611765, 0.611765, 0.537255 )
-position = Vector2( -5, -1 )
-emitting = false
-amount = 3
-speed_scale = 1.5
-fract_delta = false
-process_material = SubResource( 35 )
-texture = ExtResource( 2 )
 
 [node name="Hitbox2" type="Area2D" parent="."]
 visible = false

@@ -2,6 +2,7 @@ extends AbstractEnemyState
 
 func enter() -> void:
 	character._play_animation("die")
+	character._death_audio()
 	character.dead = true
 	character.collision_layer = 0
 	character.collision_mask = 0

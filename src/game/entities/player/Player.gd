@@ -130,7 +130,11 @@ func _handle_move_input() -> void:
 		_handle_deacceleration()
 		velocity.x = clamp(velocity.x + (move_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
 		body_pivot.scale.x = 1 - 2 * float(move_direction < 0)
+		
+		
 
+func _shader_hojas(boolean: bool) -> void:
+	$BodyPivot/Particles/Hojas.emitting = boolean
 
 func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0

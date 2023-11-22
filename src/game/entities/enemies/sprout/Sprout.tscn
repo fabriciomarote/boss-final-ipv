@@ -206,7 +206,7 @@ animations = [ {
 "frames": [ SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ) ],
 "loop": false,
 "name": "die",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ) ],
 "loop": true,
@@ -307,8 +307,8 @@ material = SubResource( 164 )
 position = Vector2( -4, -17 )
 scale = Vector2( 3.51758, 3.02865 )
 frames = SubResource( 80 )
-animation = "idle"
-frame = 2
+animation = "die"
+frame = 7
 playing = true
 flip_h = true
 

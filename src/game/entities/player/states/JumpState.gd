@@ -9,6 +9,7 @@ func enter() -> void:
 	character.velocity.y -= character.jump_speed
 	character._play_animation("jump")
 	character._jump_audio()
+	character._shader_hojas(false)
 
 
 func exit() -> void:

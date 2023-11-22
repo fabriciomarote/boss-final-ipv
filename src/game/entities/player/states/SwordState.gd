@@ -2,10 +2,12 @@ extends AbstractState
 
 
 func enter() -> void:
+	character._shader_hojas(false)
 	if !character.is_on_floor():
 		character._play_animation("axeJump")
 	else:
 		character._play_animation("axe")
+		
 
 
 func handle_event(event: String, value = null) -> void:
