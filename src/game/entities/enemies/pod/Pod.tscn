@@ -1,0 +1,147 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://src/game/entities/enemies/pod/IdleState.gd" type="Script" id=1]
+[ext_resource path="res://src/game/entities/enemies/pod/PodStateMachine.gd" type="Script" id=2]
+[ext_resource path="res://src/game/entities/enemies/pod/DieState.gd" type="Script" id=3]
+[ext_resource path="res://src/game/entities/enemies/pod/Pod.gd" type="Script" id=4]
+[ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/textures/enemies/battlepod/battlepod.png" type="Texture" id=6]
+[ext_resource path="res://src/game/entities/enemies/pod/WalkState.gd" type="Script" id=7]
+[ext_resource path="res://src/game/entities/enemies/pod/AlertState.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=81]
+extents = Vector2( 23.4286, 33.8927 )
+
+[sub_resource type="StyleBoxFlat" id=104]
+bg_color = Color( 0.72549, 0.109804, 0.345098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=103]
+bg_color = Color( 0, 0, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 6 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=80]
+animations = [ {
+"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 95 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=82]
+radius = 226.874
+
+[node name="Pod" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 8
+collision_mask = 15
+script = ExtResource( 4 )
+projectile_scene = ExtResource( 5 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+character_path = NodePath("..")
+START_STATE = NodePath("Alert")
+STATES_LIST = [ NodePath("Alert") ]
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 1 )
+state_id = "idle"
+
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+state_id = "die"
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+state_id = "walk"
+
+[node name="Alert" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+state_id = "alert"
+
+[node name="Timer" type="Timer" parent="StateMachine/Alert"]
+wait_time = 5.0
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.571, -3.607 )
+shape = SubResource( 81 )
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2( 0, -1 )
+
+[node name="HUD" type="Node2D" parent="Pivot"]
+position = Vector2( 0, -5.36442e-07 )
+
+[node name="Control" type="Control" parent="Pivot/HUD"]
+margin_left = -16.0
+margin_top = -40.0
+margin_right = 16.0
+margin_bottom = -35.0
+
+[node name="LifeProgressBar" type="ProgressBar" parent="Pivot/HUD/Control"]
+margin_top = 5.0
+margin_right = 32.0
+custom_styles/fg = SubResource( 104 )
+custom_styles/bg = SubResource( 103 )
+max_value = 10.0
+step = 1.0
+value = 5.0
+rounded = true
+percent_visible = false
+
+[node name="FirePosition" type="Position2D" parent="Pivot"]
+position = Vector2( -16, -14.0339 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Pivot"]
+position = Vector2( 0, 1 )
+cast_to = Vector2( -120, 0 )
+collision_mask = 3
+
+[node name="Body" type="AnimatedSprite" parent="Pivot"]
+position = Vector2( 0, 1 )
+frames = SubResource( 80 )
+animation = "attack"
+frame = 2
+playing = true
+
+[node name="DetectionArea" type="Area2D" parent="Pivot"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DetectionArea"]
+position = Vector2( 0, 1 )
+shape = SubResource( 82 )
+
+[connection signal="hit" from="." to="StateMachine" method="_on_damage_received"]
+[connection signal="animation_finished" from="Pivot/Body" to="StateMachine" method="_on_animation_finished"]
+[connection signal="body_entered" from="Pivot/DetectionArea" to="StateMachine" method="_on_DetectionArea_body_entered"]
+[connection signal="body_exited" from="Pivot/DetectionArea" to="StateMachine" method="_on_DetectionArea_body_exited"]
