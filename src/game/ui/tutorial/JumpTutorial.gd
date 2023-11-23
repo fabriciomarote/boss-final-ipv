@@ -13,7 +13,7 @@ func ready() -> void:
 	GameState.connect("input_map_changed", self, "_refresh_inputs")
 
 
-func _on_PlayerCloseArea_body_entered(body):
+func _on_PlayerCloseArea_body_entered(_body):
 	if !enabled:
 		enabled = true
 		if InputMap.has_action(action):

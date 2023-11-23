@@ -31,7 +31,7 @@ onready var timer: Timer = $"%Timer"
 
 export (float) var ACCELERATION: float = 40
 export (float) var H_SPEED_LIMIT: float = 100
-export (int) var jump_speed: int = 330
+export (int) var jump_speed: int = 350
 export (float) var FRICTION_WEIGHT: float = 5.0
 export (int) var gravity: int = 17
 export (AudioStream) var jump_sfx
@@ -82,12 +82,12 @@ func _ready() -> void:
 	initialize()
 
 
-func initialize(projectile_container: Node = get_parent()) -> void:
+func initialize(_projectile_container: Node = get_parent()) -> void:
 	attackHandlers = {
 		attackModes.AXE: "AxeAttack",
 		attackModes.BOW: "BowAttack"
 	}
-	self.projectile_container = projectile_container
+	self.projectile_container = _projectile_container
 	attackHandler = attackHandlers.get(attackModes.AXE)
 	currentAttackMode = attackModes.AXE
 	emit_signal("weapon_changed", currentAttackMode)

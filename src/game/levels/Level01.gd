@@ -20,6 +20,7 @@ signal next_level_requested()
 signal continue_level()
 
 func _ready() -> void:
+	animation_player.play("start")
 	if !GameState.checkpoint_actived:
 		bgm.stream = preload("res://assets/sounds/level/audio_tutorial2.ogg")
 		bgm.play()
@@ -57,7 +58,7 @@ func _on_ChangeAudioArea_body_entered(_body):
 	 bgm.play()
 
 
-func _on_ChangeAudioArea2_body_entered(body):
+func _on_ChangeAudioArea2_body_entered(_body):
 	GameState.intermedio_audio = false
 	if !GameState.intermedio_audio:
 		GameState.final_audio = true

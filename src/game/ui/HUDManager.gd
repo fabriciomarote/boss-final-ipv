@@ -16,8 +16,10 @@ onready var weapon: Sprite = $StatsContainer/Panel/Weapon
 onready var panel: Sprite = $StatsContainer/Panel/Panel
 onready var deaths = $StatsContainer/Panel/Deaths
 onready var chances = $StatsContainer/Panel/Chances
+onready var skull = $StatsContainer/Panel/Skull
+onready var player = $StatsContainer/Panel/Player
 
-onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow, deaths]
+onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow, deaths, chances, skull, player]
 
 export (float) var fade_duration: float = 5.0
 export (float) var fade_delay: float = 2.0
@@ -104,4 +106,4 @@ func _animate_fade() -> void:
 	
 	for element in fading_elements:
 		element.modulate = Color.white
-		stats_tween.set_parallel().tween_property(element, "modulate", Color.white, fade_duration).set_trans(Tween.TRANS_SINE).set_delay(fade_delay)
+		stats_tween.set_parallel().tween_property(element, "modulate", Color.transparent, fade_duration).set_trans(Tween.TRANS_SINE).set_delay(fade_delay)
