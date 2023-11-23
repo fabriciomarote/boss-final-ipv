@@ -177,7 +177,7 @@ scroll_ignore_camera_zoom = true
 
 [node name="Layer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.005, 0 )
-motion_mirroring = Vector2( 100, 0 )
+motion_mirroring = Vector2( 250, 0 )
 
 [node name="Sprite" type="Sprite" parent="Layer"]
 material = SubResource( 16 )
