@@ -16,7 +16,6 @@ var damage: int = 2
 
 
 func initialize(container: Node, spawn_position: Vector2, direction: Vector2) -> void:
-	print("parametro recibido :", container)
 	container.add_child(self)
 	self.direction = direction
 	global_position = spawn_position

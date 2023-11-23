@@ -120,11 +120,10 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=14]
-radius = 8.0
+radius = 8.94427
 
 [node name="PodProjectile" instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
-VELOCITY = 250.0
 
 [node name="LifetimeTimer" parent="." index="0"]
 wait_time = 2.0
@@ -140,6 +139,7 @@ collision_layer = 512
 collision_mask = 259
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 2, 0 )
 rotation = 1.5708
 shape = SubResource( 14 )
 
@@ -147,13 +147,15 @@ shape = SubResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="Body" index="0"]
 position = Vector2( 2, 0 )
-scale = Vector2( 0.34, 0.34 )
+scale = Vector2( 0.3825, 0.3775 )
 texture = ExtResource( 2 )
 flip_h = true
 hframes = 8
 vframes = 8
 
 [node name="FX" type="Sprite" parent="." index="4"]
+position = Vector2( -4, -10 )
+scale = Vector2( 1.6875, 1.50781 )
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 2

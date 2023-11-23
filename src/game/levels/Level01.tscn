@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://src/game/environment/DefaultBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_background_obj.png" type="Texture" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://assets/textures/tileset/Assets.png" type="Texture" id=41]
 [ext_resource path="res://assets/textures/tileset/Tiles.png" type="Texture" id=42]
 [ext_resource path="res://assets/textures/tileset/TX Village Props.png" type="Texture" id=43]
+[ext_resource path="res://src/game/entities/enemies/cannon/Cannon.tscn" type="PackedScene" id=44]
 
 [sub_resource type="Animation" id=105]
 resource_name = "passage"
@@ -2450,7 +2451,7 @@ rotation = -1.5708
 z_as_relative = false
 
 [node name="Player" parent="Environment/Entities" instance=ExtResource( 12 )]
-position = Vector2( -799, 479 )
+position = Vector2( 6052, 845 )
 z_index = 1
 H_SPEED_LIMIT = 250.0
 FRICTION_WEIGHT = 0.15
@@ -2690,6 +2691,16 @@ position = Vector2( 8786, 712 )
 [node name="Sprout11" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( 9070, 712 )
 
+[node name="Cannon" parent="Environment/Entities" instance=ExtResource( 44 )]
+position = Vector2( 6182, 605 )
+
+[node name="Cannon2" parent="Environment/Entities" instance=ExtResource( 44 )]
+position = Vector2( 5909, 519 )
+rotation = 3.14159
+
+[node name="Cannon3" parent="Environment/Entities" instance=ExtResource( 44 )]
+position = Vector2( 6181, 424 )
+
 [node name="Mushrooms" type="Node2D" parent="Environment"]
 
 [node name="MushroomProtection" parent="Environment/Mushrooms" instance=ExtResource( 20 )]
@@ -2796,7 +2807,6 @@ position = Vector2( 28.5, 0.5 )
 shape = SubResource( 104 )
 
 [node name="Sprite" type="Sprite" parent="Environment/Passage"]
-visible = false
 modulate = Color( 0.0745098, 0.662745, 0.541176, 1 )
 material = SubResource( 124 )
 position = Vector2( 29.9229, -4.29932 )
@@ -2805,8 +2815,6 @@ z_index = -1
 texture = SubResource( 101 )
 
 [node name="Sprite2" type="Sprite" parent="Environment/Passage"]
-visible = false
-modulate = Color( 0.305882, 0.305882, 0.305882, 1 )
 position = Vector2( -177, 82 )
 scale = Vector2( 9.42225, 2.14286 )
 texture = SubResource( 103 )
