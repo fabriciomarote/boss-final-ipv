@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/environment/Arrow.gd"
 }, {
+"base": "Node",
+"class": "AudioHandler",
+"language": "GDScript",
+"path": "res://src/game/ui/options/AudioHandler.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Cannon",
 "language": "GDScript",
@@ -104,6 +109,7 @@ _global_script_class_icons={
 "AbstractState": "",
 "AbstractStateMachine": "",
 "Arrow": "",
+"AudioHandler": "",
 "Cannon": "",
 "EnemyMushroom": "",
 "EnemyShadow": "",
@@ -129,6 +135,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameState="*res://src/game/singletons/GameState.gd"
+AudioManager="*res://src/game/singletons/AudioManager.gd"
 
 [display]
 
