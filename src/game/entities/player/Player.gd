@@ -61,7 +61,7 @@ var protection_actived = false
 var deaths: int = 0
 var chances: int = 3
 
-export (int) var max_hp: int = 6
+export (int) var max_hp: int = 10
 var hp: int = max_hp
 
 export (int) var max_protection: int = 3
@@ -203,7 +203,7 @@ func notify_hit_protection(_amount: int = 1) -> void:
 
 
 func sum_hp() -> void:
-	hp += 1
+	hp += 2
 	emit_signal("hp_changed", hp, max_hp)
 
 

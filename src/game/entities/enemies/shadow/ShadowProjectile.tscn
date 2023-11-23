@@ -132,7 +132,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 2.23607
+radius = 1.0
 
 [node name="ShadowProjectile" instance=ExtResource( 3 )]
 
@@ -156,7 +156,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Body" index="0"]
 modulate = Color( 0.729412, 0, 0, 1 )
 position = Vector2( -1, -5 )
-scale = Vector2( 0.113336, 0.14894 )
+scale = Vector2( 0.084684, 0.11584 )
 texture = ExtResource( 2 )
 
 [node name="Fx" type="Sprite" parent="." index="4"]
