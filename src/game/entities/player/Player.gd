@@ -68,7 +68,7 @@ export (int) var max_protection: int = 3
 var protection: int = 0
 
 export (float) var max_stamina: float = 10.0
-var stamina: float = 0.0
+var stamina: float = 0
 
 export (float) var stamina_recovery_time: float = 5.0
 export (float) var stamina_recovery_delay: float = 0.5

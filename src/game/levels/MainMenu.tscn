@@ -221,7 +221,7 @@ margin_top = 147.0
 margin_right = 123.0
 margin_bottom = 170.0
 custom_fonts/font = SubResource( 1 )
-text = "pequeña ninja"
+text = "pequeña niña"
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Container"]
 margin_left = 257.0

@@ -7,7 +7,11 @@ func enter() -> void:
 	if !character.is_on_floor():
 		character._play_animation("axeJump")
 	else:
-		character._play_animation("axe")
+		if character.stamina >= 5:
+			character._play_animation("axeX4")
+			character.stamina -= 5
+		else:
+			character._play_animation("axe")
 		
 
 

@@ -1986,9 +1986,9 @@ shader_param/span = 0.1
 shader = SubResource( 121 )
 
 [sub_resource type="NavigationPolygon" id=94]
-vertices = PoolVector2Array( -130, 21, -132, -61, 236, -62, 233, 21 )
+vertices = PoolVector2Array( -288, 21, -291, -17, 292, -24, 295, 19 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( 233, 21, 236, -62, -132, -61, -130, 21 ) ]
+outlines = [ PoolVector2Array( 295, 19, 292, -24, -291, -17, -288, 21 ) ]
 
 [sub_resource type="NavigationPolygon" id=92]
 vertices = PoolVector2Array( 449, 253, 450, 303, 269, 302, 88, 251, 88, 302 )
@@ -1996,9 +1996,9 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4 ) ]
 outlines = [ PoolVector2Array( 88, 251, 88, 302, 269, 302, 450, 303, 449, 253 ) ]
 
 [sub_resource type="NavigationPolygon" id=96]
-vertices = PoolVector2Array( -222, 31, -222, -42, 53, -40, 55, 32 )
+vertices = PoolVector2Array( -264, 28, -262, -4, 127, -4, 126, 30 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( -222, 31, -222, -42, 53, -40, 55, 32 ) ]
+outlines = [ PoolVector2Array( -264, 28, -262, -4, 127, -4, 126, 30 ) ]
 
 [sub_resource type="NavigationPolygon" id=95]
 vertices = PoolVector2Array( -131, 1, -134, -62, 1, -61, 1, 1 )
@@ -2616,7 +2616,7 @@ tile_data = PoolIntArray( -65290, 0, 0, -65289, 0, 0, -65288, 0, 0, -65287, 0, 0
 [node name="Sprouts" type="Node2D" parent="Environment/Entities/Enemies"]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
-position = Vector2( 1229, 462 )
+position = Vector2( 1262, 458 )
 navpoly = SubResource( 94 )
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
@@ -2668,7 +2668,7 @@ position = Vector2( 4767, 715 )
 navpoly = SubResource( 99 )
 
 [node name="Sprout" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
-position = Vector2( 1312, 449 )
+position = Vector2( 1288, 446 )
 
 [node name="Sprout3" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( 4093, 704 )
