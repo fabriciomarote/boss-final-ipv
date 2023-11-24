@@ -60,7 +60,7 @@ script = ExtResource( 7 )
 VELOCITY = 150.0
 
 [node name="LifetimeTimer" parent="." index="0"]
-wait_time = 3.0
+wait_time = 1.5
 
 [node name="ProjectileAnimations" parent="." index="1"]
 anims/RESET = SubResource( 8 )
@@ -76,6 +76,7 @@ rotation = 1.5708
 shape = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
+modulate = Color( 0.639216, 0.298039, 0.298039, 1 )
 position = Vector2( -2, -2 )
-scale = Vector2( 2.165, 2.035 )
+scale = Vector2( 2.8425, 2.6975 )
 texture = ExtResource( 5 )

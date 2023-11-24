@@ -13,11 +13,9 @@ onready var hud:Node2D = $Pivot/HUD
 onready var pivot:Node2D = $Pivot
 onready var sprout_sfx: AudioStreamPlayer = $SproutSfx
 
-export (float) var speed:float  = 10.0
-export (float) var max_speed:float = 100.0
 export (int) var gravity: int = 10
-export (float) var ACCELERATION: float = 20.0
-export (float) var H_SPEED_LIMIT: float = 30.0
+export (float) var ACCELERATION: float = 10.0
+export (float) var H_SPEED_LIMIT: float = 40.0
 export (int) var max_hp: int = 6
 var hp: int = max_hp
 export (AudioStream) var death_sfx

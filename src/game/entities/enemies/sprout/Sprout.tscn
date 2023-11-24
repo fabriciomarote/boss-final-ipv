@@ -274,7 +274,7 @@ position = Vector2( -4, -17 )
 scale = Vector2( 3.51758, 3.02865 )
 frames = SubResource( 80 )
 animation = "walk"
-frame = 2
+frame = 4
 playing = true
 flip_h = true
 

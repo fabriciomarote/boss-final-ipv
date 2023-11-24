@@ -6,7 +6,6 @@ var attack_distance_threshold:int = 200
 func enter() -> void:
 	character.velocity = Vector2.ZERO
 	character._play_animation("alert")
-	attack()
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.start()
 
@@ -44,10 +43,10 @@ func handle_event(event: String, value = null) -> void:
 			emit_signal("finished", "damage")
 		"hp_changed":
 			if value[0] == 0:
-				emit_signal("finished", "die")
+				emit_signal("finished", "walk")
 
 
-func _on_Timer_timeout():
+func _on_timer_timeout():
 	if !should_attack():
 		timer.stop()
 		emit_signal("finished", "walk")

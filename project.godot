@@ -102,7 +102,7 @@ _global_script_classes=[ {
 "base": "AbstractStateMachine",
 "class": "PodStateMachine",
 "language": "GDScript",
-"path": "res://src/game/entities/enemies/cannon/PodStateMachine.gd"
+"path": "res://src/game/entities/enemies/cannon/CannonStateMachine.gd"
 }, {
 "base": "Node2D",
 "class": "Proyectil",

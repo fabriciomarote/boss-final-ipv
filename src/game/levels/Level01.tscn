@@ -2205,7 +2205,7 @@ z_as_relative = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 459021, 83, 0, 983373, 147, 0, 983384, 147, 0, 1048856, 1073741974, 0, 1048870, 1073741974, 0, 1048895, 147, 0, 1114392, 1073741974, 0, 1114448, 1610612886, 0, 1179928, 1073741974, 0, 1179963, 147, 0, 1376583, 147, 0, 1573165, 1610612886, 0, 1638779, 1073741974, 0, 1704267, 147, 0, 1835289, 147, 0, 1835307, 147, 0, 1835345, 147, 0, 1900836, 1073741974, 0, 1966355, 147, 0, 1966451, 1073741974, 0, 2162965, 147, 0, 2162967, 147, 0, 2162972, 147, 0, 2162987, 147, 0, 2163003, 147, 0, 2228509, 1610612886, 0, 2228533, 1610612886, 0, 2228534, 1610612886, 0, 2294045, 1073741974, 0, 2294069, 1610612886, 0, 2294144, 1073741974, 0, 2294145, 147, 0, 2425109, 147, 0, 2556192, 147, 0, 2556210, 147, 0, 2556219, 147, 0, 2621550, 1073741974, 0, 2621720, 1073741974, 0, 2621744, 1073741974, 0, 2621758, 1610612886, 0, 2621759, 1610612886, 0, 2687083, 1073741974, 0, 2687086, 1073741974, 0, 2687256, 1073741974, 0, 2687298, 1610612886, 0, 2687299, 1610612886, 0, 2687310, 1610612886, 0, 2687314, 1610612886, 0, 2687326, 1610612886, 0, 2687332, 1610612886, 0, 2687346, 1610612886, 0, 2687347, 1610612886, 0, 2752834, 1610612886, 0, 2752846, 1610612886, 0, 2752883, 1610612886, 0, 2818419, 1610612886, 0, 2949371, 147, 0, 3014892, 147, 0, 3014911, 1073741974, 0, 3014915, 147, 0, 3080447, 1073741974, 0, 3080572, 1073741974, 0, 3145983, 1073741974, 0, 3146109, 1073741974, 0, 3146112, 1073741974, 0, 3211356, 1610612886, 0, 3211358, 1610612886, 0, 3211524, 147, 0, 3342416, 536871059, 0, 3342611, 147, 0, 3408153, 147, 0, 3408194, 147, 0, 3408222, 147, 0, 3408232, 147, 0, 3408236, 147, 0, 3408250, 147, 0, 3408251, 147, 0, 3473629, 147, 0, 3473636, 147, 0, 3473667, 147, 0 )
+tile_data = PoolIntArray( 459021, 83, 0, 983373, 147, 0, 983384, 147, 0, 1048856, 1073741974, 0, 1048870, 1073741974, 0, 1048895, 147, 0, 1114392, 1073741974, 0, 1114448, 1610612886, 0, 1179928, 1073741974, 0, 1179963, 147, 0, 1376583, 147, 0, 1573165, 1610612886, 0, 1638779, 1073741974, 0, 1704267, 147, 0, 1835289, 147, 0, 1835307, 147, 0, 1835345, 147, 0, 1900836, 1073741974, 0, 1966355, 147, 0, 1966451, 1073741974, 0, 2162965, 147, 0, 2162967, 147, 0, 2162972, 147, 0, 2162987, 147, 0, 2163003, 147, 0, 2228509, 1610612886, 0, 2228533, 1610612886, 0, 2228534, 1610612886, 0, 2294045, 1073741974, 0, 2294069, 1610612886, 0, 2294144, 1073741974, 0, 2294145, 147, 0, 2425109, 147, 0, 2556192, 147, 0, 2556210, 147, 0, 2556219, 147, 0, 2621550, 1073741974, 0, 2621720, 1073741974, 0, 2621744, 1073741974, 0, 2621758, 1610612886, 0, 2621759, 1610612886, 0, 2621815, 1073741974, 0, 2687083, 1073741974, 0, 2687086, 1073741974, 0, 2687256, 1073741974, 0, 2687298, 1610612886, 0, 2687299, 1610612886, 0, 2687310, 1610612886, 0, 2687314, 1610612886, 0, 2687326, 1610612886, 0, 2687332, 1610612886, 0, 2687340, 1073741974, 0, 2687346, 1610612886, 0, 2687347, 1610612886, 0, 2752834, 1610612886, 0, 2752846, 1610612886, 0, 2752883, 1610612886, 0, 2818419, 1610612886, 0, 2949371, 147, 0, 3014892, 147, 0, 3014911, 1073741974, 0, 3014915, 147, 0, 3015040, 1073741974, 0, 3080447, 1073741974, 0, 3080572, 1073741974, 0, 3080574, 1073741974, 0, 3145983, 1073741974, 0, 3211356, 1610612886, 0, 3211358, 1610612886, 0, 3211524, 147, 0, 3342416, 536871059, 0, 3342611, 147, 0, 3408153, 147, 0, 3408194, 147, 0, 3408222, 147, 0, 3408232, 147, 0, 3408236, 147, 0, 3408250, 147, 0, 3408251, 147, 0, 3473629, 147, 0, 3473636, 147, 0, 3473667, 147, 0 )
 
 [node name="ElementosDeTierra2" type="TileMap" parent="Environment/Tilesets"]
 modulate = Color( 0.701961, 0.701961, 0.701961, 1 )
@@ -2479,7 +2479,7 @@ position = Vector2( 3793, 845 )
 position = Vector2( 2694, 618 )
 
 [node name="Mushroom2" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
-position = Vector2( 4888, 826 )
+position = Vector2( 5043, 825 )
 
 [node name="Mushroom3" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
 position = Vector2( 4720, 732 )
@@ -2488,7 +2488,7 @@ position = Vector2( 4720, 732 )
 position = Vector2( 4780, 343 )
 
 [node name="Mushroom6" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
-position = Vector2( 5459, 328 )
+position = Vector2( 4943, 438 )
 
 [node name="Mushroom11" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
 position = Vector2( 5383, 115 )
@@ -2620,7 +2620,7 @@ position = Vector2( 1262, 458 )
 navpoly = SubResource( 94 )
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
-position = Vector2( 4618, 546 )
+position = Vector2( 4795, 544 )
 navpoly = SubResource( 92 )
 
 [node name="NavigationPolygonInstance10" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
@@ -2640,11 +2640,11 @@ position = Vector2( 2769, 610 )
 navpoly = SubResource( 96 )
 
 [node name="NavigationPolygonInstance4" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
-position = Vector2( 4161, 686 )
+position = Vector2( 4151, 736 )
 navpoly = SubResource( 95 )
 
 [node name="NavigationPolygonInstance5" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
-position = Vector2( 5550, 349 )
+position = Vector2( 5001, 463 )
 navpoly = SubResource( 95 )
 
 [node name="NavigationPolygonInstance6" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
@@ -2671,7 +2671,7 @@ navpoly = SubResource( 99 )
 position = Vector2( 1288, 446 )
 
 [node name="Sprout3" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
-position = Vector2( 4093, 704 )
+position = Vector2( 4085, 698 )
 
 [node name="Sprout5" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( 4301, 92 )
@@ -2752,6 +2752,15 @@ position = Vector2( 5169, 125 )
 
 [node name="Life8" parent="Environment/Lifes" instance=ExtResource( 19 )]
 position = Vector2( 5525, 424 )
+
+[node name="Life11" parent="Environment/Lifes" instance=ExtResource( 19 )]
+position = Vector2( 4143, 727 )
+
+[node name="Life12" parent="Environment/Lifes" instance=ExtResource( 19 )]
+position = Vector2( 8529, 739 )
+
+[node name="Life13" parent="Environment/Lifes" instance=ExtResource( 19 )]
+position = Vector2( 6154, 538 )
 
 [node name="Tutorials" type="Node2D" parent="Environment"]
 
