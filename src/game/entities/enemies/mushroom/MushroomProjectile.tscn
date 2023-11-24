@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/game/entities/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/enemies/mushroom/hit4.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/textures/enemies/mushroom/hit3.png" type="Texture" id=4]
 [ext_resource path="res://assets/textures/enemies/mushroom/proyectile.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/enemies/mushroom/hit1.png" type="Texture" id=6]
+[ext_resource path="res://src/game/entities/enemies/mushroom/MushroomProjectile.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -53,9 +54,10 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 3.5, 9.5 )
 
-[node name="PodProjectile" instance=ExtResource( 1 )]
+[node name="MushroomProjectile" instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
-VELOCITY = 200.0
+script = ExtResource( 7 )
+VELOCITY = 150.0
 
 [node name="LifetimeTimer" parent="." index="0"]
 wait_time = 3.0

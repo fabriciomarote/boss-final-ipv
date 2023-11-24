@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Flight.png-93e260adeabb7136f703538798ce3868.stex"
+path="res://.import/Flight.png-93fb6017416dee82bea487e0d8d78d64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Flying/Flight.png"
-dest_files=[ "res://.import/Flight.png-93e260adeabb7136f703538798ce3868.stex" ]
+source_file="res://assets/textures/enemies/flying/Flight.png"
+dest_files=[ "res://.import/Flight.png-93fb6017416dee82bea487e0d8d78d64.stex" ]
 
 [params]
 

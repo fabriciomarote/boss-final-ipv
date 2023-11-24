@@ -47,7 +47,6 @@ func _fire() -> void:
 		proj_instance.initialize(
 			projectile_container,
 			fire_position.global_position,
-			#fire_position.global_position.direction_to(target.global_position)
 			fire_position.global_position.direction_to(Vector2(target.global_position.x, fire_position.global_position.y))
 		)
 

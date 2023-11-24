@@ -580,10 +580,10 @@ shader_param/THRESHOLD = 0.1
 shader_param/AA_SCALE = 10.0
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 27.5, 30 )
+extents = Vector2( 24.5, 30 )
 
 [sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 23.5, 27.5 )
+extents = Vector2( 18, 27.5 )
 
 [sub_resource type="CircleShape2D" id=22]
 radius = 35.0143
@@ -884,6 +884,7 @@ scale_amount = 2.0
 color = Color( 0.207843, 0.392157, 0.443137, 1 )
 
 [node name="Dust" type="CPUParticles2D" parent="BodyPivot/Particles"]
+visible = false
 use_parent_material = true
 position = Vector2( -11, -2 )
 scale = Vector2( 0.07, 0.07 )
@@ -948,7 +949,7 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea"]
-position = Vector2( 27.5, -31 )
+position = Vector2( 24.5, -31 )
 shape = SubResource( 18 )
 disabled = true
 
@@ -957,7 +958,7 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea2"]
-position = Vector2( 31.5, -27.5 )
+position = Vector2( 26, -27.5 )
 shape = SubResource( 26 )
 disabled = true
 
