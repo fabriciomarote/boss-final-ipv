@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet(1).png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://src/game/entities/player/states/SwordState.gd" type="Script" id=17]
 [ext_resource path="res://src/game/entities/player/states/ArrowState.gd" type="Script" id=18]
 [ext_resource path="res://assets/textures/player/red_hood_sheet3.png" type="Texture" id=19]
+[ext_resource path="res://assets/textures/tileset/Decals_north.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -489,6 +490,15 @@ anim_speed = 1.0
 atlas = ExtResource( 7 )
 region = Rect2( 546.614, 277.112, 37.3823, 41.7976 )
 
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 690, 320, 150, 120 )
+
+[sub_resource type="Gradient" id=38]
+offsets = PoolRealArray( 0, 0.681564 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.439216 )
+
 [sub_resource type="Shader" id=30]
 code = "shader_type canvas_item;
 
@@ -570,10 +580,10 @@ shader_param/THRESHOLD = 0.1
 shader_param/AA_SCALE = 10.0
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 11.375, 18 )
+extents = Vector2( 27.5, 30 )
 
 [sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 9.5, 16 )
+extents = Vector2( 23.5, 27.5 )
 
 [sub_resource type="CircleShape2D" id=22]
 radius = 35.0143
@@ -873,6 +883,30 @@ angle_random = 0.84
 scale_amount = 2.0
 color = Color( 0.207843, 0.392157, 0.443137, 1 )
 
+[node name="Dust" type="CPUParticles2D" parent="BodyPivot/Particles"]
+use_parent_material = true
+position = Vector2( -11, -2 )
+scale = Vector2( 0.07, 0.07 )
+emitting = false
+amount = 2
+lifetime = 0.5
+fract_delta = false
+draw_order = 1
+texture = SubResource( 37 )
+emission_shape = 1
+emission_sphere_radius = 78.69
+direction = Vector2( -10, -10 )
+spread = 0.0
+gravity = Vector2( -5, -5 )
+angular_velocity = -10.0
+radial_accel = 95.42
+damping = 64.22
+angle = 673.7
+angle_random = 0.51
+scale_amount = 2.0
+color = Color( 0.639216, 0.647059, 0.65098, 1 )
+color_ramp = SubResource( 38 )
+
 [node name="Body" type="Sprite" parent="BodyPivot"]
 material = SubResource( 31 )
 position = Vector2( 2, -46 )
@@ -889,6 +923,7 @@ scale = Vector2( 0.5, 0.5 )
 cast_to = Vector2( 0.0684128, 15.4614 )
 
 [node name="WeaponPivot" type="Node2D" parent="BodyPivot"]
+visible = false
 position = Vector2( -4, -5 )
 rotation = -1.29932
 
@@ -900,11 +935,11 @@ update_scale = false
 
 [node name="WeaponTip" type="Position2D" parent="BodyPivot"]
 unique_name_in_owner = true
+visible = false
 position = Vector2( 21, -26 )
 rotation = -0.0217488
 
 [node name="Sprite" type="Sprite" parent="BodyPivot/WeaponTip"]
-visible = false
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
@@ -913,7 +948,7 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea"]
-position = Vector2( 23.625, -18 )
+position = Vector2( 27.5, -31 )
 shape = SubResource( 18 )
 disabled = true
 
@@ -922,7 +957,7 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/CutArea2"]
-position = Vector2( 20, -16 )
+position = Vector2( 31.5, -27.5 )
 shape = SubResource( 26 )
 disabled = true
 

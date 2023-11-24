@@ -10,6 +10,7 @@ func enter() -> void:
 	character._play_animation("jump")
 	character._jump_audio()
 	character._shader_hojas(false)
+	character._shader_dust(true)
 
 
 func exit() -> void:

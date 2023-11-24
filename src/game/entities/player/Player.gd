@@ -135,6 +135,9 @@ func _handle_move_input() -> void:
 
 func _shader_hojas(boolean: bool) -> void:
 	$BodyPivot/Particles/Hojas.emitting = boolean
+	
+func _shader_dust(boolean: bool) -> void:
+	$BodyPivot/Particles/Dust.emitting = boolean
 
 func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0

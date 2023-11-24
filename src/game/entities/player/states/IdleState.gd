@@ -6,6 +6,7 @@ const attackModes = preload("res://src/game/entities/AttackModes.gd")
 func enter() -> void:
 	character._play_animation("idle")
 	character._shader_hojas(false)
+	character._shader_dust(false)
 
 
 func handle_input(event: InputEvent) -> void:

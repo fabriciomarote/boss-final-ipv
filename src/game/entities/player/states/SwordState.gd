@@ -3,6 +3,7 @@ extends AbstractState
 
 func enter() -> void:
 	character._shader_hojas(false)
+	character._shader_dust(false)
 	if !character.is_on_floor():
 		character._play_animation("axeJump")
 	else:

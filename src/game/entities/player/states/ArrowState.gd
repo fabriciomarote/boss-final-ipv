@@ -6,6 +6,7 @@ var attacks = 0
 
 func enter() -> void:
 	character._shader_hojas(false)
+	character._shader_dust(false)
 	if character.is_on_floor():
 		if character.arrowAmount == 0:
 			character._play_animation("whitoutArrow")
