@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flying-head.png-52ab4902eea6bb127dae4179289110d8.stex"
+path="res://.import/game_background_3. 2.png-849e6dbbbfb3ca9e8bac56db7ed90a9a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/Flying/flying-head.png"
-dest_files=[ "res://.import/flying-head.png-52ab4902eea6bb127dae4179289110d8.stex" ]
+source_file="res://assets/textures/background/game_background_3/game_background_3. 2.png"
+dest_files=[ "res://.import/game_background_3. 2.png-849e6dbbbfb3ca9e8bac56db7ed90a9a.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pngfind.com-mushrooms-png-2385643.png-7b4b0f865ea966e2442180d2df787ead.stex"
+path="res://.import/plant.png-aaba16e8207e085523283365c1fafc0a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pngfind.com-mushrooms-png-2385643.png"
-dest_files=[ "res://.import/pngfind.com-mushrooms-png-2385643.png-7b4b0f865ea966e2442180d2df787ead.stex" ]
+source_file="res://assets/textures/background/game_background_3/layers/plant.png"
+dest_files=[ "res://.import/plant.png-aaba16e8207e085523283365c1fafc0a.stex" ]
 
 [params]
 

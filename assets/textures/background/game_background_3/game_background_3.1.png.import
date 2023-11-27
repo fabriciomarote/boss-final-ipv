@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/projectile_sprite.png-f5cd98982c6f15e1479216569d6b062d.stex"
+path="res://.import/game_background_3.1.png-c7a2b811493b3f807c087004688806eb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/flying/projectile_sprite.png"
-dest_files=[ "res://.import/projectile_sprite.png-f5cd98982c6f15e1479216569d6b062d.stex" ]
+source_file="res://assets/textures/background/game_background_3/game_background_3.1.png"
+dest_files=[ "res://.import/game_background_3.1.png-c7a2b811493b3f807c087004688806eb.stex" ]
 
 [params]
 

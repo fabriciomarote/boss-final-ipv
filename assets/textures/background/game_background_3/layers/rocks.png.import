@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack2.png-1a487427ec835758a475920e811d7fb5.stex"
+path="res://.import/rocks.png-ab9c02204fecd49e8dc2cf1ad31f9512.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemies/flying/Attack2.png"
-dest_files=[ "res://.import/Attack2.png-1a487427ec835758a475920e811d7fb5.stex" ]
+source_file="res://assets/textures/background/game_background_3/layers/rocks.png"
+dest_files=[ "res://.import/rocks.png-ab9c02204fecd49e8dc2cf1ad31f9512.stex" ]
 
 [params]
 
