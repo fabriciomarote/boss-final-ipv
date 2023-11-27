@@ -45,4 +45,3 @@ func _on_Hitbox_body_entered(body: Node) -> void:
 	if body.has_method("notify_hit_protection") && body.protection_actived:
 		body.notify_hit_protection()
 	remove()
-

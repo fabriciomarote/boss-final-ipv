@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name EnemyMushroom
 
-export (float) var ACCELERATION: float = 10.0
-export (float) var H_SPEED_LIMIT: float = 20.0
+export (float) var ACCELERATION: float = 50.0
+export (float) var H_SPEED_LIMIT: float = 80.0
 
 signal hit(amount)
 signal hp_changed(current_hp, max_hp)
@@ -15,16 +15,20 @@ onready var hp_progress:ProgressBar = $Pivot/HUD/Control/LifeProgressBar
 onready var hud:Node2D = $Pivot/HUD
 onready var pivot:Node2D = $Pivot
 onready var mushroom_sfx: AudioStreamPlayer2D = $MushroomSFX
+onready var collision_shape_attack = $Pivot/AreaAttack/CollisionShape2D
+onready var smoke_area = $Pivot/AreaAttack/Smoke
+onready var timer_activate = $Pivot/AreaAttack/Timer_activate
+onready var timer_disable = $Pivot/AreaAttack/Timer_disable
+
 
 export (int) var gravity: int = 10
-export (int) var max_hp: int = 6
+export (int) var max_hp: int = 10
 var hp: int = max_hp
 
 export (PackedScene) var projectile_scene: PackedScene
 
 
 var target: Node2D
-var projectile_container: Node
 
 var velocity: Vector2 = Vector2.ZERO
 
@@ -37,16 +41,37 @@ func _ready():
 	hp_progress.modulate = Color.transparent
 
 
-func _fire() -> void:
-	if target != null:
-		var proj_instance: Node = projectile_scene.instance()
-		if projectile_container == null:
-			projectile_container = get_parent()
-		proj_instance.initialize(
-			projectile_container,
-			fire_position.global_position,
-			fire_position.global_position.direction_to(Vector2(target.global_position.x, fire_position.global_position.y))
-		)
+func attack() -> void:
+	activate_attack()
+
+
+func activate_attack() -> void:
+	timer_activate.start()
+
+
+func _on_Timer_activate_timeout():
+	collision_shape_attack.disabled = false
+	smoke_area.visible = true
+	disable_attack()
+	timer_activate.stop()
+
+
+func _on_Timer_disable_timeout():
+	collision_shape_attack.disabled = true
+	smoke_area.visible = false
+	timer_disable.stop()
+
+
+func _on_AreaAttack_body_entered(body: Node):
+	if !collision_shape_attack.disabled:
+		if body is Player:
+			if body.has_method("notify_hit") && !body.protection_actived:
+				body.notify_hit(3)
+			if body.has_method("notify_hit_protection") && body.protection_actived:
+				body.notify_hit_protection()
+
+func disable_attack() -> void:
+	timer_disable.start()
 
 
 func _look_at_target() -> void:
@@ -118,3 +143,5 @@ func get_current_animation() -> String:
 
 func _death_audio():
 	mushroom_sfx.play() 
+
+

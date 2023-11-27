@@ -216,10 +216,10 @@ scale = Vector2( 0.304985, 0.300341 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Container"]
-margin_left = 17.0
-margin_top = 124.0
-margin_right = 146.0
-margin_bottom = 171.0
+margin_left = 13.0
+margin_top = 129.0
+margin_right = 142.0
+margin_bottom = 176.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_colors/font_color = Color( 0.933333, 0.72549, 0.72549, 1 )
 custom_colors/font_color_shadow = Color( 0.335074, 0.0536643, 0.0536643, 1 )

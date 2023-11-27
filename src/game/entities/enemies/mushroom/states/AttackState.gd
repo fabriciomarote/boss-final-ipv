@@ -3,8 +3,7 @@ extends AbstractEnemyState
 
 func enter() -> void:
 	character._play_animation("attack")
-	character._fire()
-
+	character.attack()
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:

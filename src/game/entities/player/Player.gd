@@ -70,8 +70,6 @@ var protection: int = 0
 export (float) var max_stamina: float = 10.0
 var stamina: float = 0
 
-export (float) var stamina_recovery_time: float = 5.0
-export (float) var stamina_recovery_delay: float = 0.5
 
 var fire_tween: SceneTreeTween
 
@@ -191,7 +189,7 @@ func is_on_floor() -> bool:
 	return is_colliding
 
 
-func notify_hit(amount: int = 1) -> void:
+func notify_hit(amount: int) -> void:
 	emit_signal("hit", amount)
 
 
@@ -282,6 +280,7 @@ func _on_Hitbox_area_entered(area):
 	else:
 		hit_Direction = -1
 	notify_hit(1)
+
 
 func _dash():
 	if can_dash and Input.is_action_just_pressed("run"):
