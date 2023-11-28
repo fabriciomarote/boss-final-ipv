@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/attack-smoke.mp3-56b8602dd0690b540800bbad7ae49bd4.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/enemies/attack-smoke.mp3"
+dest_files=[ "res://.import/attack-smoke.mp3-56b8602dd0690b540800bbad7ae49bd4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

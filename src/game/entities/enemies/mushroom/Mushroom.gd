@@ -19,13 +19,14 @@ onready var collision_shape_attack = $Pivot/AreaAttack/CollisionShape2D
 onready var smoke_area = $Pivot/AreaAttack/Smoke
 onready var timer_activate = $Pivot/AreaAttack/Timer_activate
 onready var timer_disable = $Pivot/AreaAttack/Timer_disable
+onready var sfx = $SFX
 
 
 export (int) var gravity: int = 10
 export (int) var max_hp: int = 10
 var hp: int = max_hp
 
-export (PackedScene) var projectile_scene: PackedScene
+export (AudioStream) var audio_attack_sfx
 
 
 var target: Node2D
@@ -52,14 +53,22 @@ func activate_attack() -> void:
 func _on_Timer_activate_timeout():
 	collision_shape_attack.disabled = false
 	smoke_area.visible = true
+	sfx.stream = audio_attack_sfx
+	sfx.play() 
 	disable_attack()
 	timer_activate.stop()
+
+
+func disable_attack() -> void:
+	timer_disable.start()
 
 
 func _on_Timer_disable_timeout():
 	collision_shape_attack.disabled = true
 	smoke_area.visible = false
+	sfx.stop()
 	timer_disable.stop()
+
 
 
 func _on_AreaAttack_body_entered(body: Node):
@@ -69,9 +78,6 @@ func _on_AreaAttack_body_entered(body: Node):
 				body.notify_hit(3)
 			if body.has_method("notify_hit_protection") && body.protection_actived:
 				body.notify_hit_protection()
-
-func disable_attack() -> void:
-	timer_disable.start()
 
 
 func _look_at_target() -> void:
@@ -87,8 +93,8 @@ func _can_see_target() -> bool:
 	raycast.set_cast_to(raycast.to_local(target.global_position))
 	raycast.force_raycast_update()
 	return raycast.is_colliding() && raycast.get_collider() == target
-	
-	
+
+
 func _apply_movement() -> void:
 	if navigation_agent != null:
 		if (target!=null):
@@ -143,5 +149,9 @@ func get_current_animation() -> String:
 
 func _death_audio():
 	mushroom_sfx.play() 
+
+func attack_audio():
+	sfx.stream = audio_attack_sfx
+	sfx.play() 
 
 

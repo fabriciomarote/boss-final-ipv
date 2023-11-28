@@ -2081,6 +2081,7 @@ color = Color( 0, 0, 0, 0 )
 
 [node name="TierraProfunda" type="TileMap" parent="Environment/Tilesets"]
 modulate = Color( 0.0352941, 0.541176, 0.439216, 1 )
+rotation = 0.000347766
 z_index = -20
 z_as_relative = false
 tile_set = SubResource( 1 )
@@ -2101,7 +2102,7 @@ tile_data = PoolIntArray( 590107, 52, 0, 590110, 52, 0, 590112, 52, 0, 590223, 1
 [node name="ArbolesLilas" type="TileMap" parent="Environment/Tilesets"]
 modulate = Color( 0.729412, 0.105882, 0.968627, 1 )
 material = SubResource( 118 )
-position = Vector2( 12, 2 )
+position = Vector2( 16, 10 )
 z_index = -1
 z_as_relative = false
 tile_set = SubResource( 1 )
