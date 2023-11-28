@@ -3,7 +3,7 @@
 [ext_resource path="res://src/game/levels/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Blackcraft.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/ChainsawCarnage.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/textures/fondo.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/una-caperucita-roja-ninja-en-un-bosque-oscuro-2d-upscaled.png" type="Texture" id=4]
 [ext_resource path="res://src/game/ui/options/OptionsMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/sounds/mainMenu/Spooky-menu.ogg" type="AudioStream" id=7]
@@ -211,8 +211,8 @@ anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Container"]
 material = SubResource( 28 )
-position = Vector2( 155.152, 88 )
-scale = Vector2( 0.304985, 0.300341 )
+position = Vector2( 155, 87.5 )
+scale = Vector2( 0.116071, 0.115234 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Container"]
