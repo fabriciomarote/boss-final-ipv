@@ -108,6 +108,11 @@ _global_script_classes=[ {
 "class": "Proyectil",
 "language": "GDScript",
 "path": "res://src/game/entities/Projectile.gd"
+}, {
+"base": "Node2D",
+"class": "SproutProyectil",
+"language": "GDScript",
+"path": "res://src/game/entities/enemies/sprout/SproutProjectile.gd"
 } ]
 _global_script_class_icons={
 "AbstractEnemyState": "",
@@ -129,7 +134,8 @@ _global_script_class_icons={
 "PathfindAstar": "",
 "Player": "",
 "PodStateMachine": "",
-"Proyectil": ""
+"Proyectil": "",
+"SproutProyectil": ""
 }
 
 [application]
@@ -147,7 +153,6 @@ AudioManager="*res://src/game/singletons/AudioManager.gd"
 
 window/size/width=310
 window/size/height=175
-window/size/fullscreen=true
 window/size/test_width=930
 window/size/test_height=520
 mouse_cursor/custom_image="res://assets/textures/items/6.png"
