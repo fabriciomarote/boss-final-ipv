@@ -30,7 +30,7 @@ onready var particles: Particles2D = $BodyPivot/Particles/Dash
 onready var timer: Timer = $"%Timer"
 
 export (float) var ACCELERATION: float = 40
-export (float) var H_SPEED_LIMIT: float = 100
+export (float) var H_SPEED_LIMIT: float = 60
 export (int) var jump_speed: int = 350
 export (float) var FRICTION_WEIGHT: float = 5.0
 export (int) var gravity: int = 17
@@ -67,7 +67,7 @@ var hp: int = max_hp
 export (int) var max_protection: int = 3
 var protection: int = 0
 
-export (float) var max_stamina: float = 10.0
+export (float) var max_stamina: float = 8.0
 var stamina: float = 0
 
 
@@ -240,7 +240,7 @@ func _remove() -> void:
 
 
 func handle_velocity() -> void:
-	if stamina == 10:
+	if stamina == max_stamina:
 		timer.start()
 		self.ACCELERATION = 500
 		self.H_SPEED_LIMIT = 500

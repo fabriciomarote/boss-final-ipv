@@ -269,8 +269,8 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="CapsuleShape2D" id=142]
-radius = 110.0
-height = 348.0
+radius = 85.9997
+height = 224.001
 
 [sub_resource type="Shader" id=140]
 code = "shader_type canvas_item;
@@ -385,6 +385,7 @@ script = ExtResource( 5 )
 state_id = "alert"
 
 [node name="Timer" type="Timer" parent="StateMachine/Alert"]
+wait_time = 0.7
 one_shot = true
 
 [node name="Damage" type="Node" parent="StateMachine"]
@@ -410,7 +411,6 @@ position = Vector2( 7.62939e-06, -39 )
 scale = Vector2( 3.69083, 3.27417 )
 frames = SubResource( 80 )
 animation = "walk"
-frame = 1
 playing = true
 flip_h = true
 
@@ -448,8 +448,7 @@ collision_mask = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AreaAttack"]
-visible = false
-position = Vector2( -2, -19 )
+position = Vector2( -18, -19 )
 rotation = 1.5708
 shape = SubResource( 142 )
 disabled = true
@@ -458,8 +457,8 @@ disabled = true
 visible = false
 modulate = Color( 0.490196, 0, 0, 0.498039 )
 material = SubResource( 141 )
-position = Vector2( -4.00003, -25 )
-scale = Vector2( 0.688917, 0.539315 )
+position = Vector2( -2, -25 )
+scale = Vector2( 0.526125, 0.422991 )
 texture = ExtResource( 16 )
 
 [node name="Timer_activate" type="Timer" parent="Pivot/AreaAttack"]

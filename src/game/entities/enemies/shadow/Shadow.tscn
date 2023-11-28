@@ -920,7 +920,7 @@ script = ExtResource( 10 )
 state_id = "idle"
 
 [node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Fly" type="Node" parent="StateMachine"]
@@ -961,7 +961,7 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 3
+frame = 9
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
