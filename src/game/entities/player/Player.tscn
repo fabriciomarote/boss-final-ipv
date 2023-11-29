@@ -926,6 +926,7 @@ color = Color( 0.639216, 0.647059, 0.65098, 1 )
 color_ramp = SubResource( 38 )
 
 [node name="Body" type="Sprite" parent="BodyPivot"]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 material = SubResource( 31 )
 position = Vector2( 2, -46 )
 scale = Vector2( 1.57512, 1.51177 )

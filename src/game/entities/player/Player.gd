@@ -319,3 +319,4 @@ func _on_Timer_timeout():
 		timer.stop()
 		self.ACCELERATION = 500
 		self.H_SPEED_LIMIT = 300
+ 

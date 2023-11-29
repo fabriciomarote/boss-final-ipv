@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/textures/tileset/basic life bars a icons .png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/items/haert2.png" type="Texture" id=1]
 [ext_resource path="res://src/game/environment/Life.gd" type="Script" id=2]
 [ext_resource path="res://assets/textures/enemies/shadow/destello.png" type="Texture" id=3]
 
@@ -45,14 +45,20 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticlesMaterial" id=4]
+render_priority = 3
 flag_disable_z = true
-gravity = Vector3( 0, 98, 0 )
-orbit_velocity = 0.0
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+orbit_velocity = 6.0
 orbit_velocity_random = 0.0
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 1.42365, 3.06684, 13.1043, 11.5227 )
+angle = 300.0
+scale = 0.7
+color = Color( 0.87451, 0.317647, 0.513726, 1 )
+anim_offset = 0.18
+anim_offset_random = 0.5
 
 [node name="Life" type="Node2D"]
 material = SubResource( 6 )
@@ -68,15 +74,18 @@ shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 3 )
-position = Vector2( 1, -1 )
-scale = Vector2( 0.04, 0.04 )
-amount = 2
+scale = Vector2( 0.15, 0.15 )
+amount = 4
+lifetime = 0.5
+visibility_rect = Rect2( -10, 10, 0, 0 )
+draw_order = 1
 process_material = SubResource( 4 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 1.42109e-14 )
-scale = Vector2( 0.929887, 0.952273 )
-texture = SubResource( 7 )
+modulate = Color( 0.956863, 0.0823529, 0.0823529, 1 )
+position = Vector2( -1, -1 )
+scale = Vector2( 0.0389407, 0.0330539 )
+texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

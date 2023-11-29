@@ -24,7 +24,7 @@ func _handle_body_exited(body) -> void:
 func _on_animation_finished(anim_name: String) -> void:
 	match anim_name:
 		"alert":
-			character._play_animation("idle")
+			character._play_animation("walk")
 
 
 func handle_event(event: String, value = null) -> void:

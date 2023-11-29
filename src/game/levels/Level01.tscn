@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://src/game/environment/DefaultBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_background_obj.png" type="Texture" id=2]
@@ -2036,9 +2036,9 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4 ) ]
 outlines = [ PoolVector2Array( 295, 19, 292, -24, -168.509, -18.4707, -291, -17, -288, 21 ) ]
 
 [sub_resource type="NavigationPolygon" id=92]
-vertices = PoolVector2Array( 449, 253, 450, 303, 269, 302, 88, 251, 88, 302 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4 ) ]
-outlines = [ PoolVector2Array( 88, 251, 88, 302, 269, 302, 450, 303, 449, 253 ) ]
+vertices = PoolVector2Array( 446, 223, 450, 303, 88, 302, 90, 217 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 90, 217, 88, 302, 450, 303, 446, 223 ) ]
 
 [sub_resource type="NavigationPolygon" id=96]
 vertices = PoolVector2Array( -361, 33, -366, -15, 194, -12, 193, 32 )
@@ -2051,14 +2051,29 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 1, 1, 1, -61, -134, -62, -131, 1 ) ]
 
 [sub_resource type="NavigationPolygon" id=98]
-vertices = PoolVector2Array( -95, 34, -95, -48, 679, -49, 682, 35 )
+vertices = PoolVector2Array( -253, 47, -255, -63, 733, -59, 735, 43 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( -95, 34, -95, -48, 679, -49, 682, 35 ) ]
+outlines = [ PoolVector2Array( -253, 47, -255, -63, 733, -59, 735, 43 ) ]
 
 [sub_resource type="NavigationPolygon" id=99]
 vertices = PoolVector2Array( -207, 36, -207, -39, 103, -35, 102, 40 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( -207, 36, -207, -39, 103, -35, 102, 40 ) ]
+
+[sub_resource type="NavigationPolygon" id=141]
+vertices = PoolVector2Array( 14622, 26, 14620, 106, 14192, 106, 14192, 24 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 14192, 24, 14192, 106, 14620, 106, 14622, 26 ) ]
+
+[sub_resource type="NavigationPolygon" id=142]
+vertices = PoolVector2Array( 9926, 40, 9924, 136, 9500, 134, 9498, 44 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 9498, 44, 9500, 134, 9924, 136, 9926, 40 ) ]
+
+[sub_resource type="NavigationPolygon" id=143]
+vertices = PoolVector2Array( 11072, 128, 11074, 22, 11544, 22, 11540, 128 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 11072, 128, 11074, 22, 11544, 22, 11540, 128 ) ]
 
 [sub_resource type="RectangleShape2D" id=102]
 extents = Vector2( 28.5, 26.5 )
@@ -2222,7 +2237,7 @@ z_as_relative = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -1048200, 75, 0, -851666, 55, 0, -851646, 55, 0, -851592, 75, 0, -655058, 55, 0, -655038, 55, 0, -654984, 75, 0, -589655, 77, 0, -524119, 55, 0, -458450, 55, 0, -458430, 55, 0, -458376, 75, 0, -327511, 55, 0, -261975, 55, 0, -261842, 55, 0, -261822, 55, 0, -261768, 75, 0, -65367, 55, 0, -65234, 55, 0, -65214, 55, 0, -65160, 75, 0, 794, 61, 0, 66326, 62, 0, 66334, 536870974, 0, 131374, 55, 0, 131394, 55, 0, 131448, 75, 0, 327982, 55, 0, 328002, 55, 0, 328056, 75, 0, 459021, 83, 0, 459561, 61, 0, 459565, 536870974, 0, 524856, 77, 0, 524870, 77, 0, 524932, 536870973, 0, 524952, 61, 0, 525093, 62, 0, 590392, 75, 0, 590406, 75, 0, 787000, 75, 0, 787014, 75, 0, 852191, 61, 0, 917753, 61, 0, 983586, 61, 0, 983608, 75, 0, 983622, 75, 0, 1180216, 75, 0, 1180230, 75, 0, 1245414, 61, 0, 1376696, 1610612794, 0, 1442226, 1073741881, 0, 1442228, 1073741881, 0, 1442230, 1073741881, 0, 1442235, 1073741881, 0, 1900790, 61, 0, 2097366, 1073741881, 0, 2162900, 1073741881, 0, 2162904, 1073741881, 0 )
+tile_data = PoolIntArray( -1048200, 75, 0, -851666, 55, 0, -851646, 55, 0, -851592, 75, 0, -655058, 55, 0, -655038, 55, 0, -654984, 75, 0, -589655, 77, 0, -524119, 55, 0, -458450, 55, 0, -458430, 55, 0, -458376, 75, 0, -327511, 55, 0, -261975, 55, 0, -261842, 55, 0, -261822, 55, 0, -261768, 75, 0, -65367, 55, 0, -65234, 55, 0, -65214, 55, 0, -65160, 75, 0, 794, 61, 0, 66326, 62, 0, 66334, 536870974, 0, 131374, 55, 0, 131394, 55, 0, 131448, 75, 0, 327982, 55, 0, 328002, 55, 0, 328056, 75, 0, 459021, 83, 0, 459561, 61, 0, 459565, 536870974, 0, 524856, 77, 0, 524870, 77, 0, 524932, 536870973, 0, 524952, 61, 0, 525093, 62, 0, 590392, 75, 0, 590406, 75, 0, 787000, 75, 0, 787014, 75, 0, 852191, 61, 0, 917753, 61, 0, 983586, 61, 0, 983608, 75, 0, 983622, 75, 0, 1180216, 75, 0, 1180230, 75, 0, 1245414, 61, 0, 1311157, 1073741881, 0, 1376696, 1610612794, 0, 1442226, 1073741881, 0, 1442235, 1073741881, 0, 1900790, 61, 0, 2097366, 1073741881, 0, 2162900, 1073741881, 0, 2162904, 1073741881, 0 )
 
 [node name="Arbusto3" type="TileMap" parent="Environment/Tilesets"]
 modulate = Color( 0.0941176, 0.34902, 0.211765, 1 )
@@ -2231,7 +2246,7 @@ z_as_relative = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -458585, 77, 0, -393049, 55, 0, -261977, 55, 0, -65369, 55, 0, 523843, 122, 0, 523858, 122, 0, 523902, 122, 0, 523915, 122, 0, 459021, 83, 0, 524849, 77, 0, 524923, 536870973, 0, 525038, 536870973, 0, 590385, 75, 0, 721448, 61, 0, 786993, 75, 0, 852795, 536870973, 0, 918327, 62, 0, 918335, 536870974, 0, 983601, 75, 0, 1180209, 75, 0 )
+tile_data = PoolIntArray( -458585, 77, 0, -393049, 55, 0, -261977, 55, 0, -65369, 55, 0, 523843, 122, 0, 523858, 122, 0, 523902, 122, 0, 523915, 122, 0, 459021, 83, 0, 524849, 77, 0, 524923, 536870973, 0, 525038, 536870973, 0, 590385, 75, 0, 721448, 61, 0, 786993, 75, 0, 852795, 536870973, 0, 918327, 62, 0, 918335, 536870974, 0, 983601, 75, 0, 1180209, 75, 0, 1442229, 1073741881, 0, 1442231, 1073741881, 0 )
 
 [node name="TilesBase" type="TileMap" parent="Environment/Tilesets"]
 modulate = Color( 0.266667, 0.835294, 0.796078, 1 )
@@ -2555,7 +2570,7 @@ rotation = -1.5708
 z_as_relative = false
 
 [node name="Player" parent="Environment/Entities" instance=ExtResource( 12 )]
-position = Vector2( 8467, 427 )
+position = Vector2( 8460, 425 )
 z_index = 1
 H_SPEED_LIMIT = 250.0
 FRICTION_WEIGHT = 0.15
@@ -2598,7 +2613,7 @@ position = Vector2( 4780, 343 )
 position = Vector2( 4943, 438 )
 
 [node name="Mushroom8" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
-position = Vector2( 7712, 417 )
+position = Vector2( 7633, 411 )
 
 [node name="Mushroom9" parent="Environment/Entities/Enemies/Mushrooms" instance=ExtResource( 36 )]
 position = Vector2( 11351, 105 )
@@ -2720,7 +2735,7 @@ position = Vector2( 4795, 544 )
 navpoly = SubResource( 92 )
 
 [node name="NavigationPolygonInstance10" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
-position = Vector2( 7443, 138 )
+position = Vector2( 7366, 135 )
 navpoly = SubResource( 92 )
 
 [node name="NavigationPolygonInstance3" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
@@ -2744,12 +2759,18 @@ position = Vector2( 5001, 463 )
 navpoly = SubResource( 95 )
 
 [node name="NavigationPolygonInstance7" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
-position = Vector2( 15395, 19 )
+position = Vector2( 15403, 21 )
 navpoly = SubResource( 98 )
 
 [node name="NavigationPolygonInstance8" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
 position = Vector2( 4767, 715 )
 navpoly = SubResource( 99 )
+
+[node name="NavigationPolygonInstance6" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
+navpoly = SubResource( 141 )
+
+[node name="NavigationPolygonInstance11" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
+navpoly = SubResource( 142 )
 
 [node name="Sprout" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( -3716, 442 )
@@ -2765,6 +2786,9 @@ position = Vector2( 16004, 23 )
 
 [node name="Sprout11" parent="Environment/Entities/Enemies/Sprouts" instance=ExtResource( 17 )]
 position = Vector2( 14369, 70 )
+
+[node name="NavigationPolygonInstance12" type="NavigationPolygonInstance" parent="Environment/Entities/Enemies/Sprouts"]
+navpoly = SubResource( 143 )
 
 [node name="Cannon" parent="Environment/Entities" instance=ExtResource( 44 )]
 position = Vector2( 6182, 605 )
@@ -2859,7 +2883,7 @@ position = Vector2( 5525, 424 )
 position = Vector2( 4146, 695 )
 
 [node name="Life12" parent="Environment/Lifes" instance=ExtResource( 19 )]
-position = Vector2( 8413, -281 )
+position = Vector2( 9233, 123 )
 
 [node name="Life13" parent="Environment/Lifes" instance=ExtResource( 19 )]
 position = Vector2( 6154, 538 )
