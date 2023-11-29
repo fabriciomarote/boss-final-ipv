@@ -53,24 +53,23 @@ anims/enabled = SubResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="JumpAction1" type="VBoxContainer" parent="Elements"]
-margin_left = -31.0
-margin_top = -68.0
-margin_right = 9.0
-margin_bottom = -28.0
+margin_left = -27.0
+margin_top = -57.0
+margin_right = 13.0
+margin_bottom = -17.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction1"]
 margin_right = 40.0
-margin_bottom = 7.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 1 )
 text = "Saltar"
 
 [node name="ActionLabel" type="Label" parent="Elements/JumpAction1"]
-margin_top = 11.0
+margin_top = 12.0
 margin_right = 40.0
-margin_bottom = 25.0
+margin_bottom = 26.0
 
 [node name="Keyboard1" type="Label" parent="Elements/JumpAction1/ActionLabel"]
 margin_left = -6.0
@@ -81,21 +80,21 @@ custom_fonts/font = SubResource( 4 )
 text = "space"
 
 [node name="JumpAction2" type="VBoxContainer" parent="Elements"]
-margin_left = 1.0
-margin_top = -68.0
-margin_right = 41.0
-margin_bottom = -28.0
+margin_left = 3.0
+margin_top = -57.0
+margin_right = 43.0
+margin_bottom = -17.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction2"]
 margin_right = 40.0
-margin_bottom = 7.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 1 )
 text = "Doble salto"
 
 [node name="ActionLabel" type="Label" parent="Elements/JumpAction2"]
-margin_top = 11.0
+margin_top = 12.0
 margin_right = 40.0
-margin_bottom = 25.0
+margin_bottom = 26.0
 
 [node name="Keyboard" type="Label" parent="Elements/JumpAction2/ActionLabel"]
 margin_left = -11.0

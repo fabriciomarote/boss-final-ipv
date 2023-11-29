@@ -317,6 +317,5 @@ func _on_Timer_timeout():
 	else:
 		particles.emitting = false
 		timer.stop()
-		self.ACCELERATION = 500
-		self.H_SPEED_LIMIT = 300
- 
+		self.ACCELERATION = 150
+		self.H_SPEED_LIMIT = 250

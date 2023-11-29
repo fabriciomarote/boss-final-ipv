@@ -45,24 +45,23 @@ anims/enabled = SubResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Elements"]
-margin_left = -39.0
-margin_top = -63.0
-margin_right = 1.0
-margin_bottom = -23.0
+margin_left = -37.0
+margin_top = -57.0
+margin_right = 3.0
+margin_bottom = -17.0
 
 [node name="Label" type="Label" parent="Elements/VBoxContainer"]
 margin_right = 40.0
-margin_bottom = 7.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 3 )
 text = "Cambiar Arma"
 
 [node name="Label2" type="Label" parent="Elements/VBoxContainer"]
-margin_top = 11.0
+margin_top = 12.0
 margin_right = 40.0
-margin_bottom = 25.0
+margin_bottom = 26.0
 
 [node name="Keyboard" type="Label" parent="Elements/VBoxContainer/Label2"]
 margin_left = 12.0
@@ -73,21 +72,21 @@ custom_fonts/font = SubResource( 3 )
 text = "Q"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Elements"]
-margin_left = 10.0
-margin_top = -63.0
-margin_right = 50.0
-margin_bottom = -23.0
+margin_left = 12.0
+margin_top = -57.0
+margin_right = 52.0
+margin_bottom = -17.0
 
 [node name="Label" type="Label" parent="Elements/VBoxContainer2"]
 margin_right = 40.0
-margin_bottom = 7.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 3 )
 text = "Atacar"
 
 [node name="Label2" type="Label" parent="Elements/VBoxContainer2"]
-margin_top = 11.0
+margin_top = 12.0
 margin_right = 40.0
-margin_bottom = 25.0
+margin_bottom = 26.0
 
 [node name="Keyboard1" type="Label" parent="Elements/VBoxContainer2/Label2"]
 margin_left = 3.0

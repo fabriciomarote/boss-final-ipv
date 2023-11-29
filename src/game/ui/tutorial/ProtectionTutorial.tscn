@@ -40,17 +40,16 @@ anims/enabled = SubResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="Action" type="VBoxContainer" parent="Elements"]
-margin_left = -49.0
-margin_top = -75.0
-margin_right = 45.0
-margin_bottom = -35.0
+margin_left = -46.0
+margin_top = -69.0
+margin_right = 48.0
+margin_bottom = -29.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="Elements/Action"]
-margin_top = 9.0
+margin_top = 8.0
 margin_right = 94.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 2 )

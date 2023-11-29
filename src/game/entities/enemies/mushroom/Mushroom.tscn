@@ -411,7 +411,7 @@ position = Vector2( 7.62939e-06, -39 )
 scale = Vector2( 3.69083, 3.27417 )
 frames = SubResource( 80 )
 animation = "walk"
-frame = 4
+frame = 2
 playing = true
 flip_h = true
 
@@ -426,7 +426,7 @@ margin_bottom = -35.0
 
 [node name="LifeProgressBar" type="ProgressBar" parent="Pivot/HUD/Control"]
 margin_left = -24.0
-margin_top = -61.0
+margin_top = -55.0
 margin_right = 50.0
 margin_bottom = -49.0
 custom_styles/fg = SubResource( 104 )

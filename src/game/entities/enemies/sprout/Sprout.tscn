@@ -329,9 +329,9 @@ margin_right = 16.0
 margin_bottom = -35.0
 
 [node name="HpProgress" type="ProgressBar" parent="Pivot/HUD/Control"]
-margin_left = -20.0
-margin_top = -95.0
-margin_right = 50.0
+margin_left = -26.0
+margin_top = -91.0
+margin_right = 44.0
 margin_bottom = -85.0
 custom_styles/fg = SubResource( 104 )
 custom_styles/bg = SubResource( 103 )
@@ -357,7 +357,7 @@ position = Vector2( -4, -17 )
 scale = Vector2( 3.51758, 3.02865 )
 frames = SubResource( 80 )
 animation = "walk"
-frame = 3
+frame = 2
 playing = true
 flip_h = true
 

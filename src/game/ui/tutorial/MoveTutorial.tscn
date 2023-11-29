@@ -22,7 +22,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.25, 23 )
+extents = Vector2( 11.5, 14 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 10
@@ -43,28 +43,27 @@ anims/enabled = SubResource( 2 )
 [node name="PlayerCloseArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCloseArea"]
-position = Vector2( 0, -1 )
+position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="MoveAction1" type="VBoxContainer" parent="Elements"]
-margin_left = -34.0
-margin_top = -70.0
-margin_right = -3.0
-margin_bottom = -30.0
+margin_left = -43.0
+margin_top = -65.0
+margin_right = -4.0
+margin_bottom = -25.0
 
 [node name="ActionName" type="Label" parent="Elements/MoveAction1"]
-margin_right = 31.0
-margin_bottom = 7.0
+margin_right = 39.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 3 )
 text = "Ir a Izquierda"
 
 [node name="ActionLabel" type="Label" parent="Elements/MoveAction1"]
-margin_top = 11.0
-margin_right = 31.0
-margin_bottom = 25.0
+margin_top = 12.0
+margin_right = 39.0
+margin_bottom = 26.0
 
 [node name="Keyboard" type="Label" parent="Elements/MoveAction1/ActionLabel"]
 unique_name_in_owner = true
@@ -91,21 +90,21 @@ texture = ExtResource( 1 )
 flip_h = true
 
 [node name="MoveAction2" type="VBoxContainer" parent="Elements"]
-margin_left = 8.0
-margin_top = -70.0
-margin_right = 39.0
-margin_bottom = -30.0
+margin_left = 3.0
+margin_top = -65.0
+margin_right = 38.0
+margin_bottom = -25.0
 
 [node name="ActionName" type="Label" parent="Elements/MoveAction2"]
-margin_right = 31.0
-margin_bottom = 7.0
+margin_right = 35.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 3 )
 text = "Ir a Derecha"
 
 [node name="ActionLabel" type="Label" parent="Elements/MoveAction2"]
-margin_top = 11.0
-margin_right = 31.0
-margin_bottom = 25.0
+margin_top = 12.0
+margin_right = 35.0
+margin_bottom = 26.0
 
 [node name="Keyboard1" type="Label" parent="Elements/MoveAction2/ActionLabel"]
 unique_name_in_owner = true

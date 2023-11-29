@@ -44,22 +44,22 @@ shape = SubResource( 2 )
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="RunAction" type="VBoxContainer" parent="Elements"]
-margin_left = -19.0
-margin_top = -68.0
-margin_right = 21.0
-margin_bottom = -28.0
+margin_left = -21.0
+margin_top = -61.0
+margin_right = 19.0
+margin_bottom = -21.0
 
 [node name="ActionName" type="Label" parent="Elements/RunAction"]
 margin_right = 40.0
-margin_bottom = 7.0
+margin_bottom = 8.0
 custom_fonts/font = ExtResource( 2 )
 text = "Correr"
 align = 1
 
 [node name="Keyboard" type="Label" parent="Elements/RunAction"]
-margin_top = 11.0
+margin_top = 14.0
 margin_right = 40.0
-margin_bottom = 22.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 3 )
 text = "V"
 align = 1
