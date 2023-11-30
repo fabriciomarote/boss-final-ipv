@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/a little red riding(1).jpg-d9bbc0079fffcbf169f3a73f0e0aae92.stex"
+path="res://.import/boladeagua2.png-1fb640887db0c790b98a428d57ddd39d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/a little red riding(1).jpg"
-dest_files=[ "res://.import/a little red riding(1).jpg-d9bbc0079fffcbf169f3a73f0e0aae92.stex" ]
+source_file="res://assets/textures/items/boladeagua2.png"
+dest_files=[ "res://.import/boladeagua2.png-1fb640887db0c790b98a428d57ddd39d.stex" ]
 
 [params]
 

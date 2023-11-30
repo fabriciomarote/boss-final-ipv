@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/a little red riding(6).jpg-21abf26b92ed86a6132cdf6bc5c0c978.stex"
+path="res://.import/6-pixel-heart-1.png-ddeb903a53ee48760210d38e00106344.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/a little red riding(6).jpg"
-dest_files=[ "res://.import/a little red riding(6).jpg-21abf26b92ed86a6132cdf6bc5c0c978.stex" ]
+source_file="res://assets/textures/items/6-pixel-heart-1.png"
+dest_files=[ "res://.import/6-pixel-heart-1.png-ddeb903a53ee48760210d38e00106344.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

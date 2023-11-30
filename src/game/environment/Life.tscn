@@ -1,37 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/textures/items/Heart&ManaUi.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/items/6-pixel-heart-1.png" type="Texture" id=1]
 [ext_resource path="res://src/game/environment/Life.gd" type="Script" id=2]
 [ext_resource path="res://assets/textures/enemies/shadow/destello.png" type="Texture" id=3]
-
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-uniform sampler2D depth_texture; // Your depth map
-uniform vec2 zoom_center = vec2(0.5, 0.5); // Zoom center in UV coordinates
-uniform float zoom_intensity = 0.1; // Zoom intensity, where >0 means zoom in and <0 means zoom out
-
-
-void fragment() {
-    // Get the depth value from the depth map
-    float depth = texture(depth_texture, UV).r;
-
-    // Calculate the zoom factor based on depth
-    // Closer pixels will have a greater zoom factor and vice versa
-    float zoom_factor = 1.0 + (depth - 0.5) * zoom_intensity;
-
-    // Calculate the new UV coordinates for zoom
-    // Move each pixel towards the zoom center based on the zoom factor
-    vec2 mod_uv = (UV - zoom_center) * zoom_factor + zoom_center;
-
-    // Get the pixel color from the main texture with the new UV coordinates
-    COLOR = texture(TEXTURE, mod_uv);
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/zoom_center = Vector2( 0.5, 0.5 )
-shader_param/zoom_intensity = 0.1
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -60,12 +31,7 @@ color = Color( 0.87451, 0.317647, 0.513726, 1 )
 anim_offset = 0.18
 anim_offset_random = 0.5
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 20.7178, 0.293156, 11.2367, 11.2367 )
-
 [node name="Life" type="Node2D"]
-material = SubResource( 6 )
 position = Vector2( 1, 2 )
 script = ExtResource( 2 )
 
@@ -88,9 +54,8 @@ process_material = SubResource( 4 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.956863, 0.0823529, 0.0823529, 1 )
-position = Vector2( -1, -2 )
-scale = Vector2( 1.5224, 1.61073 )
-texture = SubResource( 7 )
+position = Vector2( -1, 1 )
+scale = Vector2( 0.01, 0.01 )
+texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

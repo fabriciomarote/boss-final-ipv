@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://src/game/environment/DefaultBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/tileset/SET1/SET1_background_obj.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/textures/tileset/Yellow-Tree.png" type="Texture" id=25]
 [ext_resource path="res://assets/textures/tileset/Dark-Tree.png" type="Texture" id=26]
 [ext_resource path="res://assets/textures/tileset/Buildings.png" type="Texture" id=27]
+[ext_resource path="res://src/game/entities/enemies/cannonwater/CannonWater.tscn" type="PackedScene" id=28]
 [ext_resource path="res://assets/textures/tileset/Red-Tree.png" type="Texture" id=29]
 [ext_resource path="res://src/game/environment/MushroomStamina.tscn" type="PackedScene" id=30]
 [ext_resource path="res://src/game/ui/tutorial/ProtectionTutorial.tscn" type="PackedScene" id=31]
@@ -2584,7 +2585,7 @@ rotation = -1.5708
 z_as_relative = false
 
 [node name="Player" parent="Environment/Entities" instance=ExtResource( 12 )]
-position = Vector2( -6530, 484 )
+position = Vector2( 9343, 134 )
 z_index = 1
 H_SPEED_LIMIT = 250.0
 FRICTION_WEIGHT = 0.15
@@ -2806,6 +2807,24 @@ rotation = 3.14159
 [node name="Cannon10" parent="Environment/Entities" instance=ExtResource( 44 )]
 position = Vector2( 3346, 220 )
 rotation = 3.14159
+
+[node name="CannonWater" parent="Environment/Entities" instance=ExtResource( 28 )]
+position = Vector2( 9457, 223 )
+
+[node name="CannonWater2" parent="Environment/Entities" instance=ExtResource( 28 )]
+position = Vector2( 9936, 222 )
+
+[node name="CannonWater3" parent="Environment/Entities" instance=ExtResource( 28 )]
+position = Vector2( 9881, 224 )
+
+[node name="CannonWater4" parent="Environment/Entities" instance=ExtResource( 28 )]
+position = Vector2( 9512, 222 )
+
+[node name="CannonWater5" parent="Environment/Entities" instance=ExtResource( 28 )]
+position = Vector2( 9824, 223 )
+
+[node name="CannonWater6" parent="Environment/Entities" instance=ExtResource( 28 )]
+position = Vector2( 9576, 220 )
 
 [node name="Mushrooms" type="Node2D" parent="Environment"]
 
@@ -3081,6 +3100,7 @@ rotation = 1.08559
 shape = SubResource( 114 )
 
 [node name="Checkpoints" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="Checkpoint" parent="Environment/Checkpoints" instance=ExtResource( 37 )]
 position = Vector2( 2990, 632 )
