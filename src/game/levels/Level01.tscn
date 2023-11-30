@@ -2808,23 +2808,18 @@ rotation = 3.14159
 position = Vector2( 3346, 220 )
 rotation = 3.14159
 
-[node name="CannonWater" parent="Environment/Entities" instance=ExtResource( 28 )]
-position = Vector2( 9457, 223 )
-
 [node name="CannonWater2" parent="Environment/Entities" instance=ExtResource( 28 )]
-position = Vector2( 9936, 222 )
+position = Vector2( 10583, 181 )
 
 [node name="CannonWater3" parent="Environment/Entities" instance=ExtResource( 28 )]
-position = Vector2( 9881, 224 )
-
-[node name="CannonWater4" parent="Environment/Entities" instance=ExtResource( 28 )]
-position = Vector2( 9512, 222 )
+position = Vector2( 10425, 182 )
 
 [node name="CannonWater5" parent="Environment/Entities" instance=ExtResource( 28 )]
-position = Vector2( 9824, 223 )
+position = Vector2( 10279, 177 )
 
 [node name="CannonWater6" parent="Environment/Entities" instance=ExtResource( 28 )]
-position = Vector2( 9576, 220 )
+position = Vector2( 10137, 186 )
+z_index = 2
 
 [node name="Mushrooms" type="Node2D" parent="Environment"]
 
