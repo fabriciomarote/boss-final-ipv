@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name EnemyMushroom
 
-export (float) var ACCELERATION: float = 50.0
-export (float) var H_SPEED_LIMIT: float = 80.0
+export (float) var ACCELERATION: float = 20.0
+export (float) var H_SPEED_LIMIT: float = 50.0
 
 signal hit(amount)
 signal hp_changed(current_hp, max_hp)

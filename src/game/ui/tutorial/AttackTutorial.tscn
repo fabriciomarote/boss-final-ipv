@@ -45,6 +45,7 @@ anims/enabled = SubResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Elements"]
 margin_left = -37.0

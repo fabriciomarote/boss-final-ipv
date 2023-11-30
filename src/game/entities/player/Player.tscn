@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet(1).png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://src/game/entities/player/states/ArrowState.gd" type="Script" id=18]
 [ext_resource path="res://assets/textures/player/red_hood_sheet3.png" type="Texture" id=19]
 [ext_resource path="res://assets/textures/tileset/Decals_north.png" type="Texture" id=20]
+[ext_resource path="res://assets/sounds/PosiblesAudios/damaged3.wav" type="AudioStream" id=21]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -780,6 +781,7 @@ collision_layer = 131
 script = ExtResource( 1 )
 jump_sfx = ExtResource( 8 )
 walk_sfx = ExtResource( 11 )
+damage_sfx = ExtResource( 21 )
 projectile_scene = ExtResource( 5 )
 
 [node name="StateMachine" type="Node" parent="."]

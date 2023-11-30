@@ -10,7 +10,7 @@ signal arrow_changed(amount)
 signal deaths_changed(amount)
 signal chances_changed(amount)
 
-const FLOOR_NORMAL: Vector2 = Vector2.UP  # Igual a Vector2(0, -1)
+const FLOOR_NORMAL: Vector2 = Vector2.UP 
 const SNAP_DIRECTION: Vector2 = Vector2.DOWN
 const SNAP_LENGTH: float = 35.0
 const SLOPE_THRESHOLD: float = deg2rad(46)
@@ -101,7 +101,6 @@ func _sum_dead() -> void:
 
 func _chance_changed() -> void:
 	chances -= 1
-	print("chances de Player :", chances)
 	emit_signal("chances_changed", chances)
 
 
@@ -242,8 +241,8 @@ func _remove() -> void:
 func handle_velocity() -> void:
 	if stamina == max_stamina:
 		timer.start()
-		self.ACCELERATION = 500
-		self.H_SPEED_LIMIT = 500
+		self.ACCELERATION = 400
+		self.H_SPEED_LIMIT = 400
 
 
 func _protection_active():
@@ -300,6 +299,12 @@ func _walk_audio():
 func _jump_audio():
 	player_sfx.stream = jump_sfx
 	player_sfx.play() 
+
+
+func _damage_audio():
+	player_sfx.stream = damage_sfx
+	player_sfx.play() 
+
 
 
 func _on_CutArea2_body_entered(body):

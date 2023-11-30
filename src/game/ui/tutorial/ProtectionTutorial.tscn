@@ -40,12 +40,13 @@ anims/enabled = SubResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="Action" type="VBoxContainer" parent="Elements"]
 margin_left = -46.0
-margin_top = -69.0
+margin_top = -67.0
 margin_right = 48.0
-margin_bottom = -29.0
+margin_bottom = -27.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="Elements/Action"]
@@ -57,9 +58,9 @@ text = "Activar escudo"
 align = 1
 
 [node name="Keyboard" type="Label" parent="Elements/Action"]
-margin_top = 20.0
+margin_top = 23.0
 margin_right = 94.0
-margin_bottom = 31.0
+margin_bottom = 34.0
 custom_fonts/font = SubResource( 3 )
 text = "C"
 align = 1

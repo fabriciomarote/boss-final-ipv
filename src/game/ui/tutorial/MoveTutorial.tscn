@@ -47,11 +47,12 @@ position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="MoveAction1" type="VBoxContainer" parent="Elements"]
-margin_left = -43.0
+margin_left = -42.0
 margin_top = -65.0
-margin_right = -4.0
+margin_right = -3.0
 margin_bottom = -25.0
 
 [node name="ActionName" type="Label" parent="Elements/MoveAction1"]
@@ -90,9 +91,9 @@ texture = ExtResource( 1 )
 flip_h = true
 
 [node name="MoveAction2" type="VBoxContainer" parent="Elements"]
-margin_left = 3.0
+margin_left = 1.0
 margin_top = -65.0
-margin_right = 38.0
+margin_right = 36.0
 margin_bottom = -25.0
 
 [node name="ActionName" type="Label" parent="Elements/MoveAction2"]

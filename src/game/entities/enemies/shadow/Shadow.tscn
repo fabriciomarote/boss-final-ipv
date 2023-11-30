@@ -961,7 +961,7 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 9
+frame = 3
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]

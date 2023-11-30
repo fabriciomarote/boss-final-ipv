@@ -104,10 +104,10 @@ margin_top = 66.0
 margin_right = 310.0
 margin_bottom = 99.0
 custom_fonts/font = SubResource( 3 )
-text = "Una niña conocida como caperucita tiene que atravesar un bosque oscuro y encantado 
+text = "Caperucita tiene que atravesar un bosque oscuro y encantado 
 para llegar a la casa de su abuelita que esta en peligro, 
-para poder lograrlo debera combatir a sus
- propias pesadillas que tendra que acabar con numero de ellas que acechan su camino."
+encontrara pesadillas que acecharan su camino
+y debera que acabar con numero de ellas para poder lograrlo. "
 align = 1
 valign = 1
 

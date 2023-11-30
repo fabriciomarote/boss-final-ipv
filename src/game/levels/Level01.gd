@@ -21,12 +21,9 @@ signal continue_level()
 
 func _ready() -> void:
 	animation_player.play("start")
-	if !GameState.checkpoint_actived:
-		bgm.stream = preload("res://assets/sounds/level/audio-juego2.ogg")
-		bgm.play()
-	else:
-		bgm.stream = preload("res://assets/sounds/level/audio-juego-final.ogg")
-		bgm.play()
+	bgm.stream = GameState.set_level()
+	bgm.stream = preload("res://assets/sounds/level/audio-juego2.ogg")
+	bgm.play()
 	randomize()
 
 
@@ -53,7 +50,7 @@ func _on_DesactivationArea_body_entered(_body):
 		animation_player.play("passage")
 
 
-func _on_ChangeAudioArea_body_entered(_body):
-	 GameState.intermedio_audio = true
-	 bgm.stream = preload("res://assets/sounds/level/audio-juego-final.ogg")
-	 bgm.play()
+func _on_ChangeAudioArea_body_entered(body):
+	if body is Player:
+		 bgm.stream = preload("res://assets/sounds/level/audio-juego-final.ogg")
+		 bgm.play()

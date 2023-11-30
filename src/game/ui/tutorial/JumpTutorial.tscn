@@ -53,6 +53,7 @@ anims/enabled = SubResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="JumpAction1" type="VBoxContainer" parent="Elements"]
 margin_left = -27.0
