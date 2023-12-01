@@ -961,14 +961,14 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 7
+frame = 6
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
-margin_left = -8.0
-margin_top = 27.0
-margin_right = 12.0
-margin_bottom = 30.0
+margin_left = -9.0
+margin_top = 28.0
+margin_right = 17.0
+margin_bottom = 32.0
 custom_styles/fg = SubResource( 82 )
 custom_styles/bg = SubResource( 83 )
 max_value = 5.0

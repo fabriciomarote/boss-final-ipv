@@ -2574,7 +2574,7 @@ rotation = -1.5708
 z_as_relative = false
 
 [node name="Player" parent="Environment/Entities" instance=ExtResource( 12 )]
-position = Vector2( 4800, 450 )
+position = Vector2( 9344, 138 )
 z_index = 1
 H_SPEED_LIMIT = 250.0
 FRICTION_WEIGHT = 0.15
@@ -2675,7 +2675,7 @@ extents = Vector2( 50, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner15" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 9451, 0 )
+position = Vector2( 9465, 6 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2684,7 +2684,7 @@ pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner16" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 9565, -1 )
+position = Vector2( 9579, 5 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2692,7 +2692,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner17" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 9683, 0 )
+position = Vector2( 9697, 6 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2700,7 +2700,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner18" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 10738, -10 )
+position = Vector2( 10737, -3 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2709,7 +2709,7 @@ pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner19" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 10853, -10 )
+position = Vector2( 10852, -3 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2717,7 +2717,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner20" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 11086, -9 )
+position = Vector2( 11085, -2 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2725,7 +2725,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner24" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 9800, -2 )
+position = Vector2( 9814, 4 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2734,7 +2734,7 @@ pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner25" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 10974, -9 )
+position = Vector2( 10973, -2 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2742,7 +2742,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner26" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 11203, -9 )
+position = Vector2( 11202, -2 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2750,7 +2750,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner21" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 11315, -10 )
+position = Vector2( 11314, -3 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2759,7 +2759,7 @@ pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner22" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 11426, -6 )
+position = Vector2( 11425, 1 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2767,7 +2767,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner23" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 11538, -10 )
+position = Vector2( 11535, -3 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2775,7 +2775,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner27" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 11651, -9 )
+position = Vector2( 11648, -2 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2784,7 +2784,7 @@ pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner28" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 11762, -5 )
+position = Vector2( 11759, 2 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
@@ -2792,7 +2792,7 @@ extents = Vector2( 100, 50 )
 pathfinding_path = NodePath("../AstarTilemap")
 
 [node name="ShadowsSpawner29" type="Position2D" parent="Environment/Entities/Enemies/Shadows"]
-position = Vector2( 11874, -9 )
+position = Vector2( 11871, -2 )
 script = ExtResource( 4 )
 turret_scene = ExtResource( 9 )
 amount = 1
