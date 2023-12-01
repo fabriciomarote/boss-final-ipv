@@ -36,6 +36,7 @@ size = 8
 font_data = ExtResource( 2 )
 
 [node name="ActionInput" type="PanelContainer"]
+anchor_right = 0.4
 margin_right = 80.0
 margin_bottom = 17.0
 custom_styles/panel = SubResource( 3 )
@@ -45,7 +46,7 @@ action_name = "hola"
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 79.0
+margin_right = 203.0
 margin_bottom = 16.0
 
 [node name="ActionKeyButton" type="Button" parent="HBoxContainer"]

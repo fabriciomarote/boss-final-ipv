@@ -20,11 +20,10 @@ signal next_level_requested()
 signal continue_level()
 
 func _ready() -> void:
-	animation_player.play("start")
-	bgm.stream = GameState.set_level()
-	#bgm.stream = preload("res://assets/sounds/level/audio_tutorial2.ogg")
-	bgm.play()
 	randomize()
+	animation_player.play("start")
+	bgm.stream = GameState.set_level_audio()
+	bgm.play()
 
 
 # Funciones que hacen de interfaz para las señales

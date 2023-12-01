@@ -17,8 +17,6 @@ func _on_body_entered(_body: Node) -> void:
 		GameState.changed_audio_final_activate = false
 		GameState.spawn_point = null
 		GameState.chance = 3
-		GameState.final_audio = false
-		GameState.intermedio_audio = false
 		GameState.notify_level_won()
 	else:
 		animation_player.play("globe")

@@ -64,7 +64,7 @@ var chances: int = 3
 export (int) var max_hp: int = 10
 var hp: int = max_hp
 
-export (int) var max_protection: int = 3
+export (int) var max_protection: int = 5
 var protection: int = 0
 
 export (float) var max_stamina: float = 8.0
