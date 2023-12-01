@@ -96,10 +96,11 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=14]
-radius = 12.6491
+radius = 22.0
 
 [node name="SproutProjectile" instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
+z_index = 10
 
 [node name="LifetimeTimer" parent="." index="0"]
 wait_time = 2.0
@@ -123,7 +124,7 @@ shape = SubResource( 14 )
 
 [node name="Boladeagua2" type="Sprite" parent="Body" index="0"]
 position = Vector2( -6, -2 )
-scale = Vector2( 0.0190813, 0.0135813 )
+scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 2 )
 
 [node name="FX" type="Sprite" parent="." index="4"]
