@@ -138,7 +138,7 @@ script = ExtResource( 9 )
 VELOCITY = 700.0
 
 [node name="LifetimeTimer" parent="." index="0"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="ProjectileAnimations" parent="." index="1"]

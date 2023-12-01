@@ -6,6 +6,10 @@ extends Control
 signal retry_selected()
 signal return_selected()
 
+onready var sfx = $SFX
+
+var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4.wav")
+
 func _ready() -> void:
 	hide()
 	if GameState.chance == 0:
@@ -31,4 +35,6 @@ func _on_ReturnButton_pressed() -> void:
 	GameState.spawn_point = null
 	GameState.chance = 3
 	GameState.deaths = 0
+	sfx.stream = button
+	sfx.play()
 	emit_signal("return_selected")

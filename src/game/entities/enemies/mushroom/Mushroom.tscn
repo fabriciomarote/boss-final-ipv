@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/sounds/enemies/attack-smoke.mp3" type="AudioStream" id=1]
 [ext_resource path="res://src/game/entities/enemies/mushroom/states/DieState.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/game/entities/enemies/mushroom/states/AttackState.gd" type="Script" id=14]
 [ext_resource path="res://assets/sounds/enemies/Mushroom_die.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/textures/enemies/mushroom/smoke5.png" type="Texture" id=16]
+[ext_resource path="res://assets/sounds/enemies/Pain_4.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=81]
 extents = Vector2( 23, 54 )
@@ -361,6 +362,7 @@ collision_layer = 4
 collision_mask = 17
 script = ExtResource( 6 )
 audio_attack_sfx = ExtResource( 1 )
+damage_sfx = ExtResource( 17 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 7 )
@@ -479,6 +481,7 @@ shape = SubResource( 136 )
 
 [node name="MushroomSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 15 )
+bus = "SFX"
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 bus = "SFX"

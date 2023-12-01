@@ -33,10 +33,10 @@ func set_current_chance() -> void:
 func set_level_audio():
 	if !checkpoint_actived:
 		return preload("res://assets/sounds/level/audio_tutorial2.ogg")
-	if checkpoint_actived:
-		return preload("res://assets/sounds/level/audio_intermedio2.mp3")
 	if checkpoint_actived && changed_audio_final_activate:
 		return preload("res://assets/sounds/level/audio_final2.mp3") 
+	if checkpoint_actived:
+		return preload("res://assets/sounds/level/audio_intermedio2.mp3")
 
 
 signal level_won()

@@ -17,6 +17,7 @@ export (Vector2) var wander_radius: Vector2 = Vector2(10.0, 10.0)
 export (float) var speed:float  = 30.0
 export (float) var max_speed:float = 100.0
 export (AudioStream) var death_sfx
+export (AudioStream) var damage_sfx
 
 export (PackedScene) var projectile_scene: PackedScene
 
@@ -115,4 +116,9 @@ func get_current_animation() -> String:
 
 func _death_audio():
 	shadow_sfx.stream = death_sfx
+	shadow_sfx.play() 
+
+
+func _damage_audio():
+	shadow_sfx.stream = damage_sfx
 	shadow_sfx.play() 

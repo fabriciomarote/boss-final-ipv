@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=2]
+[gd_scene load_steps=178 format=2]
 
 [ext_resource path="res://src/game/entities/enemies/DetectionArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/green_circle.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/textures/enemies/shadow/Enemy-Melee-Damage-S.png" type="Texture" id=15]
 [ext_resource path="res://src/game/entities/enemies/shadow/states/DamageState.gd" type="Script" id=16]
 [ext_resource path="res://assets/sounds/enemies/die_boss.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/enemies/Pain_3.wav" type="AudioStream" id=18]
 
 [sub_resource type="CanvasItemMaterial" id=81]
 blend_mode = 1
@@ -907,6 +908,7 @@ collision/safe_margin = 3.539
 script = ExtResource( 12 )
 wander_radius = Vector2( 1, 1 )
 death_sfx = ExtResource( 17 )
+damage_sfx = ExtResource( 18 )
 projectile_scene = ExtResource( 13 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -961,6 +963,7 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -1008,6 +1011,7 @@ anims/fly = SubResource( 86 )
 anims/idle = SubResource( 87 )
 
 [node name="ShadowSfx" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="hp_changed" from="." to="StateMachine" method="_on_Shadow_hp_changed"]

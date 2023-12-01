@@ -2118,8 +2118,7 @@ anims/start = SubResource( 138 )
 
 [node name="ColorRect" type="ColorRect" parent="UILayer"]
 modulate = Color( 0, 0, 0, 1 )
-margin_top = -1.0
-margin_right = 309.0
+margin_right = 310.0
 margin_bottom = 175.0
 
 [node name="BackgroundLayer" type="Node" parent="."]
@@ -2576,7 +2575,7 @@ rotation = -1.5708
 z_as_relative = false
 
 [node name="Player" parent="Environment/Entities" instance=ExtResource( 12 )]
-position = Vector2( -6715, 484 )
+position = Vector2( 6691, 123 )
 z_index = 1
 H_SPEED_LIMIT = 250.0
 FRICTION_WEIGHT = 0.15

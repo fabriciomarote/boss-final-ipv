@@ -3,7 +3,7 @@ extends Control
 onready var options_menu: Control = $OptionsMenu
 onready var pause_sfx: AudioStreamPlayer = $PauseSfx
 
-var button : AudioStream = preload("res://assets/sounds/ui/Minimalist4.wav")
+var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4.wav")
 
 
 signal return_selected()

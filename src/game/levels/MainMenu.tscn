@@ -7,7 +7,7 @@
 [ext_resource path="res://src/game/ui/options/OptionsMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/sounds/mainMenu/Spooky-menu.ogg" type="AudioStream" id=7]
-[ext_resource path="res://assets/sounds/ui/Minimalist4.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/PosiblesAudios/GameMenu4.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=21]
 resource_name = "start"
@@ -281,6 +281,7 @@ bus = "General"
 
 [node name="UiSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "SFX"
 
 [connection signal="pressed" from="CanvasLayer/Container/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/OptionsButton" to="CanvasLayer/OptionsMenu" method="show"]

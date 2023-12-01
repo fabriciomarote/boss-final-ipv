@@ -6,6 +6,9 @@ extends Control
 signal restart_selected()
 signal return_selected()
 
+onready var sfx = $SFX
+
+var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4.wav")
 
 func _ready() -> void:
 	hide()
@@ -21,6 +24,8 @@ func _on_ReturnButton_pressed() -> void:
 	GameState.chance = 3
 	GameState.changed_audio_final_activate = false
 	GameState.checkpoint_actived = false
+	sfx.stream = button
+	sfx.play()
 	emit_signal("return_selected")
 
 
@@ -29,5 +34,7 @@ func _on_restart_requested():
 	GameState.chance = 3
 	GameState.changed_audio_final_activate = false
 	GameState.checkpoint_actived = false
+	sfx.stream = button
+	sfx.play()
 	hide()
 	emit_signal("restart_selected")

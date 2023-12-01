@@ -102,5 +102,8 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
 text = "Volver al inicio"
 
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
 [connection signal="pressed" from="Panel/VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

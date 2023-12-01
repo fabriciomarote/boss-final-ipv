@@ -57,6 +57,8 @@ func _on_ChangeAudioArea_body_entered(body):
 
 func _on_ChangeAudioArea2_body_entered(body):
 	if body is Player:
+		 print(GameState.changed_audio_final_activate)
 		 GameState.changed_audio_final_activate = true
+		 print(GameState.changed_audio_final_activate) 
 		 bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
 		 bgm.play()

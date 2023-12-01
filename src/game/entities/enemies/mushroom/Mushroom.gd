@@ -27,6 +27,7 @@ export (int) var max_hp: int = 10
 var hp: int = max_hp
 
 export (AudioStream) var audio_attack_sfx
+export (AudioStream) var damage_sfx
 
 
 var target: Node2D
@@ -155,3 +156,6 @@ func attack_audio():
 	sfx.play() 
 
 
+func _damage_audio():
+	sfx.stream = damage_sfx
+	sfx.play() 
