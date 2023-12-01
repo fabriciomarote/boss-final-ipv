@@ -2,7 +2,8 @@ extends AbstractEnemyState
 
 func enter() -> void:
 	character.velocity = Vector2.ZERO
-	fire()
+	if character.hp > 0:
+		fire()
 
 
 func fire() -> void:

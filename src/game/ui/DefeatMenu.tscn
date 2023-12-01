@@ -92,7 +92,7 @@ text = "Reiniciar"
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 20.0
-margin_right = 50.0
+margin_right = 66.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 2 )

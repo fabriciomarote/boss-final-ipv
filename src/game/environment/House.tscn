@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/game/environment/House.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/items/house2.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/items/key-131982518810247060.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/GrimoireOfDeath-Regular.woff2" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/textures/items/pngwing.com.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/items/skull-2.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -27,6 +28,10 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.5, 28 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 3 )
 
 [node name="House" type="Area2D"]
 z_index = -1
@@ -57,6 +62,15 @@ scale = Vector2( 0.0898438, 0.0849609 )
 texture = ExtResource( 4 )
 
 [node name="Sprite2" type="Sprite" parent="Globe"]
-position = Vector2( 21, -66 )
-scale = Vector2( 0.0289666, 0.0270508 )
-texture = ExtResource( 3 )
+position = Vector2( 16, -67 )
+scale = Vector2( 0.0289666, 0.0409979 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Globe"]
+margin_left = 23.0
+margin_top = -72.0
+margin_right = 63.0
+margin_bottom = -53.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "10"

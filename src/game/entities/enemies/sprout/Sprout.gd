@@ -18,8 +18,8 @@ onready var timer_activate = $Pivot/AreaAttack/Timer_activate
 onready var timer_disable = $Pivot/AreaAttack/Timer_disable
 
 export (int) var gravity: int = 10
-export (float) var ACCELERATION: float = 10.0
-export (float) var H_SPEED_LIMIT: float = 40.0
+export (float) var ACCELERATION: float = 30.0
+export (float) var H_SPEED_LIMIT: float = 60.0
 export (int) var max_hp: int = 6
 var hp: int = max_hp
 

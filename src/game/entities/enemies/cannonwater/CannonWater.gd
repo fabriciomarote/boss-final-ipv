@@ -4,6 +4,7 @@ class_name CannonWater
 onready var fire_position: Position2D = $Pivot/FirePosition
 onready var body_anim: AnimatedSprite = $Pivot/Body
 onready var pivot:Node2D = $Pivot
+onready var timer = $StateMachine/Alert/Timer
 
 
 export (PackedScene) var projectile_scene: PackedScene
@@ -36,3 +37,7 @@ func _look_at_target() -> void:
 		pivot.scale.y = -1 if target.global_position.y > global_position.y else 1
 	else:
 		pivot.scale.y = -1 if velocity.y > 0 else 1
+
+
+func _on_Timer_timeout():
+	timer.wait_time = randi() % 3 + 1

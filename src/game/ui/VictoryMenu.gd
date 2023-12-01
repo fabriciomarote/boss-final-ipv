@@ -19,11 +19,15 @@ func _on_level_won() -> void:
 func _on_ReturnButton_pressed() -> void:
 	GameState.deaths = 0
 	GameState.chance = 3
+	GameState.changed_audio_final_activate = false
+	GameState.checkpoint_actived = false
 	emit_signal("return_selected")
 
 
 func _on_restart_requested():
 	GameState.deaths = 0
 	GameState.chance = 3
+	GameState.changed_audio_final_activate = false
+	GameState.checkpoint_actived = false
 	hide()
 	emit_signal("restart_selected")

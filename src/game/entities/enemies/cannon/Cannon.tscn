@@ -24,7 +24,7 @@ script = ExtResource( 4 )
 state_id = "alert"
 
 [node name="Timer" type="Timer" parent="StateMachine/Alert"]
-wait_time = 1.5
+wait_time = 0.3
 one_shot = true
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -38,3 +38,5 @@ visible = false
 position = Vector2( 0, 1 )
 scale = Vector2( 0.34375, 0.296875 )
 texture = ExtResource( 5 )
+
+[connection signal="timeout" from="StateMachine/Alert/Timer" to="." method="_on_Timer_timeout"]

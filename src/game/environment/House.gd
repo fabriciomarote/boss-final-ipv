@@ -10,10 +10,11 @@ func _ready() -> void:
 
 
 func _on_body_entered(_body: Node) -> void:
-	if !won && GameState.deaths >= 15:
+	if !won && GameState.deaths >= 10:
 		won = true
 		GameState.game_finished = true
 		GameState.checkpoint_actived = false
+		GameState.changed_audio_final_activate = false
 		GameState.spawn_point = null
 		GameState.chance = 3
 		GameState.final_audio = false

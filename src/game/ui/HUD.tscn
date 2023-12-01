@@ -176,8 +176,8 @@ texture = SubResource( 18 )
 flip_h = true
 
 [node name="Skull" type="Sprite" parent="StatsContainer/Panel"]
-position = Vector2( 14, 27 )
-scale = Vector2( 0.0144581, 0.018433 )
+position = Vector2( 14, 26.6774 )
+scale = Vector2( 0.0144581, 0.0202055 )
 texture = ExtResource( 9 )
 
 [node name="Chances" type="Label" parent="StatsContainer/Panel"]

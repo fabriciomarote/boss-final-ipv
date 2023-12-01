@@ -18,6 +18,7 @@ func _on_RetryButton_pressed() -> void:
 	GameState.deaths = 0
 	GameState.game_finished = true
 	GameState.checkpoint_actived = false
+	GameState.changed_audio_final_activate = false
 	GameState.spawn_point = null
 	emit_signal("retry_selected")
 
@@ -26,6 +27,7 @@ func _on_ReturnButton_pressed() -> void:
 	hide()
 	GameState.game_finished = true
 	GameState.checkpoint_actived = false
+	GameState.changed_audio_final_activate = false
 	GameState.spawn_point = null
 	GameState.chance = 3
 	GameState.deaths = 0

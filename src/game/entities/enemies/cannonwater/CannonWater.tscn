@@ -24,7 +24,7 @@ script = ExtResource( 4 )
 state_id = "alert"
 
 [node name="Timer" type="Timer" parent="StateMachine/Alert"]
-wait_time = 1.5
+wait_time = 0.2
 one_shot = true
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -32,3 +32,5 @@ one_shot = true
 [node name="FirePosition" type="Position2D" parent="Pivot"]
 position = Vector2( 0, -17 )
 scale = Vector2( 0.5, 0.5 )
+
+[connection signal="timeout" from="StateMachine/Alert/Timer" to="." method="_on_Timer_timeout"]

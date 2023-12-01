@@ -51,4 +51,5 @@ func _on_timer_timeout():
 		timer.stop()
 		emit_signal("finished", "walk")
 	else:
-		attack()
+		if !character.dead:
+			attack()

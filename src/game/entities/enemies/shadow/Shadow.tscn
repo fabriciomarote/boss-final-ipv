@@ -885,7 +885,7 @@ bg_color = Color( 0, 0, 0, 1 )
 extents = Vector2( 7.5, 23.5 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 281.007
+radius = 235.019
 
 [sub_resource type="Animation" id=84]
 resource_name = "alert"
@@ -961,7 +961,6 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 6
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -986,20 +985,19 @@ cast_to = Vector2( 0, 0 )
 collision_mask = 3
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( 4, -12 )
 collision_layer = 0
 collision_mask = 128
 script = ExtResource( 1 )
 
 [node name="green_circle" type="Sprite" parent="DetectionArea"]
-visible = false
 modulate = Color( 1, 1, 1, 0.301961 )
 position = Vector2( 1.50001, 2 )
 scale = Vector2( 0.561667, 0.595 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-visible = false
 position = Vector2( -3, 1 )
 shape = SubResource( 2 )
 

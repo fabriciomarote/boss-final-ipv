@@ -2,6 +2,7 @@ extends Node
 class_name Game_State
 
 var checkpoint_actived: bool = false
+var changed_audio_final_activate: bool = false
 var spawn_point = null
 var position_original : Vector2
 var game_finished: bool = false
@@ -31,9 +32,11 @@ func set_current_chance() -> void:
 
 func set_level():
 	if checkpoint_actived:
-		return preload("res://assets/sounds/level/audio-juego-final.ogg")
+		return preload("res://assets/sounds/level/audio_intermedio2.mp3")
+	if checkpoint_actived && changed_audio_final_activate:
+		return preload("res://assets/sounds/level/audio_final2.mp3") 
 	else:
-		return preload("res://assets/sounds/level/audio-juego2.ogg")
+		return preload("res://assets/sounds/level/audio_tutorial2.ogg")
 
 
 signal level_won()

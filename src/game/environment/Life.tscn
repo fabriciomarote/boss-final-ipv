@@ -45,7 +45,8 @@ shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 3 )
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( 0, 2 )
+scale = Vector2( 0.07, 0.07 )
 amount = 4
 lifetime = 0.5
 visibility_rect = Rect2( -10, 10, 0, 0 )
@@ -54,6 +55,7 @@ process_material = SubResource( 4 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.6, 0.6, 0.6, 1 )
 position = Vector2( -1, 1 )
 scale = Vector2( 0.01, 0.01 )
 texture = ExtResource( 1 )

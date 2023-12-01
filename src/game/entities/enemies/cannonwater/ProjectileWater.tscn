@@ -122,8 +122,8 @@ shape = SubResource( 14 )
 [node name="Body" type="Node2D" parent="." index="3"]
 
 [node name="Boladeagua2" type="Sprite" parent="Body" index="0"]
-position = Vector2( -4, 0 )
-scale = Vector2( 0.01385, 0.01025 )
+position = Vector2( -12, 0 )
+scale = Vector2( 0.0210625, 0.0161625 )
 texture = ExtResource( 2 )
 
 [node name="FX" type="Sprite" parent="." index="4"]

@@ -2,8 +2,9 @@ extends AbstractEnemyState
 
 
 func enter() -> void:
-	character._play_animation("attack")
-	character.attack()
+	if character.hp > 0:
+		character._play_animation("attack")
+		character.attack()
 
 
 # En este callback manejamos, por el momento, solo los impactos
