@@ -137,7 +137,7 @@ radius = 1.0
 [node name="ShadowProjectile" instance=ExtResource( 3 )]
 
 [node name="LifetimeTimer" parent="." index="0"]
-wait_time = 2.5
+wait_time = 1.5
 
 [node name="ProjectileAnimations" parent="." index="1"]
 anims/RESET = SubResource( 8 )
