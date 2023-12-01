@@ -192,6 +192,13 @@ func notify_hit(amount: int) -> void:
 	emit_signal("hit", amount)
 
 
+func notify_dead() -> void:
+	hp = 0
+	dead = true
+	emit_signal("hp_changed", hp, max_hp)
+	_remove()
+
+
 func notify_hit_protection(_amount: int = 1) -> void:
 	protection -= 1
 	if protection == 0:

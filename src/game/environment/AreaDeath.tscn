@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/game/environment/AreaDeath.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=142]
+extents = Vector2( 236.375, 29.75 )
+
+[node name="AreaDeath" type="Area2D"]
+position = Vector2( 1, -3 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( 22.625, 4 )
+shape = SubResource( 142 )
+
+[connection signal="body_entered" from="." to="." method="_on_AreaDeath_body_entered"]
