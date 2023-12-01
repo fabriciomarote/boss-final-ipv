@@ -22,7 +22,7 @@ signal continue_level()
 func _ready() -> void:
 	animation_player.play("start")
 	bgm.stream = GameState.set_level()
-	bgm.stream = preload("res://assets/sounds/level/audio-juego2.ogg")
+	bgm.stream = preload("res://assets/sounds/level/audio_tutorial2.ogg")
 	bgm.play()
 	randomize()
 
@@ -52,5 +52,5 @@ func _on_DesactivationArea_body_entered(_body):
 
 func _on_ChangeAudioArea_body_entered(body):
 	if body is Player:
-		 bgm.stream = preload("res://assets/sounds/level/audio-juego-final.ogg")
+		 bgm.stream = preload("res://assets/sounds/level/audio_intermedio2.mp3")
 		 bgm.play()
