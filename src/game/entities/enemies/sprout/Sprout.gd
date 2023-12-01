@@ -12,14 +12,18 @@ onready var hp_progress:ProgressBar = $Pivot/HUD/Control/HpProgress
 onready var hud:Node2D = $Pivot/HUD
 onready var pivot:Node2D = $Pivot
 onready var sprout_sfx: AudioStreamPlayer = $SproutSfx
+onready var area_attack = $Pivot/AreaAttack
+onready var collision_attack = $Pivot/AreaAttack/CollisionShape2D
+onready var timer_activate = $Pivot/AreaAttack/Timer_activate
+onready var timer_disable = $Pivot/AreaAttack/Timer_disable
 
 export (int) var gravity: int = 10
 export (float) var ACCELERATION: float = 10.0
 export (float) var H_SPEED_LIMIT: float = 40.0
 export (int) var max_hp: int = 6
 var hp: int = max_hp
-export (AudioStream) var death_sfx
 
+export (AudioStream) var death_sfx
 export (PackedScene) var projectile_scene: PackedScene
 
 
@@ -46,7 +50,32 @@ func _fire() -> void:
 			fire_position.global_position,
 			fire_position.global_position.direction_to(Vector2(target.global_position.x, fire_position.global_position.y))
 		)
-	
+
+func attack() -> void:
+	activate_attack()
+
+
+func activate_attack() -> void:
+	timer_activate.start()
+
+
+func _on_Timer_activate_timeout():
+	collision_attack.disabled = false
+	area_attack.visible = true
+	disable_attack()
+	timer_activate.stop()
+
+
+func disable_attack() -> void:
+	timer_disable.start()
+
+
+func _on_Timer_disable_timeout():
+	collision_attack.disabled = true
+	area_attack.visible = false
+	timer_disable.stop()
+
+
 func _look_at_target() -> void:
 	if target != null:
 		pivot.scale.x = -1 if target.global_position.x > global_position.x else 1
@@ -117,3 +146,13 @@ func get_current_animation() -> String:
 func _death_audio():
 	sprout_sfx.stream = death_sfx
 	sprout_sfx.play() 
+
+
+func _on_AreaAttack_body_entered(body):
+	if !collision_attack.disabled:
+		if body is Player:
+			if body.has_method("notify_hit") && !body.protection_actived:
+				body.notify_hit(2)
+			if body.has_method("notify_hit_protection") && body.protection_actived:
+				body.notify_hit_protection()
+
