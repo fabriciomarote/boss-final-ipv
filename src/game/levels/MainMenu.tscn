@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/game/levels/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Blackcraft.otf" type="DynamicFontData" id=2]
@@ -62,11 +62,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0, -80.0 ]
 }
-
-[sub_resource type="Shader" id=27]
-
-[sub_resource type="ShaderMaterial" id=28]
-shader = SubResource( 27 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 19
@@ -210,7 +205,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Container"]
-material = SubResource( 28 )
 position = Vector2( 155, 87.5 )
 scale = Vector2( 0.116071, 0.115234 )
 texture = ExtResource( 4 )
