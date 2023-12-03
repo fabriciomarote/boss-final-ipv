@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Cannon
 
 onready var fire_position: Position2D = $Pivot/FirePosition
-onready var body_anim: AnimatedSprite = $Pivot/Body
 onready var pivot:Node2D = $Pivot
 onready var timer = $StateMachine/Alert/Timer
 

@@ -106,4 +106,4 @@ func _animate_fade() -> void:
 	
 	for element in fading_elements:
 		element.modulate = Color.white
-		stats_tween.set_parallel().tween_property(element, "modulate", Color.transparent, fade_duration).set_trans(Tween.TRANS_SINE).set_delay(fade_delay)
+		stats_tween.set_parallel().tween_property(element, "modulate", Color.white, fade_duration).set_trans(Tween.TRANS_SINE).set_delay(fade_delay)

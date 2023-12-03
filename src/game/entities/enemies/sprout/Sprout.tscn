@@ -17,7 +17,7 @@
 [ext_resource path="res://assets/sounds/enemies/die_monster.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=81]
-extents = Vector2( 41, 90 )
+extents = Vector2( 48, 92 )
 
 [sub_resource type="StyleBoxFlat" id=104]
 bg_color = Color( 0.338867, 0.153037, 0, 1 )
@@ -239,39 +239,39 @@ animations = [ {
 "frames": [ SubResource( 132 ), SubResource( 133 ), SubResource( 134 ) ],
 "loop": false,
 "name": "alert",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ) ],
-"loop": false,
+"loop": true,
 "name": "attack",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ) ],
 "loop": false,
 "name": "damage",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [ SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ) ],
 "loop": false,
 "name": "die",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [ SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 158 ), SubResource( 159 ), SubResource( 160 ), SubResource( 161 ), SubResource( 162 ) ],
 "loop": true,
 "name": "walk",
-"speed": 10.0
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=131]
-extents = Vector2( 529, 128 )
+extents = Vector2( 380, 128 )
 
 [sub_resource type="RectangleShape2D" id=165]
-extents = Vector2( 29, 33 )
+extents = Vector2( 39, 48 )
 
 [node name="Sprout" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -317,7 +317,7 @@ state_id = "damage"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7, -20 )
+position = Vector2( -10, -16 )
 shape = SubResource( 81 )
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -333,10 +333,10 @@ margin_right = 16.0
 margin_bottom = -35.0
 
 [node name="HpProgress" type="ProgressBar" parent="Pivot/HUD/Control"]
-margin_left = -26.0
-margin_top = -91.0
-margin_right = 44.0
-margin_bottom = -85.0
+margin_left = -34.0
+margin_top = -149.0
+margin_right = 62.0
+margin_bottom = -141.0
 custom_styles/fg = SubResource( 104 )
 custom_styles/bg = SubResource( 103 )
 max_value = 10.0
@@ -354,13 +354,12 @@ cast_to = Vector2( -120, 0 )
 collision_mask = 3
 
 [node name="Body" type="AnimatedSprite" parent="Pivot"]
-modulate = Color( 0.556863, 0.556863, 0.556863, 0.964706 )
 material = SubResource( 164 )
-position = Vector2( -4, -17 )
-scale = Vector2( 3.51758, 3.02865 )
+position = Vector2( 24, -29 )
+scale = Vector2( 4.59212, 4.28516 )
 frames = SubResource( 80 )
-animation = "attack"
-frame = 5
+animation = "idle"
+frame = 2
 playing = true
 flip_h = true
 
@@ -369,15 +368,15 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DetectionArea"]
-position = Vector2( -2, -25 )
+position = Vector2( 0, -25 )
 shape = SubResource( 131 )
 
 [node name="AreaAttack" type="Area2D" parent="Pivot"]
-position = Vector2( -60, 61 )
+position = Vector2( -78, 95 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AreaAttack"]
-position = Vector2( -20, -22 )
+position = Vector2( -5, -42 )
 shape = SubResource( 165 )
 disabled = true
 

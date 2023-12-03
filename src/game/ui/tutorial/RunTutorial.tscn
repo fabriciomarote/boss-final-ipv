@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Stacked pixel.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/PixeloidSans-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/game/ui/tutorial/RunTutorial.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
@@ -23,6 +23,10 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24.25, 24.5 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 13
 font_data = ExtResource( 1 )
@@ -41,7 +45,6 @@ position = Vector2( 1, 0 )
 shape = SubResource( 2 )
 
 [node name="Elements" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="RunAction" type="VBoxContainer" parent="Elements"]
 margin_left = -21.0
@@ -51,15 +54,15 @@ margin_bottom = -21.0
 
 [node name="ActionName" type="Label" parent="Elements/RunAction"]
 margin_right = 40.0
-margin_bottom = 8.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 4 )
 text = "Correr"
 align = 1
 
 [node name="Keyboard" type="Label" parent="Elements/RunAction"]
-margin_top = 12.0
+margin_top = 14.0
 margin_right = 40.0
-margin_bottom = 23.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 3 )
 text = "V"
 align = 1

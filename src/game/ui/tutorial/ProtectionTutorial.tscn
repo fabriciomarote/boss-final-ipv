@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Stacked pixel.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/fonts/Default-Big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/PixeloidSans-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/game/ui/tutorial/ProtectionTutorial.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=2]
@@ -23,6 +23,10 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.5, 35.25 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 6
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 13
 font_data = ExtResource( 1 )
@@ -40,27 +44,31 @@ anims/enabled = SubResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="Action" type="VBoxContainer" parent="Elements"]
 margin_left = -46.0
-margin_top = -67.0
+margin_top = -64.0
 margin_right = 48.0
-margin_bottom = -27.0
+margin_bottom = -24.0
 alignment = 1
 
 [node name="ActionName" type="Label" parent="Elements/Action"]
-margin_top = 8.0
+margin_top = 7.0
 margin_right = 94.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 4 )
 text = "Activar escudo"
 align = 1
 
-[node name="Keyboard" type="Label" parent="Elements/Action"]
-margin_top = 20.0
+[node name="Label" type="Label" parent="Elements/Action"]
+margin_top = 19.0
 margin_right = 94.0
-margin_bottom = 31.0
+margin_bottom = 33.0
+
+[node name="Keyboard" type="Label" parent="Elements/Action/Label"]
+margin_top = 2.0
+margin_right = 94.0
+margin_bottom = 13.0
 custom_fonts/font = SubResource( 3 )
 text = "C"
 align = 1

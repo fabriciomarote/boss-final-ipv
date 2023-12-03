@@ -22,18 +22,17 @@ onready var body_animations: AnimationPlayer = $BodyAnimations
 onready var body_pivot: Node2D = $BodyPivot
 onready var floor_raycasts: Array = $FloorRaycasts.get_children()
 onready var object_check = $BodyPivot/Body/ObjectCheck
-onready var sprite: Sprite = $BodyPivot/WeaponTip/Sprite
 onready var player_sfx: AudioStreamPlayer = $PlayerSfx
 onready var color_rect: ColorRect = $BodyPivot/ProtectionArea/ColorRect
 onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/CollisionShape2D
 onready var particles: Particles2D = $BodyPivot/Particles/Dash
 onready var timer: Timer = $"%Timer"
 
-export (float) var ACCELERATION: float = 40
-export (float) var H_SPEED_LIMIT: float = 60
-export (int) var jump_speed: int = 350
-export (float) var FRICTION_WEIGHT: float = 5.0
-export (int) var gravity: int = 17
+export (float) var ACCELERATION: float = 35.0
+export (float) var H_SPEED_LIMIT: float = 45.0
+export (int) var jump_speed: int = 300
+export (float) var FRICTION_WEIGHT: float = 3.0
+export (int) var gravity: int = 13
 export (AudioStream) var jump_sfx
 export (AudioStream) var walk_sfx
 export (AudioStream) var dash_sfx
@@ -67,7 +66,7 @@ var hp: int = max_hp
 export (int) var max_protection: int = 5
 var protection: int = 0
 
-export (float) var max_stamina: float = 8.0
+export (float) var max_stamina: float = 6.0
 var stamina: float = 0
 
 
