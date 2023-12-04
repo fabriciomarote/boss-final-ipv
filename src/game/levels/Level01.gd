@@ -62,3 +62,7 @@ func _on_ChangeAudioArea2_body_entered(body):
 		 print(GameState.changed_audio_final_activate) 
 		 bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
 		 bgm.play()
+
+
+func _on_Water_audio_checkpoint_body_entered(body):
+	GameState.water_active = !GameState.water_active 

@@ -38,6 +38,8 @@ export (AudioStream) var walk_sfx
 export (AudioStream) var dash_sfx
 export (AudioStream) var death_sfx
 export (AudioStream) var damage_sfx
+export (AudioStream) var handle_life_sfx
+export (AudioStream) var handle_mushroom_sfx
 export (PackedScene) var projectile_scene: PackedScene 
 export(bool) var can_dash : bool #Comprueba si puede hacer el dash
 
@@ -66,7 +68,7 @@ var hp: int = max_hp
 export (int) var max_protection: int = 5
 var protection: int = 0
 
-export (float) var max_stamina: float = 6.0
+export (float) var max_stamina: float = 10.0
 var stamina: float = 0
 
 
@@ -210,16 +212,19 @@ func notify_hit_protection(_amount: int = 1) -> void:
 
 func sum_hp() -> void:
 	hp += 2
+	_handle_life_audio()
 	emit_signal("hp_changed", hp, max_hp)
 
 
 func sum_stamina() -> void:
 	stamina = max_stamina
+	_handle_mushroom_audio()
 	emit_signal("stamina_changed", stamina, max_stamina)
 
 
 func sum_protection() -> void:
 	protection = max_protection
+	_handle_mushroom_audio()
 	emit_signal("protection_changed", protection, max_protection)
 
 
@@ -311,6 +316,15 @@ func _damage_audio():
 	player_sfx.stream = damage_sfx
 	player_sfx.play() 
 
+
+func _handle_life_audio():
+	player_sfx.stream = handle_life_sfx
+	player_sfx.play() 
+
+
+func _handle_mushroom_audio():
+	player_sfx.stream = handle_mushroom_sfx
+	player_sfx.play() 
 
 
 func _on_CutArea2_body_entered(body):

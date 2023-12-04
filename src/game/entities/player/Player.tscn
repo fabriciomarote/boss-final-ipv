@@ -1,10 +1,11 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet(1).png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/player/arrow_attack.mp3" type="AudioStream" id=3]
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sounds/02_Heal_02.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/textures/items/pngwing.com(1).png" type="Texture" id=7]
 [ext_resource path="res://assets/sounds/player/GRASS - Pre Jump 6.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/player/atk_sword.wav" type="AudioStream" id=9]
@@ -20,6 +21,7 @@
 [ext_resource path="res://assets/textures/player/red_hood_sheet3.png" type="Texture" id=19]
 [ext_resource path="res://assets/textures/tileset/Decals_north.png" type="Texture" id=20]
 [ext_resource path="res://assets/sounds/PosiblesAudios/damaged3.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sounds/46_Poison_01.wav" type="AudioStream" id=22]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -733,6 +735,8 @@ script = ExtResource( 1 )
 jump_sfx = ExtResource( 8 )
 walk_sfx = ExtResource( 11 )
 damage_sfx = ExtResource( 21 )
+handle_life_sfx = ExtResource( 6 )
+handle_mushroom_sfx = ExtResource( 22 )
 projectile_scene = ExtResource( 5 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -771,7 +775,7 @@ state_id = "damage"
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.2
 
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

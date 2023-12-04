@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/water2.mp3-ca6302935ec53975175affb5b7c5357f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/water2.mp3"
+dest_files=[ "res://.import/water2.mp3-ca6302935ec53975175affb5b7c5357f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

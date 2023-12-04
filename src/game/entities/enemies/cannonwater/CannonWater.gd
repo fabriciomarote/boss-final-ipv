@@ -5,8 +5,10 @@ onready var fire_position: Position2D = $Pivot/FirePosition
 onready var body_anim: AnimatedSprite = $Pivot/Body
 onready var pivot:Node2D = $Pivot
 onready var timer = $StateMachine/Alert/Timer
+onready var audio_stream = $AudioStreamPlayer
 
 
+export (AudioStream) var water_sfx
 export (PackedScene) var projectile_scene: PackedScene
 
 
@@ -24,6 +26,7 @@ func initialize(_projectile_container: Node = get_parent()) -> void:
 
 
 func _fire() -> void:
+	water_audio()
 	var direction: Vector2 = Vector2(0, round(global_position.direction_to(fire_position.global_position).y))
 	var proj = projectile_scene.instance()
 	proj.initialize(
@@ -31,7 +34,8 @@ func _fire() -> void:
 		fire_position.global_position,
 		direction
 	)
-	
+
+
 func _look_at_target() -> void:
 	if target != null:
 		pivot.scale.y = -1 if target.global_position.y > global_position.y else 1
@@ -40,4 +44,10 @@ func _look_at_target() -> void:
 
 
 func _on_Timer_timeout():
-	timer.wait_time = randi() % 3 + 1
+	timer.wait_time = randi() % 2 + 1
+
+
+func water_audio():
+	if(GameState.water_active):
+		audio_stream.stream = water_sfx
+		audio_stream.play() 

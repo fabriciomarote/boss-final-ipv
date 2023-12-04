@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/as-the-light-fades.ogg-11c99dd15fbe36560130c514a733f453.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/level/as-the-light-fades.ogg"
+dest_files=[ "res://.import/as-the-light-fades.ogg-11c99dd15fbe36560130c514a733f453.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

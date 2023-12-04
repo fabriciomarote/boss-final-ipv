@@ -2,9 +2,8 @@ extends AbstractEnemyState
 
 
 func enter() -> void:
-	if character.hp > 0:
-		character._play_animation("attack")
-		character.attack()
+	character._play_animation("attack")
+	character.attack()
 
 # En este callback manejamos, por el momento, solo los impactos
 func handle_event(event: String, value = null) -> void:
@@ -16,6 +15,8 @@ func handle_event(event: String, value = null) -> void:
 
 
 func _on_animation_finished(anim_name:String) -> void:
+	if (character.hp == 0):
+		emit_signal("finished", "die")
 	if (anim_name == "attack"):
 		emit_signal("finished", "walk")
 

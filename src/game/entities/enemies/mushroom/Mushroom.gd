@@ -22,13 +22,13 @@ onready var timer_disable = $Pivot/AreaAttack/Timer_disable
 onready var sfx = $SFX
 
 
-export (int) var gravity: int = 5
+export (int) var gravity: int = 15
+
 export (int) var max_hp: int = 10
 var hp: int = max_hp
 
 export (AudioStream) var audio_attack_sfx
 export (AudioStream) var damage_sfx
-
 
 var target: Node2D
 

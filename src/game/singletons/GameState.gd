@@ -7,6 +7,8 @@ var spawn_point = null
 var position_original : Vector2
 var game_finished: bool = false
 var deaths: int = 0
+var water_active: bool = false
+
 
 signal current_player_changed(player)
 signal current_chance_changed(chance)
