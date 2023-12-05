@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var keyboard = $Elements/RunAction/Keyboard
+onready var keyboard = $Elements/RunAction/Label/Keyboard
 
 export (String) var action: String
 

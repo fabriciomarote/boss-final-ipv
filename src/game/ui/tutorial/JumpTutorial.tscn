@@ -63,10 +63,9 @@ shape = SubResource( 1 )
 [node name="Elements" type="Node2D" parent="."]
 
 [node name="JumpAction1" type="VBoxContainer" parent="Elements"]
-margin_left = -35.0
-margin_top = -57.0
-margin_right = 5.0
-margin_bottom = -17.0
+margin_left = -40.0
+margin_top = -67.0
+margin_bottom = -27.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction1"]
 margin_right = 40.0
@@ -87,10 +86,10 @@ custom_fonts/font = SubResource( 4 )
 text = "space"
 
 [node name="JumpAction2" type="VBoxContainer" parent="Elements"]
-margin_left = -5.0
-margin_top = -57.0
-margin_right = 40.0
-margin_bottom = -17.0
+margin_left = -6.0
+margin_top = -67.0
+margin_right = 39.0
+margin_bottom = -27.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction2"]
 margin_right = 45.0

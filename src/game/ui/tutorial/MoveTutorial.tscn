@@ -25,7 +25,7 @@ tracks/0/keys = {
 extents = Vector2( 11.5, 14 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 5
+size = 6
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -33,7 +33,7 @@ size = 10
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 5
+size = 6
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -51,89 +51,90 @@ anims/enabled = SubResource( 2 )
 [node name="PlayerCloseArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCloseArea"]
-position = Vector2( -1, 0 )
+position = Vector2( -1, 4 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
 
 [node name="MoveAction1" type="VBoxContainer" parent="Elements"]
-margin_left = -39.0
-margin_top = -65.0
-margin_bottom = -25.0
+margin_left = -44.0
+margin_top = -82.0
+margin_right = -5.0
+margin_bottom = -42.0
 
 [node name="ActionName" type="Label" parent="Elements/MoveAction1"]
 margin_right = 39.0
-margin_bottom = 17.0
+margin_bottom = 19.0
 custom_fonts/font = SubResource( 5 )
 text = " Mover a 
 Izquierda"
 
 [node name="ActionLabel" type="Label" parent="Elements/MoveAction1"]
-margin_top = 21.0
+margin_top = 23.0
 margin_right = 39.0
-margin_bottom = 35.0
+margin_bottom = 37.0
 
 [node name="Keyboard" type="Label" parent="Elements/MoveAction1/ActionLabel"]
 unique_name_in_owner = true
-margin_left = 7.0
+margin_left = 9.0
 margin_top = 5.0
-margin_right = 12.0
+margin_right = 14.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 3 )
 text = "A"
 
 [node name="Keyboard3" type="Label" parent="Elements/MoveAction1/ActionLabel"]
 unique_name_in_owner = true
-margin_left = 14.0
+margin_left = 18.0
 margin_top = 5.0
-margin_right = 19.0
+margin_right = 23.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 3 )
 text = ","
 
 [node name="Keyboard2" type="Sprite" parent="Elements/MoveAction1/ActionLabel"]
-position = Vector2( 21, 9 )
+position = Vector2( 27, 9 )
 scale = Vector2( 0.00817358, 0.00824326 )
 texture = ExtResource( 1 )
 flip_h = true
 
 [node name="MoveAction2" type="VBoxContainer" parent="Elements"]
-margin_left = 3.0
-margin_top = -65.0
-margin_right = 38.0
-margin_bottom = -25.0
+margin_left = 6.0
+margin_top = -81.0
+margin_right = 42.0
+margin_bottom = -41.0
 
 [node name="ActionName" type="Label" parent="Elements/MoveAction2"]
-margin_right = 35.0
-margin_bottom = 17.0
+margin_right = 36.0
+margin_bottom = 19.0
 custom_fonts/font = SubResource( 6 )
 text = "Mover a 
 Derecha"
 
 [node name="ActionLabel" type="Label" parent="Elements/MoveAction2"]
-margin_top = 21.0
-margin_right = 35.0
-margin_bottom = 35.0
+margin_top = 23.0
+margin_right = 36.0
+margin_bottom = 37.0
 
 [node name="Keyboard1" type="Label" parent="Elements/MoveAction2/ActionLabel"]
 unique_name_in_owner = true
-margin_left = 3.0
+margin_left = 5.0
 margin_top = 5.0
-margin_right = 8.0
+margin_right = 10.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
 text = "A"
 
 [node name="Keyboard3" type="Label" parent="Elements/MoveAction2/ActionLabel"]
-margin_left = 10.0
+margin_left = 14.0
 margin_top = 5.0
-margin_right = 15.0
+margin_right = 19.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
 text = ","
 
 [node name="Keyboard2" type="Sprite" parent="Elements/MoveAction2/ActionLabel"]
-position = Vector2( 19, 9 )
+position = Vector2( 24, 9 )
 scale = Vector2( 0.00965894, 0.00933308 )
 texture = ExtResource( 1 )
 

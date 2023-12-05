@@ -13,16 +13,17 @@ func enter() -> void:
 		else:
 			character._play_animation("arrow")
 	else:
-		if character.arrowAmount == 0:
+		if character.arrowAmount > 0:
+			character._play_animation("arrowJump")
+			
+		else:
 			character._play_animation("whitoutArrowJump")
 			attacks += 1 
-		else:
-			character._play_animation("arrowJump")
 
 
 func handle_input(event:InputEvent) -> void:
-	if event.is_action_pressed("attack") && character.attackHandler == "BowAttack" && !character.is_on_floor() && attacks < attacks_limit:
-			attacks += 1
+	if event.is_action_pressed("attack") && character.attackHandler == "BowAttack":
+		if !character.is_on_floor() && attacks < attacks_limit:
 			character._play_animation("arrowJump")
 
 

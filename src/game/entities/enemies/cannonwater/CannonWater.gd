@@ -44,7 +44,7 @@ func _look_at_target() -> void:
 
 
 func _on_Timer_timeout():
-	timer.wait_time = randi() % 2 + 1
+	timer.wait_time = randi() % 1 + 1
 
 
 func water_audio():
