@@ -23,8 +23,6 @@ func handle_input(event: InputEvent) -> void:
 		character.handle_velocity()
 	if event.is_action_pressed("protection"):
 		character._protection_active()
-	if event.is_action_pressed("attack2"):
-		character._play_animation("axeX4")
 
 
 func update(_delta: float) -> void:
