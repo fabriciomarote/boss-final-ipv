@@ -48,6 +48,5 @@ func _on_Timer_timeout():
 
 
 func water_audio():
-	if(GameState.water_active):
-		audio_stream.stream = water_sfx
-		audio_stream.play() 
+	audio_stream.stream = water_sfx
+	audio_stream.play() 
