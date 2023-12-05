@@ -7,12 +7,17 @@ signal retry_selected()
 signal return_selected()
 
 onready var sfx = $SFX
+onready var audio_stream_player = $AudioStreamPlayer
 
 var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4.wav")
 
 func _ready() -> void:
 	hide()
 	if GameState.chance == 0:
+		#visible = !visible
+		#get_tree().paused = visible
+		#audio_stream_player.play()
+		#get_tree().paused = true 
 		show()
 
 

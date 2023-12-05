@@ -59,7 +59,7 @@ var hit_Direction : int = 0
 var arrowAmount: int = 0
 var is_attacked = false
 var protection_actived = false
-var deaths: int = 0
+var deaths: int = 10
 var chances: int = 3
 
 export (int) var max_hp: int = 10

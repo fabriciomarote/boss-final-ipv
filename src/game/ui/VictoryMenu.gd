@@ -7,6 +7,7 @@ signal restart_selected()
 signal return_selected()
 
 onready var sfx = $SFX
+onready var audio_stream_player = $AudioStreamPlayer
 
 var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4.wav")
 
@@ -17,6 +18,8 @@ func _ready() -> void:
 
 func _on_level_won() -> void:
 	show()
+	get_tree().paused = true
+	audio_stream_player.play()
 
 
 func _on_ReturnButton_pressed() -> void:

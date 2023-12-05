@@ -9,7 +9,6 @@ var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4
 signal return_selected()
 signal restart_selected()
 
-#export (AudioStream) var button_sfx
 
 func _ready():
 	hide()
@@ -51,10 +50,9 @@ func _on_RestartButton_pressed():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("reset"):
-		GameState.game_finished = true
-		GameState.checkpoint_actived = false
-		GameState.spawn_point = null
-		print(GameState.chance)
+		#GameState.game_finished = true
+		#GameState.checkpoint_actived = false
+		#GameState.spawn_point = null
 		get_tree().reload_current_scene()
 
 func _on_restart_requested():
