@@ -18,8 +18,8 @@ onready var timer_activate = $Pivot/AreaAttack/Timer_activate
 onready var timer_disable = $Pivot/AreaAttack/Timer_disable
 
 export (int) var gravity: int = 15
-export (float) var ACCELERATION: float = 50.0
-export (float) var H_SPEED_LIMIT: float = 80.0
+export (float) var ACCELERATION: float = 100.0
+export (float) var H_SPEED_LIMIT: float = 150.0
 export (int) var max_hp: int = 6
 var hp: int = max_hp
 
@@ -39,7 +39,8 @@ func _ready():
 	hp_progress.max_value = max_hp
 	hp_progress.value = hp
 	hp_progress.modulate = Color.transparent
-	
+
+
 func _fire() -> void:
 	if target != null:
 		var proj_instance: Node = projectile_scene.instance()
@@ -50,6 +51,7 @@ func _fire() -> void:
 			fire_position.global_position,
 			fire_position.global_position.direction_to(Vector2(target.global_position.x, fire_position.global_position.y))
 		)
+
 
 func attack() -> void:
 	activate_attack()
@@ -81,6 +83,7 @@ func _look_at_target() -> void:
 		pivot.scale.x = -1 if target.global_position.x > global_position.x else 1
 	else:
 		pivot.scale.x = -1 if velocity.x > 0 else 1
+
 
 func _can_see_target() -> bool:
 	if target == null:

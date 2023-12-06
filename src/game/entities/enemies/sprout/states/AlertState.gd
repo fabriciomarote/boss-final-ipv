@@ -1,7 +1,7 @@
 extends AbstractEnemyState
 
 onready var timer:Timer = $Timer
-var attack_distance_threshold:int = 200
+var attack_distance_threshold:int = 50
 
 func enter() -> void:
 	character.velocity = Vector2.ZERO
@@ -33,7 +33,7 @@ func _handle_body_exited(node: Node) -> void:
 	._handle_body_exited(node)
 	if character.target == null:
 		if character.get_current_animation() == "alert":
-			emit_signal("finished", "walk")
+			emit_signal("finished", "idle")
 
 func handle_event(event: String, value = null) -> void:
 	.handle_event(event,value)

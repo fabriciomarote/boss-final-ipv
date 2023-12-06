@@ -141,19 +141,6 @@ func _handle_deacceleration() -> void:
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
 
-func is_near_wall():
-	return object_check.is_colliding()
-
-
-func is_sliding():
-	if  !is_near_wall() && floor_raycasts[0].is_colliding() && !floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
-		return 1
-	if !is_near_wall() && !floor_raycasts[0].is_colliding() && floor_raycasts[1].is_colliding() && floor_raycasts[2].is_colliding():
-		return -1
-	else:
-		return 0 
-
-
 func _change_attack_mode():
 	if Input.is_action_just_pressed("change_attack"):
 		if (currentAttackMode == attackModes.BOW):

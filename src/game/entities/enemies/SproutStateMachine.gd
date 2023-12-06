@@ -4,6 +4,7 @@ extends AbstractStateMachine
 func _on_DetectionArea_body_entered(body):
 	current_state.handle_event("body_entered", body)
 
+
 func _on_DetectionArea_body_exited(body):
 	current_state.handle_event("body_exited", body)
 
