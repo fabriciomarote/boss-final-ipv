@@ -56,7 +56,7 @@ rotation = 2.42252
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.647059, 0.647059, 0.647059, 1 )
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
 material = SubResource( 3 )
 position = Vector2( -1.92584, -2.07287 )
 rotation = 0.87369
