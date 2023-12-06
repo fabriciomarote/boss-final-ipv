@@ -26,14 +26,17 @@ func initialize(_projectile_container: Node = get_parent()) -> void:
 
 
 func _fire() -> void:
-	water_audio()
-	var direction: Vector2 = Vector2(0, round(global_position.direction_to(fire_position.global_position).y))
-	var proj = projectile_scene.instance()
-	proj.initialize(
-		self.projectile_container,
-		fire_position.global_position,
-		direction
-	)
+	if (GameState.cannon_active):
+		print(GameState.cannon_active)
+		print("dispara")
+		var direction: Vector2 = Vector2(0, round(global_position.direction_to(fire_position.global_position).y))
+		var proj = projectile_scene.instance()
+		proj.initialize(
+			self.projectile_container,
+			fire_position.global_position,
+			direction
+		)
+		water_audio()
 
 
 func _look_at_target() -> void:
@@ -44,7 +47,7 @@ func _look_at_target() -> void:
 
 
 func _on_Timer_timeout():
-	timer.wait_time = randi() % 1 + 1
+	timer.wait_time = randi() % 2 + 1
 
 
 func water_audio():

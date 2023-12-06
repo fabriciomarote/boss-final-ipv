@@ -963,7 +963,7 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
+frame = 11
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -988,7 +988,6 @@ cast_to = Vector2( 0, 0 )
 collision_mask = 3
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 position = Vector2( 4, -12 )
 collision_layer = 0
 collision_mask = 128

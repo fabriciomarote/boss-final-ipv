@@ -76,10 +76,10 @@ margin_bottom = 37.0
 
 [node name="Keyboard" type="Label" parent="Elements/MoveAction1/ActionLabel"]
 unique_name_in_owner = true
-margin_left = 9.0
-margin_top = 5.0
-margin_right = 14.0
-margin_bottom = 14.0
+margin_left = 25.0
+margin_top = 6.0
+margin_right = 30.0
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 3 )
 text = "A"
 
@@ -93,16 +93,16 @@ custom_fonts/font = SubResource( 3 )
 text = ","
 
 [node name="Keyboard2" type="Sprite" parent="Elements/MoveAction1/ActionLabel"]
-position = Vector2( 27, 9 )
+position = Vector2( 10, 10 )
 scale = Vector2( 0.00817358, 0.00824326 )
 texture = ExtResource( 1 )
 flip_h = true
 
 [node name="MoveAction2" type="VBoxContainer" parent="Elements"]
 margin_left = 6.0
-margin_top = -81.0
+margin_top = -82.0
 margin_right = 42.0
-margin_bottom = -41.0
+margin_bottom = -42.0
 
 [node name="ActionName" type="Label" parent="Elements/MoveAction2"]
 margin_right = 36.0
@@ -119,22 +119,22 @@ margin_bottom = 37.0
 [node name="Keyboard1" type="Label" parent="Elements/MoveAction2/ActionLabel"]
 unique_name_in_owner = true
 margin_left = 5.0
-margin_top = 5.0
+margin_top = 6.0
 margin_right = 10.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 4 )
 text = "A"
 
 [node name="Keyboard3" type="Label" parent="Elements/MoveAction2/ActionLabel"]
 margin_left = 14.0
-margin_top = 5.0
+margin_top = 6.0
 margin_right = 19.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 4 )
 text = ","
 
 [node name="Keyboard2" type="Sprite" parent="Elements/MoveAction2/ActionLabel"]
-position = Vector2( 24, 9 )
+position = Vector2( 24, 10 )
 scale = Vector2( 0.00965894, 0.00933308 )
 texture = ExtResource( 1 )
 

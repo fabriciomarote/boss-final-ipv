@@ -284,7 +284,7 @@ projectile_scene = ExtResource( 1 )
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 5 )
 character_path = NodePath("..")
-START_STATE = NodePath("Idle")
+START_STATE = NodePath("Walk")
 STATES_LIST = [ NodePath("Idle"), NodePath("Die"), NodePath("Walk"), NodePath("Alert"), NodePath("Attack"), NodePath("Damage") ]
 
 [node name="Idle" type="Node" parent="StateMachine"]

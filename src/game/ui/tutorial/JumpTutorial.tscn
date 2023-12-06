@@ -86,10 +86,10 @@ custom_fonts/font = SubResource( 4 )
 text = "space"
 
 [node name="JumpAction2" type="VBoxContainer" parent="Elements"]
-margin_left = -6.0
-margin_top = -67.0
-margin_right = 39.0
-margin_bottom = -27.0
+margin_left = -8.0
+margin_top = -66.0
+margin_right = 37.0
+margin_bottom = -26.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction2"]
 margin_right = 45.0
