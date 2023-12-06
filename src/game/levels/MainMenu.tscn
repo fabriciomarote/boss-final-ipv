@@ -205,15 +205,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Container"]
-position = Vector2( 155, 87.5 )
-scale = Vector2( 0.116071, 0.115234 )
+position = Vector2( 165, 93 )
+scale = Vector2( 0.123512, 0.120768 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Container"]
 margin_left = 13.0
-margin_top = 129.0
+margin_top = 139.0
 margin_right = 142.0
-margin_bottom = 176.0
+margin_bottom = 186.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_colors/font_color = Color( 0.933333, 0.72549, 0.72549, 1 )
 custom_colors/font_color_shadow = Color( 0.335074, 0.0536643, 0.0536643, 1 )
@@ -222,10 +222,10 @@ text = "Caperucita
 y las pesadillas"
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Container"]
-margin_left = 257.0
-margin_top = 13.0
-margin_right = 297.0
-margin_bottom = 25.0
+margin_left = 268.0
+margin_top = 12.0
+margin_right = 308.0
+margin_bottom = 24.0
 rect_scale = Vector2( 1, 1.03104 )
 custom_colors/font_color = Color( 0.776471, 0.0352941, 0.105882, 1 )
 custom_colors/font_color_pressed = Color( 0.027451, 0.0117647, 0.0117647, 1 )
@@ -238,9 +238,9 @@ text = "Iniciar"
 expand_icon = true
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/Container"]
-margin_left = 257.0
+margin_left = 268.0
 margin_top = 33.0
-margin_right = 297.0
+margin_right = 308.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 0.780392, 0.0392157, 0.109804, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -252,9 +252,9 @@ text = "Configuracion"
 expand_icon = true
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Container"]
-margin_left = 257.0
+margin_left = 268.0
 margin_top = 53.0
-margin_right = 297.0
+margin_right = 308.0
 margin_bottom = 65.0
 custom_colors/font_color = Color( 0.764706, 0.0313726, 0.105882, 1 )
 custom_fonts/font = SubResource( 30 )

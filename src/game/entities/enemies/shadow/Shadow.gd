@@ -43,10 +43,10 @@ func _ready() -> void:
 	hp_progress.modulate = Color.transparent
 
 
-func initialize(container, turret_pos, projectile_container) -> void:
+func initialize(container, turret_pos, projectile_container2) -> void:
 	container.add_child(self)
 	global_position = turret_pos
-	self.projectile_container = projectile_container
+	self.projectile_container = projectile_container2
 	
 
 func _fire() -> void:

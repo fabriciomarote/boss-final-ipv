@@ -43,8 +43,8 @@ func _on_RestartButton_pressed():
 	GameState.game_finished = true
 	GameState.checkpoint_actived = false
 	GameState.spawn_point = null
-	hide()
 	GameState.deaths = 0
+	hide()
 	emit_signal("restart_selected")
 
 

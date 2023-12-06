@@ -192,8 +192,6 @@ func notify_hit_protection(_amount: int = 1) -> void:
 	if protection == 0:
 		protection_actived = false
 		_protection_disabled()  
-	else: 
-		true
 	emit_signal("protection_changed", protection, max_protection)
 
 

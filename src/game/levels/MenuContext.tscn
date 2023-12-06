@@ -92,29 +92,29 @@ anims/start = SubResource( 1 )
 [node name="ColorRect" type="TextureRect" parent="."]
 margin_left = -2.0
 margin_top = -2.0
-margin_right = 43.0
-margin_bottom = 43.0
+margin_right = 46.0
+margin_bottom = 45.0
 rect_scale = Vector2( 7, 4 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="Context" type="Label" parent="."]
-margin_left = 1.0
+margin_left = 10.0
 margin_top = 66.0
-margin_right = 310.0
-margin_bottom = 99.0
+margin_right = 319.0
+margin_bottom = 107.0
 custom_fonts/font = SubResource( 3 )
-text = "Caperucita tiene que atravesar un bosque oscuro y encantado 
-para llegar a la casa de su abuelita que esta en peligro, 
-encontrara pesadillas que acecharan su camino
-y debera que acabar con numero de ellas para poder lograrlo. "
+text = "Caperucita para llegar a la casa de su abuelita que esta en peligro 
+tiene que atravesar un oscuro y tenebroso bosque, 
+encontrará pesadillas que acecharan su camino y deberá 
+acabar con un numero de ellas para poder lograrlo. "
 align = 1
 valign = 1
 
 [node name="Label" type="Label" parent="."]
-margin_left = 1.0
+margin_left = 10.0
 margin_top = 163.0
-margin_right = 310.0
+margin_right = 319.0
 margin_bottom = 171.0
 custom_fonts/font = SubResource( 2 )
 text = "Presiona Enter para empezar"

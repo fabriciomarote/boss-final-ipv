@@ -61,6 +61,8 @@ anims/enabled = SubResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Elements" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -1, 0 )
 
 [node name="JumpAction1" type="VBoxContainer" parent="Elements"]
 margin_left = -40.0
@@ -87,9 +89,9 @@ text = "space"
 
 [node name="JumpAction2" type="VBoxContainer" parent="Elements"]
 margin_left = -8.0
-margin_top = -66.0
+margin_top = -67.0
 margin_right = 37.0
-margin_bottom = -26.0
+margin_bottom = -27.0
 
 [node name="ActionName" type="Label" parent="Elements/JumpAction2"]
 margin_right = 45.0

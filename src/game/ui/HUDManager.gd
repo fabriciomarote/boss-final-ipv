@@ -15,11 +15,9 @@ onready var counter: Label = $StatsContainer/Panel/Counter
 onready var weapon: Sprite = $StatsContainer/Panel/Weapon
 onready var panel: Sprite = $StatsContainer/Panel/Panel
 onready var deaths = $StatsContainer/Panel/Deaths
-onready var chances = $StatsContainer/Panel/Chances
 onready var skull = $StatsContainer/Panel/Skull
-onready var player = $StatsContainer/Panel/Player
 
-onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow, deaths, chances, skull, player]
+onready var fading_elements: Array = [hp_progress, stamina_progress, protection_progress, weapon, panel, axe, bow, deaths, skull]
 
 export (float) var fade_duration: float = 5.0
 export (float) var fade_delay: float = 2.0
@@ -46,8 +44,6 @@ func _on_current_player_changed(player: Player) -> void:
 	_on_quantity_arrow_changed(player.arrowAmount)
 	player.connect("deaths_changed", self, "_on_quantity_deaths_changed")
 	_on_quantity_deaths_changed(player.deaths)
-	player.connect("chances_changed", self, "_on_quantity_chances_changed")
-	_on_quantity_chances_changed(player.chances)
 
 
 func _on_hp_changed(hp: int, hp_max: int) -> void:
@@ -87,11 +83,6 @@ func _on_quantity_arrow_changed(arrows: int) -> void:
 
 func _on_quantity_deaths_changed(dead: int) -> void:
 	deaths.text = str(dead)
-	_animate_fade()
-
-
-func _on_quantity_chances_changed(chance: int) -> void:
-	chances.text = str(chance)
 	_animate_fade()
 
 

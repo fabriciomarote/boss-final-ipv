@@ -21,12 +21,12 @@ func _ready():
 
 # Loops through all cells within the map's bounds and
 # adds all points to the astar_node, except the obstacles
-func astar_add_walkable_cells(walkable_cells = []) -> Array:
+func astar_add_walkable_cells(walkable_cells2 = []) -> Array:
 	var points_array = []
 	for y in range(map_limits.position.y, map_limits.end.y):
 		for x in range(map_limits.position.x, map_limits.end.x):
 			var point = Vector2(x, y)
-			if point in walkable_cells:
+			if point in walkable_cells2:
 				points_array.append(point)
 				# The AStar class references points with indices
 				# Using a function to calculate the index from a point's coordinates

@@ -29,20 +29,20 @@ func exit() -> void:
 
 
 # Callback derivado de _input
-func handle_input(event: InputEvent) -> void:
+func handle_input(_event: InputEvent) -> void:
 	return
 
 
 # Callback derivado de _physics_process
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	return
 
 
 # Callback cuando finaliza una animación en tiempo del estado actual
-func _on_animation_finished(anim_name: String) -> void:
+func _on_animation_finished(_anim_name: String) -> void:
 	return
 
 
 # Callback genérico para eventos manejados como strings.
-func handle_event(event: String, value = null) -> void:
+func handle_event(_event: String, _value = null) -> void:
 	return

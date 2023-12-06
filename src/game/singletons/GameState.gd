@@ -7,7 +7,8 @@ var spawn_point = null
 var position_original : Vector2
 var game_finished: bool = false
 var deaths: int = 0
-var cannon_active: bool = false
+var cannon1_active: bool = false
+var cannon2_active: bool = false
 
 signal current_player_changed(player)
 signal current_chance_changed(chance)

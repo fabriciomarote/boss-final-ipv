@@ -19,7 +19,7 @@
 [ext_resource path="res://assets/sounds/enemies/Pain_4.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=81]
-extents = Vector2( 23, 54 )
+extents = Vector2( 38, 82 )
 
 [sub_resource type="Shader" id=137]
 code = "shader_type canvas_item;
@@ -270,8 +270,8 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="CapsuleShape2D" id=142]
-radius = 85.9997
-height = 224.001
+radius = 79.9995
+height = 268.001
 
 [sub_resource type="Shader" id=140]
 code = "shader_type canvas_item;
@@ -354,7 +354,7 @@ shader_param/THRESHOLD = 0.1
 shader_param/AA_SCALE = 10.0
 
 [sub_resource type="RectangleShape2D" id=136]
-extents = Vector2( 351, 89 )
+extents = Vector2( 353, 105 )
 
 [node name="Mushroom" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -387,7 +387,7 @@ script = ExtResource( 5 )
 state_id = "alert"
 
 [node name="Timer" type="Timer" parent="StateMachine/Alert"]
-wait_time = 0.2
+wait_time = 0.5
 one_shot = true
 
 [node name="Damage" type="Node" parent="StateMachine"]
@@ -401,7 +401,7 @@ state_id = "attack"
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3, -16 )
+position = Vector2( -4, -20 )
 shape = SubResource( 81 )
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -409,11 +409,11 @@ position = Vector2( 0, -1 )
 
 [node name="Body" type="AnimatedSprite" parent="Pivot"]
 material = SubResource( 138 )
-position = Vector2( 7.62939e-06, -39 )
-scale = Vector2( 3.69083, 3.27417 )
+position = Vector2( -4, -41 )
+scale = Vector2( 4.75802, 3.99594 )
 frames = SubResource( 80 )
-animation = "walk"
-frame = 6
+animation = "idle"
+frame = 1
 playing = true
 flip_h = true
 
@@ -428,9 +428,9 @@ margin_bottom = -35.0
 
 [node name="LifeProgressBar" type="ProgressBar" parent="Pivot/HUD/Control"]
 margin_left = -24.0
-margin_top = -55.0
+margin_top = -81.0
 margin_right = 50.0
-margin_bottom = -49.0
+margin_bottom = -75.0
 custom_styles/fg = SubResource( 104 )
 custom_styles/bg = SubResource( 103 )
 max_value = 10.0
@@ -451,17 +451,17 @@ collision_mask = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AreaAttack"]
-position = Vector2( -18, -19 )
+position = Vector2( 0, -19 )
 rotation = 1.5708
 shape = SubResource( 142 )
 disabled = true
 
 [node name="Smoke" type="Sprite" parent="Pivot/AreaAttack"]
 visible = false
-modulate = Color( 0.490196, 0, 0, 0.498039 )
+modulate = Color( 0.439216, 0, 0, 0.6 )
 material = SubResource( 141 )
-position = Vector2( -2, -25 )
-scale = Vector2( 0.526125, 0.422991 )
+position = Vector2( 0, -27 )
+scale = Vector2( 0.573682, 0.398291 )
 texture = ExtResource( 16 )
 
 [node name="Timer_activate" type="Timer" parent="Pivot/AreaAttack"]
@@ -472,11 +472,12 @@ one_shot = true
 wait_time = 0.3
 
 [node name="DetectionArea" type="Area2D" parent="Pivot"]
+position = Vector2( 0, 33 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DetectionArea"]
-position = Vector2( 1, -43 )
+position = Vector2( 0, -60 )
 shape = SubResource( 136 )
 
 [node name="MushroomSFX" type="AudioStreamPlayer2D" parent="."]
@@ -488,6 +489,7 @@ bus = "SFX"
 
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]
 [connection signal="hp_changed" from="." to="StateMachine" method="_on_Mushroom_hp_changed"]
+[connection signal="timeout" from="StateMachine/Alert/Timer" to="StateMachine/Alert" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Pivot/Body" to="StateMachine" method="_on_Body_animation_finished"]
 [connection signal="body_entered" from="Pivot/AreaAttack" to="." method="_on_AreaAttack_body_entered"]
 [connection signal="timeout" from="Pivot/AreaAttack/Timer_activate" to="." method="_on_Timer_activate_timeout"]

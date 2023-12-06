@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name CannonWater
 
 onready var fire_position: Position2D = $Pivot/FirePosition
-onready var body_anim: AnimatedSprite = $Pivot/Body
 onready var pivot:Node2D = $Pivot
 onready var timer = $StateMachine/Alert/Timer
 onready var audio_stream = $AudioStreamPlayer
@@ -26,9 +25,7 @@ func initialize(_projectile_container: Node = get_parent()) -> void:
 
 
 func _fire() -> void:
-	if (GameState.cannon_active):
-		print(GameState.cannon_active)
-		print("dispara")
+	if (GameState.cannon2_active):
 		var direction: Vector2 = Vector2(0, round(global_position.direction_to(fire_position.global_position).y))
 		var proj = projectile_scene.instance()
 		proj.initialize(

@@ -4,6 +4,8 @@ class_name GameLevel
 onready var passage: StaticBody2D  = $Environment/Passage
 onready var passage_area: Area2D = $Environment/Passage/PassageArea
 onready var collision_shape = $Environment/Passage/CollisionShape2D
+onready var collision_shape2 = $Environment/ChangeAudioArea2/CollisionShape2D
+
 onready var collision_shape_area = $Environment/Passage/PassageArea/CollisionShape2D
 onready var animation_player = $AnimationPlayer
 onready var bgm: AudioStreamPlayer = $BGM
@@ -57,17 +59,31 @@ func _on_ChangeAudioArea_body_entered(body):
 
 func _on_ChangeAudioArea2_body_entered(body):
 	if body is Player:
-		 print(GameState.changed_audio_final_activate)
 		 GameState.changed_audio_final_activate = true
-		 print(GameState.changed_audio_final_activate) 
+		 collision_shape2.disabled = true
 		 bgm.stream = preload("res://assets/sounds/level/audio_final2.mp3")
 		 bgm.play()
 
 
-func _on_AreaAudioCannon_body_entered(body):
-	GameState.cannon_active = !GameState.cannon_active
-	print(body) 
+func _on_AreaAudioCannon_body_entered(_body):
+	GameState.cannon2_active = !GameState.cannon2_active
 
 
-func _on_AreaAudioCannon_body_exited(body):
-	GameState.cannon_active = !GameState.cannon_active
+func _on_AreaAudioCannon_body_exited(_body):
+	GameState.cannon2_active = !GameState.cannon2_active
+
+
+func _on_AreaAudioCannon2_body_entered(_body):
+	GameState.cannon1_active = !GameState.cannon1_active
+
+
+func _on_AreaAudioCannon2_body_exited(_body):
+	GameState.cannon1_active = !GameState.cannon1_active
+
+
+func _on_AreaAudioCannon3_body_entered(_body):
+	GameState.cannon1_active = !GameState.cannon1_active
+
+
+func _on_AreaAudioCannon3_body_exited(_body):
+	GameState.cannon1_active = !GameState.cannon1_active

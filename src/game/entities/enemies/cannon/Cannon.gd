@@ -22,14 +22,16 @@ func initialize(_projectile_container: Node = get_parent()) -> void:
 
 
 func _fire() -> void:
-	var direction: Vector2 = Vector2(round(global_position.direction_to(fire_position.global_position).x), 0)
-	var proj = projectile_scene.instance()
-	proj.initialize(
-		self.projectile_container,
-		fire_position.global_position,
-		direction
-	)
-	
+	if (GameState.cannon1_active):
+		var direction: Vector2 = Vector2(round(global_position.direction_to(fire_position.global_position).x), 0)
+		var proj = projectile_scene.instance()
+		proj.initialize(
+			self.projectile_container,
+			fire_position.global_position,
+			direction
+		)
+
+
 func _look_at_target() -> void:
 	if target != null:
 		pivot.scale.x = -1 if target.global_position.x > global_position.x else 1
