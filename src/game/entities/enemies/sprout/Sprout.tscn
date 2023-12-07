@@ -268,7 +268,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=131]
-extents = Vector2( 571, 169 )
+extents = Vector2( 571, 124 )
 
 [sub_resource type="RectangleShape2D" id=165]
 extents = Vector2( 39, 48 )
@@ -359,7 +359,7 @@ position = Vector2( 24, -29 )
 scale = Vector2( 4.59212, 4.28516 )
 frames = SubResource( 80 )
 animation = "idle"
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
@@ -368,7 +368,7 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DetectionArea"]
-position = Vector2( 1, -66 )
+position = Vector2( 1, -21 )
 shape = SubResource( 131 )
 
 [node name="AreaAttack" type="Area2D" parent="Pivot"]

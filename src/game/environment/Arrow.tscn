@@ -38,8 +38,8 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
 shader_param/speed = 0.2
-shader_param/tint = Color( 2, 1, 3, 0.1 )
-shader_param/span = 0.3
+shader_param/tint = Color( 0.896311, 0.803665, 0.409642, 1 )
+shader_param/span = 0.619
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
