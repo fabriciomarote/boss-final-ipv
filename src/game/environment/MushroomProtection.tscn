@@ -8,52 +8,38 @@ radius = 7.0
 height = 6.0
 
 [sub_resource type="Shader" id=2]
-code = "shader_type spatial; 
-render_mode unshaded;
+code = "shader_type canvas_item;
 
-// These are the Uniforms I have, yours may differ
-// Names must match what exists in your Shader Globals
-global uniform vec4 EnvFogColor;
-global uniform float EnvFogStart;
-global uniform float EnvFogEnd;
-global uniform vec4 EnvLightColor;
-global uniform vec3 EnvLightDir;
+const float PI = 3.141516;
 
-uniform sampler2D _texture : source_color, filter_nearest; // Forces point sampling for now
-uniform vec2 uv_scale = vec2(0.5, 0.5);
+uniform float speed = 0.2;
 
-varying float vfog;
+uniform vec4 tint : hint_color = vec4(2., 1., 3., .1);
 
-void vertex() {
-	// World-space UVs
-	vec3 p = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	UV = p.xz * uv_scale;
-	
-	// Vertex Fog, using View Z-depth
-	vec4 V = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0);
-	float z = V.z;
-	z = max(0.0, z-EnvFogStart);
-	vfog = clamp(z / (EnvFogEnd - EnvFogStart), 0.0, 1.0);
-	
-	// Vertex Lighting, simple
-	vec3 N = (MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz;
-	N = normalize(N); // Must normalize b/c of potential Scaling
-	float ndl =  max(0.0, dot(N, EnvLightDir));
-	COLOR.rgb = EnvFogColor.rgb + (EnvLightColor.rgb * ndl);
+uniform float span : hint_range(0.1, 1.) = .3;
+
+float luminance(vec4 colour) {
+	return 1.0 - sqrt(0.299*colour.r*colour.r + 0.587*colour.g*colour.g + 0.114*colour.b*colour.b);
 }
 
 void fragment() {
-	// Texture & Vertex Lighting
-	vec4 tex = texture(_texture, UV);
-	ALBEDO = tex.rgb * COLOR.rgb;
+	vec4 colour = texture(TEXTURE, UV);
+	float target = abs(sin(TIME * PI * speed) * (1. + span));
+	if(colour.a > 0.) {
+		float lum = luminance(colour);
+		float diff = abs(lum - target);
+		float mx = clamp(1. - diff / span, 0., 1.);
+		colour = mix(colour, tint, mx);
+	}
 	
-	// Blend over the Vertex Fog
-	FOG.rgb = EnvFogColor.rgb;
-	FOG.a = vfog;
+	COLOR = colour;
 }"
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
+shader_param/speed = 0.2
+shader_param/tint = Color( 0.411765, 0, 0.819608, 0.333333 )
+shader_param/span = 0.3
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
