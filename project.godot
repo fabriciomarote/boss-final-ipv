@@ -165,7 +165,6 @@ AudioManager="*res://src/game/singletons/AudioManager.gd"
 
 window/size/width=330
 window/size/height=185
-window/size/fullscreen=true
 window/size/test_width=980
 window/size/test_height=520
 mouse_cursor/custom_image="res://assets/textures/items/6.png"
