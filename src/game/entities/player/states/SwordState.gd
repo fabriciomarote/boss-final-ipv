@@ -5,8 +5,10 @@ func enter() -> void:
 	character._shader_hojas(false)
 	character._shader_dust(false)
 	if !character.is_on_floor():
+		character._attack_audio()
 		character._play_animation("axeJump")
 	else:
+		character._attack_audio()
 		character._play_animation("axe")
 		
 

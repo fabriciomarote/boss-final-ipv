@@ -38,6 +38,7 @@ export (AudioStream) var walk_sfx
 export (AudioStream) var dash_sfx
 export (AudioStream) var death_sfx
 export (AudioStream) var damage_sfx
+export (AudioStream) var attack_sfx
 export (AudioStream) var handle_life_sfx
 export (AudioStream) var handle_mushroom_sfx
 export (PackedScene) var projectile_scene: PackedScene 
@@ -299,6 +300,11 @@ func _jump_audio():
 
 func _damage_audio():
 	player_sfx.stream = damage_sfx
+	player_sfx.play() 
+
+
+func _attack_audio():
+	player_sfx.stream = attack_sfx
 	player_sfx.play() 
 
 

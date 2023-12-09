@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Monster.wav-6e3f8fc2c2955c22856ab512496bcb90.sample"
+path="res://.import/Mushroom.wav-82dc8131d11293d65b2a63d389446a8a.sample"
 
 [deps]
 
-source_file="res://assets/sounds/Monster.wav"
-dest_files=[ "res://.import/Monster.wav-6e3f8fc2c2955c22856ab512496bcb90.sample" ]
+source_file="res://assets/sounds/Mushroom.wav"
+dest_files=[ "res://.import/Mushroom.wav-82dc8131d11293d65b2a63d389446a8a.sample" ]
 
 [params]
 

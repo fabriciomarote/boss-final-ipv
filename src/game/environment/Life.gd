@@ -8,7 +8,7 @@ export (AudioStream) var handle_sfx
 func _on_Area2D_body_entered(body):
 	if body is Player:
 		if body.hp < body.max_hp:
-			_handle_audio()
+			#_handle_audio()
 			body.sum_hp()
 			queue_free()
 

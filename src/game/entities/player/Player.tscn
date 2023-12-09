@@ -1,11 +1,11 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://src/game/entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/player/red_hood_sheet(1).png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/player/arrow_attack.mp3" type="AudioStream" id=3]
 [ext_resource path="res://src/game/entities/player/states/DamageState.gd" type="Script" id=4]
 [ext_resource path="res://src/game/entities/player/PlayerProjectile.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sounds/02_Heal_02.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/Life.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/textures/items/pngwing.com(1).png" type="Texture" id=7]
 [ext_resource path="res://assets/sounds/player/GRASS - Pre Jump 6.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/player/atk_sword.wav" type="AudioStream" id=9]
@@ -21,7 +21,8 @@
 [ext_resource path="res://assets/textures/player/red_hood_sheet3.png" type="Texture" id=19]
 [ext_resource path="res://assets/textures/tileset/Decals_north.png" type="Texture" id=20]
 [ext_resource path="res://assets/sounds/PosiblesAudios/damaged3.wav" type="AudioStream" id=21]
-[ext_resource path="res://assets/sounds/46_Poison_01.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/sounds/Mushroom.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/sounds/PosiblesAudios/attack3.wav" type="AudioStream" id=23]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -463,7 +464,6 @@ atlas = ExtResource( 7 )
 region = Rect2( 546.614, 277.112, 37.3823, 41.7976 )
 
 [sub_resource type="AtlasTexture" id=37]
-flags = 4
 atlas = ExtResource( 20 )
 region = Rect2( 690, 320, 150, 120 )
 
@@ -740,6 +740,7 @@ __meta__ = {
 jump_sfx = ExtResource( 8 )
 walk_sfx = ExtResource( 11 )
 damage_sfx = ExtResource( 21 )
+attack_sfx = ExtResource( 23 )
 handle_life_sfx = ExtResource( 6 )
 handle_mushroom_sfx = ExtResource( 22 )
 projectile_scene = ExtResource( 5 )

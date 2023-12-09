@@ -16,7 +16,7 @@
 [ext_resource path="res://src/game/entities/enemies/shadow/states/AlertState.gd" type="Script" id=14]
 [ext_resource path="res://assets/textures/enemies/shadow/Enemy-Melee-Damage-S.png" type="Texture" id=15]
 [ext_resource path="res://src/game/entities/enemies/shadow/states/DamageState.gd" type="Script" id=16]
-[ext_resource path="res://assets/sounds/enemies/die_boss.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/ghost.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/enemies/Pain_3.wav" type="AudioStream" id=18]
 
 [sub_resource type="CanvasItemMaterial" id=81]
@@ -963,7 +963,7 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 6
+frame = 3
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]

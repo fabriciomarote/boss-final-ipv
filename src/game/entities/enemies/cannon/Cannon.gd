@@ -4,9 +4,10 @@ class_name Cannon
 onready var fire_position: Position2D = $Pivot/FirePosition
 onready var pivot:Node2D = $Pivot
 onready var timer = $StateMachine/Alert/Timer
+onready var audio_stream = $AudioStreamPlayer
 
 export (PackedScene) var projectile_scene: PackedScene
-
+export (AudioStream) var cannon_sfx
 
 var target: Node2D
 var projectile_container: Node
@@ -30,6 +31,7 @@ func _fire() -> void:
 			fire_position.global_position,
 			direction
 		)
+	cannon_audio()
 
 
 func _look_at_target() -> void:
@@ -41,3 +43,8 @@ func _look_at_target() -> void:
 
 func _on_Timer_timeout():
 	timer.wait_time = randi() % 4 + 1
+
+
+func cannon_audio():
+	audio_stream.stream = cannon_sfx
+	audio_stream.play() 
