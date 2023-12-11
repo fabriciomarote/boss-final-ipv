@@ -6,8 +6,9 @@ onready var pivot:Node2D = $Pivot
 onready var timer = $StateMachine/Alert/Timer
 onready var audio_stream = $AudioStreamPlayer
 
-export (PackedScene) var projectile_scene: PackedScene
 export (AudioStream) var cannon_sfx
+export (PackedScene) var projectile_scene: PackedScene
+
 
 var target: Node2D
 var projectile_container: Node
