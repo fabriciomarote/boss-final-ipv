@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/ChainsawCarnage.woff2" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Blackcraft.woff2" type="DynamicFontData" id=2]
 [ext_resource path="res://src/game/ui/DefeatMenu.gd" type="Script" id=3]
-[ext_resource path="res://assets/sounds/dead-audio.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/level/gameOver.ogg" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.439216 )
@@ -43,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 3 )
+bgm = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -93,7 +94,7 @@ text = "Reiniciar"
 
 [node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 20.0
-margin_right = 66.0
+margin_right = 86.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 2 )
@@ -105,11 +106,6 @@ text = "Volver al inicio"
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 bus = "SFX"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 4 )
-bus = "Music"
 
 [connection signal="pressed" from="Panel/VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]

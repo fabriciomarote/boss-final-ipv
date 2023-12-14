@@ -30,6 +30,13 @@ func update(delta:float) -> void:
 	character._apply_movement()
 
 
+func _handle_body_exited(node: Node) -> void:
+	._handle_body_exited(node)
+	if character.target == null:
+		if character.get_current_animation() == "walk":
+			emit_signal("finished", "idle")
+
+
 func handle_event(event: String, value = null) -> void:
 	.handle_event(event,value)
 	match event:

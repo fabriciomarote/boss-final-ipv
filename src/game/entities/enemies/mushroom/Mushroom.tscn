@@ -354,7 +354,7 @@ shader_param/THRESHOLD = 0.1
 shader_param/AA_SCALE = 10.0
 
 [sub_resource type="RectangleShape2D" id=136]
-extents = Vector2( 353, 105 )
+extents = Vector2( 568, 105 )
 
 [node name="Mushroom" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -413,7 +413,7 @@ position = Vector2( -4, -41 )
 scale = Vector2( 4.75802, 3.99594 )
 frames = SubResource( 80 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 

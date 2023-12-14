@@ -8,7 +8,7 @@ onready var collision_shape2 = $Environment/ChangeAudioArea2/CollisionShape2D
 
 onready var collision_shape_area = $Environment/Passage/PassageArea/CollisionShape2D
 onready var animation_player = $AnimationPlayer
-onready var bgm: AudioStreamPlayer = $BGM
+onready var bgm: AudioStreamPlayer = $BGM/BGM
 onready var player: Player = $Environment/Entities/Player
 
 var enabled: bool = false
@@ -87,3 +87,7 @@ func _on_AreaAudioCannon3_body_entered(_body):
 
 func _on_AreaAudioCannon3_body_exited(_body):
 	GameState.cannon1_active = !GameState.cannon1_active
+
+
+func play(bgm):
+	pass # Replace with function body.

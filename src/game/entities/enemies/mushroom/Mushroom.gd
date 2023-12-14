@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name EnemyMushroom
 
-export (float) var ACCELERATION: float = 20.0
-export (float) var H_SPEED_LIMIT: float = 30.0
+export (float) var ACCELERATION: float = 40.0
+export (float) var H_SPEED_LIMIT: float = 70.0
 
 signal hit(amount)
 signal hp_changed(current_hp, max_hp)
@@ -22,7 +22,7 @@ onready var timer_disable = $Pivot/AreaAttack/Timer_disable
 onready var sfx = $SFX
 
 
-export (int) var gravity: int = 15
+export (int) var gravity: int = 50
 
 export (int) var max_hp: int = 10
 var hp: int = max_hp

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GRASS - Walk 4 (online-audio-converter.com).mp3-a8863d6004860cddae5d3c239f91ddd7.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/player/GRASS - Walk 4 (online-audio-converter.com).mp3"
+dest_files=[ "res://.import/GRASS - Walk 4 (online-audio-converter.com).mp3-a8863d6004860cddae5d3c239f91ddd7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

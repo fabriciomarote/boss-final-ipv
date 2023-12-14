@@ -28,12 +28,13 @@ onready var collision_shape: CollisionShape2D = $BodyPivot/ProtectionArea/Collis
 onready var particles: Particles2D = $BodyPivot/Particles/Dash
 onready var timer: Timer = $"%Timer"
 
-export (float) var ACCELERATION: float = 35.0
-export (float) var H_SPEED_LIMIT: float = 45.0
-export (int) var jump_speed: int = 300
-export (float) var FRICTION_WEIGHT: float = 3.0
+export (float) var ACCELERATION: float = 50.0
+export (float) var H_SPEED_LIMIT: float = 70.0
+export (int) var jump_speed: int = 320
+export (float) var FRICTION_WEIGHT: float = 2.0
 export (int) var gravity: int = 13
 export (AudioStream) var jump_sfx
+export (AudioStream) var fall_sfx
 export (AudioStream) var walk_sfx
 export (AudioStream) var dash_sfx
 export (AudioStream) var death_sfx
@@ -295,6 +296,11 @@ func _walk_audio():
 
 func _jump_audio():
 	player_sfx.stream = jump_sfx
+	player_sfx.play() 
+
+
+func _fall_audio():
+	player_sfx.stream = fall_sfx
 	player_sfx.play() 
 
 

@@ -33,7 +33,8 @@ func _handle_body_exited(node: Node) -> void:
 	._handle_body_exited(node)
 	if character.target == null:
 		if character.get_current_animation() == "alert":
-			emit_signal("finished", "idle")
+			emit_signal("finished", "walk")
+
 
 func handle_event(event: String, value = null) -> void:
 	.handle_event(event,value)
@@ -52,3 +53,6 @@ func _on_Timer_timeout():
 		emit_signal("finished", "walk")
 	else:
 		attack()
+	if character.target == null:
+		if character.get_current_animation() == "alert":
+			emit_signal("finished", "idle")

@@ -5,12 +5,11 @@ extends Control
 
 signal restart_selected()
 signal return_selected()
+signal set_bgm(bgm)
+
+export (AudioStream) var bgm: AudioStream
 
 onready var sfx = $SFX
-onready var audio_stream_player = $AudioStreamPlayer
-
-export (AudioStream) var music_final
-
 
 var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4.wav")
 
@@ -21,9 +20,7 @@ func _ready() -> void:
 
 func _on_level_won() -> void:
 	show()
-	audio_stream_player.stream = music_final
-	audio_stream_player.play()
-	#get_tree().paused = true
+	emit_signal("set_bgm", bgm)
 
 
 func _on_ReturnButton_pressed() -> void:

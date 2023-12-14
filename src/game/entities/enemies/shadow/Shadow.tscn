@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=2]
+[gd_scene load_steps=174 format=2]
 
 [ext_resource path="res://src/game/entities/enemies/DetectionArea.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/green_circle.png" type="Texture" id=2]
@@ -888,18 +888,6 @@ extents = Vector2( 9, 30.5 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 235.019
 
-[sub_resource type="Animation" id=84]
-resource_name = "alert"
-
-[sub_resource type="Animation" id=85]
-resource_name = "death"
-
-[sub_resource type="Animation" id=86]
-resource_name = "fly"
-
-[sub_resource type="Animation" id=87]
-resource_name = "idle"
-
 [node name="Shadow" type="KinematicBody2D"]
 modulate = Color( 1, 0, 0, 1 )
 collision_layer = 4
@@ -963,7 +951,7 @@ position = Vector2( 2, -19 )
 scale = Vector2( 0.572754, 0.515706 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 3
+frame = 11
 playing = true
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -1003,12 +991,6 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2( -3, 1 )
 shape = SubResource( 2 )
-
-[node name="BodyAnimation" type="AnimationPlayer" parent="."]
-anims/alert = SubResource( 84 )
-anims/death = SubResource( 85 )
-anims/fly = SubResource( 86 )
-anims/idle = SubResource( 87 )
 
 [node name="ShadowSfx" type="AudioStreamPlayer" parent="."]
 bus = "SFX"

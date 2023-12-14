@@ -5,20 +5,19 @@ extends Control
 
 signal retry_selected()
 signal return_selected()
+signal set_bgm(bgm)
 
 onready var sfx = $SFX
-onready var audio_stream_player = $AudioStreamPlayer
+
+export (AudioStream) var bgm: AudioStream
 
 var button : AudioStream = preload("res://assets/sounds/PosiblesAudios/GameMenu4.wav")
 
 func _ready() -> void:
 	hide()
 	if GameState.chance == 0:
-		#visible = !visible
-		#get_tree().paused = visible
-		#audio_stream_player.play()
-		#get_tree().paused = true 
 		show()
+		emit_signal("set_bgm", bgm)
 
 
 func _on_RetryButton_pressed() -> void:
@@ -29,6 +28,8 @@ func _on_RetryButton_pressed() -> void:
 	GameState.checkpoint_actived = false
 	GameState.changed_audio_final_activate = false
 	GameState.spawn_point = null
+	sfx.stream = button
+	sfx.play()
 	emit_signal("retry_selected")
 
 
@@ -43,3 +44,7 @@ func _on_ReturnButton_pressed() -> void:
 	sfx.stream = button
 	sfx.play()
 	emit_signal("return_selected")
+
+
+func _on_DefeatMenu_set_bgm(bgm):
+	pass # Replace with function body.

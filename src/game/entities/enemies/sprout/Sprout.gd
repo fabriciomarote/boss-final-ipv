@@ -17,9 +17,9 @@ onready var collision_attack = $Pivot/AreaAttack/CollisionShape2D
 onready var timer_activate = $Pivot/AreaAttack/Timer_activate
 onready var timer_disable = $Pivot/AreaAttack/Timer_disable
 
-export (int) var gravity: int = 20
-export (float) var ACCELERATION: float = 90.0
-export (float) var H_SPEED_LIMIT: float = 130.0
+export (int) var gravity: int = 50
+export (float) var ACCELERATION: float = 70.0
+export (float) var H_SPEED_LIMIT: float = 110.0
 export (int) var max_hp: int = 6
 var hp: int = max_hp
 
