@@ -152,7 +152,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Caperucita y las pesadillas"
+config/name="Caperucita y las Pesadillas"
 run/main_scene="res://src/game/levels/MainMenu.tscn"
 config/icon="res://icon.png"
 
@@ -163,7 +163,7 @@ AudioManager="*res://src/game/singletons/AudioManager.gd"
 
 [display]
 
-window/size/width=330
+window/size/width=350
 window/size/height=185
 window/size/test_width=980
 window/size/test_height=520

@@ -19,5 +19,5 @@ func _on_animation_finished(anim_name:String) -> void:
 	if (character.hp == 0):
 		emit_signal("finished", "die")
 	if (anim_name == "attack"):
-		emit_signal("finished", "walk")
+		emit_signal("finished", "idle")
 

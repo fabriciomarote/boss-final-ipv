@@ -87,10 +87,10 @@ color = Color( 0.0470588, 0.0313726, 0.0705882, 0.780392 )
 [node name="MainPanel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 10.0
-margin_right = -6.0
-margin_bottom = -10.0
+margin_left = 30.0
+margin_top = 20.0
+margin_right = -30.0
+margin_bottom = -20.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="Label" type="Label" parent="MainPanel"]
@@ -119,10 +119,10 @@ custom_fonts/font = SubResource( 12 )
 text = "Audio"
 
 [node name="ReturnButton" type="Button" parent="MainPanel"]
-margin_left = 275.0
-margin_top = 146.0
-margin_right = 305.0
-margin_bottom = 156.0
+margin_left = 250.0
+margin_top = 126.0
+margin_right = 280.0
+margin_bottom = 136.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 13 )
@@ -135,17 +135,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 40.0
-margin_right = -170.0
+margin_right = -158.0
 margin_bottom = -30.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Controllers"]
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 108.0
 size_flags_horizontal = 3
 
 [node name="ActionInput" parent="MainPanel/Controllers/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 12.0
 action = "move_left"
 action_name = "ir a izquierda"
@@ -153,7 +153,7 @@ action_name = "ir a izquierda"
 [node name="ActionInput2" parent="MainPanel/Controllers/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_top = 16.0
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 28.0
 action = "move_right"
 action_name = "ir a Derecha"
@@ -161,7 +161,7 @@ action_name = "ir a Derecha"
 [node name="ActionInput5" parent="MainPanel/Controllers/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_top = 32.0
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 44.0
 action = "jump"
 action_name = "Saltar"
@@ -169,7 +169,7 @@ action_name = "Saltar"
 [node name="ActionInput6" parent="MainPanel/Controllers/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_top = 48.0
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 60.0
 action = "change_attack"
 action_name = "Cambiar arma"
@@ -177,7 +177,7 @@ action_name = "Cambiar arma"
 [node name="ActionInput7" parent="MainPanel/Controllers/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_top = 64.0
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 76.0
 action = "attack"
 action_name = "atacar"
@@ -185,7 +185,7 @@ action_name = "atacar"
 [node name="ActionInput3" parent="MainPanel/Controllers/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_top = 80.0
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 92.0
 action = "protection"
 action_name = "Activar escudo"
@@ -193,7 +193,7 @@ action_name = "Activar escudo"
 [node name="ActionInput4" parent="MainPanel/Controllers/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_top = 96.0
-margin_right = 127.0
+margin_right = 110.0
 margin_bottom = 108.0
 action = "run"
 action_name = "Correr"
@@ -207,7 +207,7 @@ margin_right = -10.0
 margin_bottom = -30.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Audio"]
-margin_right = 137.0
+margin_right = 108.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -216,27 +216,27 @@ alignment = 1
 [node name="AudioBusOptions" parent="MainPanel/Audio/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 137.0
+margin_right = 108.0
 margin_bottom = 23.0
 
 [node name="AudioBusOptions2" parent="MainPanel/Audio/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 27.0
-margin_right = 137.0
+margin_right = 108.0
 margin_bottom = 50.0
 bus_name = "Music"
 
 [node name="AudioBusOptions3" parent="MainPanel/Audio/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 54.0
-margin_right = 137.0
+margin_right = 108.0
 margin_bottom = 77.0
 bus_name = "SFX"
 
 [node name="AudioBusOptions4" parent="MainPanel/Audio/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 0.0
 margin_top = 81.0
-margin_right = 137.0
+margin_right = 108.0
 margin_bottom = 104.0
 bus_name = "UI"
 

@@ -68,7 +68,7 @@ size = 19
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=29]
-size = 6
+size = 9
 font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=16]
@@ -107,7 +107,7 @@ corner_radius_top_right = 1
 corner_radius_bottom_left = 1
 
 [sub_resource type="DynamicFont" id=3]
-size = 5
+size = 7
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=11]
@@ -154,7 +154,7 @@ corner_radius_bottom_left = 1
 shadow_color = Color( 0.537255, 0.52549, 0.52549, 0.6 )
 
 [sub_resource type="DynamicFont" id=30]
-size = 6
+size = 9
 font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=31]
@@ -205,8 +205,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Container"]
-position = Vector2( 165, 93 )
-scale = Vector2( 0.123512, 0.120768 )
+position = Vector2( 175, 93 )
+scale = Vector2( 0.130208, 0.120768 )
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Container"]
@@ -222,10 +222,10 @@ text = "Caperucita
 y las pesadillas"
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Container"]
-margin_left = 268.0
+margin_left = 283.0
 margin_top = 12.0
-margin_right = 308.0
-margin_bottom = 24.0
+margin_right = 333.0
+margin_bottom = 27.0
 rect_scale = Vector2( 1, 1.03104 )
 custom_colors/font_color = Color( 0.776471, 0.0352941, 0.105882, 1 )
 custom_colors/font_color_pressed = Color( 0.027451, 0.0117647, 0.0117647, 1 )
@@ -238,10 +238,10 @@ text = "Iniciar"
 expand_icon = true
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/Container"]
-margin_left = 268.0
-margin_top = 33.0
-margin_right = 308.0
-margin_bottom = 45.0
+margin_left = 283.0
+margin_top = 32.0
+margin_right = 333.0
+margin_bottom = 47.0
 custom_colors/font_color = Color( 0.780392, 0.0392157, 0.109804, 1 )
 custom_fonts/font = SubResource( 3 )
 custom_styles/hover = SubResource( 11 )
@@ -252,10 +252,10 @@ text = "Configuracion"
 expand_icon = true
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Container"]
-margin_left = 268.0
+margin_left = 283.0
 margin_top = 53.0
-margin_right = 308.0
-margin_bottom = 65.0
+margin_right = 333.0
+margin_bottom = 68.0
 custom_colors/font_color = Color( 0.764706, 0.0313726, 0.105882, 1 )
 custom_fonts/font = SubResource( 30 )
 custom_styles/hover = SubResource( 31 )
